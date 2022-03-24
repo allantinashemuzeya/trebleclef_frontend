@@ -104,10 +104,14 @@ class Lesson implements LessonInterface {
         return $lessons;
     }
 
+
+
     public function processLesson($lesson, $subjectId) {
         // TODO: Implement processLesson() method.
 
         $raw_lesson = $this->get($lesson->id, 'field_subject');
+
+        $supportingDocuments = $this->getLessonSupportingDocuments($lesson->id);
 
         if(property_exists($raw_lesson, 'included')){
             foreach($raw_lesson->included as $item){
@@ -121,7 +125,8 @@ class Lesson implements LessonInterface {
                             'banner' => $this->getBanner($raw_lesson->data->id),
                             'subject' => $this->getSubject($raw_lesson->included),
                             'tutorial' => $this->getLessonTutorial($raw_lesson->included),
-                            'date' =>  Carbon::parse($raw_lesson->data->attributes->created)->isoFormat('MMM DD YYYY')
+                            'date' =>  Carbon::parse($raw_lesson->data->attributes->created)->isoFormat('MMM DD YYYY'),
+                            'supportingDocuments' => $supportingDocuments,
                         ];
                     }
                     else{
@@ -132,6 +137,28 @@ class Lesson implements LessonInterface {
         }
 
         return null;
+    }
+
+    public function getLessonSupportingDocuments($lessonId) {
+
+        // TODO: Implement getLessonBySubject() method.
+
+        $response = Http::get(env('BACKEND_API') . 'lesson/'.$lessonId.'?include=field_supporting_documents');
+        $data = json_decode($response);
+
+        $documents = [];
+
+        if(property_exists($data, 'included')){
+            foreach($data->included as $item){
+                if($item->attributes->filemime === 'application/pdf'){
+                    array_push($documents, ['name'=>$item->attributes->filename, 'url'=> env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url]);
+                }
+            }
+        }
+
+        ray($documents)->green();
+
+        return $documents;
     }
 
     public function getBanner($lessonId) {

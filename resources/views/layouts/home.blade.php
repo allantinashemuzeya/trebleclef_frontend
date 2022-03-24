@@ -1392,7 +1392,7 @@
 
 <!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
-<!-- END: ghcghchgchg Page JS-->
+<!-- END: Page JS-->
 <script>
     $(window).on("load", function () {
         if (feather) {
@@ -1400,6 +1400,8 @@
         }
     });
 </script>
+@stack('scripts')
+
 </body>
 
 </html>

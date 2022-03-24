@@ -6,7 +6,7 @@ use App\Http\Services\Home\Home;
 
 class HomeController extends Controller
 {
-    // Section Index
+    //
     public function index()
     {
       $draggableSlider = (new Home())->draggableSlider();

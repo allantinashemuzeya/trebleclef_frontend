@@ -79,8 +79,7 @@
        <script src="{{asset('app-assets/js/scripts/pages/page-auth-register.min.js')}}"></script>
        <!-- END: Page JS-->
    
-       @stack('select2')
- 
+     
 </body>
 
 </html>
