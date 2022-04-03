@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ClassroomController;
@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/dashboard', 'index')->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard','index')->middleware(['auth'])->name('dashboard');
 });
 
 Route::controller(CommunicationController::class)->group(function(){
