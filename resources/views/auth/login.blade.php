@@ -56,7 +56,7 @@
                     <!-- Remember Me -->
                     <div class="mb-1">
                          <div class="form-check">
-                            <input class="form-check-input" id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                            <input class="form-check-input" value="1" id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                             <label class="form-check-label" for="remember-me"> Remember Me</label>
                         </div>
                     </div>
@@ -71,19 +71,6 @@
                         <span>&nbsp;Create an account</span>
                     </a>
                 </p>
-
-                <div class="divider my-2">
-                    <div class="divider-text">
-                        or
-                    </div>
-                </div>
-
-                <div class="auth-footer-btn d-flex justify-content-center">
-                    <a class="btn btn-facebook" href="#"><i data-feather="facebook"></i></a>
-                    <a class="btn btn-twitter white" href="#"><i data-feather="twitter"></i></a>
-                    <a class="btn btn-google" href="#"><i data-feather="mail"></i></a>
-                    <a class="btn btn-github" href="#"><i data-feather="github"></i></a>
-                </div>
             </div>
         </div>
         <!-- /Login-->
