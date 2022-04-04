@@ -84,37 +84,53 @@
             <!-- Swiper -->
             <div class="row match-height">
                 <!-- Greetings Card starts -->
-                <div class="col-lg-4 col-md-12 col-sm-12" >
-                    <div class="card-header">
-                    </div>
-                    <div class="card card-congratulations">
-                        <div class="card-body text-center">
-                            <img
-                                alt="card-img-left"
-                                class="congratulations-img-left"
-                                src="{{asset('app-assets/images/elements/decore-left.png')}}"
-                            />
-                            <img
-                                alt="card-img-right"
-                                class="congratulations-img-right"
-                                src="{{asset('app-assets/images/elements/decore-right.png')}}"
-                            />
-                            <div class="avatar avatar-xl bg-primary shadow">
-                                <div class="avatar-content">
-                                    <i class="font-large-1" data-feather="award"></i>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card card-profile">
+                        <img src="../../../app-assets/images/banner/banner-12.jpg" class="img-fluid card-img-top" alt="Profile Cover Photo">
+                        <div class="card-body">
+                            <div class="profile-image-wrapper">
+                                <div class="profile-image">
+                                    <div class="avatar">
+                                        <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Profile Picture">
+                                    </div>
                                 </div>
                             </div>
+                            <h3>{{Auth::user()->name}}</h3>
+                            <h6 class="text-muted">School Name Here</h6>
+                            <span class="badge badge-light-primary profile-badge">Student Level</span>
+                            <hr class="mb-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="text-muted fw-bolder">SUBJECTS</h6>
+                                    <h3 class="mb-0">4</h3>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted fw-bolder">LESSONS</h6>
+                                    <h3 class="mb-0">10</h3>
+                                </div>
+                                <div>
+                                    <h6 class="text-muted fw-bolder">
+                                        <ABBR TITLE="Student of the Week">SOTW AWARDS</ABBR>
+                                    </h6>
+
+                                    <h3 class="mb-0">23</h3>
+                                </div>
+
+                            </div>
+                            <br/><br/>
                             <div class="text-center">
-                                <h1 class="mb-1 text-white">Good Day 👋 <br> {{Auth::user()->name}}</h1>
-                                <p>I love music because it makes me shine like the sun. When I play i feel like I  am cl</p>
+                                <p class="card-text m-auto w-75">
+                                    You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-8 col-md-12 col-sm-12" >
-                    <div class="card-header">
-                    </div>
+{{--                    <div class="card-header">--}}
+{{--                        <h4 class="card-title">Treble Clef Tv</h4>--}}
+
+{{--                    </div>--}}
                     <div class="card card-congratulations" style="background: linear-gradient(45deg, black, #1f0808);">
                         <div class="card-body text-center">
                             {{-- treble clef tv  --}}
@@ -193,6 +209,7 @@
                                         </div>
                                     </div>
                                 </a>
+
                             @elseif($nav_card['type'] === 'events')
                                 <a href="{{route('events')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
@@ -226,7 +243,7 @@
                                     </div>
                                 </a>
                             @elseif($nav_card['type'] === 'classroom')
-                                <a href="{{route('classroom', )}}">
+                                <a href="{{route('classroom')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
 
@@ -241,6 +258,23 @@
                                         </div>
                                     </div>
                                 </a>
+
+                            @elseif($nav_card['type'] === 'foundation')
+                                    <a href="{{route('foundations')}}">
+                                        <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                            <div class="card-body text-center">
+
+                                                <div class="avatar avatar-xl bg-primary shadow">
+                                                    <div class="avatar-content">
+                                                        <i class="font-large-1" data-feather="heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                             @endif
                     </div>
                 @endforeach

@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                     <h6 class="item-name">
-                                        <a class="text-body" href="">{{$communication['title']}}</a>
+                                        <a class="text-body" href=""></a>
                                     </h6>
 {{--                                    <p class="card-text item-description">--}}
 {{--                                       {!! $communication['body'] !!}--}}
@@ -107,8 +107,8 @@
 {{--                                    </a>--}}
 {{--                                    <a href="{{$communication['url_alias'] !== null ? route('communication', str_replace('/', '',$communication['url_alias'] ) ) : ''}}" class="btn btn-primary btn-cart">--}}
                                     <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
-                                        <i data-feather="book-open"></i>
-                                        <span class="add-to-cart">Read</span>
+                                        <i data-feather="bell"></i>
+                                        <span class="add-to-cart">{{$communication['title']}}</span>
                                     </a>
                                 </div>
                             </div>

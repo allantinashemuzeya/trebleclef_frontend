@@ -31,6 +31,7 @@ Route::controller(CommunicationController::class)->group(function(){
     Route::get('/communication/{id}', 'communication')->middleware(['auth'])->name('communication');
     Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(['auth'])->name('student-of-the-week');
     Route::get('/events/', 'events')->middleware(['auth'])->name('events');
+    Route::get('/foundations', 'foundations')->middleware(['auth'])->name('foundations');
 });
 
 Route::controller(ClassroomController::class)->group(function(){
