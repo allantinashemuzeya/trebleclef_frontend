@@ -89,15 +89,9 @@
                                 <div class="card-body">
                                     <div class="item-wrapper">
                                         <div>
-{{--                                            <h6 class="item-price">$339.99</h6>--}}
                                         </div>
                                     </div>
-                                    <h6 class="item-name">
-                                        <a class="text-body" href=""></a>
-                                    </h6>
-{{--                                    <p class="card-text item-description">--}}
-{{--                                       {!! $communication['body'] !!}--}}
-{{--                                    </p>--}}
+
                                 </div>
                                 <div class="item-options text-center">
 
