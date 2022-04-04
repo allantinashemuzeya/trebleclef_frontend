@@ -1,8 +1,8 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace App\Http\Services\Subject;
 
-use App\Http\Services\studentLevels\StudentLevels;
+use App\Http\Services\StudentLevels\StudentLevels;
 use Illuminate\Support\Facades\Http;
 
 class Subject implements subjectInterface {
@@ -57,7 +57,6 @@ class Subject implements subjectInterface {
             'student_levels'=>$this->getStudentLevel($rawItem->included)
         ];
 
-        return $subjects;
     }
 
     public function getSubjectIntro($subjectId){
