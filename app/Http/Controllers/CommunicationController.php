@@ -34,6 +34,15 @@ class CommunicationController extends Controller
         return view('communications.index', $data);
     }
 
+    //Section Student of the week
+    public function studentOfTheWeek()
+    {
+
+        $data = ['pageTitle' => 'Student of The Week Awards', 'communications' => $this->processCommunication('StudentOfTheWeek')];
+
+        return view('communications.index', $data);
+    }
+
     // Section Foundations
     public function foundations()
     {

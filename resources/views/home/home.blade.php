@@ -150,7 +150,7 @@
                                                                             <source src="{{$item['file']}}" type="video/mp4"/>
                                                                         </video>
                                                                     @else
-                                                                        <img class="img-fluid" src="{{$item['file']}}" alt=""/>
+                                                                        <img class="img-fluid " src="{{$item['file']}}" alt=""/>
                                                                     @endif
                                                                 </div>
                                                             @endforeach
