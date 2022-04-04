@@ -156,8 +156,6 @@ class Lesson implements LessonInterface {
             }
         }
 
-        ray($documents)->green();
-
         return $documents;
     }
 
