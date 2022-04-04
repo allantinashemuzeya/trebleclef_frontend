@@ -1,6 +1,6 @@
 <?php /** @noinspection LaravelFunctionsInspection */
 
-namespace App\Http\Services\studentLevels;
+namespace App\Http\Services\StudentLevels;
 
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
