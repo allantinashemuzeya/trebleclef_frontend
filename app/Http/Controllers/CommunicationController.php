@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\Communication\communication;
+use App\Http\Services\Communication\Communication;
 
 class CommunicationController extends Controller
 {
@@ -12,7 +12,6 @@ class CommunicationController extends Controller
 
 
         $data = ['communications' => $this->getCommunications(), 'pageTitle' => 'Communications'];
-        ray($data)->green();
 
         return view('communications.index', $data);
     }
@@ -21,7 +20,7 @@ class CommunicationController extends Controller
     //Section Communication
     public function communication($id)
     {
-        $communication = (new communication())->getSingleCommunication($id);
+        $communication = (new Communication())->getSingleCommunication($id);
         return view('communications.communication-detail', ['mode' => 'communication', 'communication' => $communication, 'communications' => $this->getCommunications()]);
     }
 
@@ -50,7 +49,7 @@ class CommunicationController extends Controller
     //Section Processes
     public function getCommunications()
     {
-        return (new communication())->getAll();
+        return (new Communication())->getAll();
     }
 
     public function processCommunication($commType)
