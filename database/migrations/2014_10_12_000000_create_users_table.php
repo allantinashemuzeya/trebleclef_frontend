@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('age');
             $table->string('residential_address');
             $table->string('postal_address');
-            $table->string('home');
-            $table->string('office');
-            $table->string('email2');
+            $table->string('home')->nullable();
+            $table->string('office')->nullable();
+            $table->string('email2')->nullable();
             $table->string('cell1');
             $table->string('next_of_kin');
-            $table->string('cell2');
+            $table->string('cell2')->nullable();
             $table->text('activity');
             $table->string('student_level');
             $table->string('email')->unique();
