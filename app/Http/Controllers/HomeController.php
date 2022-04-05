@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
       $draggableSlider = (new Home())->draggableSlider();
 
-      $trebleClefTv = (new Home())->trebleClefTv();
+      $trebleClefTv = (new Home())->trebleClefTv();   
       $navigationCards = (new Home())->navigationCards();
         return view('home.home', ['draggableSliderContent' => $draggableSlider, 'trebleClefTvContent' => $trebleClefTv, 'navigationCards'=>$navigationCards]);
     }

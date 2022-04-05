@@ -10,6 +10,9 @@
 
             background: linear-gradient(45deg, black,#161d31);
         }
+        .blog-info{
+    margin-left: 30px; 
+} 
     </style>
 
 
