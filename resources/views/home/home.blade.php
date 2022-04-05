@@ -95,9 +95,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3>{{Auth::user()->name}}</h3>
-                            <h6 class="text-muted">School Name Here</h6>
-                            <span class="badge badge-light-primary profile-badge">Student Level</span>
+                            <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
+                            <h6 class="text-muted">Spark College Riversands</h6>
+                            <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
                             <hr class="mb-2">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -119,8 +119,9 @@
                             </div>
                             <br/><br/>
                             <div class="text-center">
+                                <h4 class="text-title"> Quote of the day</h4>
                                 <p class="card-text m-auto w-75">
-                                    You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.
+                                   {{$musicQuotes[0]['text']}}
                                 </p>
                             </div>
                         </div>
