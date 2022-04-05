@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('user_details', function(Blueprint $table){
+        Schema::create('tutor_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userId');
-            $table->string('coverImage')->nullable();
-            $table->string('profilePicture')->nullable();
-            $table->string('bio')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -30,7 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('user_details');
+        Schema::dropIfExists('tutor_details');
     }
 };

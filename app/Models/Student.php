@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserDetails extends Model
+class Student extends Model
 {
     use HasFactory;
-
-    protected $table = 'user_details';
+    protected $table = 'students';
 
     protected $fillable = [
         'coverImage',
         'profilePicture',
         'bio',
-        'marital_status',
         'age',
         'residential_address',
         'postal_address',

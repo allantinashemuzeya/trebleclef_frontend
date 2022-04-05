@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -42,21 +43,26 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'firstname' => $request->first_name,
             'lastname' => $request->last_name,
-            'marital_status' => $request->marital_status,
-            'age' => $request->age,
-            'residential_address' => $request->residential_address,
-            'postal_address' => $request->postal_address,
-            'home' => $request->home,
-            'office' => $request->office,
-            'email2' => $request->email2,
-            'cell1' => $request->cell1,
-            'next_of_kin' => $request->next_of_kin,
-            'cell2' => $request->cell2,
-            'activity' => '$request->activity',
-            'student_level' => $request->student_level,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if($user){
+
+            $id = User::find(1)->latest();
+            dd($id);
+            Student::create([
+                'userId' => $user->id,
+                'bio' => $request->bio,
+                'gender' => $request->gender,
+                'age' => $request->age,
+                'residential_address' => $request->residential_address,
+                'postal_address' => $request->postal_address,
+                'cellphoneNumber' => $request->cellphoneNumber,
+                'next_of_kin_fullName' => $request->next_of_kin_fullName,
+                'next_of_kin_cellphoneNumber' => $request->next_of_kin_cellphoneNumber,
+            ]);
+        }
 
         event(new Registered($user));
 
