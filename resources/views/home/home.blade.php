@@ -85,47 +85,50 @@
             <div class="row match-height">
                 <!-- Greetings Card starts -->
                 <div class="col-lg-4 col-md-6 col-12">
-                    <div class="card card-profile">
-                        <img src="../../../app-assets/images/banner/banner-12.jpg" class="img-fluid card-img-top" alt="Profile Cover Photo">
-                        <div class="card-body">
-                            <div class="profile-image-wrapper">
-                                <div class="profile-image">
-                                    <div class="avatar">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Profile Picture">
+                    <a href="{{route('profile')}}">
+                        <div class="card card-profile">
+                            <img src="../../../app-assets/images/banner/banner-12.jpg" class="img-fluid card-img-top" alt="Profile Cover Photo">
+                            <div class="card-body">
+                                <div class="profile-image-wrapper">
+                                    <div class="profile-image">
+                                        <div class="avatar">
+                                            <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Profile Picture">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
-                            <h6 class="text-muted">Spark College Riversands</h6>
-                            <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
-                            <hr class="mb-2">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="text-muted fw-bolder">SUBJECTS</h6>
-                                    <h3 class="mb-0">4</h3>
-                                </div>
-                                <div>
-                                    <h6 class="text-muted fw-bolder">LESSONS</h6>
-                                    <h3 class="mb-0">10</h3>
-                                </div>
-                                <div>
-                                    <h6 class="text-muted fw-bolder">
-                                        <ABBR TITLE="Student of the Week">SOTW AWARDS</ABBR>
-                                    </h6>
+                                <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
+                                <h6 class="text-muted">Spark College Riversands</h6>
+                                <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
+                                <hr class="mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted fw-bolder">SUBJECTS</h6>
+                                        <h3 class="mb-0">4</h3>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted fw-bolder">LESSONS</h6>
+                                        <h3 class="mb-0">10</h3>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-muted fw-bolder">
+                                            <ABBR TITLE="Student of the Week">SOTW AWARDS</ABBR>
+                                        </h6>
 
-                                    <h3 class="mb-0">23</h3>
-                                </div>
+                                        <h3 class="mb-0">23</h3>
+                                    </div>
 
-                            </div>
-                            <br/><br/>
-                            <div class="text-center">
-                                <h4 class="text-title"> Quote of the day</h4>
-                                <p class="card-text m-auto w-75">
-                                   {{$musicQuotes[0]['text']}}
-                                </p>
+                                </div>
+                                <br/><br/>
+                                <div class="text-center">
+                                    <h4 class="text-title"> Quote of the day</h4>
+                                    <p class="card-text m-auto w-75">
+                                        {{$musicQuotes[0]['text']}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12" >
 {{--                    <div class="card-header">--}}
