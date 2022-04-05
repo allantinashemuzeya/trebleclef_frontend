@@ -173,7 +173,9 @@
     <link href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet"
           type="text/css">
     <link href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}" rel="stylesheet"
-          type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-profile.min.css')}}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -680,6 +682,15 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
 <!-- END: Page JS-->
+
+<!-- BEGIN: Page JS-->
+<script src="{{asset('app-assets/js/scripts/pages/page-profile.min.js')}}"></script>
+<!-- END: Page JS-->
+
+<!-- BEGIN: Page JS-->
+<script src="{{asset('app-assets/js/scripts/components/components-navs.min.js')}}"></script>
+<!-- END: Page JS-->
+
 <script>
     $(window).on("load", function () {
         if (feather) {

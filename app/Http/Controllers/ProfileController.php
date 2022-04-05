@@ -9,6 +9,6 @@ class ProfileController extends Controller
     // Section Home
     public function index()
     {
-
+        return view('profile.profile');
     }
 }
