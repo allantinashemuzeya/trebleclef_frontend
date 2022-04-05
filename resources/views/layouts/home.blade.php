@@ -14,7 +14,7 @@
     <meta content="width<!DOCTYPE html"/>
 
     <!-- BEGIN: Head-->
-
+   
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
         <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
@@ -197,6 +197,12 @@
     data-col=""
     data-menu="vertical-menu-modern"
     data-open="click">
+
+
+  
+     @include('components.preloader')  
+
+   
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
     <div class="navbar-container d-flex content">
@@ -583,18 +589,18 @@
                     class="nav-link dropdown-toggle dropdown-user-link"
                     data-bs-toggle="dropdown"
                     href="#"
-                    id="dropdown-user"
+                    id="dropdown-user"  
                 >
                     <div class="user-nav d-sm-flex d-none">
-                <span class="user-name fw-bolder">{{Auth::user()->name}}</span
+                <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span
                 ><span class="user-status">Student</span>
                     </div>
                     <span class="avatar"
-                    ><img
-                            alt="avatar"
-                            class="round"
+                    ><img  
+                            alt="avatar"  
+                            class="round"  
                             height="40"
-                            src="{{asset('app-assets/images/portrait/small/avatar-s-11.jpg')}}"
+                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"
                             width="40"/><span class="avatar-status-online"></span></span
                     ></a>
                 <div

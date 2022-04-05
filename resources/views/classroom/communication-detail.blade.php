@@ -1,7 +1,10 @@
 @extends('layouts.home')
 @section('content')
 
+<style>
 
+ 
+</style>
 
     @if($mode === 'communication')
         <div class="content-header row">

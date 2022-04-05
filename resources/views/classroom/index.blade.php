@@ -3,9 +3,22 @@
 
     <style>
         .ecommerce-application .grid-view:not(.wishlist-items), .ecommerce-application .list-view:not(.wishlist-items) {
-            margin-top: 2rem;
-            margin-left: -402px!important;
+            margin-top: -5rem; 
+            /*margin-left: -402px!important;*/
         }
+        body .content-detached.content-right .content-body {
+             margin-left: 0!important;
+        }
+          div.item-img.text-center > img{
+    object-fit: cover;
+    height: 100%;     
+  }  
+  div.item-img.text-center{
+    height: 100%; 
+  }
+  div.card-body, #ecommerce-header{   
+    display: none;
+  }
     </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">

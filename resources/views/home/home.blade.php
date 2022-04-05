@@ -3,12 +3,33 @@
 
     <style>
         #component-swiper-progress > div > div.card-header > h1{
-            margin-left:82%;
+            /* margin-left:82%; */
         }
         #component-swiper-progress > div{
             /*min-height:597px;*/
         }
+        @media (max-width: 568px) {
 
+            #component-swiper-progress{
+                /* position: absolute;
+                top: -190vh;    */
+                padding: 0;
+                margin: auto;
+                left: 0;
+                right: 0;
+            } 
+            #component-swiper-progress > div{
+                min-height: 46px!important; 
+                 height: auto!important;  
+            }  
+            #component-swiper-progress > div{
+                padding: 0px;
+            }
+        }
+
+        div.swiper-slide.swiper-slide-active{
+            width: calc(50% + 89px);
+        }
     </style>
     <div class="content-body">
         <!-- Dashboard Analytics Start -->
@@ -146,9 +167,9 @@
                                                             @foreach($trebleClefTvContent['content'] as $item)
                                                                 <div class="swiper-slide">
                                                                     @if($item['type'] === 'video/mp4')
-                                                                        <video class="img-fluid" autoplay controls muted loop style="padding-right:2px">
+                                                                        <video  class="img-fluid" autoplay controls muted loop style="padding-right:2px">
                                                                             <source src="{{$item['file']}}" type="video/mp4"/>
-                                                                        </video>
+                                                                        </video> 
                                                                     @else
                                                                         <img class="img-fluid " src="{{$item['file']}}" alt=""/>
                                                                     @endif
@@ -287,6 +308,65 @@
         <!-- Dashboard Analytics end -->
     </div>
 
+    @push('scripts')
+   <script>    
+   var times_next_clicked = 0;
+   function Scrolldown() {
+     window.scroll(0,800); 
+    }
+
+    function myFunction(x) {
+     if (x.matches) { // If media query matches
+        window.onload = Scrolldown;
+
+       }  
+    }
+
+    var x = window.matchMedia("(max-width: 500px)")
+    myFunction(x) 
+    x.addListener(myFunction)
+    
+    //    console.log('---===>',); 
+    setTimeout(() => {  
+
+        const all_elements = document.querySelectorAll('.swiper-wrapper');  
+  
+    
+        console.log(all_elements[1].children)    
+        Array.prototype.slice.call(all_elements[1].children).forEach(x=>{  
+
+            x.style.width = '100%';   
+        })  
+
+        const nxt_btn = document.querySelector('.swiper-button-next')   
+        const prev_btn = document.querySelector('.swiper-button-prev')   
+
+        nxt_btn.addEventListener('click',(e)=>{    
+          const video =  e.target.parentElement.getElementsByTagName('video')[times_next_clicked];
+
+          video.pause(); 
+          const first_parent_div = video.parentElement
+          first_parent_div.style.width = '100%'    
+          first_parent_div.parentElement.style.transform='translate3d(-100%, 0px, 0px)';
+
+  
+            times_next_clicked++;
+            e.target.parentElement.getElementsByTagName('video')[times_next_clicked].play();   
+        }) 
+           
+        prev_btn.addEventListener('click',(e)=>{    
+          const video =  e.target.parentElement.getElementsByTagName('video')[times_next_clicked];
+
+          video.pause(); 
+          video.parentElement.style.width = '100%'
+     
+          times_next_clicked--;   
+          e.target.parentElement.getElementsByTagName('video')[times_next_clicked].play(); 
+        })
+
+    }, 1000); 
+   </script>    
+    @endpush
 @endsection
 
 
