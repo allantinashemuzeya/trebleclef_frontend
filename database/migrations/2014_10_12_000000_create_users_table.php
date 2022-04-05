@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('cell1');
             $table->string('next_of_kin');
             $table->string('cell2')->nullable();
-            $table->text('activity');
+            $table->json('activities');
             $table->string('student_level');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

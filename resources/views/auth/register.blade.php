@@ -55,6 +55,12 @@
 
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-email">Gender</label>
+                                        <select name="gender" type="text">
+                                            <option >Male</option>
+                                        </select>
+                                    </div>
                                 <div class="mb-1">
                                     <label class="form-label" for="login-email">Marital Status</label>
                                     <input id="marital_status" class="form-control" type="text" name="marital_status" :value="old('marital_status')" required autofocus />
@@ -185,36 +191,7 @@
                             Activity
                             </h5>
 
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="login-email">Student Level </label>
-                                    <!-- <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus /> -->
-                                    <select name="student_level" class="form-control js-example-basic-single">
-                                    <option disabled selected>Choose Student Level</option>
-                                    @foreach($studentLevels as $item)
-                                    <option>{{$item['title']}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="login-email">Activity 1:</label>
-                                    <!-- <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus /> -->
-                                    <select name="activity[]" class="form-control">
-                                    <option disabled selected>Choose Student Level</option>
-                                    @foreach($studentLevels as $item)
-                                    <option>{{$item['title']}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                                </div>
-                            </div>
+                            @livewire('registration')
 
 
                      </div>
