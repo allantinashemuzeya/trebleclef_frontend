@@ -1027,11 +1027,10 @@
                 >
                 <ul class="menu-content">
                     <li>
-                        <a- class="d-flex align-items-center" href="/">
+                        <a class="d-flex align-items-center" href="/">
                             <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"
                             >Premium Lessons</span
-                            ></a-
-                        >
+                            ></a>
                     </li>
                     <li>
                         <a class="d-flex align-items-center" href="/">
