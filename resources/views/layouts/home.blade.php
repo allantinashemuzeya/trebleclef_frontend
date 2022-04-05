@@ -196,8 +196,7 @@
     class="vertical-layout vertical-menu-modern navbar-floating footer-static " style="background-color: #0e111d"
     data-col=""
     data-menu="vertical-menu-modern"
-    data-open="click"
->
+    data-open="click">
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
     <div class="navbar-container d-flex content">
@@ -818,10 +817,8 @@
 <!-- END: Header-->
 
 <!-- BEGIN: Main Menu-->
-<div
-    class="main-menu menu-fixed menu-dark menu-accordion menu-shadow"
-    data-scroll-to-active="true"
->
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow"
+    data-scroll-to-active="true">
     <div class="navbar-header" >
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto">
@@ -1030,10 +1027,10 @@
                 >
                 <ul class="menu-content">
                     <li>
-                        <a class="d-flex align-items-center" href="/">
+                        <a- class="d-flex align-items-center" href="/">
                             <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"
                             >Premium Lessons</span
-                            ></a
+                            ></a-
                         >
                     </li>
                     <li>
