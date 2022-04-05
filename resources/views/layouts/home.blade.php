@@ -182,6 +182,15 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <!-- END: Custom CSS-->
 
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-pickadate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-flat-pickr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
+    <!-- END: Page CSS-->
+
+    @livewireStyles
 </head>
 <!-- END: Head-->
 
@@ -688,9 +697,10 @@
 <!-- END: Page JS-->
 
 <!-- BEGIN: Page JS-->
-<script src="{{asset('app-assets/js/scripts/components/components-navs.min.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/pages/page-account-settings.min.js')}}"></script>
 <!-- END: Page JS-->
 
+@livewireScripts
 <script>
     $(window).on("load", function () {
         if (feather) {

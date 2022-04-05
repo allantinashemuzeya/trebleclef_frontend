@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('userId');
             $table->string('coverImage')->nullable();
-            $table->string('profilePicture');
+            $table->string('profilePicture')->nullable();
             $table->string('bio')->nullable();
         });
     }
@@ -31,5 +31,6 @@ return new class extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('user_details');
     }
 };
