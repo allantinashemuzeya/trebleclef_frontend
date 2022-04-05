@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\Services\StudentLevels\StudentLevels;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $viewShare['studentLevels'] = (new StudentLevels())->getAll();
+        view()->share($viewShare);
     }
 }
