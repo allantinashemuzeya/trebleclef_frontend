@@ -4,6 +4,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,10 @@ Route::controller(ClassroomController::class)->group(function(){
 });
 
 Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth'])->name('calendar');
+
+Route::controller(ProfileController::class)->group(function(){
+    Route::get('/profile', 'index')->middleware(['auth'])->name('profile');
+});
 
 
 require __DIR__.'/auth.php';

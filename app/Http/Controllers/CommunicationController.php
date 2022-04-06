@@ -48,7 +48,6 @@ class CommunicationController extends Controller
     {
         $data = ['pageTitle' => 'Treble Clef Foundations', 'communications' => $this->processCommunication('Foundation')];
 
-        ray($data)->green();
         return view('communications.index', $data);
 
     }
