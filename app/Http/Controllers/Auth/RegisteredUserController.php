@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -42,21 +44,25 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'firstname' => $request->first_name,
             'lastname' => $request->last_name,
-            'marital_status' => $request->marital_status,
-            'age' => $request->age,
-            'residential_address' => $request->residential_address,
-            'postal_address' => $request->postal_address,
-            'home' => $request->home,
-            'office' => $request->office,
-            'email2' => $request->email2,
-            'cell1' => $request->cell1,
-            'next_of_kin' => $request->next_of_kin,
-            'cell2' => $request->cell2,
-            'activity' => '$request->activity',
-            'student_level' => $request->student_level,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if($user){
+
+            $userModel = DB::table('users')->latest()->first();
+
+            $studentModel = new Student();
+
+
+            $studentModel->user_id  =$userModel->id;
+            $studentModel->gender = $request->gender;
+            $studentModel->residential_address = $request->residential_address;
+            $studentModel->postal_address = $request->postal_address;
+            $studentModel->cellphoneNumber = $request->cellphoneNumber;
+
+            $studentModel->save();
+        }
 
         event(new Registered($user));
 
