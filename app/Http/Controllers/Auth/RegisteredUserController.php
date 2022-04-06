@@ -54,12 +54,12 @@ class RegisteredUserController extends Controller
 
             $studentModel = new Student();
 
-
             $studentModel->user_id  =$userModel->id;
             $studentModel->gender = $request->gender;
             $studentModel->residential_address = $request->residential_address;
             $studentModel->postal_address = $request->postal_address;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
+            $studentModel->school = $request->school;
 
             $studentModel->save();
         }

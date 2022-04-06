@@ -1,8 +1,10 @@
 <!-- right content section -->
+
 <div class="col-md-9">
     <div class="card">
         <div class="card-body">
             <div class="tab-content">
+
                 <!-- general tab -->
                 <div
                     role="tabpanel"
@@ -11,58 +13,58 @@
                     aria-labelledby="account-pill-general"
                     aria-expanded="true"
                 >
-                    <!-- header section -->
-                    <div class="d-flex">
-                        <a href="#" class="me-25">
-                            <img
-                                src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"
-                                id="account-upload-img"
-                                class="rounded me-50"
-                                alt="profile image"
-                                height="80"
-                                width="80" />
-                        </a>
+                    <form wire:ignore wire:submit.prevent="saveGeneral">
+                        <!-- header section -->
+                        <div class="d-flex">
+                            <a href="#" class="me-25">
+                                <img
+                                    src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"
+                                    id="account-upload-img"
+                                    class="rounded me-50"
+                                    alt="profile image"
+                                    height="80"
+                                    width="80" />
+                            </a>
 
-                        <!-- upload and reset button -->
-                        <form wire:submit.prevent="save">
+                            <!-- upload and reset button -->
                             <div class="mt-75 ms-1">
                                 <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">Upload</label>
-                                <input type="file" id="account-upload" hidden accept="image/*" />
+                                <input name="profilePicture" wire:model="profilePicture" hidden type="file" id="account-upload"  accept="image/*" />
                                 <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
                                 <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
                             </div>
-                        </form>
 
-                        <!--/ upload and reset button -->
-                    </div>
-                    <!--/ header section -->
+                            <!--/ upload and reset button -->
+                        </div>
+                        <!--/ header section -->
 
-                    <!-- form -->
-                    <form class="validate-form mt-2" wire:submit.prevent="saveProfilePicture">
                         <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="mb-1">
-                                    <label class="form-label" for="account-username">Username</label>
+                                    <label class="form-label" for="account-username">First Name</label>
                                     <input type="text"
                                            class="form-control"
                                            id="account-username"
-                                           name="username"
-                                           placeholder="Username"
-                                           value="johndoe"
+                                           style="background:transparent; border-color: grey; color:white"
+                                           wire:model="firstName"
+                                           name="firstname"
+                                           value="{{Auth::user()->firstname}}"
+                                           placeholder="First Name"
                                     />
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="mb-1">
-                                    <label class="form-label" for="account-name">Name</label>
+                                    <label class="form-label" for="account-name">Last Name</label>
                                     <input
                                         type="text"
                                         class="form-control"
                                         id="account-name"
-                                        name="name"
-                                        placeholder="Name"
-                                        value="John Doe"
-                                    />
+                                        name="lastName"
+                                        style="background:transparent; border-color: grey; color:white"
+                                        wire:model="lastName"
+                                        placeholder="Last Name"
+                                        value="{{Auth::user()->lastname}}"/>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
@@ -72,39 +74,59 @@
                                         type="email"
                                         class="form-control"
                                         id="account-e-mail"
+                                        style="background:transparent; border-color: grey; color:white"
                                         name="email"
                                         placeholder="Email"
-                                        value="granger007@hogward.com"
+                                        value="{{Auth::user()->email}}"
                                     />
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="mb-1">
-                                    <label class="form-label" for="account-company">Company</label>
-                                    <input
+                                    <label class="form-label" for="account-company">School</label>
+                                    <select
                                         type="text"
                                         class="form-control"
                                         id="account-company"
-                                        name="company"
-                                        placeholder="Company name"
-                                        value="Crystal Technologies"
-                                    />
+                                        name="school"
+                                        style="background:transparent; border-color: grey; color:white"
+                                        placeholder="Spark College Riversands">
+                                        <option disabled selected>Choose School</option>
+                                        @foreach($schools as $school)
+                                            @if($school['id'] === $currentStudent->school)
+                                                <option selected value="{{$school['id']}}">{{$school['name']}}</option>
+                                            @else
+                                                <option value="{{$school['id']}}">{{$school['name']}}</option>
+                                            @endif
+                                        @endforeach
+
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-12 mt-75">
-                                <div class="alert alert-warning mb-50" role="alert">
-                                    <h4 class="alert-heading">Your email is not confirmed. Please check your inbox.</h4>
-                                    <div class="alert-body">
-                                        <a href="javascript: void(0);" class="alert-link">Resend confirmation</a>
+                            {{--                            <div class="col-12 mt-75">--}}
+                            {{--                                <div class="alert alert-warning mb-50" role="alert">--}}
+                            {{--                                    <h4 class="alert-heading">Your email is not confirmed. Please check your inbox.</h4>--}}
+                            {{--                                    <div class="alert-body">--}}
+                            {{--                                        <a href="javascript: void(0);" class="alert-link">Resend confirmation</a>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>  --}}
+
+                            @if(Session::has('response'))
+                                <div class="col-12 mt-75">
+                                    <div class="alert alert-success mb-50" role="alert">
+                                        <h4 class="alert-heading">{{Session::get('response')}}</h4>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
+
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary mt-2 me-1">Save changes</button>
                                 <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
                             </div>
                         </div>
                     </form>
+
                     <!--/ form -->
                 </div>
                 <!--/ general tab -->

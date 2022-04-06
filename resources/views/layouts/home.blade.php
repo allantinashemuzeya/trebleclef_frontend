@@ -182,6 +182,7 @@
         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
         <!-- END: Custom CSS-->
 
+    @livewireStyles
     </head>
     <!-- END: Head-->
 
@@ -1574,6 +1575,8 @@
     });
 </script>
 @stack('scripts')
+
+@livewireScripts
 
 </body>
 

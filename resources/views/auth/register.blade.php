@@ -85,6 +85,19 @@
                                 </div>
                             </div>
 
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="login-school">School</label>
+                                    <select id="login-school" class="form-control" type="text" name="school" required autofocus>
+                                        @foreach($schools as $school)
+                                            <option value="{{$school['id']}}">
+                                                {{$school['name']}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
 
                         </div>
 
