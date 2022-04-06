@@ -11,17 +11,7 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
-    <meta content="width<!DOCTYPE html"/>
 
-    <!-- BEGIN: Head-->
-   
-    <head>
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
         <meta
             content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
             name="viewport"
@@ -196,8 +186,7 @@
     <!-- END: Head-->
 
     <!-- BEGIN: Body-->
-<<<<<<< HEAD
-=======
+
     <meta
         content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
         name="viewport"
@@ -386,9 +375,6 @@
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
->>>>>>> 1009b2033192c9a3ab8bb660c3c7bb681972b651
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
 <body
     class="vertical-layout vertical-menu-modern navbar-floating footer-static " style="background-color: #0e111d"
     data-col=""
@@ -396,19 +382,8 @@
     data-open="click">
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
-  
-     @include('components.preloader')  
+     @include('components.preloader')
 
-   
-<<<<<<< HEAD
-=======
->>>>>>> 1009b2033192c9a3ab8bb660c3c7bb681972b651
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
     <div class="navbar-container d-flex content">
@@ -789,26 +764,22 @@
 {{--                </ul>--}}
 {{--            </li>--}}
             <li class="nav-item dropdown dropdown-user">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
                 <a
                     aria-expanded="false"
                     aria-haspopup="true"
                     class="nav-link dropdown-toggle dropdown-user-link"
                     data-bs-toggle="dropdown"
                     href="#"
-                    id="dropdown-user"  
+                    id="dropdown-user"
                 >
                     <div class="user-nav d-sm-flex d-none">
                 <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span
                 ><span class="user-status">Student</span>
                     </div>
                     <span class="avatar"
-                    ><img  
-                            alt="avatar"  
-                            class="round"  
+                    ><img
+                            alt="avatar"
+                            class="round"
                             height="40"
                             src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"
                             width="40"/><span class="avatar-status-online"></span></span
@@ -824,41 +795,6 @@
                     ><i class="me-50" data-feather="check-square"></i> Task</a
                     ><a class="dropdown-item" href="app-chat.html"
                     ><i class="me-50" data-feather="message-square"></i> Chats</a
-                    >
-<<<<<<< HEAD
-=======
-                <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="/profile"
-                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="user-nav d-sm-flex d-none">
-                        <span class="user-name fw-bolder">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</span>
-                        <span class="user-status">Student</span>
-                    </div>
-                    <span class="avatar">
-                        <img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar"
-                             height="40" width="40">
-                        <span class="avatar-status-online"></span>
-                    </span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end dropdown" id="dropdown" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i> Profile</a><a
-                        class="dropdown-item" href="app-email.html"><i class="me-50" data-feather="mail"></i>
-                        Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="me-50"
-                                                                                  data-feather="check-square"></i> Task</a><a
-                        class="dropdown-item" href="app-chat.html"><i class="me-50" data-feather="message-square"></i>
-                        Chats</a>
->>>>>>> 1009b2033192c9a3ab8bb660c3c7bb681972b651
-=======
->>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="page-account-settings.html"
-                    ><i class="me-50" data-feather="settings"></i> Settings</a
-                    ><a class="dropdown-item" href="page-pricing.html"
-                    ><i class="me-50" data-feather="credit-card"></i> Pricing</a
-                    ><a class="dropdown-item" href="page-faq.html"
-                    ><i class="me-50" data-feather="help-circle"></i> FAQ</a
-                    ><a class="dropdown-item" href="page-auth-login-v2.html"
-                    ><i class="me-50" data-feather="power"></i> Logout</a
                     >
                 </div>
             </li>
