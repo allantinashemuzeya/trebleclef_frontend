@@ -20,18 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'firstname',
         'lastname',
-        'marital_status',
-        'age',
-        'residential_address',
-        'postal_address',
-        'home',
-        'office',
-        'email2',
-        'cell1',
-        'next_of_kin',
-        'cell2',
-        'activity',
-        'student_level',
         'email',
         'password',
     ];
@@ -59,6 +47,6 @@ class User extends Authenticatable
 
     public function student()
     {
-        return $this->hasOne(Student::class, 'userId', 'id');
+        return $this->hasOne(Student::class);
     }
 }

@@ -35,8 +35,10 @@
 
                         <div class="">
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
-                                Applicants' Details
+                                Student Details
                             </h5>
+
+                            <p class="text-warning">Please note all fields are required..</p>
 
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -56,22 +58,29 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Gender</label>
-                                        <select name="gender" type="text">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
 
-                                </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
-                                        <label class="form-label" for="login-email">Age</label>
-                                        <input id="age" class="form-control" type="number" name="age"
+                                        <label class="form-label" for="login-email">Date of Birth</label>
+                                        <input id="age" class="form-control" type="date" name="age"
                                                :value="23" required autofocus/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-gender">Gender</label>
+                                        <select id="login-gender" class="form-control" type="text" name="gender" required autofocus>
+                                            <option value="male">
+                                                Male
+                                            </option>
+                                            <option value="female">
+                                                Female
+                                            </option>
+                                            <option value="other">
+                                                Other
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -83,6 +92,23 @@
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
                                 Contact Details
                             </h5>
+
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-email">Cellphone Number</label>
+                                        <input id="cell1" class="form-control" type="number" name="cellphoneNumber"
+                                              placeholder="(+27)...." required autofocus/>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-email">Email Address</label>
+                                        <input id="login-email" class="form-control" type="email" name="email"
+                                               :value="old('email')" required autofocus/>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -104,64 +130,26 @@
                             </div>
 
 
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Cellphone Number</label>
-                                        <input id="cell1" class="form-control" type="number" name="cellphoneNumber"
-                                               :value="old('cell1')" required autofocus/>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Next of KIN Full Name</label>
-                                        <input id="next_of_kin" class="form-control" type="text"
-                                               name="next_of_kin_fullName" :value="liz" required
-                                               autofocus/>
-                                    </div>
-
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Next of KIN Cellphone Number</label>
-                                        <input id="next_of_kin" class="form-control" type="text"
-                                               name="next_of_kin_cellphoneNumber" :value="0000" required
-                                               autofocus/>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
 
                             <!-- Password -->
                             <hr/>
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
                                 Account Details
                             </h5>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Email</label>
-                                        <input id="email" class="form-control" type="email" name="email"
-                                               :value="old('email')" required autofocus/>
-                                    </div>
 
-                                    @if (Route::has('password.request'))
-                                        <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="login-password">Password</label>
-                                        </div>
-                                    @endif
 
-                                    <div class="d-flex justify-content-between">
-                                        <label for="password" :value="__('Password')"/>
-                                    </div>
-
-                            </div>
                             <div class="mb-1">
 
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="login-password"> Password</label>
+                                </div>
 
                                 <div class="input-group input-group-merge form-password-toggle">
-                                    <input id="password" class="form-control form-control-merge" type="password"
+                                    <input id="login-password" class="form-control form-control-merge" type="password"
                                            name="password" value="12345678"required autocomplete="current-password"/>
                                 </div>
+
+                                <br/>
 
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="login-password">Confirm Password</label>

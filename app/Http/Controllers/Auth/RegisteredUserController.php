@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -49,19 +50,18 @@ class RegisteredUserController extends Controller
 
         if($user){
 
-            $id = User::find(1)->latest();
-            dd($id);
-            Student::create([
-                'userId' => $user->id,
-                'bio' => $request->bio,
-                'gender' => $request->gender,
-                'age' => $request->age,
-                'residential_address' => $request->residential_address,
-                'postal_address' => $request->postal_address,
-                'cellphoneNumber' => $request->cellphoneNumber,
-                'next_of_kin_fullName' => $request->next_of_kin_fullName,
-                'next_of_kin_cellphoneNumber' => $request->next_of_kin_cellphoneNumber,
-            ]);
+            $userModel = DB::table('users')->latest()->first();
+
+            $studentModel = new Student();
+
+
+            $studentModel->user_id  =$userModel->id;
+            $studentModel->gender = $request->gender;
+            $studentModel->residential_address = $request->residential_address;
+            $studentModel->postal_address = $request->postal_address;
+            $studentModel->cellphoneNumber = $request->cellphoneNumber;
+
+            $studentModel->save();
         }
 
         event(new Registered($user));

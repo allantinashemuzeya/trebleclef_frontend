@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userId');
-            $table->string('coverImage')->nullable();
-            $table->string('profilePicture')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->string('cover_image')->nullable();
+            $table->string('profile_picture')->nullable();
             $table->string('bio')->nullable();
 
             $table->string('gender')->nullable();
-            $table->integer('age')->nullable();
             $table->string('residential_address')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->string('postal_address')->nullable();
             $table->string('cellphoneNumber')->nullable();
             $table->string('next_of_kin_fullName')->nullable();

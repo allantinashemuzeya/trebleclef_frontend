@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,8 @@ class HomeController extends Controller
       $musicQuotes = (new MusicQuotes())->getAll();
 
       shuffle($musicQuotes);
+
+      dd(Auth::user());
 
       $data = [
           'draggableSliderContent' => $draggableSlider,
