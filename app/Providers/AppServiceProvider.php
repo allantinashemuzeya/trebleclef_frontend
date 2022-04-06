@@ -24,10 +24,8 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-
     {
         $viewShare['studentLevels'] = (new StudentLevels())->getAll();
-
         view()->share($viewShare);
     }
 }
