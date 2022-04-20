@@ -30,6 +30,10 @@
         div.swiper-slide.swiper-slide-active{
             width: calc(50% + 89px);
         }
+
+        #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12{
+            margin-top: 48px;
+        }
     </style>
     <div class="content-body">
         <!-- Dashboard Analytics Start -->
