@@ -62,7 +62,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="login-email">Date of Birth</label>
-                                        <input id="age" class="form-control" type="date" name="age"
+                                        <input id="age" class="form-control" type="date" name="dob"
                                                :value="23" required autofocus/>
                                     </div>
                                 </div>
@@ -122,27 +122,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Residential Address</label>
-                                        <textarea class="form-control" name="residential_address"
-                                                  id="exampleFormControlTextarea1" rows="3"></textarea>
-
-                                        <!-- <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus /> -->
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Postal Address</label>
-                                        <textarea class="form-control" name="postal_address"
-                                                  id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-
 
                             <!-- Password -->
                             <hr/>

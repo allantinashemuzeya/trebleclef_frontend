@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Communication\Communication;
+use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 
 class CommunicationController extends Controller
 {
@@ -11,7 +13,8 @@ class CommunicationController extends Controller
     {
 
 
-        $data = ['communications' => $this->getCommunications(), 'pageTitle' => 'Communications'];
+        $data = ['communications' => $this->getCommunications(), 'pageTitle' => 'Communications','currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ];
 
         return view('communications.index', $data);
     }
@@ -21,7 +24,8 @@ class CommunicationController extends Controller
     public function communication($id)
     {
         $communication = (new Communication())->getSingleCommunication($id);
-        return view('communications.communication-detail', ['mode' => 'communication', 'communication' => $communication, 'communications' => $this->getCommunications()]);
+        return view('communications.communication-detail', ['mode' => 'communication', 'communication' => $communication, 'communications' => $this->getCommunications(), 'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ]);
     }
 
 
@@ -29,7 +33,8 @@ class CommunicationController extends Controller
     public function events()
     {
 
-        $data = ['pageTitle' => 'Events', 'communications' => $this->processCommunication('Event')];
+        $data = ['pageTitle' => 'Events', 'communications' => $this->processCommunication('Event'),'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ];
 
         return view('communications.index', $data);
     }
@@ -38,7 +43,8 @@ class CommunicationController extends Controller
     public function studentOfTheWeek()
     {
 
-        $data = ['pageTitle' => 'Student of The Week Awards', 'communications' => $this->processCommunication('StudentOfTheWeek')];
+        $data = ['pageTitle' => 'Student of The Week Awards', 'communications' => $this->processCommunication('StudentOfTheWeek'),          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ];
 
         return view('communications.index', $data);
     }
@@ -46,7 +52,8 @@ class CommunicationController extends Controller
     // Section Foundations
     public function foundations()
     {
-        $data = ['pageTitle' => 'Treble Clef Foundations', 'communications' => $this->processCommunication('Foundation')];
+        $data = ['pageTitle' => 'Treble Clef Foundations', 'communications' => $this->processCommunication('Foundation'),          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ];
 
         return view('communications.index', $data);
 

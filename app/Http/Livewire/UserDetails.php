@@ -38,6 +38,7 @@ class UserDetails extends Component
         $this->firstName = $this->currentUser->firstname;
         $this->lastName = $this->currentUser->lastname;
         $this->emailAddress = $this->currentUser->email;
+        $this->school = $this->currentStudent->school;
 
     }
 
@@ -48,27 +49,22 @@ class UserDetails extends Component
 
     public function saveGeneral(){
 
-        if($this->profilePicture !== null){
+        dd($this->profilePicture);
 
-            dd($this->profilePicture);
-            $path = $this->profilePicture->store('profilePictures/'.Auth::user()->id);
-            $this->currentStudent->profilePicture = $path;
-
-            $this->currentStudent->save();
-        }
+        $path = $this->profilePicture->store('profilePictures/'.Auth::user()->id);
+        $this->currentStudent->profile_picture = $path;
 
         $this->currentUser->firstname = $this->firstName;
+        $this->currentStudent->school = $this->school;
+
+        $this->currentStudent->save();
 
         if($this->currentUser->save()){
-
-           return to_route('profile')->with(['response'=>'Information Saved Successfully']);
+//           return to_route('profile')->with(['response'=>'Information Saved Successfully']);
         }
-
-
     }
 
-    public function save()
-    {
+    public function save(){
         $this->validate([
             'coverImage' => 'image|max:5024', // 5MB Max
             'profilePicture' => 'image|max:5024', // 5MB Max

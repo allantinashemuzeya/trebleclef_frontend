@@ -108,12 +108,12 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <a href="{{route('profile')}}">
                         <div class="card card-profile">
-                            <img src="../../../app-assets/images/banner/banner-12.jpg" class="img-fluid card-img-top" alt="Profile Cover Photo">
+                           <!-- <img src="{{asset('storage/profilePictures/'.$currentStudent->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
                             <div class="card-body">
                                 <div class="profile-image-wrapper">
                                     <div class="profile-image">
                                         <div class="avatar">
-                                            <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" alt="Profile Picture">
+                                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">
                                         </div>
                                     </div>
                                 </div>

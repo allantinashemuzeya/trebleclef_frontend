@@ -1,6 +1,6 @@
 <!-- right content section -->
 
-<div class="col-md-9">
+<div class="col-md-9" >
     <div class="card">
         <div class="card-body">
             <div class="tab-content">
@@ -11,9 +11,9 @@
                     class="tab-pane active"
                     id="account-vertical-general"
                     aria-labelledby="account-pill-general"
-                    aria-expanded="true"
-                >
-                    <form wire:ignore wire:submit.prevent="saveGeneral">
+                    aria-expanded="true">
+
+                    <form action="{{route('updateProfile')}}}" method="POST">
                         <!-- header section -->
                         <div class="d-flex">
                             <a href="#" class="me-25">
@@ -29,7 +29,7 @@
                             <!-- upload and reset button -->
                             <div class="mt-75 ms-1">
                                 <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">Upload</label>
-                                <input name="profilePicture" wire:model="profilePicture" hidden type="file" id="account-upload"  accept="image/*" />
+                                <input name="profilePicture" hidden type="file" id="account-upload"  accept="image/*" />
                                 <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
                                 <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
                             </div>
@@ -46,7 +46,6 @@
                                            class="form-control"
                                            id="account-username"
                                            style="background:transparent; border-color: grey; color:white"
-                                           wire:model="firstName"
                                            name="firstname"
                                            value="{{Auth::user()->firstname}}"
                                            placeholder="First Name"
@@ -62,55 +61,25 @@
                                         id="account-name"
                                         name="lastName"
                                         style="background:transparent; border-color: grey; color:white"
-                                        wire:model="lastName"
                                         placeholder="Last Name"
                                         value="{{Auth::user()->lastname}}"/>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="mb-1">
-                                    <label class="form-label" for="account-e-mail">E-mail</label>
+                                    <label class="form-label" for="account-e-mail">E-mail <br/> <a href="#" title="Support Coming Soon">Contact support to change email address</a> </label>
                                     <input
                                         type="email"
                                         class="form-control"
                                         id="account-e-mail"
                                         style="background:transparent; border-color: grey; color:white"
                                         name="email"
+                                        disabled
                                         placeholder="Email"
                                         value="{{Auth::user()->email}}"
                                     />
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="mb-1">
-                                    <label class="form-label" for="account-company">School</label>
-                                    <select
-                                        type="text"
-                                        class="form-control"
-                                        id="account-company"
-                                        name="school"
-                                        style="background:transparent; border-color: grey; color:white"
-                                        placeholder="Spark College Riversands">
-                                        <option disabled selected>Choose School</option>
-                                        @foreach($schools as $school)
-                                            @if($school['id'] === $currentStudent->school)
-                                                <option selected value="{{$school['id']}}">{{$school['name']}}</option>
-                                            @else
-                                                <option value="{{$school['id']}}">{{$school['name']}}</option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                            {{--                            <div class="col-12 mt-75">--}}
-                            {{--                                <div class="alert alert-warning mb-50" role="alert">--}}
-                            {{--                                    <h4 class="alert-heading">Your email is not confirmed. Please check your inbox.</h4>--}}
-                            {{--                                    <div class="alert-body">--}}
-                            {{--                                        <a href="javascript: void(0);" class="alert-link">Resend confirmation</a>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>  --}}
 
                             @if(Session::has('response'))
                                 <div class="col-12 mt-75">

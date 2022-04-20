@@ -372,6 +372,7 @@
     <!-- END: Page CSS-->
 
     @livewireStyles
+
 </head>
 <!-- END: Head-->
 
@@ -782,9 +783,17 @@
                             alt="avatar"
                             class="round"
                             height="40"
-                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"
+                            src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}"
+{{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
                             width="40"/><span class="avatar-status-online"></span></span
                     ></a>
+{{--                <div class="profile-image-wrapper">--}}
+{{--                    <div class="profile-image">--}}
+{{--                        <div class="avatar">--}}
+{{--                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div
                     aria-labelledby="dropdown-user"
                     class="dropdown-menu dropdown-menu-end">

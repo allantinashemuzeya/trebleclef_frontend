@@ -47,6 +47,7 @@ Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth
 
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile', 'index')->middleware(['auth'])->name('profile');
+    Route::post('/profile-update', 'updateProfile')->middleware(['auth'])->name('updateProfile');
 });
 
 
