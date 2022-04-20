@@ -34,6 +34,10 @@
         #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12{
             margin-top: 48px;
         }
+
+        #dashboard-analytics > div > div > div > div > a.btn.btn-primary.btn-cart.waves-effect.waves-float.waves-light{
+            width: 100%;
+        }
     </style>
     <div class="content-body">
         <!-- Dashboard Analytics Start -->
@@ -125,13 +129,17 @@
                                 <h6 class="text-muted">Spark College Riversands</h6>
                                 <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
                                 <hr class="mb-2">
-                                <div class="text-center">
-                                    <h4 class="text-title">My Bio</h4>
-                                    <p class="card-text m-auto w-75 text-white-50">
-                                        {{$currentStudent->bio}}
-                                    </p>
-                                </div>
-                                <hr/>
+                                @if(!empty($currentStudent->bio))
+                                    <div class="text-center">
+                                        <h4 class="text-title">My Bio</h4>
+                                        <p class="card-text m-auto w-75 text-white-50">
+                                            {{$currentStudent->bio}}
+                                        </p>
+                                    </div>
+                                    <hr/>
+
+                                @endif
+
                                 <br/><br/>
                                 @if(count($musicQuotes)>0)
                                     <div class="text-center">
@@ -208,11 +216,19 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                             </div>
+                                        </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('communications')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </a>
+
+
                             @elseif($nav_card['type'] === 'student_of_the_week')
                                 <a href="{{route('student-of-the-week')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
@@ -224,10 +240,17 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                             </div>
                                         </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('student-of-the-week')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </a>
 
                             @elseif($nav_card['type'] === 'events')
@@ -241,10 +264,17 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                             </div>
                                         </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('events')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </a>
                             @elseif($nav_card['type'] === 'calendar')
                                 <a href="{{route('calendar')}}">
@@ -257,10 +287,17 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                             </div>
                                         </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('calendar')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </a>
                             @elseif($nav_card['type'] === 'classroom')
                                 <a href="{{route('classroom')}}">
@@ -273,10 +310,17 @@
                                                 </div>
                                             </div>
                                             <div class="text-center">
-                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                             </div>
                                         </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('classroom')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </a>
 
                             @elseif($nav_card['type'] === 'foundation')
@@ -290,10 +334,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>
+{{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                                 </div>
                                             </div>
+                                            <div class="item-options text-center">
+                                                <a href="{{route('foundations')}}" class="btn btn-primary btn-cart">
+                                                    <i data-feather="book-open"></i>
+                                                    <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                                </a>
+                                            </div>
                                         </div>
+
                                     </a>
                             @endif
                     </div>
@@ -304,6 +355,9 @@
 
             </div>
         </section>
+
+
+
         <!-- Dashboard Analytics end -->
     </div>
 

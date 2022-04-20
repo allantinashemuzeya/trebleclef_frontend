@@ -3,7 +3,7 @@
 
     <style>
         .ecommerce-application .grid-view:not(.wishlist-items), .ecommerce-application .list-view:not(.wishlist-items) {
-            margin-top: -5rem; 
+            margin-top: -5rem;
             /*margin-left: -402px!important;*/
         }
         body .content-detached.content-right .content-body {
@@ -11,12 +11,12 @@
         }
           div.item-img.text-center > img{
     object-fit: cover;
-    height: 100%;     
-  }  
-  div.item-img.text-center{
-    height: 100%; 
+    height: 100%;
   }
-  div.card-body, #ecommerce-header{   
+  div.item-img.text-center{
+    height: 100%;
+  }
+  div.card-body, #ecommerce-header{
     display: none;
   }
     </style>
@@ -102,24 +102,13 @@
                                 <div class="card-body">
                                     <div class="item-wrapper">
                                         <div>
-{{--                                            <h6 class="item-price">$339.99</h6>--}}
                                         </div>
                                     </div>
                                     <h6 class="item-name">
-{{--                                        <a class="text-body" href="">{{$studentLevel['title']}}</a>--}}
                                     </h6>
-{{--                                    <p class="card-text item-description">--}}
-{{--                                       {!! $communication['body'] !!}--}}
-{{--                                    </p>--}}
                                 </div>
                                 <div class="item-options text-center">
-
-{{--                                    <a href="#" class="btn btn-light btn-wishlist">--}}
-{{--                                        <i data-feather="heart"></i>--}}
-{{--                                        <span>Wishlist</span>--}}
-{{--                                    </a>--}}
-{{--                                    <a href="{{$communication['url_alias'] !== null ? route('communication', str_replace('/', '',$communication['url_alias'] ) ) : ''}}" class="btn btn-primary btn-cart">--}}
-                                    <a href="{{route('subjects', $studentLevel['id'])}}" class="btn btn-primary btn-cart">
+                                      <a href="{{route('subjects', $studentLevel['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="book-open"></i>
                                         <span class="add-to-cart">{{$studentLevel['title']}}</span>
                                     </a>
