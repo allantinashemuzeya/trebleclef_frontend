@@ -121,29 +121,18 @@
                                 <h6 class="text-muted">Spark College Riversands</h6>
                                 <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
                                 <hr class="mb-2">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="text-muted fw-bolder">SUBJECTS</h6>
-                                        <h3 class="mb-0">4</h3>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-muted fw-bolder">LESSONS</h6>
-                                        <h3 class="mb-0">10</h3>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-muted fw-bolder">
-                                            <ABBR TITLE="Student of the Week">SOTW AWARDS</ABBR>
-                                        </h6>
-
-                                        <h3 class="mb-0">23</h3>
-                                    </div>
-
+                                <div class="text-center">
+                                    <h4 class="text-title">My Bio</h4>
+                                    <p class="card-text m-auto w-75 text-white-50">
+                                        {{$currentStudent->bio}}
+                                    </p>
                                 </div>
+                                <hr/>
                                 <br/><br/>
                                 @if(count($musicQuotes)>0)
                                     <div class="text-center">
                                         <h4 class="text-title"> Quote of the day</h4>
-                                        <p class="card-text m-auto w-75">
+                                        <p class="card-text m-auto w-75 text-danger">
                                             {{$musicQuotes[0]['text']}}
                                         </p>
                                     </div>
