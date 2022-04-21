@@ -36,7 +36,7 @@ Route::controller(CommunicationController::class)->group(function(){
 });
 
 Route::controller(ClassroomController::class)->group(function(){
-    Route::get('/classroom/', 'index')->name('classroom');
+    Route::get('/classroom/', 'index')->name('classroom')->middleware(['auth']);
     Route::get('/classroom/{studentLevel}/subjects', 'subjects')->middleware(['auth'])->name('subjects');
     Route::get('/classroom/subject/{subject}', 'subject')->middleware(['auth'])->name('subject');
     Route::get('/classroom/{subject}/lessons', 'lessons')->middleware(['auth'])->name('lessons');
