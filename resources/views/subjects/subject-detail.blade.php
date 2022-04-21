@@ -110,7 +110,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="item-options text-center">
-                                                        <a href="{{route('student-of-the-week')}}"
+                                                        <a href="{{route('lesson', [$lesson['id'], $subject['id']])}}"
                                                            class="btn btn-primary btn-cart">
                                                             <i data-feather="book-open"></i>
                                                             <span class="add-to-cart">{{$lesson['name']}}</span>

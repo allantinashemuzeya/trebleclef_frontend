@@ -25,14 +25,14 @@ class Lesson implements LessonInterface {
 
         // TODO: Implement getSingleLesson() method.
 
-        $rawLesson = $this->get($lessonId, 'field_tutorial.field_media_video_file');
+        $rawLesson = $this->get($lessonId, 'field_tutorial');
 
         $lesson = $this->processLesson($rawLesson->data, $rawLesson->data->relationships->field_subject->data->id);
 
         $skills_covered  = [];
 
         foreach($rawLesson->data->relationships->field_skills_covered->data as $item){
-           array_push($skills_covered, $this->getSkillsCovered($item->id));
+           $skills_covered[] = $this->getSkillsCovered($item->id);
         }
 
         $lesson['skillsCovered'] = $skills_covered;
@@ -106,12 +106,24 @@ class Lesson implements LessonInterface {
 
 
 
-    public function processLesson($lesson, $subjectId) {
+    public function processLesson($lesson, $subjectId): ?array
+    {
         // TODO: Implement processLesson() method.
 
-        $raw_lesson = $this->get($lesson->id, 'field_subject');
+        $raw_lesson = $this->get($lesson->id, 'field_subject, field_tutorial');
 
         $supportingDocuments = $this->getLessonSupportingDocuments($lesson->id);
+
+
+        $tutorial = [];
+
+        foreach($raw_lesson->included as $item){
+            if($item->type === 'media--remote_video'){
+                $tutorial['link'] =  str_replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/', $item->attributes->field_media_oembed_video);
+                $tutorial['title'] = $item->attributes->name;
+            }
+        }
+
 
         if(property_exists($raw_lesson, 'included')){
             foreach($raw_lesson->included as $item){
@@ -124,7 +136,7 @@ class Lesson implements LessonInterface {
                             'overview' => $raw_lesson->data->attributes->field_overview->value,
                             'banner' => $this->getBanner($raw_lesson->data->id),
                             'subject' => $this->getSubject($raw_lesson->included),
-                            'tutorial' => $this->getLessonTutorial($raw_lesson->included),
+                            'tutorial' => $tutorial,
                             'date' =>  Carbon::parse($raw_lesson->data->attributes->created)->isoFormat('MMM DD YYYY'),
                             'supportingDocuments' => $supportingDocuments,
                         ];
@@ -139,7 +151,8 @@ class Lesson implements LessonInterface {
         return null;
     }
 
-    public function getLessonSupportingDocuments($lessonId) {
+    public function getLessonSupportingDocuments($lessonId): array
+    {
 
         // TODO: Implement getLessonBySubject() method.
 
@@ -151,7 +164,7 @@ class Lesson implements LessonInterface {
         if(property_exists($data, 'included')){
             foreach($data->included as $item){
                 if($item->attributes->filemime === 'application/pdf'){
-                    array_push($documents, ['name'=>$item->attributes->filename, 'url'=> env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url]);
+                    $documents[] = ['name' => $item->attributes->filename, 'url' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url];
                 }
             }
         }
