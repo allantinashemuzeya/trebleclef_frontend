@@ -40,6 +40,18 @@
         }
     </style>
     <div class="content-body">
+
+        @if(empty($currentStudent->profile_picture))
+            <div class="col-12 mt-75">
+
+                <div class="alert alert-warning mb-50" role="alert">
+                    <h4 class="alert-heading text-center">Please finish setting up your <a href="{{route('profile')}}">account!</a>
+                    </h4>
+                </div>
+            </div>
+        @endif
+
+
         <!-- Dashboard Analytics Start -->
         <section id="dashboard-analytics">
 
@@ -113,48 +125,52 @@
             <!-- Swiper -->
             <div class="row match-height">
                 <!-- Greetings Card starts -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <a href="{{route('profile')}}">
-                        <div class="card card-profile">
-                           <!-- <img src="{{asset('storage/profilePictures/'.$currentStudent->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
-                            <div class="card-body">
-                                <div class="profile-image-wrapper">
-                                    <div class="profile-image">
-                                        <div class="avatar">
-                                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">
+                @if(!empty($currentStudent->profile_picture))
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <a href="{{route('profile')}}">
+                            <div class="card card-profile">
+                            <!-- <img src="{{asset('storage/profilePictures/'.$currentStudent->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
+                                <div class="card-body">
+                                    <div class="profile-image-wrapper">
+                                        <div class="profile-image">
+                                            <div class="avatar">
+                                                <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">
+                                            </div>
                                         </div>
                                     </div>
+                                    <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
+                                    <h6 class="text-muted">Spark College Riversands</h6>
+                                    <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
+                                    <hr class="mb-2">
+                                    @if(!empty($currentStudent->bio))
+                                        <div class="text-center">
+                                            <h4 class="text-title">My Bio</h4>
+                                            <p class="card-text m-auto w-75 text-white-50">
+                                                {{$currentStudent->bio}}
+                                            </p>
+                                        </div>
+                                        <hr/>
+
+                                    @endif
+
+                                    <br/><br/>
+                                    @if(count($musicQuotes)>0)
+                                        <div class="text-center">
+                                            <h4 class="text-title"> Quote of the day</h4>
+                                            <p class="card-text m-auto w-75 text-danger">
+                                                {{$musicQuotes[0]['text']}}
+                                            </p>
+                                        </div>
+                                    @endif
                                 </div>
-                                <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
-                                <h6 class="text-muted">Spark College Riversands</h6>
-                                <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
-                                <hr class="mb-2">
-                                @if(!empty($currentStudent->bio))
-                                    <div class="text-center">
-                                        <h4 class="text-title">My Bio</h4>
-                                        <p class="card-text m-auto w-75 text-white-50">
-                                            {{$currentStudent->bio}}
-                                        </p>
-                                    </div>
-                                    <hr/>
-
-                                @endif
-
-                                <br/><br/>
-                                @if(count($musicQuotes)>0)
-                                    <div class="text-center">
-                                        <h4 class="text-title"> Quote of the day</h4>
-                                        <p class="card-text m-auto w-75 text-danger">
-                                            {{$musicQuotes[0]['text']}}
-                                        </p>
-                                    </div>
-                                @endif
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
-                </div>
-                <div class="col-lg-8 col-md-12 col-sm-12" >
+                    </div>
+                @endif
+
+
+                <div class="{{ !empty($currentStudent->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}" >
 {{--                    <div class="card-header">--}}
 {{--                        <h4 class="card-title">Treble Clef Tv</h4>--}}
 

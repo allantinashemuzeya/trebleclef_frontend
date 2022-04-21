@@ -437,15 +437,18 @@
                 <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span>
                     <span class="user-status">Student</span>
                     </div>
-                    <span class="avatar">
+                    @if(!empty($currentStudent->profile_picture))
+                        <span class="avatar">
                         <img
                             alt="avatar"
                             class="round"
                             height="40"
                             src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}"
-{{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
+                            {{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
                             width="40"/><span class="avatar-status-online"></span></span
-                    ></a>
+                        ></a>
+                    @endif
+
 {{--                <div class="profile-image-wrapper">--}}
 {{--                    <div class="profile-image">--}}
 {{--                        <div class="avatar">--}}

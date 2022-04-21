@@ -23,7 +23,7 @@
                     @endif
 
                 </div>
-        @endif
+            @endif
 
         <!-- left menu section -->
             <div class="col-md-3 mb-2 mb-md-0">
@@ -70,23 +70,6 @@
                 </ul>
             </div>
             <!--/ left menu section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <!-- right content section -->
 
             <div class="col-md-9" >
