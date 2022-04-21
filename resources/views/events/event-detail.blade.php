@@ -1,6 +1,16 @@
 @extends('layouts.home')
 @section('content')
 
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+ 
+</style>
+
+=======
+>>>>>>> 1009b2033192c9a3ab8bb660c3c7bb681972b651
+=======
+>>>>>>> 541b45ecb14c31ec1c806531b15355f4358a9adb
     @if($mode === 'communication')
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">

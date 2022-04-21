@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Events\Events;
 use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Models\Student;
@@ -18,6 +19,7 @@ class HomeController extends Controller
       $trebleClefTv = (new Home())->trebleClefTv();
       $navigationCards = (new Home())->navigationCards();
       $musicQuotes = (new MusicQuotes())->getAll();
+
 
       shuffle($musicQuotes);
 

@@ -100,13 +100,7 @@
 {{--                                    </p>--}}
                                 </div>
                                 <div class="item-options text-center">
-
-{{--                                    <a href="#" class="btn btn-light btn-wishlist">--}}
-{{--                                        <i data-feather="heart"></i>--}}
-{{--                                        <span>Wishlist</span>--}}
-{{--                                    </a>--}}
-{{--                                    <a href="{{$communication['url_alias'] !== null ? route('communication', str_replace('/', '',$communication['url_alias'] ) ) : ''}}" class="btn btn-primary btn-cart">--}}
-                                    <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
+                                        <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="bell"></i>
                                         <span class="add-to-cart">{{$communication['title']}}</span>
                                     </a>

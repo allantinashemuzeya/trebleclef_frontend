@@ -3,6 +3,7 @@
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CommunicationController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,6 @@ Route::controller(CommunicationController::class)->group(function(){
     Route::get('/communications', 'index')->middleware(['auth'])->name('communications');
     Route::get('/communication/{id}', 'communication')->middleware(['auth'])->name('communication');
     Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(['auth'])->name('student-of-the-week');
-    Route::get('/events/', 'events')->middleware(['auth'])->name('events');
     Route::get('/foundations', 'foundations')->middleware(['auth'])->name('foundations');
 });
 
@@ -49,6 +49,10 @@ Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile', 'index')->middleware(['auth'])->name('profile');
     Route::post('/profile-update', 'updateProfile')->middleware(['auth'])->name('updateProfile');
 });
+
+Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth'])->name('events');
+
+
 
 
 require __DIR__.'/auth.php';

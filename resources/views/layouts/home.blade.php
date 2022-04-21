@@ -371,6 +371,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
     <!-- END: Page CSS-->
 
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/charts/chart-apex.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
+
     @livewireStyles
 
 </head>
@@ -821,6 +828,15 @@
             </li>
 
             <li class="nav-item">
+                <a class="d-flex align-items-center" href="/events"
+                ><i data-feather="bell"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Events</span
+                    ></a
+                >
+            </li>
+
+            <li class="nav-item">
                 <a class="d-flex align-items-center" href="/calendar"
                 ><i data-feather="calendar"></i
                     ><span class="menu-title text-truncate" data-i18n="Calendar"
@@ -828,6 +844,24 @@
                     ></a
                 >
             </li>
+
+
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="/communications"
+                ><i data-feather="bell"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Communications</span
+                    ></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="/foundations"
+                ><i data-feather="heart"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Foundations</span
+                    ></a>
+            </li>
+
             <li class="nav-item">
                 <a class="d-flex align-items-center" href="#"
                 ><i data-feather="file-text"></i
@@ -856,6 +890,16 @@
                         >
                     </li>
 
+                    <li>
+                        <a class="d-flex align-items-center"
+                           href="/"
+                        ><i data-feather="circle"></i
+                            ><span class="menu-item text-truncate" data-i18n="Preview"
+                            >School Fees Structure</span
+                            ></a
+                        >
+                    </li>
+
                     <li class="nav-item">
                         <a class="d-flex align-items-center" href="/"
                         ><i data-feather="calendar"></i
@@ -867,36 +911,36 @@
                 </ul>
             </li>
 
-            <li class="nav-item">
-                <a class="d-flex align-items-center" href="#"
-                ><i data-feather="shopping-cart"></i
-                    ><span class="menu-title text-truncate" data-i18n="eCommerce"
-                    >eCommerce</span
-                    ></a
-                >
-                <ul class="menu-content">
-                    <li>
-                        <a class="d-flex align-items-center" href="/">
-                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"
-                            >Premium Lessons</span
-                            ></a>
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="/">
-                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"
-                            >Instruments</span
-                            ></a
-                        >
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="/">
-                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"
-                            >Swag</span
-                            ></a
-                        >
-                    </li>
-                </ul>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="d-flex align-items-center" href="#"--}}
+{{--                ><i data-feather="shopping-cart"></i--}}
+{{--                    ><span class="menu-title text-truncate" data-i18n="eCommerce"--}}
+{{--                    >eCommerce</span--}}
+{{--                    ></a--}}
+{{--                >--}}
+{{--                <ul class="menu-content">--}}
+{{--                    <li>--}}
+{{--                        <a class="d-flex align-items-center" href="/">--}}
+{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+{{--                            >Premium Lessons</span--}}
+{{--                            ></a>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a class="d-flex align-items-center" href="/">--}}
+{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+{{--                            >Instruments</span--}}
+{{--                            ></a--}}
+{{--                        >--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <a class="d-flex align-items-center" href="/">--}}
+{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+{{--                            >Swag</span--}}
+{{--                            ></a--}}
+{{--                        >--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
         </ul>
     </div>
 </div>
