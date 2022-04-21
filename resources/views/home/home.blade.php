@@ -44,8 +44,17 @@
         @if(empty($currentStudent->profile_picture))
             <div class="col-12 mt-75">
 
-                <div class="alert alert-warning mb-50" role="alert">
+                <div class="alert alert-danger mb-50" role="alert">
                     <h4 class="alert-heading text-center">Please finish setting up your <a href="{{route('profile')}}">account!</a>
+                    </h4>
+                </div>
+            </div>
+
+        @elseif(empty($currentStudent->bio))
+            <div class="col-12 mt-75">
+
+                <div class="alert alert-warning mb-50" role="alert">
+                    <h4 class="alert-heading text-center">Please update your Bio in <a href="{{route('profile')}}">account settings</a>
                     </h4>
                 </div>
             </div>

@@ -25,7 +25,28 @@
                 </div>
             @endif
 
-        <!-- left menu section -->
+
+                @if(empty($currentStudent->profile_picture))
+                    <div class="col-12 mt-75">
+
+                        <div class="alert alert-danger mb-50" role="alert">
+                            <h4 class="alert-heading text-center">Please upload a profile picture in <a href="{{route('profile')}}">General account settings!</a>
+                            </h4>
+                        </div>
+                    </div>
+
+                @elseif(empty($currentStudent->bio))
+                    <div class="col-12 mt-75">
+
+                        <div class="alert alert-warning mb-50" role="alert">
+                            <h4 class="alert-heading text-center">Please update your Bio in <a class="text-success" onclick=" document.getElementById('account-pill-info').click();">Personal Details settings</a>
+                            </h4>
+                        </div>
+                    </div>
+                @endif
+
+
+            <!-- left menu section -->
             <div class="col-md-3 mb-2 mb-md-0">
                 <ul class="nav nav-pills flex-column nav-left">
                     <!-- general -->
