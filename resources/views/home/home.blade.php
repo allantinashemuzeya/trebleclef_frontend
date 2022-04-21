@@ -148,7 +148,11 @@
                                         </div>
                                     </div>
                                     <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
-                                    <h6 class="text-muted">Spark College Riversands</h6>
+                                    @foreach($schools as $school)
+                                        @if($school['id'] === $currentStudent->school)
+                                            <h6 class="text-muted">{{$school['name']}}</h6>
+                                        @endif
+                                    @endforeach
                                     <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
                                     <hr class="mb-2">
                                     @if(!empty($currentStudent->bio))
