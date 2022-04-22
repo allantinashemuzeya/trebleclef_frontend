@@ -183,7 +183,6 @@
         <!-- END: Custom CSS-->
 
     @livewireStyles
-    </head>
     <!-- END: Head-->
 
     <!-- BEGIN: Body-->
@@ -378,7 +377,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
 
-    @livewireStyles
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
 
 </head>
 <!-- END: Head-->
@@ -392,6 +392,7 @@
 
 
      @include('components.preloader')
+     @include('sweetalert::alert')
 
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
@@ -784,7 +785,7 @@
             data-menu="menu-navigation"
             id="main-menu-navigation">
             <li class="nav-item has-sub sidebar-group-active open">
-                <a class="d-flex align-items-center" href="index-2.html"
+                <a class="d-flex align-items-center" href="/"
                 ><i data-feather="home"></i
                     ><span class="menu-title text-truncate" data-i18n="Dashboards"
                     >Dashboards</span
@@ -870,16 +871,25 @@
                     ></a
                 >
                 <ul class="menu-content">
+                    <br/>
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Please make sure to use your<br/> Treble Clef App email address as<br/> reference on checkout page.</h4>
+                    </div>
+
                     <li>
                         <a
+                            id="school_fees"
                             class="d-flex align-items-center"
-                            href="app-invoice-list.html"
-                        ><i data-feather="circle"></i
-                            ><span class="menu-item text-truncate" data-i18n="List"
-                            >Pay Fees</span
-                            ></a
+                            href="http://payf.st/dw4ey"
+
+                            onclick="alert('Please make sure to use your Treble Clef App email address as reference on checkout page.')"
+                            target="_blank">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="List">Pay Fees</span>
+                        </a
                         >
                     </li>
+
                     <li>
                         <a class="d-flex align-items-center"
                            href="/"
@@ -1282,12 +1292,23 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
 <!-- END: Page JS-->
+
+     <script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
 <script>
     $(window).on("load", function () {
         if (feather) {
             feather.replace({width: 14, height: 14});
         }
     });
+
+    document.getElementById('school_fees').addEventListener('click',()=>{
+        console.log('click');
+        Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+        )
+    })
 </script>
 @stack('scripts')
 
