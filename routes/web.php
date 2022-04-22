@@ -50,9 +50,12 @@ Route::controller(ProfileController::class)->group(function(){
     Route::post('/profile-update', 'updateProfile')->middleware(['auth'])->name('updateProfile');
 });
 
-Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth'])->name('events');
 
+Route::controller(EventsController::class)->group(function(){
+    Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth'])->name('events');
+    Route::get('/event/{id}', [EventsController::class, 'event'])->middleware(['auth'])->name('event');
 
+});
 
 
 require __DIR__.'/auth.php';

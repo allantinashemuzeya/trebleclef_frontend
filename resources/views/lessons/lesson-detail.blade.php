@@ -66,10 +66,9 @@
                                         width="100%"
                                         height="600px"
                                         src="{{ $lesson['tutorial']['link'] }}"
-                                        title="YouTube video player" frameborder="0"
+                                        title="YouTube video player" frameborder="2"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen>
-
                                     </iframe>
                                 @endif
 

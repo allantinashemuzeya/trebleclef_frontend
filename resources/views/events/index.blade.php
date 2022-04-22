@@ -167,7 +167,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     </div>
                                     <div class="item-options text-center">
-                                        <a  class="btn event-modal-button   btn-primary btn-cart" data-details="{{Js::from($event)}}"  data-bs-toggle="modal" data-bs-target="#viewEvent">
+{{--                                        <a  class="btn event-modal-button   btn-primary btn-cart" data-details="{{Js::from($event)}}"  data-bs-toggle="modal" data-bs-target="#viewEvent">--}}
+                                        <a href="{{route('event', $event['id'])}}" class="btn event-modal-button btn-primary btn-cart">
                                             <i data-feather="bell"></i>
                                             <span class="add-to-cart">View {{$event['title']}}</span>
                                         </a>
