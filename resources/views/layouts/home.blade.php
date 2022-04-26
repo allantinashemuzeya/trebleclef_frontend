@@ -1229,6 +1229,9 @@
     >Classroom</a
     >
 </div>
+
+ <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
+     <script> window.start.init({ title: "Hi there, Duzvi rako!!!! ✌️", message: "How may we help you? Just send us a message now to get assistance.", color: "#861010", position: "right", placeholder: "Enter your message", withText: "Write with", viaWhatsapp: "Or write us directly via Whatsapp", gty: "Go to your", awu: "and write us", connect: "Connect now",  button: "Contact Supprt", device: "everywhere", logo: "https://d2r80wdbkwti6l.cloudfront.net/kexCH5SihD1iRDhnwcms7p9fMA35Xdn8.jpg",  services: [{"name":"whatsapp","content":null}]})</script>
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
