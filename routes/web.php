@@ -6,6 +6,7 @@ use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SitePagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,5 +59,10 @@ Route::controller(EventsController::class)->group(function(){
 
 });
 
+Route::controller(SitePagesController::class)->group(function(){
+    Route::get('/networks', 'networks')->name('networks');
+    Route::get('/gallery', 'gallery')->name('gallery');
+    Route::get('/office', 'office')->name('office');
+});
 
 require __DIR__.'/auth.php';

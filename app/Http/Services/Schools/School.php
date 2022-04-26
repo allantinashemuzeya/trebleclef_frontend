@@ -11,13 +11,20 @@ class School implements SchoolsInferface
     {
         // TODO: Implement getAll() method.
 
-        $response = Http::get(env('BACKEND_API').'schools');
+        $response = Http::get(env('BACKEND_API').'schools?include=field_location');
         $data = json_decode($response);
 
         $schools = [];
 
         foreach($data->data as $item){
-            array_push($schools, [ 'id'=>$item?->id, 'name'=> $item?->attributes?->field_name ] );
+
+            $location = '';
+            foreach ($data->included as $include_item) {
+                if($include_item->id === $item->relationships->field_location->data->id){
+                    $location = $include_item->attributes->name;
+                }
+            }
+            $schools[] = ['id' => $item?->id, 'name' => $item?->attributes?->field_name, 'location'=>$location];
         }
 
         return $schools;

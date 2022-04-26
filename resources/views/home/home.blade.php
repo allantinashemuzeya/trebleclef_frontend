@@ -302,6 +302,29 @@
                                     </div>
 
                                 </a>
+                                @elseif($nav_card['type'] === 'networks')
+                                    <a href="{{route('networks')}}">
+                                        <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                            <div class="card-body text-center">
+
+                                                <div class="avatar avatar-xl bg-primary shadow">
+                                                    <div class="avatar-content">
+                                                        <i class="font-large-1" data-feather="git-branch"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+    {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
+                                                </div>
+                                            </div>
+                                            <div class="item-options text-center">
+                                                <a href="{{route('networks')}}" class="btn btn-primary btn-cart">
+                                                    <i data-feather="book-open"></i>
+                                                    <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </a>
 
                         @elseif($nav_card['type'] === 'newsletters')
                                 <a href="{{route('communication-by-type', 'NewsLetter')}}">
@@ -333,7 +356,7 @@
 
                                             <div class="avatar avatar-xl bg-primary shadow">
                                                 <div class="avatar-content">
-                                                    <i class="font-large-1" data-feather="cast"></i>
+                                                    <i class="font-large-1" data-feather="award"></i>
                                                 </div>
                                             </div>
                                             <div class="text-center">
