@@ -87,9 +87,9 @@ class Communication implements communicationInterface {
         $media = [];
         foreach ($data as $item){
             if($item->type === 'file--file'){
-                array_push($media, [
-                    'file'=>env('BACKEND_APP_ASSETS_URL').$item->attributes->uri->url,
-                    'type'=>$item->attributes->filemime]);
+                $media[] = [
+                    'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
+                    'type' => $item->attributes->filemime];
             }
         }
 
@@ -121,7 +121,8 @@ class Communication implements communicationInterface {
         return $banner;
     }
 
-    public function getSingleCommunication($id){
+    public function getSingleCommunication($id): array
+    {
 //        $cid = $this->getCid($url_alias);
 
         $includes = 'include=field_media.field_media_image';

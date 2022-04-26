@@ -256,8 +256,6 @@
                                         </div>
                                     </div>
                                 </a>
-
-
                             @elseif($nav_card['type'] === 'student_of_the_week')
                                 <a href="{{route('student-of-the-week')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
@@ -281,7 +279,6 @@
                                     </div>
 
                                 </a>
-
                             @elseif($nav_card['type'] === 'events')
                                 <a href="{{route('events')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
@@ -298,6 +295,53 @@
                                         </div>
                                         <div class="item-options text-center">
                                             <a href="{{route('events')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </a>
+
+                        @elseif($nav_card['type'] === 'newsletters')
+                                <a href="{{route('communication-by-type', 'NewsLetter')}}">
+                                    <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                        <div class="card-body text-center">
+
+                                            <div class="avatar avatar-xl bg-primary shadow">
+                                                <div class="avatar-content">
+                                                    <i class="font-large-1" data-feather="cast"></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
+                                            </div>
+                                        </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('communication-by-type', 'NewsLetter')}}" class="btn btn-primary btn-cart">
+                                                <i data-feather="book-open"></i>
+                                                <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </a>
+                        @elseif($nav_card['type'] === 'competitions')
+                                <a href="{{route('communication-by-type', 'Competitions')}}">
+                                    <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                        <div class="card-body text-center">
+
+                                            <div class="avatar avatar-xl bg-primary shadow">
+                                                <div class="avatar-content">
+                                                    <i class="font-large-1" data-feather="cast"></i>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+{{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
+                                            </div>
+                                        </div>
+                                        <div class="item-options text-center">
+                                            <a href="{{route('communication-by-type', 'Competitions')}}" class="btn btn-primary btn-cart">
                                                 <i data-feather="book-open"></i>
                                                 <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
                                             </a>
@@ -351,7 +395,6 @@
                                     </div>
 
                                 </a>
-
                             @elseif($nav_card['type'] === 'foundation')
                                     <a href="{{route('foundations')}}">
                                         <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">

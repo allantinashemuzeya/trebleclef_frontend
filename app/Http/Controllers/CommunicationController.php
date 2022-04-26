@@ -59,6 +59,15 @@ class CommunicationController extends Controller
 
     }
 
+    public function communicationByType($type)
+    {
+        $data = ['pageTitle' =>  $type, 'communications' => $this->processCommunication($type), 'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        ];
+
+        return view('communications.index', $data);
+
+
+    }
 
 
     //Section Processes
@@ -74,8 +83,8 @@ class CommunicationController extends Controller
         $communications = $this->getCommunications();
 
         foreach ($communications as $communication) {
-            if (in_array($commType, $communication['type'])) {
-                array_push($list, $communication);
+            if ($commType === $communication['type']) {
+                $list[] = $communication;
             }
         }
 

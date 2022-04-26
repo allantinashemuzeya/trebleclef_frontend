@@ -30,6 +30,7 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(CommunicationController::class)->group(function(){
     Route::get('/communications', 'index')->middleware(['auth'])->name('communications');
+    Route::get('/communications/{type}', 'communicationByType')->middleware(['auth'])->name('communication-by-type');
     Route::get('/communication/{id}', 'communication')->middleware(['auth'])->name('communication');
     Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(['auth'])->name('student-of-the-week');
     Route::get('/foundations', 'foundations')->middleware(['auth'])->name('foundations');

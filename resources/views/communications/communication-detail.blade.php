@@ -72,12 +72,10 @@
                                         </div>
                                     </div>
                                     <div class="my-1 py-25">
-                                        @foreach($communication['type'] as $type)
                                             <a href="#">
                                                 <span
-                                                    class="badge rounded-pill badge-light-success me-50">{{$type}}</span>
+                                                    class="badge rounded-pill badge-light-success me-50">{{$communication['type']}}</span>
                                             </a>
-                                        @endforeach
                                     </div>
                                     {!! str_replace('<p', '<p class="card-text mb-2"', $communication['body']) !!}
 
@@ -340,7 +338,6 @@
                     <div class="blog-categories mt-3">
                         <h6 class="section-label">Categories</h6>
                         <div class="mt-1">
-                            @foreach($item['type'] as $type)
                                 <div class="d-flex justify-content-start align-items-center mb-75">
                                     <a href="#" class="me-75">
                                         <div class="avatar bg-light-danger rounded">
@@ -350,11 +347,9 @@
                                         </div>
                                     </a>
                                     <a href="#">
-                                        <div class="blog-category-title text-body">{{$type}}</div>
+                                        <div class="blog-category-title text-body">{{$item['type']}}</div>
                                     </a>
                                 </div>
-
-                            @endforeach
 
                             {{--                        <div class="d-flex justify-content-start align-items-center">--}}
                             {{--                            <a href="#" class="me-75">--}}
