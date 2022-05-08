@@ -6,7 +6,12 @@
             margin-top: 2rem;
             margin-left: -402px!important;
         }
-    </style>
+        .img-fluid, .img-thumbnail {
+            max-width: 100%;
+            height: 100%;
+            width: 100%;  
+        }
+    </style>  
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -43,14 +48,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
     <!-- BEGIN: Content-->
-    <div class="app-content content ecommerce-application">
+    <div style="margin: 0;" class="app-content content ecommerce-application">
 
         <div class="content-wrapper container-xxl p-0">
-
+    
             <div class="content-detached content-right">
-                <div class="content-body">
+                <div style="margin-left: 0;" class="content-body">
                     <!-- E-commerce Content Section Starts -->
                     <section id="ecommerce-header">
                         <div class="row">
@@ -69,24 +74,24 @@
                         </div>
                     </section>
                     <!-- E-commerce Content Section Starts -->
-
+    
                     <!-- background Overlay when sidebar is shown  starts-->
                     <div class="body-content-overlay"></div>
                     <!-- background Overlay when sidebar is shown  ends-->
 
 
-                    <!-- E-commerce Products Starts -->
-                    <section id="ecommerce-products" class="grid-view">
+                    <!-- E-commerce Products Starts -->   
+                    <section style="margin-left: 0!important" id="ecommerce-products" class="grid-view">
 
                         @foreach($communications as $communication)
-                            <div class="card ecommerce-card" style="height: 350px;">
-                                <div class="item-img text-center">
+                            <div class="card ecommerce-card">
+                                <div class="item-img text-center pt-0 ">
 
                                     @if($communication['banner'] !== null)
                                         <img class="img-fluid" src="{{$communication['banner']}}" alt="comm banner"/>
-                                    @endif
-                                </div>
-                                <div class="card-body">
+                                    @endif  
+                                </div> 
+                                <!-- <div class="card-body">
                                     <div class="item-wrapper">
                                         <div>
 {{--                                            <h6 class="item-price">$339.99</h6>--}}
@@ -97,9 +102,9 @@
                                     </h6>
 {{--                                    <p class="card-text item-description">--}}
 {{--                                       {!! $communication['body'] !!}--}}
-{{--                                    </p>--}}
-                                </div>
-                                <div class="item-options text-center">
+{{--                                    </p>--}} 
+                                </div> -->    
+                                <div style="height: 100%;" class="item-options text-center ">
                                         <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="bell"></i>
                                         <span class="add-to-cart">{{$communication['title']}}</span>
