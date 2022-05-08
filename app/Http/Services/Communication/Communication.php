@@ -12,6 +12,8 @@ class Communication implements communicationInterface {
     public function get($communicationId) {
         $includes = 'include=field_media.field_media_image,field_media.field_media_video_file,field_media.field_media_document';
         $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
+       
+        // dd($response);
         if ($response->status() === 200) {
             $data = json_decode($response);
             return $data;
@@ -33,10 +35,14 @@ class Communication implements communicationInterface {
             $communications = [];
 
             foreach ($data->data as $item){
-
+                try{
                 $communications[] = $this->processCommunication($item);
-            }
 
+                }catch(\Exception $e){
+
+                }
+            }
+  
 
             return $communications;
         }
@@ -50,6 +56,7 @@ class Communication implements communicationInterface {
 
        $id = $data->id;
        $raw_communication = $this->get($id);
+
 
         return [
                  'id'=>$raw_communication->data->id,
