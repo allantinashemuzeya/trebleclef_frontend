@@ -231,10 +231,11 @@
 
             </div>
 
-            <div class="row match-height">
+            <div class="row match-height jhfhjfhf">
                 @foreach($navigationCards as $nav_card)
-                    <div class="col-lg-3 col-md-12 col-sm-12">
+
                             @if($nav_card['type'] === 'communications')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('communications')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -256,7 +257,9 @@
                                         </div>
                                     </div>
                                 </a>
+                                                    </div>
                             @elseif($nav_card['type'] === 'student_of_the_week')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('student-of-the-week')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -279,7 +282,9 @@
                                     </div>
 
                                 </a>
+                                                    </div>
                             @elseif($nav_card['type'] === 'events')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('events')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -302,8 +307,10 @@
                                     </div>
 
                                 </a>
-                                @elseif($nav_card['type'] === 'networks')
-                                    <a href="{{route('networks')}}">
+                                                    </div>
+                            @elseif($nav_card['type'] === 'networks')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                <a href="{{route('networks')}}">
                                         <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                             <div class="card-body text-center">
 
@@ -325,8 +332,9 @@
                                         </div>
 
                                     </a>
-
-                        @elseif($nav_card['type'] === 'newsletters')
+                                                    </div>
+                            @elseif($nav_card['type'] === 'newsletters')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('communication-by-type', 'NewsLetter')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -349,8 +357,11 @@
                                     </div>
 
                                 </a>
-                        @elseif($nav_card['type'] === 'competitions')
-                                <a href="{{route('communication-by-type', 'Competitions')}}">
+                                                    </div>
+                            @elseif($nav_card['type'] === 'competitions')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                <a href="{{route('communication-by-type', 'Competitions')}}"
+                                >
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
 
@@ -371,8 +382,9 @@
                                         </div>
                                     </div>
 
-                                </a>
+                                </a></div>
                             @elseif($nav_card['type'] === 'calendar')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('calendar')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -395,7 +407,9 @@
                                     </div>
 
                                 </a>
+                                                    </div>
                             @elseif($nav_card['type'] === 'classroom')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
                                 <a href="{{route('classroom')}}">
                                     <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                         <div class="card-body text-center">
@@ -418,8 +432,10 @@
                                     </div>
 
                                 </a>
+                                                    </div>
                             @elseif($nav_card['type'] === 'foundation')
-                                    <a href="{{route('foundations')}}">
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                <a href="{{route('foundations')}}">
                                         <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
                                             <div class="card-body text-center">
 
@@ -441,8 +457,8 @@
                                         </div>
 
                                     </a>
+                                                    </div>
                             @endif
-                    </div>
                 @endforeach
 
 

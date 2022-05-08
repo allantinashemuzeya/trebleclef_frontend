@@ -5,7 +5,7 @@
             width: 35%;
             border-radius: 20px;
             text-align: center;
-            padding: 3px;
+            padding: 3px; 
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
@@ -15,10 +15,10 @@
 
             <video class="d-flex bg-white  col-lg-7" autoplay muted loop>
                 <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
-            </video>
+            </video>   
             <!-- Login style="overflow:scroll;height:100vh;padding-top: 50vh!important;" -->
             <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-5">
-                <div style="overflow: scroll;height: 90vh;" class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                <div style="overflow-y: scroll;height: 90vh;" class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                     <h2 class="card-title fw-bold mb-1">
                         Get Treble Clef Academy Account 👋
                     </h2>
@@ -151,13 +151,12 @@
                                     <input id="password_confirmation" class="form-control form-control-merge"
                                            type="password" value="12345678" name="password_confirmation" required
                                            autocomplete="current-password"/>
-                                </div>
-
+                                </div> 
                             </div>
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary w-100" tabindex="4">Sign in</button>
+                        <button type="submit" class="btn btn-primary w-100" tabindex="4">Sign Up</button>
 
                     </form>
 
