@@ -83,7 +83,14 @@
                                 <div class="item-img text-center">
 
                                     @if($communication['banner'] !== null)
-                                        <img class="img-fluid" src="{{$communication['banner']}}" alt="comm banner"/>
+                                        @if($communication['banner']['type'] === 'video/mp4' )
+                                            <video autoplay loop controls muted>
+                                                <source src="{{$communication['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
+                                            </video>
+
+                                        @else
+                                            <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="card-body">
