@@ -60,9 +60,9 @@ Route::controller(EventsController::class)->group(function(){
 });
 
 Route::controller(SitePagesController::class)->group(function(){
-    Route::get('/networks', 'networks')->name('networks');
-    Route::get('/gallery', 'gallery')->name('gallery');
-    Route::get('/office', 'office')->name('office');
+    Route::get('/networks', 'networks')->middleware(['auth'])->name('networks');
+    Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
+    Route::get('/office', 'office')->middleware(['auth'])->name('office');
 });
 
 require __DIR__.'/auth.php';

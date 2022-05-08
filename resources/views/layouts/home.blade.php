@@ -304,6 +304,7 @@
         rel="stylesheet"
         type="text/css"
     />
+
     <link
         href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}"
         rel="stylesheet"
@@ -392,7 +393,34 @@
 
 
      @include('components.preloader')
-     @include('sweetalert::alert')
+
+     <style>
+         #freechat-popup > div.freechat-popup-header{
+             background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
+         }
+         #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1{
+             color: #fff;
+             background: #300606;
+             border-radius: 7px;
+             padding: 0.15em;
+         }
+         #freechat-popup > div.freechat-popup-content > p{
+             background-color: #502734!important;
+             color: #fff!important;
+         }
+
+
+         #main-menu-navigation{
+             margin-top: 57px;
+         }
+
+         body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img{
+             max-width: 124%;
+             margin-top: -25px;
+             margin-left: -23px;
+         }
+     </style>
+
 
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
@@ -481,196 +509,7 @@
         </ul>
     </div>
 </nav>
-<ul class="main-search-list-defaultlist d-none">
-    <li class="d-flex align-items-center">
-        <a href="#"><h6 class="section-label mt-75 mb-0">Files</h6></a>
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between w-100"
-            href="app-file-manager.html"
-        >
-            <div class="d-flex">
-                <div class="me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/icons/xls.png')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">Two new item submitted</p>
-                    <small class="text-muted">Marketing Manager</small>
-                </div>
-            </div>
-            <small class="search-data-size me-50 text-muted">&apos;17kb</small></a
-        >
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between w-100"
-            href="app-file-manager.html"
-        >
-            <div class="d-flex">
-                <div class="me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/icons/jpg.png')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">52 JPG file Generated</p>
-                    <small class="text-muted">FontEnd Developer</small>
-                </div>
-            </div>
-            <small class="search-data-size me-50 text-muted">&apos;11kb</small></a
-        >
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between w-100"
-            href="app-file-manager.html"
-        >
-            <div class="d-flex">
-                <div class="me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/icons/pdf.png')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">25 PDF File Uploaded</p>
-                    <small class="text-muted">Digital Marketing Manager</small>
-                </div>
-            </div>
-            <small class="search-data-size me-50 text-muted"
-            >&apos;150kb</small
-            ></a
-        >
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between w-100"
-            href="app-file-manager.html"
-        >
-            <div class="d-flex">
-                <div class="me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/icons/doc.png')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">Anna_Strong.doc</p>
-                    <small class="text-muted">Web Designer</small>
-                </div>
-            </div>
-            <small class="search-data-size me-50 text-muted"
-            >&apos;256kb</small
-            ></a
-        >
-    </li>
-    <li class="d-flex align-items-center">
-        <a href="#"><h6 class="section-label mt-75 mb-0">Members</h6></a>
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between py-50 w-100"
-            href="app-user-view.html"
-        >
-            <div class="d-flex align-items-center">
-                <div class="avatar me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/portrait/small/avatar-s-8.jpg')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">John Doe</p>
-                    <small class="text-muted">UI designer</small>
-                </div>
-            </div>
-        </a>
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between py-50 w-100"
-            href="app-user-view.html">
-            <div class="d-flex align-items-center">
-                <div class="avatar me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/portrait/small/avatar-s-1.jpg')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">Michal Clark</p>
-                    <small class="text-muted">FontEnd Developer</small>
-                </div>
-            </div>
-        </a
-        >
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between py-50 w-100"
-            href="app-user-view.html">
-            <div class="d-flex align-items-center">
-                <div class="avatar me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/portrait/small/avatar-s-14.jpg')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">Milena Gibson</p>
-                    <small class="text-muted">Digital Marketing Manager</small>
-                </div>
-            </div>
-        </a
-        >
-    </li>
-    <li class="auto-suggestion">
-        <a
-            class="d-flex align-items-center justify-content-between py-50 w-100"
-            href="app-user-view.html"
-        >
-            <div class="d-flex align-items-center">
-                <div class="avatar me-75">
-                    <img
-                        alt="png"
-                        height="32"
-                        src="{{asset('app-assets/images/portrait/small/avatar-s-6.jpg')}}"
-                    />
-                </div>
-                <div class="search-data">
-                    <p class="search-data-title mb-0">Anna Strong</p>
-                    <small class="text-muted">Web Designer</small>
-                </div>
-            </div>
-        </a
-        >
-    </li>
-</ul>
-<ul class="main-search-list-defaultlist-other-list d-none">
-    <li class="auto-suggestion justify-content-between">
-        <a
-            class="d-flex align-items-center justify-content-between w-100 py-50"
-        >
-            <div class="d-flex justify-content-start">
-            <span class="me-75" data-feather="alert-circle"></span
-            ><span>No results found.</span>
-            </div>
-        </a
-        >
-    </li>
-</ul>
+
 <!-- END: Header-->
 
 <!-- BEGIN: Main Menu-->
@@ -681,88 +520,10 @@
             <li class="nav-item me-auto">
                 <a class="navbar-brand" href="/"
                 ><span class="brand-logo">
-                <svg
-                    height="24"
-                    version="1.1"
-                    viewbox="0 0 139 95"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <lineargradient
-                        id="linearGradient-1"
-                        x1="100%"
-                        x2="50%"
-                        y1="10.5120544%"
-                        y2="89.4879456%"
-                    >
-                      <stop offset="0%" stop-color="#000000"></stop>
-                      <stop offset="100%" stop-color="#FFFFFF"></stop>
-                    </lineargradient>
-                    <lineargradient
-                        id="linearGradient-2"
-                        x1="64.0437835%"
-                        x2="37.373316%"
-                        y1="46.3276743%"
-                        y2="100%"
-                    >
-                      <stop
-                          offset="0%"
-                          stop-color="#EEEEEE"
-                          stop-opacity="0"
-                      ></stop>
-                      <stop offset="100%" stop-color="#FFFFFF"></stop>
-                    </lineargradient>
-                  </defs>
-                  <g
-                      fill="none"
-                      fill-rule="evenodd"
-                      id="Page-1"
-                      stroke="none"
-                      stroke-width="1"
-                  >
-                    <g
-                        id="Artboard"
-                        transform="translate(-400.000000, -178.000000)"
-                    >
-                      <g
-                          id="Group"
-                          transform="translate(400.000000, 178.000000)"
-                      >
-                        <path
-                            class="text-primary"
-                            d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"
-                            id="Path"
-                            style="fill: currentColor"
-                        ></path>
-                        <path
-                            d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z"
-                            fill="url(#linearGradient-1)"
-                            id="Path1"
-                            opacity="0.2"
-                        ></path>
-                        <polygon
-                            fill="#000000"
-                            id="Path-2"
-                            opacity="0.049999997"
-                            points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325"
-                        ></polygon>
-                        <polygon
-                            fill="#000000"
-                            id="Path-21"
-                            opacity="0.099999994"
-                            points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338"
-                        ></polygon>
-                        <polygon
-                            fill="url(#linearGradient-2)"
-                            id="Path-3"
-                            opacity="0.099999994"
-                            points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288"
-                        ></polygon>
-                      </g>
-                    </g>
-                  </g></svg></span>
-                    <h2 class="brand-text">Treble Clef</h2></a
-                >
+
+                        <img src="{{asset('app-assets/images/logo/treble Clef white.jpeg')}}"/>
+                    </span></a>
+
             </li>
             <li class="nav-item nav-toggle">
                 <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"
@@ -1221,17 +982,30 @@
 <!-- End: Customizer-->
 
 <!-- Buynow Button-->
-<div class="buy-now">
-    <a
-        class="btn btn-danger"
-        href="{{route('classroom')}}"
-        target="_blank"
-    >Classroom</a
-    >
-</div>
-
- <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
-     <script> window.start.init({ title: "Hi there, Duzvi rako!!!! ✌️", message: "How may we help you? Just send us a message now to get assistance.", color: "#861010", position: "right", placeholder: "Enter your message", withText: "Write with", viaWhatsapp: "Or write us directly via Whatsapp", gty: "Go to your", awu: "and write us", connect: "Connect now",  button: "Contact Supprt", device: "everywhere", logo: "https://d2r80wdbkwti6l.cloudfront.net/kexCH5SihD1iRDhnwcms7p9fMA35Xdn8.jpg",  services: [{"name":"whatsapp","content":null}]})</script>
+{{--<div class="buy-now">--}}
+{{--    <a--}}
+{{--        class="btn btn-danger"--}}
+{{--        href="{{route('classroom')}}"--}}
+{{--        target="_blank"--}}
+{{--    >Classroom</a--}}
+{{--    >--}}
+{{--</div>--}}
+     <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
+     <script>
+         window.start.init({
+             title: "Hi there ✌️",
+             message: "How may we help you? Just send us a message now to get assistance.",
+             color: "#861010", position: "right",
+             placeholder: "Enter your message",
+             withText: "Write with",
+             viaWhatsapp: "Or write us directly via Whatsapp",
+             gty: "Go to your", awu: "and write us",
+             connect: "Connect now",
+             button: "Contact Support",
+             device: "everywhere",
+             logo: "https://d2r80wdbkwti6l.cloudfront.net/1hnbbEeKP8bMcOhGowptlhTcJl4bTzCD.jpg",
+             person: "https://d2r80wdbkwti6l.cloudfront.net/ae7iuWzwAbDaf931xCX1bvTuoeisaxcf.jpg",
+             services: [{"name":"whatsapp","content":"+27845899764"},{"name":"mail","content":"support@trebleclefacademy.co.za"}]})</script>
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
