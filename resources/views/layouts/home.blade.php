@@ -381,6 +381,33 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
 
+    <style>
+        #freechat-popup > div.freechat-popup-header{
+            background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
+        }
+        #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1{
+            color: #fff;
+            background: #300606;
+            border-radius: 7px;
+            padding: 0.15em;
+        }
+        #freechat-popup > div.freechat-popup-content > p{
+            background-color: #502734!important;
+            color: #fff!important;
+        }
+
+
+        #main-menu-navigation{
+            margin-top: 57px;
+        }
+
+        body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img{
+            max-width: 124%;
+            margin-top: -25px;
+            margin-left: -23px;
+        }
+    </style>
+
 </head>
 <!-- END: Head-->
 
@@ -394,32 +421,6 @@
 
      @include('components.preloader')
 
-     <style>
-         #freechat-popup > div.freechat-popup-header{
-             background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
-         }
-         #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1{
-             color: #fff;
-             background: #300606;
-             border-radius: 7px;
-             padding: 0.15em;
-         }
-         #freechat-popup > div.freechat-popup-content > p{
-             background-color: #502734!important;
-             color: #fff!important;
-         }
-
-
-         #main-menu-navigation{
-             margin-top: 57px;
-         }
-
-         body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img{
-             max-width: 124%;
-             margin-top: -25px;
-             margin-left: -23px;
-         }
-     </style>
 
 
 <!-- BEGIN: Header-->
