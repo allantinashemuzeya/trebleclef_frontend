@@ -47,13 +47,16 @@
                         <!-- Communication -->
                         <div class="col-12">
                             <div class="card">
-                                @if($communication['banner'] !== NULL)
-                                    <img
-                                        src="{{$communication['banner']}}"
-                                        class="img-fluid card-img-top"
-                                        style="max-height:600px;max-width:100%"
-                                        alt="Communication Detail Pic"
-                                    />
+
+                                @if($communication['banner'] !== null)
+                                    @if($communication['banner']['type'] === 'video/mp4' )
+                                        <video autoplay loop controls muted>
+                                            <source src="{{$communication['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
+                                        </video>
+
+                                    @else
+                                        <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
+                                    @endif
                                 @endif
 
                                 <div class="card-body">
@@ -77,53 +80,30 @@
                                                     class="badge rounded-pill badge-light-success me-50">{{$communication['type']}}</span>
                                             </a>
                                     </div>
+
                                     {!! str_replace('<p', '<p class="card-text mb-2"', $communication['body']) !!}
 
 
 
-                                    {{--                                <h4 class="mb-75">Unprecedented Challenge</h4>--}}
-                                    {{--                                <ul class="p-0 mb-2">--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Preliminary thinking systems</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Bandwidth efficient</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Green space</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Social impact</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Thought partnership</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                    <li class="d-block">--}}
-                                    {{--                                        <span class="me-25">-</span>--}}
-                                    {{--                                        <span>Fully ethical life</span>--}}
-                                    {{--                                    </li>--}}
-                                    {{--                                </ul>--}}
+                                    <div class="my-1 py-25">
+                                        @foreach($communication['media']  as $item)
+                                            @if($item['type'] === 'application/pdf')
+
+                                                <a href="{{$item['file']}}" target="_blank">
+                                                    <span
+                                                        class="badge rounded-pill badge-light-success me-50">{{$item['name']}}</span>
+                                                </a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+
                                     <div class="d-flex align-items-start">
-                                        {{--                                    <div class="avatar me-2">--}}
-                                        {{--                                        <img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg" width="60"--}}
-                                        {{--                                             height="60" alt="Avatar"/>--}}
-                                        {{--                                    </div>--}}
-                                        {{--                                    <div class="author-info">--}}
-                                        {{--                                        <h6 class="fw-bolder">Willie Clark</h6>--}}
-                                        {{--                                        <p class="card-text mb-0">--}}
-                                        {{--                                            Based in London, Uncode is a blog by Willie Clark. His posts explore modern--}}
-                                        {{--                                            design trends through photos--}}
-                                        {{--                                            and quotes by influential creatives and web designer around the world.--}}
-                                        {{--                                        </p>--}}
-                                        {{--                                    </div>--}}
                                     </div>
 
                                     <hr class="my-2"/>
+
+
+
 
                                     <section id="component-swiper-gallery">
                                         <div class="card">
@@ -131,26 +111,26 @@
                                                 <h4 class="card-title">Media</h4>
                                             </div>
                                             <div class="card-body">
+
                                                 <div
                                                     class="swiper-gallery swiper-container gallery-top swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                                                     <div class="swiper-wrapper" id="swiper-wrapper-7fb93a4b8b948735"
                                                          aria-live="polite"
                                                          style="transform: translate3d(-4224px, 0px, 0px); transition-duration: 0ms;">
+
                                                         @foreach($communication['media']  as $item)
                                                             @if($item['type'] === 'video/mp4')
 
                                                                 <div class="swiper-slide" role="group"
                                                                      aria-label="1 / 5"
                                                                      style="width: 1398px; margin-right: 10px;">
-                                                                    <video class="img-fluid" class="img-fluid" autoplay
+                                                                    <video class="img-fluid"  autoplay
                                                                            controls muted loop
                                                                            style="padding-right:2px">
                                                                         <source src="{{$item['file']}}"
                                                                                 type="video/mp4"/>
                                                                     </video>
                                                                 </div>
-
-
                                                             @else
 
                                                                 <div class="swiper-slide" role="group"
@@ -176,6 +156,7 @@
                                                          aria-disabled="false"></div>
                                                     <span class="swiper-notification" aria-live="assertive"
                                                           aria-atomic="true"></span></div>
+
                                                 <div
                                                     class="swiper-container gallery-thumbs swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
                                                     <div class="swiper-wrapper mt-25"
@@ -190,16 +171,15 @@
                                                                     class="swiper-slide swiper-slide-visible swiper-slide-active"
                                                                     role="group" aria-label="1 / 5"
                                                                     style="width: 342px; margin-right: 10px;">
-                                                                    <video class="img-fluid" class="img-fluid" autoplay
+                                                                    <video class="img-fluid" autoplay
                                                                            controls muted loop
                                                                            style="padding-right:2px">
                                                                         <source src="{{$item['file']}}"
                                                                                 type="video/mp4"/>
                                                                     </video>
                                                                 </div>
-
-                                                            @else
-
+                                                            @endif
+                                                            @if($item['type'] === 'image/jpg' || $item['type'] === 'image/png' || $item['type'] === 'image/jpeg'  )
                                                                 <div
                                                                     class="swiper-slide swiper-slide-visible swiper-slide-active"
                                                                     role="group" aria-label="1 / 5"
@@ -208,7 +188,6 @@
                                                                          alt="banner">
                                                                 </div>
                                                             @endif
-
 
                                                         @endforeach
 
@@ -310,13 +289,18 @@
                                 <div class="d-flex mb-2">
                                     <a href="{{route('communication', $item['id'])}}" class="me-2">
                                         @if($item['banner']!==NULL)
-                                            <img
-                                                class="rounded"
-                                                src="{{$item['banner']}}"
-                                                width="100"
-                                                height="70"
-                                                alt="Recent Post Pic"
-                                            />
+
+                                            @if($communication['banner'] !== null)
+                                                @if($item['banner']['type'] === 'video/mp4' )
+                                                    <video autoplay loop controls muted class="img-fluid" >
+                                                        <source src="{{$item['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
+                                                    </video>
+
+                                                @else
+                                                    <img class="img-fluid" src="{{$item['banner']['file']}}" alt="comm banner"/>
+                                                @endif
+                                            @endif
+
                                         @endif
 
                                     </a>

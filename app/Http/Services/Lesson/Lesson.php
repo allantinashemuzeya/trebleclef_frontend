@@ -88,7 +88,8 @@ class Lesson implements LessonInterface {
         return $author;
     }
 
-    public function getLessonsBySubject($subjectId) {
+    public function getLessonsBySubject($subjectId): array
+    {
         // TODO: Implement getLessonBySubject() method.
 
         $response = Http::get(env('BACKEND_API') . 'lesson?include=field_subject,field_tutorial.field_media_video_file');
@@ -96,7 +97,7 @@ class Lesson implements LessonInterface {
         $lessons = [];
         foreach ($data->data as $item) {
             if($this->processLesson($item, $subjectId)  !== null){
-                array_push($lessons, $this->processLesson($item, $subjectId));
+                $lessons[] = $this->processLesson($item, $subjectId);
             }
         }
 

@@ -73,14 +73,10 @@
                             </div>
                         </div>
                     </section>
-                    <!-- E-commerce Content Section Starts -->
     
-                    <!-- background Overlay when sidebar is shown  starts-->
                     <div class="body-content-overlay"></div>
-                    <!-- background Overlay when sidebar is shown  ends-->
 
 
-                    <!-- E-commerce Products Starts -->   
                     <section style="margin-left: 0!important" id="ecommerce-products" class="grid-view">
 
                         @foreach($communications as $communication)
@@ -88,21 +84,25 @@
                                 <div class="item-img text-center pt-0 ">
 
                                     @if($communication['banner'] !== null)
-                                        <img class="img-fluid" src="{{$communication['banner']}}" alt="comm banner"/>
-                                    @endif  
-                                </div> 
-                                <!-- <div class="card-body">
+                                        @if($communication['banner']['type'] === 'video/mp4' )
+                                            <video autoplay loop controls muted>
+                                                <source src="{{$communication['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
+                                            </video>
+
+                                        @else
+                                            <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
+                                        @endif
+                                    @endif
+                                </div>
+                                <div class="card-body">
                                     <div class="item-wrapper">
                                         <div>
-{{--                                            <h6 class="item-price">$339.99</h6>--}}
                                         </div>
                                     </div>
                                     <h6 class="item-name">
                                         <a class="text-body" href=""></a>
                                     </h6>
-{{--                                    <p class="card-text item-description">--}}
-{{--                                       {!! $communication['body'] !!}--}}
-{{--                                    </p>--}} 
+
                                 </div> -->    
                                 <div style="height: 100%;" class="item-options text-center ">
                                         <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">

@@ -4,13 +4,15 @@ namespace App\Http\Services\Communication;
 
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use JetBrains\PhpStorm\ArrayShape;
 
 class Communication implements communicationInterface {
 
     //SECTION  GET COMM
     public function get($communicationId) {
-        $includes = 'include=field_media.field_media_image,field_media.field_media_video_file';
+        $includes = 'include=field_media.field_media_image,field_media.field_media_video_file,field_media.field_media_document';
         $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
+       
         if ($response->status() === 200) {
             $data = json_decode($response);
             return $data;
@@ -49,6 +51,8 @@ class Communication implements communicationInterface {
 
        $id = $data->id;
        $raw_communication = $this->get($id);
+
+    //    dd($raw_communication->data->id);
 
         return [
                  'id'=>$raw_communication->data->id,
@@ -89,7 +93,9 @@ class Communication implements communicationInterface {
             if($item->type === 'file--file'){
                 $media[] = [
                     'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
-                    'type' => $item->attributes->filemime];
+                    'type' => $item->attributes->filemime,
+                    'name' => $item->attributes->filename
+                ];
             }
         }
 
@@ -98,11 +104,14 @@ class Communication implements communicationInterface {
 
     public function getCommunicationBanner($communicationId): array|string|null {
 
-        $includes = 'include=field_communication_banner.field_media_image';
+        $includes = 'include=field_communication_banner.field_media_image,field_communication_banner.field_media_video_file';
         $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
 
+
         if ($response->status() === 200) {
+
             $data =  json_decode($response);
+
             return isset($data->included) ? $this->processCommunicationBanner($data->included ) :  null ;
         }
         else {
@@ -110,11 +119,15 @@ class Communication implements communicationInterface {
         }
     }
 
-    public function processCommunicationBanner($data): string {
-        $banner = '';
+    #[ArrayShape(['file' => "string", 'type' => "mixed|string"])] public function processCommunicationBanner($data): array {
+
+        $banner = ['file'=>'', 'type'=>''];
+
         foreach ($data as $item){
+
             if($item->type === 'file--file'){
-                $banner = env('BACKEND_APP_ASSETS_URL').$item->attributes->uri->url;
+                $banner['file'] =  env('BACKEND_APP_ASSETS_URL').$item->attributes->uri->url;
+                $banner['type'] =  $item->attributes->filemime;
             }
         }
 
