@@ -81,18 +81,18 @@
 
                         @foreach($communications as $communication)
                             <div class="card ecommerce-card">
-
+  
                                     @if($communication['banner'] !== null)
                                         @if($communication['banner']['type'] === 'video/mp4' )
-                                        <div class="item-img text-center pt-0 ">
+                                        <div style="max-height: 80%;height: 80%;" class="item-img text-center pt-0 ">
 
-                                            <video style="max-height: 225px;" autoplay loop controls muted>
+                                            <video style="    max-height: 279px; width: 115%;" autoplay loop controls muted>
                                                 <source src="{{$communication['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
                                             </video>
                                             </div>
 
-                                        @else
-                                        <div class="item-img text-center pt-0 ">
+                                        @else   
+                                        <div style="height: 80%;max-height: 80%;" class="item-img text-center pt-0 ">
 
                                             <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
                                             </div>
@@ -109,7 +109,7 @@
                                     </h6>
 
                                 </div>   -->
-                                <div style="height: 100%;" class="item-options text-center ">
+                                <div style="height: 20%;" class="item-options text-center ">
                                         <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="bell"></i>
                                         <span class="add-to-cart">{{$communication['title']}}</span>
