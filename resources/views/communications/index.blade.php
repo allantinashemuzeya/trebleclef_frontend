@@ -10,7 +10,7 @@
             max-width: 100%;
             height: 100%;
             width: 100%;  
-        }
+        }   
     </style>  
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -81,20 +81,25 @@
 
                         @foreach($communications as $communication)
                             <div class="card ecommerce-card">
-                                <div class="item-img text-center pt-0 ">
 
                                     @if($communication['banner'] !== null)
                                         @if($communication['banner']['type'] === 'video/mp4' )
-                                            <video autoplay loop controls muted>
+                                        <div class="item-img text-center pt-0 ">
+
+                                            <video style="max-height: 225px;" autoplay loop controls muted>
                                                 <source src="{{$communication['banner']['file']}}" type="{{$communication['banner']['type']}}"/>
                                             </video>
+                                            </div>
 
                                         @else
+                                        <div class="item-img text-center pt-0 ">
+
                                             <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
-                                        @endif
+                                            </div>
+
+                                            @endif
                                     @endif
-                                </div>
-                                <div class="card-body">
+                                <!-- <div class="card-body">
                                     <div class="item-wrapper">
                                         <div>
                                         </div>
@@ -103,7 +108,7 @@
                                         <a class="text-body" href=""></a>
                                     </h6>
 
-                                </div> -->    
+                                </div>   -->
                                 <div style="height: 100%;" class="item-options text-center ">
                                         <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="bell"></i>
