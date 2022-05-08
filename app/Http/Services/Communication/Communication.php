@@ -9,7 +9,7 @@ class Communication implements communicationInterface {
 
     //SECTION  GET COMM
     public function get($communicationId) {
-        $includes = 'include=field_media.field_media_image';
+        $includes = 'include=field_media.field_media_image,field_media.field_media_video_file';
         $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
         if ($response->status() === 200) {
             $data = json_decode($response);
@@ -33,7 +33,7 @@ class Communication implements communicationInterface {
 
             foreach ($data->data as $item){
 
-                array_push($communications, $this->processCommunication($item));
+                $communications[] = $this->processCommunication($item);
             }
 
 
