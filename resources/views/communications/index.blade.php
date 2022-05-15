@@ -9,9 +9,9 @@
         .img-fluid, .img-thumbnail {
             max-width: 100%;
             height: 100%;
-            width: 100%;  
-        }   
-    </style>  
+            width: 100%;
+        }
+    </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -48,12 +48,12 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
     <!-- BEGIN: Content-->
-    <div style="margin: 0;" class="app-content content ecommerce-application">
+    <div style="margin: 0;" class="app-content content ecommerce-application m-0">
 
         <div class="content-wrapper container-xxl p-0">
-    
+
             <div class="content-detached content-right">
                 <div style="margin-left: 0;" class="content-body">
                     <!-- E-commerce Content Section Starts -->
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </section>
-    
+
                     <div class="body-content-overlay"></div>
 
 
@@ -81,7 +81,7 @@
 
                         @foreach($communications as $communication)
                             <div class="card ecommerce-card">
-  
+
                                     @if($communication['banner'] !== null)
                                         @if($communication['banner']['type'] === 'video/mp4' )
                                         <div style="max-height: 80%;height: 80%;" class="item-img text-center pt-0 ">
@@ -91,7 +91,7 @@
                                             </video>
                                             </div>
 
-                                        @else   
+                                        @else
                                         <div style="height: 80%;max-height: 80%;" class="item-img text-center pt-0 ">
 
                                             <img class="img-fluid" src="{{$communication['banner']['file']}}" alt="comm banner"/>
