@@ -12,178 +12,181 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 
-        <meta
-            content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
-            name="viewport"
-        />
-        <meta
-            content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."
-            name="description"
-        />
-        <meta
-            content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app"
-            name="keywords"
-        />
-        <meta content="PIXINVENT" name="author"/>
-        <title>Treble Clef |</title>
-        <link
-            href="{{asset('app-assets/images/ico/apple-icon-120.html')}}"
-            rel="apple-touch-icon"
-        />
-        <link
-            href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico"
-            rel="shortcut icon"
-            type="image/x-icon"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
-            rel="stylesheet"
-        />
+    <meta
+        content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
+        name="viewport"
+    />
+    <meta
+        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities."
+        name="description"
+    />
+    <meta
+        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app"
+        name="keywords"
+    />
+    <meta content="PIXINVENT" name="author"/>
+    <title>Treble Clef |</title>
+    <link
+        href="{{asset('app-assets/images/ico/apple-icon-120.html')}}"
+        rel="apple-touch-icon"
+    />
+    <link
+        href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico"
+        rel="shortcut icon"
+        type="image/x-icon"
+    />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+        rel="stylesheet"
+    />
 
-        <!-- BEGIN: Vendor CSS-->
-        <link
-            href="{{asset('app-assets/vendors/css/vendors.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/vendors/css/charts/apexcharts.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
+    <!-- BEGIN: Vendor CSS-->
+    <link
+        href="{{asset('app-assets/vendors/css/vendors.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/vendors/css/charts/apexcharts.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
 
-            <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.min.css')}}">
-        <!-- END: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.min.css')}}">
+    <!-- END: Vendor CSS-->
 
-        <!-- BEGIN: Page CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-sliders.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-ecommerce.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
-        <!-- END: Page CSS-->
-
-
-        <!-- BEGIN: Theme CSS-->
-        <link
-            href="{{asset('app-assets/css/bootstrap.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/bootstrap-extended.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/colors.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/components.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/themes/dark-layout.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-
-        <!-- BEGIN: Page CSS-->
-        <link
-            href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/plugins/charts/chart-apex.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="{{asset('app-assets/css/pages/app-invoice-list.min.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <!-- END: Page CSS-->
-
-        <!-- BEGIN: Custom CSS-->
-        <link
-            href="../../../assets/css/style.css')}}"
-            rel="stylesheet"
-            type="text/css"
-        />
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-sliders.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-ecommerce.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <!-- END: Page CSS-->
 
 
-        <!-- BEGIN: Page CSS-->
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}">
-        <!-- END: Page CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link
+        href="{{asset('app-assets/css/bootstrap.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/bootstrap-extended.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/colors.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/components.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/themes/dark-layout.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
 
-        <!-- END: Custom CSS-->
+    <!-- BEGIN: Page CSS-->
+    <link
+        href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/plugins/charts/chart-apex.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <link
+        href="{{asset('app-assets/css/pages/app-invoice-list.min.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link
+        href="../../../assets/css/style.css')}}"
+        rel="stylesheet"
+        type="text/css"
+    />
 
 
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}">
+    <!-- END: Page CSS-->
 
-        <!-- BEGIN: Vendor CSS-->
-        <link href="{{asset('app-assets/vendors/css/vendors.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/vendors/css/extensions/swiper.min.css')}}" rel="stylesheet" type="text/css">
-        <!-- END: Vendor CSS-->
+    <!-- END: Custom CSS-->
 
 
+    <!-- BEGIN: Vendor CSS-->
+    <link href="{{asset('app-assets/vendors/css/vendors.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/vendors/css/extensions/swiper.min.css')}}" rel="stylesheet" type="text/css">
+    <!-- END: Vendor CSS-->
 
-        <!-- BEGIN: Theme CSS-->
-        <link href="{{asset('app-assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/bootstrap-extended.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/themes/dark-layout.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}" rel="stylesheet" type="text/css">
 
-        <!-- BEGIN: Page CSS-->
-        <link href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet"
-              type="text/css">
-        <link href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}" rel="stylesheet"
-              type="text/css">
-        <!-- END: Page CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link href="{{asset('app-assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/bootstrap-extended.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/themes/dark-layout.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}" rel="stylesheet" type="text/css">
 
-        <!-- BEGIN: Custom CSS-->
-        <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
-        <!-- END: Custom CSS-->
+    <!-- BEGIN: Page CSS-->
+    <link href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet"
+          type="text/css">
+    <link href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}" rel="stylesheet"
+          type="text/css">
+    <!-- END: Page CSS-->
 
-    @livewireStyles
-    <!-- END: Head-->
+    <!-- BEGIN: Custom CSS-->
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
+    <!-- END: Custom CSS-->
+
+@livewireStyles
+<!-- END: Head-->
 
     <!-- BEGIN: Body-->
 
@@ -365,43 +368,51 @@
 
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-pickadate.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/pickers/form-flat-pickr.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/forms/pickers/form-pickadate.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/forms/pickers/form-flat-pickr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
     <!-- END: Page CSS-->
 
 
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/charts/chart-apex.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
 
     <style>
-        #freechat-popup > div.freechat-popup-header{
+        #freechat-popup > div.freechat-popup-header {
             background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
         }
-        #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1{
+
+        #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1 {
             color: #fff;
             background: #300606;
             border-radius: 7px;
             padding: 0.15em;
         }
-        #freechat-popup > div.freechat-popup-content > p{
-            background-color: #502734!important;
-            color: #fff!important;
+
+        #freechat-popup > div.freechat-popup-content > p {
+            background-color: #502734 !important;
+            color: #fff !important;
         }
 
 
-        #main-menu-navigation{
+        #main-menu-navigation {
             margin-top: 57px;
         }
 
-        body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img{
+        body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img {
             max-width: 124%;
             margin-top: -25px;
             margin-left: -23px;
@@ -411,6 +422,14 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
 
+    <style>
+        @media only screen and (min-width: 768px){
+            #main-menu-navigation > li:nth-child(11){
+                margin-top: 136%;
+            }
+        }
+
+    </style>
 
 </head>
 <!-- END: Head-->
@@ -423,12 +442,14 @@
     data-open="click">
 
 
-     @include('components.preloader')
+@include('components.preloader')
 
 
 
 <!-- BEGIN: Header-->
-<nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl" style="background-color: #110606">
+<nav
+    class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow container-xxl"
+    style="background-color: #110606">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
             <ul class="nav navbar-nav d-xl-none">
@@ -474,9 +495,9 @@
                     href="{{route('profile')}}"
                     onclick="window.location='/profile'"
                     id="dropdown-user">
-                <div class="user-nav d-sm-flex d-none">
-                <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span>
-                    <span class="user-status">Student</span>
+                    <div class="user-nav d-sm-flex d-none">
+                        <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span>
+                        <span class="user-status">Student</span>
                     </div>
                     @if(!empty($currentStudent->profile_picture))
                         <span class="avatar">
@@ -488,15 +509,15 @@
                             {{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
                             width="40"/><span class="avatar-status-online"></span></span
                         ></a>
-                    @endif
+                @endif
 
-{{--                <div class="profile-image-wrapper">--}}
-{{--                    <div class="profile-image">--}}
-{{--                        <div class="avatar">--}}
-{{--                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="profile-image-wrapper">--}}
+                {{--                    <div class="profile-image">--}}
+                {{--                        <div class="avatar">--}}
+                {{--                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <div
                     aria-labelledby="dropdown-user"
                     class="dropdown-menu dropdown-menu-end">
@@ -519,8 +540,8 @@
 
 <!-- BEGIN: Main Menu-->
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow"
-    data-scroll-to-active="true">
-    <div class="navbar-header" >
+     data-scroll-to-active="true">
+    <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto">
                 <a class="navbar-brand" href="/"
@@ -562,7 +583,8 @@
                 <ul class="menu-content">
                     <li class="">
                         <a
-                            class="d-flex align-items-center" href="/"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics"
+                            class="d-flex align-items-center" href="/"><i data-feather="circle"></i><span
+                                class="menu-item text-truncate" data-i18n="Analytics"
                             >Home</span
                             ></a
                         >
@@ -577,16 +599,16 @@
                             ></a
                         >
                     </li>
-{{--                    <li>--}}
-{{--                        <a--}}
-{{--                            class="d-flex align-items-center"--}}
-{{--                            href="/"--}}
-{{--                        ><i data-feather="circle"></i--}}
-{{--                            ><span class="menu-item text-truncate" data-i18n="eCommerce"--}}
-{{--                            >My Zone </span--}}
-{{--                            ></a--}}
-{{--                        >--}}
-{{--                    </li>--}}
+                    {{--                    <li>--}}
+                    {{--                        <a--}}
+                    {{--                            class="d-flex align-items-center"--}}
+                    {{--                            href="/"--}}
+                    {{--                        ><i data-feather="circle"></i--}}
+                    {{--                            ><span class="menu-item text-truncate" data-i18n="eCommerce"--}}
+                    {{--                            >My Zone </span--}}
+                    {{--                            ></a--}}
+                    {{--                        >--}}
+                    {{--                    </li>--}}
                 </ul>
             </li>
             <li class="navigation-header">
@@ -629,94 +651,60 @@
                     ></a>
             </li>
 
+
             <li class="nav-item">
-                <a class="d-flex align-items-center" href="#"
+                <a class="d-flex align-items-center" href="/office"
                 ><i data-feather="file-text"></i
-                    ><span class="menu-title text-truncate" data-i18n="Invoice"
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
                     >Visit Office</span
-                    ></a
-                >
-                <ul class="menu-content">
-                    <br/>
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">Please make sure to use your<br/> Treble Clef App email address as<br/> reference on checkout page.</h4>
-                    </div>
-
-                    <li>
-                        <a
-                            id="school_fees"
-                            class="d-flex align-items-center"
-                            href="http://payf.st/dw4ey"
-
-                            onclick="alert('Please make sure to use your Treble Clef App email address as reference on checkout page.')"
-                            target="_blank">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="List">Pay Fees</span>
-                        </a
-                        >
-                    </li>
-
-                    <li>
-                        <a class="d-flex align-items-center"
-                           href="/"
-                        ><i data-feather="circle"></i
-                            ><span class="menu-item text-truncate" data-i18n="Preview"
-                            >Communicate</span
-                            ></a
-                        >
-                    </li>
-
-                    <li>
-                        <a class="d-flex align-items-center"
-                           href="/"
-                        ><i data-feather="circle"></i
-                            ><span class="menu-item text-truncate" data-i18n="Preview"
-                            >School Fees Structure</span
-                            ></a
-                        >
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="d-flex align-items-center" href="/"
-                        ><i data-feather="calendar"></i
-                            ><span class="menu-title text-truncate" data-i18n="Calendar"
-                            >School Calendar</span
-                            ></a
-                        >
-                    </li>
-                </ul>
+                    ></a>
             </li>
 
-{{--            <li class="nav-item">--}}
-{{--                <a class="d-flex align-items-center" href="#"--}}
-{{--                ><i data-feather="shopping-cart"></i--}}
-{{--                    ><span class="menu-title text-truncate" data-i18n="eCommerce"--}}
-{{--                    >eCommerce</span--}}
-{{--                    ></a--}}
-{{--                >--}}
-{{--                <ul class="menu-content">--}}
-{{--                    <li>--}}
-{{--                        <a class="d-flex align-items-center" href="/">--}}
-{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-{{--                            >Premium Lessons</span--}}
-{{--                            ></a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="d-flex align-items-center" href="/">--}}
-{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-{{--                            >Instruments</span--}}
-{{--                            ></a--}}
-{{--                        >--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="d-flex align-items-center" href="/">--}}
-{{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-{{--                            >Swag</span--}}
-{{--                            ></a--}}
-{{--                        >--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
+
+            <br/>
+            <br/>
+            <br/>
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="/logout"
+                ><i data-feather="log-out"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Logout</span
+                    ></a>
+            </li>
+
+
+
+
+            {{--            <li class="nav-item">--}}
+            {{--                <a class="d-flex align-items-center" href="#"--}}
+            {{--                ><i data-feather="shopping-cart"></i--}}
+            {{--                    ><span class="menu-title text-truncate" data-i18n="eCommerce"--}}
+            {{--                    >eCommerce</span--}}
+            {{--                    ></a--}}
+            {{--                >--}}
+            {{--                <ul class="menu-content">--}}
+            {{--                    <li>--}}
+            {{--                        <a class="d-flex align-items-center" href="/">--}}
+            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+            {{--                            >Premium Lessons</span--}}
+            {{--                            ></a>--}}
+            {{--                    </li>--}}
+            {{--                    <li>--}}
+            {{--                        <a class="d-flex align-items-center" href="/">--}}
+            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+            {{--                            >Instruments</span--}}
+            {{--                            ></a--}}
+            {{--                        >--}}
+            {{--                    </li>--}}
+            {{--                    <li>--}}
+            {{--                        <a class="d-flex align-items-center" href="/">--}}
+            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
+            {{--                            >Swag</span--}}
+            {{--                            ></a--}}
+            {{--                        >--}}
+            {{--                    </li>--}}
+            {{--                </ul>--}}
+            {{--            </li>--}}
         </ul>
     </div>
 </div>
@@ -728,7 +716,7 @@
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
         <div class="content-header row"></div>
-        <main >
+        <main>
             @yield('content')
         </main>
     </div>
@@ -995,22 +983,26 @@
 {{--    >Classroom</a--}}
 {{--    >--}}
 {{--</div>--}}
-     <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
-     <script>
-         window.start.init({
-             title: "Hi there ✌️",
-             message: "How may we help you? Just send us a message now to get assistance.",
-             color: "#861010", position: "right",
-             placeholder: "Enter your message",
-             withText: "Write with",
-             viaWhatsapp: "Or write us directly via Whatsapp",
-             gty: "Go to your", awu: "and write us",
-             connect: "Connect now",
-             button: "Contact Support",
-             device: "everywhere",
-             logo: "https://d2r80wdbkwti6l.cloudfront.net/1hnbbEeKP8bMcOhGowptlhTcJl4bTzCD.jpg",
-             person: "https://d2r80wdbkwti6l.cloudfront.net/ae7iuWzwAbDaf931xCX1bvTuoeisaxcf.jpg",
-             services: [{"name":"whatsapp","content":"+27845899764"},{"name":"mail","content":"support@trebleclefacademy.co.za"}]})</script>
+<script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
+<script>
+    window.start.init({
+        title: "Hi there ✌️",
+        message: "How may we help you? Just send us a message now to get assistance.",
+        color: "#861010", position: "right",
+        placeholder: "Enter your message",
+        withText: "Write with",
+        viaWhatsapp: "Or write us directly via Whatsapp",
+        gty: "Go to your", awu: "and write us",
+        connect: "Connect now",
+        button: "Contact Support",
+        device: "everywhere",
+        logo: "https://d2r80wdbkwti6l.cloudfront.net/1hnbbEeKP8bMcOhGowptlhTcJl4bTzCD.jpg",
+        person: "https://d2r80wdbkwti6l.cloudfront.net/ae7iuWzwAbDaf931xCX1bvTuoeisaxcf.jpg",
+        services: [{"name": "whatsapp", "content": "+27845899764"}, {
+            "name": "mail",
+            "content": "support@trebleclefacademy.co.za"
+        }]
+    })</script>
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
@@ -1037,9 +1029,9 @@
 </button>
 <!-- END: Footer-->
 
- <!-- BEGIN: Page JS-->
- <script src="{{'app-assets/js/scripts/pages/page-pricing.min.js'}}"></script>
- <!-- END: Page JS-->
+<!-- BEGIN: Page JS-->
+<script src="{{'app-assets/js/scripts/pages/page-pricing.min.js'}}"></script>
+<!-- END: Page JS-->
 
 <!-- BEGIN: Vendor JS-->
 <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
@@ -1080,7 +1072,7 @@
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
 <!-- END: Page JS-->
 
-     <script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
 <script>
     $(window).on("load", function () {
         if (feather) {
@@ -1088,7 +1080,7 @@
         }
     });
 
-    document.getElementById('school_fees').addEventListener('click',()=>{
+    document.getElementById('school_fees').addEventListener('click', () => {
         console.log('click');
         Swal.fire(
             'Good job!',

@@ -3,15 +3,17 @@
 
 
     <style>
-        #component-swiper-progress > div > div.card-header > h1{
+        #component-swiper-progress > div > div.card-header > h1 {
             /* margin-left:82%; */
         }
-        #component-swiper-progress > div{
+
+        #component-swiper-progress > div {
             /*min-height:597px;*/
         }
+
         @media (max-width: 568px) {
 
-            #component-swiper-progress{
+            #component-swiper-progress {
                 /* position: absolute;
                 top: -190vh;    */
                 padding: 0;
@@ -19,127 +21,131 @@
                 left: 0;
                 right: 0;
             }
-            #component-swiper-progress > div{
-                min-height: 46px!important;
-                height: auto!important;
+
+            #component-swiper-progress > div {
+                min-height: 46px !important;
+                height: auto !important;
             }
-            #component-swiper-progress > div{
+
+            #component-swiper-progress > div {
                 padding: 0px;
             }
         }
 
-        div.swiper-slide.swiper-slide-active{
+        div.swiper-slide.swiper-slide-active {
             width: calc(50% + 89px);
         }
 
-        #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12{
+        #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 {
             margin-top: 48px;
         }
 
-        #dashboard-analytics > div > div > div > div > a.btn.btn-primary.btn-cart.waves-effect.waves-float.waves-light{
+        #dashboard-analytics > div > div > div > div > a.btn.btn-primary.btn-cart.waves-effect.waves-float.waves-light {
             width: 100%;
         }
     </style>
 
-<!-- Dashboard Analytics Start -->
-<section id="dashboard-analytics">
-    <div class="row match-height">
 
-        <div class="col-lg-3 col-md-12 col-sm-12">
-                    <a href="{{route('office-fees')}}">
-                        <div class="card card-congratulations" style="background-size: cover">
-                            <div class="card-body text-center">
+    <!-- Dashboard Analytics Start -->
+    <section id="dashboard-analytics">
 
-                                <div class="avatar avatar-xl bg-primary shadow">
-                                    <div class="avatar-content">
-                                        <i class="font-large-1" data-feather="bell"></i>
-                                    </div>
-                                </div>
-                                <div class="text-center">
+        <div class="row match-height">
+
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <a href="{{route('office-fees')}}">
+                    <div class="card card-congratulations" style="background-size: cover">
+                        <div class="card-body text-center">
+
+                            <div class="avatar avatar-xl bg-primary shadow">
+                                <div class="avatar-content">
+                                    <i class="font-large-1" data-feather="bell"></i>
                                 </div>
                             </div>
-                            <div class="item-options text-center">
-                                <a href="" class="btn btn-primary btn-cart">
-                                    <i data-feather="book-open"></i>
-                                    <span class="add-to-cart">Pay School Fees </span>
-                                </a>
+                            <div class="text-center">
                             </div>
                         </div>
-                    </a>
+                        <div class="item-options text-center">
+                            <a href="{{route('office-fees')}}" class="btn btn-primary btn-cart">
+                                <i data-feather="book-open"></i>
+                                <span class="add-to-cart">Pay School Fees </span>
+                            </a>
+                        </div>
+                    </div>
+                </a>
             </div>
 
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a href="">
-                <div class="card card-congratulations" style="background-size: cover">
-                    <div class="card-body text-center">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <a href="">
+                    <div class="card card-congratulations" style="background-size: cover">
+                        <div class="card-body text-center">
 
-                        <div class="avatar avatar-xl bg-primary shadow">
-                            <div class="avatar-content">
-                                <i class="font-large-1" data-feather="bell"></i>
+                            <div class="avatar avatar-xl bg-primary shadow">
+                                <div class="avatar-content">
+                                    <i class="font-large-1" data-feather="bell"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
                             </div>
                         </div>
-                        <div class="text-center">
+                        <div class="item-options text-center">
+                            <a href="" class="btn btn-primary btn-cart">
+                                <i data-feather="book-open"></i>
+                                <span class="add-to-cart">Contact Technical Support </span>
+                            </a>
                         </div>
                     </div>
-                    <div class="item-options text-center">
-                        <a href="" class="btn btn-primary btn-cart">
-                            <i data-feather="book-open"></i>
-                            <span class="add-to-cart">Contact Technical Support </span>
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a href="">
-                <div class="card card-congratulations" style="background-size: cover">
-                    <div class="card-body text-center">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <a href="">
+                    <div class="card card-congratulations" style="background-size: cover">
+                        <div class="card-body text-center">
 
-                        <div class="avatar avatar-xl bg-primary shadow">
-                            <div class="avatar-content">
-                                <i class="font-large-1" data-feather="bell"></i>
+                            <div class="avatar avatar-xl bg-primary shadow">
+                                <div class="avatar-content">
+                                    <i class="font-large-1" data-feather="bell"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
                             </div>
                         </div>
-                        <div class="text-center">
+                        <div class="item-options text-center">
+                            <a href="" class="btn btn-primary btn-cart">
+                                <i data-feather="book-open"></i>
+                                <span class="add-to-cart">Contact Finance Office </span>
+                            </a>
                         </div>
                     </div>
-                    <div class="item-options text-center">
-                        <a href="" class="btn btn-primary btn-cart">
-                            <i data-feather="book-open"></i>
-                            <span class="add-to-cart">Contact Finance Office </span>
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
-        <div class="col-lg-3 col-md-12 col-sm-12">
-            <a href="">
-                <div class="card card-congratulations" style="background-size: cover">
-                    <div class="card-body text-center">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <a href="">
+                    <div class="card card-congratulations" style="background-size: cover">
+                        <div class="card-body text-center">
 
-                        <div class="avatar avatar-xl bg-primary shadow">
-                            <div class="avatar-content">
-                                <i class="font-large-1" data-feather="bell"></i>
+                            <div class="avatar avatar-xl bg-primary shadow">
+                                <div class="avatar-content">
+                                    <i class="font-large-1" data-feather="bell"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
                             </div>
                         </div>
-                        <div class="text-center">
+                        <div class="item-options text-center">
+                            <a href="" class="btn btn-primary btn-cart">
+                                <i data-feather="book-open"></i>
+                                <span class="add-to-cart">Contact Tutor </span>
+                            </a>
                         </div>
                     </div>
-                    <div class="item-options text-center">
-                        <a href="" class="btn btn-primary btn-cart">
-                            <i data-feather="book-open"></i>
-                            <span class="add-to-cart">Contact Tutor </span>
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    <!-- Greetings Card ends -->
+                </a>
+            </div>
+            <!-- Greetings Card ends -->
 
-    </div>
-</section>
+        </div>
+    </section>
 
 
 @endsection
