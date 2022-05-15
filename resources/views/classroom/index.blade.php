@@ -58,7 +58,7 @@
         </div>
     </div>
     <!-- BEGIN: Content-->
-    <div class="app-content content ecommerce-application">
+    <div class="app-content content ecommerce-application m-0">
 
         <div class="content-wrapper container-xxl p-0">
 

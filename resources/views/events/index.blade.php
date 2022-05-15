@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
     </div>
 
-    <div class="app-content content ">
+    <div class="app-content content m-0">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">

@@ -3,24 +3,24 @@
 
     <style>
         .ecommerce-application .grid-view:not(.wishlist-items), .ecommerce-application .list-view:not(.wishlist-items) {
-            margin-top: -5rem; 
+            margin-top: -5rem;
             /* margin-left:-456px!important */
         }
         body .content-detached.content-right .content-body {
              margin-left: 0!important;
-        }  
+        }
         div.item-img.text-center > img{
             object-fit: cover;
-            height: 100%;  
-        }  
-        div.item-img.text-center{
-            height: 100%; 
-            padding: 0!important;  
+            height: 100%;
         }
-        div.card-body,  #ecommerce-header{      
+        div.item-img.text-center{
+            height: 100%;
+            padding: 0!important;
+        }
+        div.card-body,  #ecommerce-header{
             display: none;
-        } 
-        
+        }
+
     </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -35,7 +35,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="#"></a>
                             </li>
-                        </ol> 
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
         </div>
     </div>
     <!-- BEGIN: Content-->
-    <div class="app-content content ecommerce-application">
+    <div class="app-content content ecommerce-application m-0">
 
         <div class="content-wrapper container-xxl p-0">
 
