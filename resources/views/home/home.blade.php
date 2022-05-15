@@ -458,6 +458,57 @@
 
                                     </a>
                                                     </div>
+                            @elseif($nav_card['type'] === 'office')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                <a href="{{route('office')}}">
+                                        <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                            <div class="card-body text-center">
+
+                                                <div class="avatar avatar-xl bg-primary shadow">
+                                                    <div class="avatar-content">
+                                                        <i class="font-large-1" data-feather="file-text"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+{{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
+                                                </div>
+                                            </div>
+                                            <div class="item-options text-center">
+                                                <a href="{{route('office')}}" class="btn btn-primary btn-cart">
+                                                    <i data-feather="book-open"></i>
+                                                    <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                                    </div>
+                    @elseif($nav_card['type'] === 'gallery')
+                                                    <div class="col-lg-3 col-md-12 col-sm-12">
+
+                               <a href="{{route('gallery')}}">
+                                        <div class="card card-congratulations" style="background-image:url('{{$nav_card['background']}}'); background-size: cover">
+                                            <div class="card-body text-center">
+
+                                                <div class="avatar avatar-xl bg-primary shadow">
+                                                    <div class="avatar-content">
+                                                        <i class="font-large-1" data-feather="image"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+{{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
+                                                </div>
+                                            </div>
+                                            <div class="item-options text-center">
+                                                <a href="{{route('gallery')}}" class="btn btn-primary btn-cart">
+                                                    <i data-feather="image"></i>
+                                                    <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                                    </div>
                             @endif
                 @endforeach
 

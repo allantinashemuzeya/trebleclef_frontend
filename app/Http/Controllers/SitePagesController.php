@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Gallery\Gallery;
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class SitePagesController extends Controller
     }
 
     public  function gallery(){
-        return view('gallery');
+
+        $galleries = (new Gallery())->getAll();
+        return view('gallery', ['galleries' => $galleries]);
     }
 
     public function office(){
