@@ -6,4 +6,6 @@ interface SchoolFeesInterface
 {
     public function get();
 
+    public function getAll();
+
 }
