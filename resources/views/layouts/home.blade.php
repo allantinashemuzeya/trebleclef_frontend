@@ -412,11 +412,7 @@
             margin-top: 57px;
         }
 
-        body > div.main-menu.menu-fixed.menu-dark.menu-accordion.menu-shadow.expanded > div.navbar-header.expanded > ul > li.nav-item.me-auto > a > span > img {
-            max-width: 124%;
-            margin-top: -25px;
-            margin-left: -23px;
-        }
+
     </style>
 
 
@@ -547,7 +543,9 @@
                 <a class="navbar-brand" href="/"
                 ><span class="brand-logo">
 
-                        <img src="{{asset('app-assets/images/logo/treble Clef white.jpeg')}}"/>
+                        <img src="{{asset('app-assets/images/logo/treble Clef white.jpeg')}}" style="    max-width: 124%;
+    margin-top: -25px;
+    margin-left: -23px;"/>
                     </span></a>
 
             </li>
