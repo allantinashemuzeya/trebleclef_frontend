@@ -15,11 +15,9 @@ class HomeController extends Controller
     {
 
       $draggableSlider = (new Home())->draggableSlider();
-
       $trebleClefTv = (new Home())->trebleClefTv();
       $navigationCards = (new Home())->navigationCards();
       $musicQuotes = (new MusicQuotes())->getAll();
-
 
       shuffle($musicQuotes);
 
@@ -31,6 +29,9 @@ class HomeController extends Controller
           'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
       ];
 
-        return view('home.home', $data);
+
+
+      return view('home.home', $data);
+
     }
 }

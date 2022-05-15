@@ -408,6 +408,10 @@
         }
     </style>
 
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
+
+
 </head>
 <!-- END: Head-->
 
@@ -1027,10 +1031,15 @@
 {{--            ></span>--}}
 {{--    </p>--}}
 {{--</footer>--}}
+
 <button class="btn btn-primary btn-icon scroll-top" type="button">
     <i data-feather="arrow-up"></i>
 </button>
 <!-- END: Footer-->
+
+ <!-- BEGIN: Page JS-->
+ <script src="{{'app-assets/js/scripts/pages/page-pricing.min.js'}}"></script>
+ <!-- END: Page JS-->
 
 <!-- BEGIN: Vendor JS-->
 <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
