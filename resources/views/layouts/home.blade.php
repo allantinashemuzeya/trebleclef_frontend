@@ -660,6 +660,14 @@
                     ></a>
             </li>
 
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="/gallery"
+                ><i data-feather="image"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Gallery</span
+                    ></a>
+            </li>
+
 
             <br/>
             <br/>
