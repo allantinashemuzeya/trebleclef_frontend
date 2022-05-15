@@ -65,4 +65,10 @@ Route::controller(SitePagesController::class)->group(function(){
     Route::get('/payfees', 'fees')->middleware(['auth'])->name('office-fees');
 });
 
+
+Route::get('/logout', function(){
+    Auth::logout();
+    return to_route('dashboard');
+})->name('logout');
+
 require __DIR__.'/auth.php';
