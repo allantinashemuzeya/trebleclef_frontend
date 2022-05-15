@@ -31,5 +31,11 @@ class SitePagesController extends Controller
     }
 
 
+    public function fees(){
+
+        return view('fees');
+    }
+
+
 
 }

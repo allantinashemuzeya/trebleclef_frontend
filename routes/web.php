@@ -56,13 +56,13 @@ Route::controller(ProfileController::class)->group(function(){
 Route::controller(EventsController::class)->group(function(){
     Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth'])->name('events');
     Route::get('/event/{id}', [EventsController::class, 'event'])->middleware(['auth'])->name('event');
-
 });
 
 Route::controller(SitePagesController::class)->group(function(){
     Route::get('/networks', 'networks')->middleware(['auth'])->name('networks');
     Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
     Route::get('/office', 'office')->middleware(['auth'])->name('office');
+    Route::get('/payfees', 'fees')->middleware(['auth'])->name('office-fees');
 });
 
 require __DIR__.'/auth.php';
