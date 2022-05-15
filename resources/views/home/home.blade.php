@@ -206,6 +206,15 @@
                                                                         <video  class="img-fluid" autoplay controls muted loop style="padding-right:2px">
                                                                             <source src="{{$item['file']}}" type="video/mp4"/>
                                                                         </video>
+                                                                    @elseif($item['type'] === 'remote_video')
+                                                                        <iframe
+                                                                            width="100%"
+                                                                            height="450px"
+                                                                            src="{{$item['file']}}"
+                                                                            title="YouTube video player" frameborder="2"
+                                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                            allowfullscreen>
+                                                                        </iframe>
                                                                     @else
                                                                         <img class="img-fluid " src="{{$item['file']}}" alt=""/>
                                                                     @endif

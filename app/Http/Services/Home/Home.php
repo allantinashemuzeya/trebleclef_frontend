@@ -35,6 +35,7 @@ class Home implements homeInterface {
         $includes = 'include=field_treble_clef_tv.field_tv_content.field_media_video_file,field_treble_clef_tv.field_tv_content.field_media_image';
         $response = Http::get(env('BACKEND_API') . 'home_page?' . $includes);
 
+
         if ($response->status() === 200) {
 
 
@@ -57,12 +58,10 @@ class Home implements homeInterface {
         foreach ($data as $item) {
             switch ($item->type) {
                 case 'file--file':
-                    array_push(
-                        $slider['content'], [
-                            'type' => $item->attributes->filemime,
-                            'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
-                        ]
-                    );
+                    $slider['content'][] = [
+                        'type' => $item->attributes->filemime,
+                        'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
+                    ];
                     break;
                 case 'paragraph--draggable_slider':
                     $slider['sliderType'] = $item->attributes->field_slider_type;
@@ -76,16 +75,23 @@ class Home implements homeInterface {
 
     #[ArrayShape(['content' => "array"])] public function processTrebleClefTv($data): array {
         $slider = ['tvTitle' => '', 'content' => []];
+
         foreach ($data as $item) {
             switch ($item->type) {
                 case 'file--file':
-                    array_push(
-                        $slider['content'], [
-                            'type' => $item->attributes->filemime,
-                            'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
-                        ]
-                    );
+                    $slider['content'][] = [
+                        'type' => $item->attributes->filemime,
+                        'file' => env('BACKEND_APP_ASSETS_URL') . $item->attributes->uri->url,
+                    ];
                     break;
+
+                case 'media--remote_video':
+                    $slider['content'][] = [
+                        'type' => 'remote_video',
+                        'file' =>  str_replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/', $item->attributes->field_media_oembed_video),
+                    ];
+                    break;
+
 
                 case 'paragraph--treble_clef_tv':
                     $slider['tvTitle'] = $item->attributes->field_title !== NULL ? $item->attributes->field_title : '';
@@ -109,7 +115,7 @@ class Home implements homeInterface {
 
             if(property_exists($data,'included')){
                 foreach ($data->included as $item){
-                    array_push($nav_cards, $this->processNavigationCard($item));
+                    $nav_cards[] = $this->processNavigationCard($item);
                 }
             }
         }
