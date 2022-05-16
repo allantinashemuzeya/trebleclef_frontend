@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Communication\Communication;
+use App\Http\Services\Foundations\Foundation;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,7 +53,7 @@ class CommunicationController extends Controller
     // Section Foundations
     public function foundations()
     {
-        $data = ['pageTitle' => 'Treble Clef Foundations', 'communications' => $this->processCommunication('Foundation'),          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+        $data = ['pageTitle' => 'Treble Clef Foundations', 'communications' => $this->processCommunication('Foundations'),          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
         ];
 
         return view('communications.index', $data);
@@ -76,6 +77,10 @@ class CommunicationController extends Controller
         return (new Communication())->getAll();
     }
 
+    public function getFoundations()
+    {
+        return (new Foundation())->getAll();
+    }
     public function processCommunication($commType)
     {
 
@@ -88,7 +93,9 @@ class CommunicationController extends Controller
             }
         }
 
+
         return $list;
     }
+
 
 }
