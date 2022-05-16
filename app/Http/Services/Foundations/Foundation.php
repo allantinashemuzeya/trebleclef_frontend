@@ -1,17 +1,18 @@
-<?php /** @noinspection LaravelFunctionsInspection */
+<?php
 
-namespace App\Http\Services\Communication;
+namespace App\Http\Services\Foundations;
 
-use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Http;
 use JetBrains\PhpStorm\ArrayShape;
 
-class Communication implements communicationInterface {
+class Foundation implements FoundationInterface
+{
 
     //SECTION  GET COMM
-    public function get($communicationId) {
+    public function get($foundationId) {
         $includes = 'include=field_media.field_media_image,field_media.field_media_video_file,field_media.field_media_document';
-        $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
+        $response = Http::get(env('BACKEND_API') . 'foundation/'.$foundationId.'?' . $includes);
 
         // dd($response);
         if ($response->status() === 200) {
@@ -27,23 +28,24 @@ class Communication implements communicationInterface {
     public function getAll(): array {
         // TODO: Implement getAll() method.
 
-        $includes = 'include=field_media.field_media_image,field_communication_banner';
-        $response = Http::get(env('BACKEND_API') . 'communication?' . $includes);
+        $includes = 'include=field_media.field_media_image,field_foundation_banner';
+        $response = Http::get(env('BACKEND_API') . 'foundation?' . $includes);
+
         if ($response->status() === 200) {
             $data = json_decode($response);
-
-            $communications = [];
+            $foundations = [];
 
             foreach ($data->data as $item){
                 try{
-                $communications[] = $this->processCommunication($item);
+                    $foundations[] = $this->processFoundation($item);
 
                 }catch(\Exception $e){
+
                 }
             }
 
 
-            return $communications;
+            return $foundations;
         }
         else {
             return ['error' => $response->status()];
@@ -51,21 +53,21 @@ class Communication implements communicationInterface {
     }
 
 
-    public function processCommunication($data) {
+    public function processFoundation($data) {
 
-       $id = $data->id;
-       $raw_communication = $this->get($id);
+        $id = $data->id;
+        $raw_foundation = $this->get($id);
 
 
         return [
-                 'id'=>$raw_communication->data->id,
-                 'title'=>$raw_communication->data->attributes->title,
-                 'banner'=>$this->getCommunicationBanner($id),
-                 'url_alias'=>$raw_communication->data->attributes->path->alias,
-                 'type'=>$raw_communication->data->attributes->field_communication_type,
-                 'date'=>Carbon::parse($raw_communication->data->attributes->created)->isoFormat('MMM DD YYYY'),
-                 'body'=>$this->sanitizeBodyField($raw_communication->data->attributes->body->value),
-                 'media'=>property_exists($raw_communication, 'included') ? $this->getMedia($raw_communication->included) : []
+            'id'=>$raw_foundation->data->id,
+            'title'=>$raw_foundation->data->attributes->title,
+            'banner'=>$this->getFoundationBanner($id),
+            'url_alias'=>$raw_foundation->data->attributes->path->alias,
+            'type'=>$raw_foundation->data->attributes->field_foundation_type,
+            'date'=>Carbon::parse($raw_foundation->data->attributes->created)->isoFormat('MMM DD YYYY'),
+            'body'=>$this->sanitizeBodyField($raw_foundation->data->attributes->body->value),
+            'media'=>property_exists($raw_foundation, 'included') ? $this->getMedia($raw_foundation->included) : []
         ];
     }
 
@@ -105,24 +107,24 @@ class Communication implements communicationInterface {
         return $media;
     }
 
-    public function getCommunicationBanner($communicationId): array|string|null {
+    public function getFoundationBanner($foundationId): array|string|null {
 
-        $includes = 'include=field_communication_banner.field_media_image,field_communication_banner.field_media_video_file';
-        $response = Http::get(env('BACKEND_API') . 'communication/'.$communicationId.'?' . $includes);
+        $includes = 'include=field_foundation_banner.field_media_image,field_foundation_banner.field_media_video_file';
+        $response = Http::get(env('BACKEND_API') . 'foundation/'.$foundationId.'?' . $includes);
 
 
         if ($response->status() === 200) {
 
             $data =  json_decode($response);
 
-            return isset($data->included) ? $this->processCommunicationBanner($data->included ) :  null ;
+            return isset($data->included) ? $this->processFoundationBanner($data->included ) :  null ;
         }
         else {
             return ['error' => $response->status()];
         }
     }
 
-    #[ArrayShape(['file' => "string", 'type' => "mixed|string"])] public function processCommunicationBanner($data): array {
+    #[ArrayShape(['file' => "string", 'type' => "mixed|string"])] public function processFoundationBanner($data): array {
 
         $banner = ['file'=>'', 'type'=>''];
 
@@ -137,31 +139,20 @@ class Communication implements communicationInterface {
         return $banner;
     }
 
-    public function getSingleCommunication($id): array
+    public function getSinglefoundation($id): array
     {
 //        $cid = $this->getCid($url_alias);
 
         $includes = 'include=field_media.field_media_image';
-        $response = Http::get(env('BACKEND_API') . 'communication/'.$id.'?' . $includes);
+        $response = Http::get(env('BACKEND_API') . 'foundation/'.$id.'?' . $includes);
         if ($response->status() === 200) {
             $data = json_decode($response);
 
-            return $this->processCommunication($data->data);
+            return $this->processfoundation($data->data);
         }
         else {
             return ['error' => $response->status()];
         }
     }
 
-    public function getCid($url_alias) {
-        $response = Http::get(env('BACKEND_APP_ASSETS_URL').'/router/translate-path?path=/communication'.$url_alias);
-
-        dd($response);
-        $data = json_decode($response);
-
-        return $data;
-
-
-
-    }
 }
