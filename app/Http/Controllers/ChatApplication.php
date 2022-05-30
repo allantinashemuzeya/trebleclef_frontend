@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ChatApplication extends Controller
 {
     //
-    public functin index()
+    public function index()
     {
         return view('email.app-email');
     }

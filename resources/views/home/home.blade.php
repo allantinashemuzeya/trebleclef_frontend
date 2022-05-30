@@ -197,7 +197,7 @@
                                         <!-- progress swiper -->
                                         <section id="component-swiper-progress">
 
-                                                <div class="card-body" style="min-height:500px; height: 500px">
+                                                <div class="card-body" style="min-height:500px;">
                                                     <div class="swiper-progress swiper-container">
                                                         <div class="swiper-wrapper">
                                                             @foreach($trebleClefTvContent['content'] as $item)
