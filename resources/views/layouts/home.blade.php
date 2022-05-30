@@ -67,8 +67,20 @@
         type="text/css"
     />
 
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/katex.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/quill.snow.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.min.css')}}">
     <!-- END: Vendor CSS-->
+
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-quill-editor.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-email.min.css')}}">
+    <!-- END: Page CSS-->
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
@@ -174,6 +186,13 @@
     <link href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}" rel="stylesheet" type="text/css">
 
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat-list.min.css')}}">
+
+    <!-- END: Page CSS-->
     <!-- BEGIN: Page CSS-->
     <link href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet"
           type="text/css">
@@ -1035,6 +1054,11 @@
 </button>
 <!-- END: Footer-->
 
+<script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+
 <!-- BEGIN: Page JS-->
 <script src="{{'app-assets/js/scripts/pages/page-pricing.min.js'}}"></script>
 <!-- END: Page JS-->
@@ -1078,7 +1102,24 @@
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
 <!-- END: Page JS-->
 
+<script src="{{asset('app-assets/vendors/js/editors/quill/katex.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/editors/quill/highlight.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/editors/quill/quill.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/extensions/toastr.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+
+
+
+
+
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
+
+
+
+<!-- BEGIN: Page JS-->
+<script src="{{asset('app-assets/js/scripts/pages/app-chat.min.js')}}"></script>
+<!-- END: Page JS-->
+
 <script>
     $(window).on("load", function () {
         if (feather) {
@@ -1086,14 +1127,6 @@
         }
     });
 
-    document.getElementById('school_fees').addEventListener('click', () => {
-        console.log('click');
-        Swal.fire(
-            'Good job!',
-            'You clicked the button!',
-            'success'
-        )
-    })
 </script>
 @stack('scripts')
 

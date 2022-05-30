@@ -4,7 +4,7 @@ namespace App\Http\Services\Events;
 
 use Illuminate\Support\Facades\Http;
 
-class Events implements EventInterface
+ class  Events implements EventInterface
 {
 
     public function getAll()
@@ -48,7 +48,8 @@ class Events implements EventInterface
     }
 
 
-    public function getSingleEvent($eventId){
+    public function getSingleEvent($eventId): array
+    {
         $response = Http::get(env('BACKEND_API').'events/'.$eventId.'?include=field_event_banner,field_event_document');
 
         $data = json_decode($response);
