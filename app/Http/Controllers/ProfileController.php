@@ -1,21 +1,40 @@
-<?php
+<?php /** @noinspection PhpVoidFunctionResultUsedInspection */
+
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace App\Http\Controllers;
 
+use App\Mail\InviteTutor;
 use App\Models\Student;
+use App\Models\TutorInvites;
+use App\Models\Tutors;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ProfileController extends Controller
 {
     // Section Home
     public function index()
     {
-        $currentStudent = Student::where('user_id', Auth::user()->id)->first();
+        if(Auth::user()->userType === 1){
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+        else if(Auth::user()->userType === 2){
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        }
+        else{
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+//        else if(Auth::user()->userType === 4){
+//           $currentUser = O::where('user_id', Auth::user()->id)->first();
+//        }
 
-        return view('profile.profile', ['currentStudent'=>$currentStudent]);
+        return view('profile.profile', ['currentUser'=>$currentUser]);
     }
 
     public function updateProfile(Request $request)
@@ -73,6 +92,28 @@ class ProfileController extends Controller
             }
         }
 
+        else if($request?->formType === 'inviteTutor'){
+
+            $link = env('APP_URL').'tutor_invite/'.$request->tutorEmail;
+
+            try {
+
+                Mail::to($request->tutorEmail)->send(new InviteTutor($link));
+
+                $tutorInvitesModel = new TutorInvites();
+                $tutorInvitesModel->TutorInviteEmail = $request->tutorEmail;
+
+                $tutorInvitesModel->save();
+
+                return redirect(route('profile'))->with(['response'=>'Tutor Invited Successfully', 'statusCode'=>200]);
+
+            }catch(Exception $e){
+                log::alert($e);
+            }
+
+
+        }
+
         return abort(500);
 
     }
@@ -97,10 +138,19 @@ class ProfileController extends Controller
 
         if($path){
 
-            $currentStudent = Student::where('user_id', Auth::user()->id)->first();
-            $currentStudent->profile_picture = Auth::user()->id.'/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            if(Auth::user()->userType === 1){
+                $currentUser = Student::where('user_id', Auth::user()->id)->first();
+            }
+            else if(Auth::user()->userType === 2){
+                $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+            }
+            else{
+                $currentUser = Student::where('user_id', Auth::user()->id)->first();
+            }
 
-            if($currentStudent->save()){
+            $currentUser->profile_picture = Auth::user()->id.'/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+
+            if($currentUser->save()){
                 return true;
             }
         }
@@ -111,16 +161,26 @@ class ProfileController extends Controller
 
     public function saveCoverImage($request)
     {
+
         $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
         $path = $request->file('profilePicture')->storeAs('public/CoverImages/'.Auth::user()->id.'/'.$date, $request->file('coverImage')->getClientOriginalName());
 
         if($path){
 
-            $currentStudent = Student::where('user_id', Auth::user()->id)->first();
-            $currentStudent->cover_image = Auth::user()->id.'/' . $date .'/' . $request->file('coverImage')->getClientOriginalName();
+            if(Auth::user()->userType === 1){
+                $currentUser = Student::where('user_id', Auth::user()->id)->first();
+            }
+            else if(Auth::user()->userType === 2){
+                $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+            }
+            else{
+                $currentUser = Student::where('user_id', Auth::user()->id)->first();
+            }
 
-            if($currentStudent->save()){
+            $currentUser->cover_image = Auth::user()->id.'/' . $date .'/' . $request->file('coverImage')->getClientOriginalName();
+
+            if($currentUser->save()){
                 return true;
             }
         }
@@ -131,22 +191,57 @@ class ProfileController extends Controller
     public function saveDetails($request)
     {
 
-        $currentStudent = Student::where('user_id', Auth::user()->id)->first();
+        if(Auth::user()->userType === 1){
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
 
-        $currentStudent->date_of_birth = $request->dob;
-        $currentStudent->postal_address = $request->postal_address;
-        $currentStudent->residential_address = $request->residential_address;
-        $currentStudent->bio = $request->bio;
-        $currentStudent->school = $request->school;
-        $currentStudent->cellphoneNumber = $request->cellphone_number;
-        $currentStudent->next_of_kin_fullName = $request->next_of_kin_fullName;
-        $currentStudent->next_of_kin_cellphoneNumber = $request->next_of_kin_cellphoneNumber;
+            $currentUser->date_of_birth = $request->dob;
+            $currentUser->postal_address = $request->postal_address;
+            $currentUser->residential_address = $request->residential_address;
+            $currentUser->bio = $request->bio;
+            $currentUser->school = $request->school;
+            $currentUser->cellphoneNumber = $request->cellphone_number;
+            $currentUser->next_of_kin_fullName = $request->next_of_kin_fullName;
+            $currentUser->next_of_kin_cellphoneNumber = $request->next_of_kin_cellphoneNumber;
 
-        if($currentStudent->save()){
-            return true;
-        }else{
-            return false;
+            if($currentUser->save()){
+                return true;
+            }else{
+                return false;
+            }
         }
+
+        else if(Auth::user()->userType === 2){
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+
+            $currentUser->bio = $request->bio;
+            $currentUser->cellphoneNumber = $request->cellphone_number;
+
+            if($currentUser->save()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+       else{
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+
+            $currentUser->date_of_birth = $request->dob;
+            $currentUser->postal_address = $request->postal_address;
+            $currentUser->residential_address = $request->residential_address;
+            $currentUser->bio = $request->bio;
+            $currentUser->school = $request->school;
+            $currentUser->cellphoneNumber = $request->cellphone_number;
+            $currentUser->next_of_kin_fullName = $request->next_of_kin_fullName;
+            $currentUser->next_of_kin_cellphoneNumber = $request->next_of_kin_cellphoneNumber;
+
+            if($currentUser->save()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
 
     }
 }

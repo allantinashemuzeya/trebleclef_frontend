@@ -5,7 +5,9 @@
             display:none !important;
         }
     </style>
-    <livewire:chat />
+
+    @livewire('chat', ['tutor'=>$tutor, 'tutorDetails'=>$tutorDetails, 'currentUser'=>$currentUser])
+
 
 
   @push('scripts')

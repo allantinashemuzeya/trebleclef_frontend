@@ -512,15 +512,24 @@
                     id="dropdown-user">
                     <div class="user-nav d-sm-flex d-none">
                         <span class="user-name fw-bolder">{{Auth::user()->firstname}}</span>
-                        <span class="user-status">Student</span>
+                        @if(Auth::user()->userType === 1)
+                            <span class="user-status">Student</span>
+                        @elseif(Auth::user()->userType === 2)
+                            <span class="user-status">Tutor</span>
+                        @elseif(Auth::user()->userType === 3)
+                            <span class="user-status">Admin</span>
+                        @elseif(Auth::user()->userType === 4)
+                            <span class="user-status">Office</span>
+
+                        @endif
                     </div>
-                    @if(!empty($currentStudent->profile_picture))
+                    @if(!empty($currentUser->profile_picture))
                         <span class="avatar">
                         <img
                             alt="avatar"
                             class="round"
                             height="40"
-                            src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}"
+                            src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
                             {{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
                             width="40"/><span class="avatar-status-online"></span></span
                         ></a>
@@ -529,7 +538,7 @@
                 {{--                <div class="profile-image-wrapper">--}}
                 {{--                    <div class="profile-image">--}}
                 {{--                        <div class="avatar">--}}
-                {{--                            <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">--}}
+                {{--                            <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">--}}
                 {{--                        </div>--}}
                 {{--                    </div>--}}
                 {{--                </div>--}}
