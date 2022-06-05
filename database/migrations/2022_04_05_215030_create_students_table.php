@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('cover_image')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('bio')->nullable();
-
             $table->string('gender')->nullable();
             $table->string('school')->nullable();
             $table->string('residential_address')->nullable();

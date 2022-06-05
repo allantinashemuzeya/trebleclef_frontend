@@ -26,7 +26,7 @@
             @endif
 
 
-                @if(empty($currentStudent->profile_picture))
+                @if(empty($currentUser->profile_picture))
                     <div class="col-12 mt-75">
 
                         <div class="alert alert-danger mb-50" role="alert">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                @elseif(empty($currentStudent->bio))
+                @elseif(empty($currentUser->bio))
                     <div class="col-12 mt-75">
 
                         <div class="alert alert-warning mb-50" role="alert">
@@ -88,6 +88,20 @@
                             <span class="fw-bold">Personal Details</span>
                         </a>
                     </li>
+
+                    <!-- create tutor -->
+{{--                    @if(Auth::user()->userType === 3)--}}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            id="account-pill-info"
+                            data-bs-toggle="pill"
+                            href="#invite-tutor"
+                            aria-expanded="false">
+                            <i data-feather="user" class="font-medium-3 me-1"></i>
+                            <span class="fw-bold">Invite Tutor</span>
+                        </a>
+                    </li>
+{{--                    @endif--}}
                 </ul>
             </div>
             <!--/ left menu section -->
@@ -114,7 +128,7 @@
                                     <div class="d-flex">
                                         <a href="#" class="me-25">
                                             <img
-                                                src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}"
+                                                src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
                                                 id="account-upload-img"
                                                 class="rounded me-50"
                                                 alt="profile image"
@@ -305,36 +319,10 @@
                                                     rows="4"
                                                     name="bio"
                                                     placeholder="Your Bio  here..."
-                                                >{{$currentStudent->bio}}</textarea>
+                                                >{{$currentUser->bio}}</textarea>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="account-birth-date">Birth date</label>
-                                                <input
-                                                    type="date"
-                                                    class="form-control flatpickr"
-                                                    placeholder="Birth date"
-                                                    id="account-birth-date"
-                                                    name="dob"
-                                                    value="{{$currentStudent->date_of_birth}}"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="accountSelect">School</label>
-                                                <select class="form-select" id="accountSelect" name="school">
-                                                        @foreach($schools as $school)
-                                                            @if($school['id'] === $currentStudent->school)
-                                                                 <option selected value="{{$school['id']}}">{{$school['name']}}</option>
-                                                            @else
-                                                            <option value="{{$school['id']}}">{{$school['name']}}</option>
-                                                            @endif
-                                                        @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+
                                         <div class="col-12 col-sm-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="account-phone">Cell Phone Number</label>
@@ -343,58 +331,88 @@
                                                     class="form-control"
                                                     id="account-phone"
                                                     placeholder="(+27) 254 2568"
-                                                    value="{{$currentStudent->cellphoneNumber}}"
+                                                    value="{{$currentUser->cellphoneNumber}}"
                                                     name="cellphone_number"
                                                 />
                                             </div>
 
-                                            <div class="mb-1">
-                                                <label class="form-label" for="account-phone">Next of Kin Full Name</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="account-phone"
-                                                    placeholder="Next of Kin Full Name"
-                                                    name="next_of_kin_fullName"
-                                                    value="{{$currentStudent->next_of_kin_fullName}}"
-                                                />
-                                            </div>
+                                            @if(Auth::user()->userType !== 2)
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="account-birth-date">Birth date</label>
+                                                        <input
+                                                            type="date"
+                                                            class="form-control flatpickr"
+                                                            placeholder="Birth date"
+                                                            id="account-birth-date"
+                                                            name="dob"
+                                                            value="{{$currentUser->date_of_birth}}"
+                                                        />
+                                                    </div>
+                                                </div>
 
-                                            <div class="mb-1">
-                                                <label class="form-label" for="account-phone">Next Of Kin Cell Phone Number</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="account-phone"
-                                                    placeholder="Next of Kin Phone number"
-                                                    name="next_of_kin_cellphoneNumber"
-                                                    value="{{$currentStudent->next_of_kin_cellphoneNumber}}"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="accountTextarea">Residential Address</label>
-                                                <textarea
-                                                    class="form-control"
-                                                    id="accountTextarea"
-                                                    rows="4"
-                                                    name="residential_address"
-                                                    placeholder="Your residential address here..."
-                                                >{{$currentStudent->residential_address}}</textarea>
-                                            </div>
-                                            <div class="mb-1">
-                                                <label class="form-label" for="accountTextarea">Postal Address</label>
-                                                <textarea
-                                                    class="form-control"
-                                                    id="accountTextarea"
-                                                    rows="4"
-                                                    name="postal_address"
-                                                    placeholder="Your postal address here..."
-                                                >{{$currentStudent->postal_address}}</textarea>
-                                            </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="accountSelect">School</label>
+                                                        <select class="form-select" id="accountSelect" name="school">
+                                                            @foreach($schools as $school)
+                                                                @if($school['id'] === $currentUser->school)
+                                                                    <option selected value="{{$school['id']}}">{{$school['name']}}</option>
+                                                                @else
+                                                                    <option value="{{$school['id']}}">{{$school['name']}}</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="account-phone">Next of Kin Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="account-phone"
+                                                        placeholder="Next of Kin Full Name"
+                                                        name="next_of_kin_fullName"
+                                                        value="{{$currentUser->next_of_kin_fullName}}"
+                                                    />
+                                                </div>
 
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="account-phone">Next Of Kin Cell Phone Number</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="account-phone"
+                                                        placeholder="Next of Kin Phone number"
+                                                        name="next_of_kin_cellphoneNumber"
+                                                        value="{{$currentUser->next_of_kin_cellphoneNumber}}"
+                                                    />
+                                                </div>
                                         </div>
+
+                                            <div class="col-12 col-sm-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="accountTextarea">Residential Address</label>
+                                                    <textarea
+                                                        class="form-control"
+                                                        id="accountTextarea"
+                                                        rows="4"
+                                                        name="residential_address"
+                                                        placeholder="Your residential address here..."
+                                                    >{{$currentUser->residential_address}}</textarea>
+                                                </div>
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="accountTextarea">Postal Address</label>
+                                                        <textarea
+                                                            class="form-control"
+                                                            id="accountTextarea"
+                                                            rows="4"
+                                                            name="postal_address"
+                                                            placeholder="Your postal address here..."
+                                                        >{{$currentUser->postal_address}}</textarea>
+                                                    </div>
+                                            </div>
+                                        @endif
 
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
@@ -404,49 +422,54 @@
                                 </form>
                                 <!--/ form -->
                             </div>
-                            <!--/ information -->
+                            <!--/information -->
+
+
+
+                            <!-- invite tutor -->
+                            <div
+                                role="tabpanel"
+                                class="tab-pane"
+                                id="invite-tutor"
+                                aria-labelledby="account-pill-general"
+                                aria-expanded="true">
+
+                                <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="text" hidden name="formType" value="inviteTutor"/>
+
+                                    <div class="row">
+
+                                        <div class="col-12 col-sm-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="account-e-mail">Email Address of Tutor to invite<br/></label>
+                                                <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    id="account-e-mail"
+                                                    style="background:transparent; border-color: grey; color:white"
+                                                    name="tutorEmail"
+                                                    placeholder="Email Address"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary mt-2 me-1">Save changes</button>
+                                            <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!--/ form -->
+                            </div>
+                            <!--/ invite tutor-->
 
                         </div>
                     </div>
                 </div>
             </div>
             <!--/ right content section -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </div>

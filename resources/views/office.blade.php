@@ -134,7 +134,7 @@
                             </div>
                         </div>
                         <div class="item-options text-center">
-                            <a href="" class="btn btn-primary btn-cart">
+                            <a href="" class="btn btn-primary btn-cart" data-bs-toggle="modal" data-bs-target="#chooseTutor">
                                 <i data-feather="book-open"></i>
                                 <span class="add-to-cart">Contact Tutor </span>
                             </a>
@@ -146,6 +146,42 @@
 
         </div>
     </section>
+
+
+    <div class="form-modal-ex">
+
+        <!-- Modal -->
+        <div class="modal fade text-start" id="chooseTutor" tabindex="-1" aria-labelledby="myModalLabel33" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel33">Choose Tutor To Chat with</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('chat-tutor')}}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-1">
+                                <select type="number" class="form-control bg-transparent" name="tutor">
+                                    @foreach($tutors as $tutor)
+                                        <option value="{{$tutor->id}}">
+                                           {{$tutor->firstname}}  {{$tutor->lastname}}
+                                        </option>
+                                   @endforeach
+
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary waves-effect waves-float waves-light">Chat</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 @endsection

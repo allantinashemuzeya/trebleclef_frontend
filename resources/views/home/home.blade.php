@@ -41,7 +41,7 @@
     </style>
     <div class="content-body">
 
-        @if(empty($currentStudent->profile_picture))
+        @if(empty($currentUser->profile_picture))
             <div class="col-12 mt-75">
 
                 <div class="alert alert-danger mb-50" role="alert">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-        @elseif(empty($currentStudent->bio))
+        @elseif(empty($currentUser->bio))
             <div class="col-12 mt-75">
 
                 <div class="alert alert-warning mb-50" role="alert">
@@ -134,32 +134,32 @@
             <!-- Swiper -->
             <div class="row match-height">
                 <!-- Greetings Card starts -->
-                @if(!empty($currentStudent->profile_picture))
+                @if(!empty($currentUser->profile_picture))
                     <div class="col-lg-4 col-md-6 col-12">
                         <a href="{{route('profile')}}">
                             <div class="card card-profile">
-                            <!-- <img src="{{asset('storage/profilePictures/'.$currentStudent->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
+                            <!-- <img src="{{asset('storage/profilePictures/'.$currentUser->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
                                 <div class="card-body">
                                     <div class="profile-image-wrapper">
                                         <div class="profile-image">
                                             <div class="avatar">
-                                                <img src="{{asset('storage/profilePictures/'.$currentStudent->profile_picture)}}" alt="Profile Picture">
+                                                <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">
                                             </div>
                                         </div>
                                     </div>
                                     <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
                                     @foreach($schools as $school)
-                                        @if($school['id'] === $currentStudent->school)
+                                        @if($school['id'] === $currentUser->school)
                                             <h6 class="text-muted">{{$school['name']}}</h6>
                                         @endif
                                     @endforeach
                                     <span class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
                                     <hr class="mb-2">
-                                    @if(!empty($currentStudent->bio))
+                                    @if(!empty($currentUser->bio))
                                         <div class="text-center">
                                             <h4 class="text-title">My Bio</h4>
                                             <p class="card-text m-auto w-75 text-white-50">
-                                                {{$currentStudent->bio}}
+                                                {{$currentUser->bio}}
                                             </p>
                                         </div>
                                         <hr/>
@@ -183,7 +183,7 @@
                 @endif
 
 
-                <div class="{{ !empty($currentStudent->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}" >
+                <div class="{{ !empty($currentUser->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}" >
 {{--                    <div class="card-header">--}}
 {{--                        <h4 class="card-title">Treble Clef Tv</h4>--}}
 
@@ -197,7 +197,7 @@
                                         <!-- progress swiper -->
                                         <section id="component-swiper-progress">
 
-                                                <div class="card-body" style="min-height:500px; height: 500px">
+                                                <div class="card-body" style="min-height:500px;">
                                                     <div class="swiper-progress swiper-container">
                                                         <div class="swiper-wrapper">
                                                             @foreach($trebleClefTvContent['content'] as $item)

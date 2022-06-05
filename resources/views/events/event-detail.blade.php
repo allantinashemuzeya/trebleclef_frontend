@@ -114,7 +114,7 @@
                                                          aria-live="polite"
                                                          style="transform: translate3d(-4224px, 0px, 0px); transition-duration: 0ms;">
                                                         @foreach($event['media']  as $item)
-                                                            @if($item['type'] === 'video/mp4')
+                                                            @if($item['type'] === 'video/mp4' || $item['type'] === 'video/mov' )
 
                                                                 <div class="swiper-slide" role="group"
                                                                      aria-label="1 / 5"

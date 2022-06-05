@@ -1,12 +1,14 @@
 <?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ChatApplication;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
+use App\Http\Controllers\TutorInvitesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +28,7 @@ Route::get('/', function () {
 
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/dashboard','index')->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard/','index')->middleware(['auth'])->name('dashboard');
 });
 
 Route::controller(CommunicationController::class)->group(function(){
@@ -63,6 +65,16 @@ Route::controller(SitePagesController::class)->group(function(){
     Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
     Route::get('/office', 'office')->middleware(['auth'])->name('office');
     Route::get('/payfees', 'fees')->middleware(['auth'])->name('office-fees');
+});
+
+Route::controller(ChatApplication::class)->group(function(){
+    Route::post('chat/', 'chatTutor')->name('chat-tutor');
+});
+
+
+Route::controller(TutorInvitesController::class)->group(function(){
+    Route::get('/tutor_invite/{email_address}', 'index');
+    Route::post('/tutor_invite/create', 'createTutor')->name('createTutor');
 });
 
 

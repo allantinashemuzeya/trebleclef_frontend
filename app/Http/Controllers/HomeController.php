@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Services\Events\Events;
 use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Models\Student;
+use App\Models\Tutors;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     //
-    public function index()
+    public function index(): Factory|View|Application
     {
 
       $draggableSlider = (new Home())->draggableSlider();
@@ -21,12 +23,24 @@ class HomeController extends Controller
 
       shuffle($musicQuotes);
 
-      $data = [
+        if(Auth::user()->userType === 1){
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+        else if(Auth::user()->userType === 2){
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        }
+        else{
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+
+
+        $data = [
           'draggableSliderContent' => $draggableSlider,
           'trebleClefTvContent' => $trebleClefTv,
           'navigationCards'=>$navigationCards,
           'musicQuotes'=> $musicQuotes,
-          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
+          'currentUser' => $currentUser
+
       ];
 
 
