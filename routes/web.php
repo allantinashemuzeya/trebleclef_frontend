@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/dashboard/{user}','index')->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard/','index')->middleware(['auth'])->name('dashboard');
 });
 
 Route::controller(CommunicationController::class)->group(function(){

@@ -1,32 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Services\Events\Events;
 use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Models\Student;
-use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use function GuzzleHttp\Promise\all;
 
 class HomeController extends Controller
 {
     //
-    public function index(&$user)
+    public function index(): Factory|View|Application
     {
-        $allan = new class{
-            public function sex(){
-                $mike = null;
-                return $mike ??= 'loe sex';
-            }
-            public function sex2(){
-                return 'I love sex';
-            }
-        };
-
-        dd($allan->sex());
-
 
       $draggableSlider = (new Home())->draggableSlider();
       $trebleClefTv = (new Home())->trebleClefTv();
