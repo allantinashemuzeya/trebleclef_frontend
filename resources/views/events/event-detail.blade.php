@@ -114,6 +114,7 @@
                                                          aria-live="polite"
                                                          style="transform: translate3d(-4224px, 0px, 0px); transition-duration: 0ms;">
                                                         @foreach($event['media']  as $item)
+
                                                             @if($item['type'] === 'video/mp4' || $item['type'] === 'video/mov' )
 
                                                                 <div class="swiper-slide" role="group"
@@ -161,7 +162,7 @@
 
 
                                                         @foreach($event['media']  as $item)
-                                                            @if($item['type'] === 'video/mp4')
+                                                            @if($item['type'] === 'video/mp4' || $item['type'] === 'video/quicktime' || $item['type'] === 'video/mov'  )
 
                                                                 <div
                                                                     class="swiper-slide swiper-slide-visible swiper-slide-active"
@@ -277,7 +278,7 @@
 
                             <label>Contact Cell:  </label>
                             <div class="mb-1">
-                                <input type="text" value="{{$currentStudent->cellphoneNumber}}" placeholder="Email Address" class="form-control">
+                                <input type="text" value="{{$currentUser->cellphoneNumber}}" placeholder="Email Address" class="form-control">
                             </div>
 
                         </div>

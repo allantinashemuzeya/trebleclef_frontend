@@ -16,32 +16,11 @@ use Illuminate\Support\Facades\Http;
         $data = json_decode($response);
         $events = [];
 
+//        dd($data);
+
 
         foreach($data->data as $event){
-
-            $event_banner = '';
-
-            foreach ($data->included as $include){
-                if($include->id === $event->relationships->field_event_banner->data->id ){
-                    $event_banner = env('BACKEND_APP_ASSETS_URL') . $include->attributes->uri->url;
-                }
-            }
-
-
-            $events[] = [
-
-                'id' => $event->id,
-                'title' => $event->attributes->title,
-                'sub_title' => $event->attributes->field_sub_title,
-                'start_date' => $event->attributes->field_start_date,
-                'end_date' => $event->attributes->field_end_date,
-                'event_description' => $event->attributes->body->value,
-                'event_banner' => $event_banner,
-                'venue' => $event->attributes->field_venue,
-                'venue_address' => $event->attributes->field_venue_address,
-                'media' => []
-
-            ];
+            $events[] = $this->getSingleEvent($event->id);
         }
 
         return $events;
@@ -50,17 +29,24 @@ use Illuminate\Support\Facades\Http;
 
     public function getSingleEvent($eventId): array
     {
-        $response = Http::get(env('BACKEND_API').'events/'.$eventId.'?include=field_event_banner,field_event_document');
+        $response = Http::get(env('BACKEND_API').'events/'.$eventId.'?include=field_event_banner,field_event_document,field_media.field_media_video_file,field_media.field_media_image');
 
         $data = json_decode($response);
         $event = $data->data;
+
+        $event_media = [];
 
         $event_banner = '';
 
         foreach ($data->included as $include){
             if($include->id === $event->relationships->field_event_banner->data->id ){
                 $event_banner = env('BACKEND_APP_ASSETS_URL') . $include->attributes->uri->url;
+            }else{
+                if($include->type === 'file--file'){
+                    $event_media[] = ['file' => env('BACKEND_APP_ASSETS_URL') . $include->attributes->uri->url, 'type'=>$include->attributes->filemime];
+                }
             }
+
         }
 
         return [
@@ -74,7 +60,7 @@ use Illuminate\Support\Facades\Http;
             'event_banner' => $event_banner,
             'venue' => $event->attributes->field_venue,
             'venue_address' => $event->attributes->field_venue_address,
-            'media'=> []
+            'media'=> $event_media
 
         ];
 
