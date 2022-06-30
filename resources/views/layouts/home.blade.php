@@ -69,16 +69,19 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/katex.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/quill.snow.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.min.css')}}">
     <!-- END: Vendor CSS-->
 
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-quill-editor.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-email.min.css')}}">
     <!-- END: Page CSS-->
 
@@ -188,7 +191,8 @@
 
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat-list.min.css')}}">
 
@@ -204,8 +208,8 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <!-- END: Custom CSS-->
 
-@livewireStyles
-<!-- END: Head-->
+    @livewireStyles
+    <!-- END: Head-->
 
     <!-- BEGIN: Body-->
 
@@ -438,8 +442,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
 
     <style>
-        @media only screen and (min-width: 768px){
-            #main-menu-navigation > li:nth-child(11){
+        @media only screen and (min-width: 768px) {
+            #main-menu-navigation > li:nth-child(11) {
                 margin-top: 136%;
             }
         }
@@ -651,15 +655,6 @@
                 >
             </li>
 
-
-            <li class="nav-item">
-                <a class="d-flex align-items-center" href="/communications"
-                ><i data-feather="bell"></i
-                    ><span class="menu-title text-truncate" data-i18n="Calendar"
-                    >Communications</span
-                    ></a>
-            </li>
-
             <li class="nav-item">
                 <a class="d-flex align-items-center" href="/foundations"
                 ><i data-feather="heart"></i
@@ -696,8 +691,6 @@
                     >Logout</span
                     ></a>
             </li>
-
-
 
 
             {{--            <li class="nav-item">--}}
@@ -1109,11 +1102,7 @@
 <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
 
 
-
-
-
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
-
 
 
 <!-- BEGIN: Page JS-->
