@@ -102,7 +102,65 @@
                                         REGISTER FOR EVENT
                                     </button>
                                     <!-- Modal -->
-                                    <section id="component-swiper-gallery">
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button"
+                                            class="btn btn-outline-danger waves-effect"
+                                            onclick=" document.getElementById('eventPaymentCard').style.display = 'block'">
+                                        PAY FOR EVENT
+                                    </button>
+                                    <!-- Modal -->
+
+
+                                    <!-- standard plan -->
+
+                                        <div class="col-12 col-md-4" id="eventPaymentCard" style="display:none">
+                                            <div class="card standard-pricing popular text-center">
+                                                <div class="card-body">
+                                                    <div class="pricing-badge text-end">
+                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
+                                                    </div>
+                                                    <img
+                                                        src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/illustration/Pot2.svg"
+                                                        class="mb-1" alt="svg img"/>
+                                                    <h3>{{$event['event_payment']['title']}}</h3>
+                                                    {{--                                            <p class="card-text">For small to medium businesses</p>--}}
+                                                    <div class="annual-plan">
+                                                        <div class="plan-price mt-2">
+                                                            <sup class="font-medium-1 fw-bold text-primary">R</sup>
+                                                            <span
+                                                                class="pricing-standard-value fw-bolder text-primary">{{$event['event_payment']['price']}}</span>
+                                                            {{--<sub class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>--}}
+                                                        </div>
+{{--                                                        <small class="annual-pricing d-none text-muted">{{$pay_plan['description']}}</small>--}}
+                                                    </div>
+                                                    <ul class="list-group list-group-circle text-start">
+                                                        {{--  <li class="list-group-item">Unlimited responses</li>--}}
+                                                        {{--  <li class="list-group-item">Unlimited forms and surveys</li>--}}
+                                                        {{--  <li class="list-group-item">Instagram profile page</li>--}}
+                                                        {{--  <li class="list-group-item">Google Docs integration</li>--}}
+                                                        {{--  <li class="list-group-item">Custom “Thank you” page</li>--}}
+                                                    </ul>
+                                                    <a href="{{$event['event_payment']['link']}}" class="btn w-100 btn-primary mt-2">Pay now</a>
+
+                                                    <br/>
+                                                    <br/>
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <h4 class="alert-heading">Please make sure to use your<br/> Treble Clef App email address as<br/> reference on checkout page.</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <script>
+                                        function showPaymentCard(){
+                                            let p_card = document.getElementById('eventPaymentCard')
+                                            p_card.style.display = 'block';
+                                        }
+                                    </script>
+
+
+                                        <section id="component-swiper-gallery">
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">Media</h4>
@@ -290,6 +348,8 @@
             </div>
         </div>
     </div>
+
+
     <script src="{{asset('app-assets/js/scripts/extensions/ext-component-swiper.min.js')}}"></script>
     <script src="{{asset('app-assets/vendors/js/extensions/swiper.min.js')}}"></script>
 

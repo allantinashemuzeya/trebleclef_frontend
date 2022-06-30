@@ -48,7 +48,7 @@
                                 <!-- standard plan -->
                                 @foreach($pay_plans as $pay_plan)
 
-                                    <div class="col-12 col-md-4">
+                                    <div class="col-12 col-md-12">
                                         <div class="card standard-pricing popular text-center">
                                             <div class="card-body">
                                                 <div class="pricing-badge text-end">
