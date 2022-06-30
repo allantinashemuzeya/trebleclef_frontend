@@ -69,16 +69,19 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/katex.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/vendors/css/editors/quill/monokai-sublime.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/editors/quill/quill.snow.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-blog.min.css')}}">
     <!-- END: Vendor CSS-->
 
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-quill-editor.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-email.min.css')}}">
     <!-- END: Page CSS-->
 
@@ -188,7 +191,8 @@
 
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/app-chat-list.min.css')}}">
 
@@ -204,8 +208,8 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <!-- END: Custom CSS-->
 
-@livewireStyles
-<!-- END: Head-->
+    @livewireStyles
+    <!-- END: Head-->
 
     <!-- BEGIN: Body-->
 
@@ -438,10 +442,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
 
     <style>
-        @media only screen and (min-width: 768px){
-            #main-menu-navigation > li:nth-child(11){
+        @media only screen and (min-width: 768px) {
+            #main-menu-navigation > li:nth-child(11) {
                 margin-top: 136%;
             }
+        }
+
+        #main-menu-navigation,#main-menu-navigation > li.nav-item.has-sub.sidebar-group-active.open > ul{
+            background-color: #070e23!important;
         }
 
     </style>
@@ -451,7 +459,7 @@
 
 <!-- BEGIN: Body-->
 <body
-    class="vertical-layout vertical-menu-modern navbar-floating footer-static " style="background-color: #0e111d"
+    class="vertical-layout vertical-menu-modern navbar-floating footer-static " style="background-color: rgb(11 3 31);"
     data-col=""
     data-menu="vertical-menu-modern"
     data-open="click">
@@ -467,6 +475,13 @@
     style="background-color: #110606">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
+            <h1 style="
+    text-align: center;
+    position: absolute;
+    left: 32%;
+    font-weight: 100;
+">Treble Clef Entrepreneurs
+            </h1>
             <ul class="nav navbar-nav d-xl-none">
                 <li class="nav-item">
                     <a class="nav-link menu-toggle" href="#"
@@ -696,8 +711,6 @@
                     >Logout</span
                     ></a>
             </li>
-
-
 
 
             {{--            <li class="nav-item">--}}
@@ -1109,11 +1122,7 @@
 <script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
 
 
-
-
-
 <script src="{{asset('app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js')}}"></script>
-
 
 
 <!-- BEGIN: Page JS-->
