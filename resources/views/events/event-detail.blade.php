@@ -121,8 +121,8 @@
                                                         {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img
-                                                        src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/illustration/Pot2.svg"
-                                                        class="mb-1" alt="svg img"/>
+                                                        src="{{asset('app-assets/images/pay_plan_icon.png')}}"
+                                                        class="mb-1" alt="svg img" height="220px" width="220px"/>
                                                     <h3>{{$event['event_payment']['title']}}</h3>
                                                     {{--                                            <p class="card-text">For small to medium businesses</p>--}}
                                                     <div class="annual-plan">
@@ -151,14 +151,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                    <script>
-                                        function showPaymentCard(){
-                                            let p_card = document.getElementById('eventPaymentCard')
-                                            p_card.style.display = 'block';
-                                        }
-                                    </script>
-
 
                                         <section id="component-swiper-gallery">
                                         <div class="card">

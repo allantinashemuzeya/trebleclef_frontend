@@ -48,15 +48,15 @@
                                 <!-- standard plan -->
                                 @foreach($pay_plans as $pay_plan)
 
-                                    <div class="col-12 col-md-12">
+                                    <div class="col-12 col-md-4">
                                         <div class="card standard-pricing popular text-center">
                                             <div class="card-body">
                                                 <div class="pricing-badge text-end">
 {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                 </div>
                                                 <img
-                                                    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/illustration/Pot2.svg"
-                                                    class="mb-1" alt="svg img"/>
+                                                    src="{{asset('app-assets/images/pay_plan_icon.png')}}"
+                                                    class="mb-1" alt="svg img" height="220px" width="220px"/>
                                                 <h3>{{$pay_plan['title']}}</h3>
                                                 {{--                                            <p class="card-text">For small to medium businesses</p>--}}
                                                 <div class="annual-plan">
