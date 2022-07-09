@@ -54,17 +54,4 @@ class SitePagesController extends Controller
         return view('office',  [ 'pageTitle' => '','currentUser'=>$currentUser,'tutors'=>$tutors_]);
     }
 
-
-    //Section Mike is coding
-    public function fees(){
-        $structures = (new SchoolFees())->getAll();
-
-        $currentStudent = Student::where('user_id', Auth::user()->id)->first();
-
-        return view('fees', ['pay_plans' => $structures, 'pageTitle' => '',  'currentStudent'=>$currentStudent,
-        ]);
-    }
-
-
-
 }

@@ -4,7 +4,7 @@ namespace App\Http\Services\SchoolFees;
 
 interface SchoolFeesInterface
 {
-    public function get();
+    public function get($productId);
 
     public function getAll();
 

@@ -1,10 +1,13 @@
-<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
+<?php /** @noinspection SpellCheckingInspection */
+
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ChatApplication;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\FeesProductsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
@@ -67,7 +70,12 @@ Route::controller(SitePagesController::class)->group(function(){
     Route::get('/networks', 'networks')->middleware(['auth'])->name('networks');
     Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
     Route::get('/office', 'office')->middleware(['auth'])->name('office');
+});
+
+Route::controller(FeesProductsController::class)->group(function(){
     Route::get('/payfees', 'fees')->middleware(['auth'])->name('office-fees');
+    Route::get('/payfees/{productId}', 'pay')->middleware(['auth'])->name('pay-fees');
+    Route::post('/payfees/process-payment', 'chargeCard')->name('processPayment');
 });
 
 Route::controller(ChatApplication::class)->group(function(){

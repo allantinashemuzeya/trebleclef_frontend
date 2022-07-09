@@ -3,13 +3,24 @@
 namespace App\Http\Services\SchoolFees;
 
 use Illuminate\Support\Facades\Http;
+use JetBrains\PhpStorm\ArrayShape;
 
 class SchoolFees implements SchoolFeesInterface
 {
 
-    public function get()
+    #[ArrayShape(['id' => "mixed", 'title' => "mixed", 'description' => "mixed", 'price' => "mixed", 'payment_link' => "mixed"])] public function get($productId)
     {
         // TODO: Implement get() method.
+        $response = Http::get(env('BACKEND_API').'pricing_plans/'.$productId);
+        $pay_plan = json_decode($response)->data;
+
+        return [
+            'id'=> $pay_plan->id,
+            'title'=> $pay_plan->attributes->title,
+            'description'=> $pay_plan->attributes->field_description,
+            'price'=> $pay_plan->attributes->field_price,
+            'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
+        ];
     }
 
     public function getAll(): array

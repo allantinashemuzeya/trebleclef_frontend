@@ -413,6 +413,18 @@
     <link rel="stylesheet" type="text/css"
           href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
 
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/pages/app-ecommerce-details.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/forms/form-number-input.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
+    <!-- END: Page CSS-->
+
+    <link rel="stylesheet" href="{{asset('js/notiflix/dist/notiflix-3.2.5.min.css')}}" />
+
+
+
     <style>
         #freechat-popup > div.freechat-popup-header {
             background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
@@ -449,6 +461,7 @@
         }
 
     </style>
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 
 </head>
 <!-- END: Head-->
@@ -1117,6 +1130,19 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/pages/app-chat.min.js')}}"></script>
 <!-- END: Page JS-->
+
+<!-- BEGIN: Page Vendor JS-->
+<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/swiper.min.js"></script>
+<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/toastr.min.js"></script>
+<!-- END: Page Vendor JS-->
+
+<!-- BEGIN: Page JS-->
+<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/pages/app-ecommerce-details.min.js"></script>
+<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/forms/form-number-input.min.js"></script>
+<!-- END: Page JS-->
+
+
 
 <script>
     $(window).on("load", function () {
