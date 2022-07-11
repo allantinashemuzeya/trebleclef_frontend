@@ -5,6 +5,7 @@ use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Models\Student;
 use App\Models\Tutors;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
