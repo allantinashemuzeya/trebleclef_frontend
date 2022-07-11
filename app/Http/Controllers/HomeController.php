@@ -18,6 +18,12 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
+
+        $user = Auth::user();
+        $user->name = Auth::user()->firstname . ' ' . Auth::user()->lastname;
+
+        $user->save();
+
     }
     public function index(): Factory|View|Application
     {
@@ -54,4 +60,5 @@ class HomeController extends Controller
       return view('home.home', $data);
 
     }
+
 }
