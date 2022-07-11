@@ -383,7 +383,7 @@ class MessagesController extends Controller
         $getRecords = null;
         $input = trim(filter_var($request['input']));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('firstname', 'LIKE', "%{$input}%")
+                    ->where('name', 'LIKE', "%{$input}%")
                     ->paginate($request->per_page ?? $this->perPage);
         ray($records)->red();
         foreach ($records->items() as $record) {
