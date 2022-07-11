@@ -1,6 +1,6 @@
 <?php
 
-namespace Chatify\Http\Controllers\Api;
+namespace App\Http\Controllers\vendor\Chatify\Api;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -84,7 +84,7 @@ class MessagesController extends Controller
      */
     public function download($fileName)
     {
-        $path = config('chatify.attachments.folder') . '/' . $fileName;
+        $path = config('chatify.attachments.folder') . 'MessagesController.php/' . $fileName;
         if (Chatify::storage()->exists($path)) {
             return response()->json([
                 'file_name' => $fileName,
@@ -319,7 +319,7 @@ class MessagesController extends Controller
         $images = Chatify::getSharedPhotos($request['user_id']);
 
         foreach ($images as $image) {
-            $image = asset(config('chatify.attachments.folder') . $image);
+            $image = asset(MessagesController . phpconfig('chatify.attachments.folder'));
         }
         // send the response
         return Response::json([

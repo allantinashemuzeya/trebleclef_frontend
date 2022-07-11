@@ -1,6 +1,6 @@
 <?php
 
-namespace Chatify\Http\Controllers;
+namespace App\Http\Controllers\vendor\Chatify;
 
 use App\Models\ChMessage;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 class MessagesController extends Controller
 {
     protected $perPage = 30;
@@ -103,12 +105,22 @@ class MessagesController extends Controller
      * to be downloadable.
      *
      * @param string $fileName
-     * @return \Symfony\Component\HttpFoundation\StreamedResponse|void
+     * @return BinaryFileResponse
      */
+//    public function download($fileName)
+//    {
+//        if (Chatify::storage()->exists(config('chatify.attachments.folder') . 'MessagesController.php/' . $fileName)) {
+//            return Chatify::storage()->download(config('chatify.attachments.folder') . 'MessagesController.php/' . $fileName);
+//        } else {
+//            return abort(404, "Sorry, File does not exist in our server or may have been deleted!");
+//        }
+//    }
+
     public function download($fileName)
     {
-        if (Chatify::storage()->exists(config('chatify.attachments.folder') . '/' . $fileName)) {
-            return Chatify::storage()->download(config('chatify.attachments.folder') . '/' . $fileName);
+        $path = storage_path('app/public') . '/' . config('chatify.attachments.folder') . '/' . $fileName;
+        if (file_exists($path)) {
+            return Response::download($path, $fileName);
         } else {
             return abort(404, "Sorry, File does not exist in our server or may have been deleted!");
         }
@@ -364,15 +376,16 @@ class MessagesController extends Controller
      * Search in messenger
      *
      * @param Request $request
-     * @return JsonResponse|void
+     * @return JsonResponse
      */
-    public function search(Request $request)
+    public function search(Request $request): JsonResponse
     {
         $getRecords = null;
         $input = trim(filter_var($request['input']));
         $records = User::where('id','!=',Auth::user()->id)
-                    ->where('name', 'LIKE', "%{$input}%")
+                    ->where('firstname', 'LIKE', "%{$input}%")
                     ->paginate($request->per_page ?? $this->perPage);
+        ray($records)->red();
         foreach ($records->items() as $record) {
             $getRecords .= view('Chatify::layouts.listItem', [
                 'get' => 'search_item',

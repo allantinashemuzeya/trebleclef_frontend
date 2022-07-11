@@ -18,8 +18,8 @@
             <div class="messenger-listView-tabs">
                 <a href="#" @if($type == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
-{{--                <a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">--}}
-{{--                    <span class="fas fa-users"></span> Groups</a>--}}
+                <a href="#" @if($type == 'group') class="active-tab" @endif data-view="groups">
+                    <span class="fas fa-users"></span> Groups</a>
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -63,51 +63,52 @@
 
     {{-- ----------------------Messaging side---------------------- --}}
     <div class="messenger-messagingView">
-        {{-- header title [conversation name] amd buttons --}}
-        <div class="m-header m-header-messaging">
-            <nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
-                {{-- header back button, avatar and user name --}}
-                <div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
-                    <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
-                    <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
+
+            {{-- header title [conversation name] amd buttons --}}
+            <div class="m-header m-header-messaging">
+                <nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+                    {{-- header back button, avatar and user name --}}
+                    <div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
+                        <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+                        <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
+                        </div>
+                        <a href="#" class="user-name">{{ config('chatify.name') }}</a>
                     </div>
-{{--                    <a href="#" class="user-name">{{ config('chatify.user.firstname') }}</a>--}}
-                    <a href="#" class="user-name">{{ Auth::user()->firstname . ' ' .  Auth::user()->lastname }}</a>
-                </div>
-                {{-- header buttons --}}
-                <nav class="m-header-right">
-                    <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="/"><i class="fas fa-home"></i></a>
-                    <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    {{-- header buttons --}}
+                    <nav class="m-header-right">
+                        <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
+                        <a href="/"><i class="fas fa-home"></i></a>
+                        <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    </nav>
                 </nav>
-            </nav>
-        </div>
-        {{-- Internet connection --}}
-        <div class="internet-connection">
-            <span class="ic-connected">Connected</span>
-            <span class="ic-connecting">Connecting...</span>
-            <span class="ic-noInternet">No internet access</span>
-        </div>
-        {{-- Messaging area --}}
-        <div class="m-body messages-container app-scroll">
-            <div class="messages">
-                <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
             </div>
-            {{-- Typing indicator --}}
-            <div class="typing-indicator">
-                <div class="message-card typing">
-                    <p>
+            {{-- Internet connection --}}
+            <div class="internet-connection">
+                <span class="ic-connected">Connected</span>
+                <span class="ic-connecting">Connecting...</span>
+                <span class="ic-noInternet">No internet access</span>
+            </div>
+            {{-- Messaging area --}}
+            <div class="m-body messages-container app-scroll">
+                <div class="messages">
+                    <p class="message-hint center-el"><span>Please select a chat to start messaging</span></p>
+                </div>
+                {{-- Typing indicator --}}
+                <div class="typing-indicator">
+                    <div class="message-card typing">
+                        <p>
                         <span class="typing-dots">
                             <span class="dot dot-1"></span>
                             <span class="dot dot-2"></span>
                             <span class="dot dot-3"></span>
                         </span>
-                    </p>
+                        </p>
+                    </div>
                 </div>
+                {{-- Send Message Form --}}
+                @include('Chatify::layouts.sendForm')
             </div>
-            {{-- Send Message Form --}}
-            @include('Chatify::layouts.sendForm')
-        </div>
+
     </div>
     {{-- ---------------------- Info side ---------------------- --}}
     <div class="messenger-infoView app-scroll">
