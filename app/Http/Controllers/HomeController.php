@@ -20,10 +20,12 @@ class HomeController extends Controller
     {
         $this->middleware(['auth', 'verified']);
 
-        $user = User::where('id', Auth::user()->id)->get();
-        $user->name = $user->firstname . ' ' . $user->lastname;
+        if(Auth::check()){
+            $user = User::where('id', Auth::user()->id)->get();
+            $user->name = $user->firstname . ' ' . $user->lastname;
 
-        $user->save();
+            $user->save();
+        }
 
     }
     public function index(): Factory|View|Application
