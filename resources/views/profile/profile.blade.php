@@ -151,30 +151,18 @@
                                     <div class="row">
                                         <div class="col-12 col-sm-6">
                                             <div class="mb-1">
-                                                <label class="form-label" for="account-username">First Name</label>
+                                                <label class="form-label" for="account-username">Full Name</label>
                                                 <input type="text"
                                                        class="form-control"
                                                        id="account-username"
                                                        style="background:transparent; border-color: grey; color:white"
-                                                       name="firstName"
-                                                       value="{{Auth::user()->firstname}}"
-                                                       placeholder="First Name"
+                                                       name="name"
+                                                       value="{{Auth::user()->name}}"
+                                                       placeholder="Full Name"
                                                 />
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="account-name">Last Name</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="account-name"
-                                                    name="lastName"
-                                                    style="background:transparent; border-color: grey; color:white"
-                                                    placeholder="Last Name"
-                                                    value="{{Auth::user()->lastname}}"/>
-                                            </div>
-                                        </div>
+
                                         <div class="col-12 col-sm-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="account-e-mail">E-mail <br/> <a href="#" title="Support Coming Soon">Contact support to change email address</a> </label>
