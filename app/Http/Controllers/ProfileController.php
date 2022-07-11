@@ -121,8 +121,7 @@ class ProfileController extends Controller
     public function saveGeneral($request)
     {
         $currentUser = Auth::user();
-        $currentUser->firstname = $request->firstName;
-        $currentUser->lastname = $request->lastName;
+        $currentUser->name = $request->name . $request->last_name;
 
         if($currentUser->save()){
             return true;
