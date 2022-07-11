@@ -19,8 +19,8 @@ class HomeController extends Controller
     {
         $this->middleware(['auth', 'verified']);
 
-        $user = Auth::user();
-        $user->name = Auth::user()->firstname . ' ' . Auth::user()->lastname;
+        $user = User::where('id', Auth::user()->id)->get();
+        $user->name = $user->firstname . ' ' . $user->lastname;
 
         $user->save();
 
