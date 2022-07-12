@@ -19,7 +19,7 @@
                     <h2 class="content-header-title float-start mb-0">{{$pageTitle}}</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#">{{$pageTitle}}</a>
                             </li>
@@ -112,7 +112,7 @@
                                 <div style="height: 20%;" class="item-options text-center ">
                                         <a href="{{route('communication', $communication['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="bell"></i>
-                                        <span class="add-to-cart">{{$communication['title']}}</span>
+                                        <span >{{$communication['title']}}</span>
                                     </a>
                                 </div>
                             </div>

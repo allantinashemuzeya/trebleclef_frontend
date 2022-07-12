@@ -547,18 +547,11 @@
                             class="round"
                             height="40"
                             src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
-                            {{--                            src="https://ui-avatars.com/api/?name={{Auth::user()->firstname}}+{{Auth::user()->lastname}}&background=random&rounded=true"--}}
                             width="40"/><span class="avatar-status-online"></span></span
                         ></a>
                 @endif
 
-                {{--                <div class="profile-image-wrapper">--}}
-                {{--                    <div class="profile-image">--}}
-                {{--                        <div class="avatar">--}}
-                {{--                            <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
+
                 <div
                     aria-labelledby="dropdown-user"
                     class="dropdown-menu dropdown-menu-end">
@@ -699,6 +692,14 @@
                 ><i data-feather="image"></i
                     ><span class="menu-title text-truncate" data-i18n="Calendar"
                     >Gallery</span
+                    ></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="d-flex align-items-center" href="/chatify"
+                ><i data-feather="message-square"></i
+                    ><span class="menu-title text-truncate" data-i18n="Calendar"
+                    >Chat</span
                     ></a>
             </li>
 

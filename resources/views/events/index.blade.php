@@ -77,7 +77,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <h2 class="content-header-title float-start mb-0">Events</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#">EVENTS</a>
                             </li>
@@ -170,7 +170,7 @@ License: You must have a valid license purchased only from themeforest(the above
 {{--                                        <a  class="btn event-modal-button   btn-primary btn-cart" data-details="{{Js::from($event)}}"  data-bs-toggle="modal" data-bs-target="#viewEvent">--}}
                                         <a href="{{route('event', $event['id'])}}" class="btn event-modal-button btn-primary btn-cart">
                                             <i data-feather="bell"></i>
-                                            <span class="add-to-cart">View {{$event['title']}}</span>
+                                            <span class="">View {{$event['title']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -179,99 +179,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         @endforeach
 
                     </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="viewEvent" tabindex="-1" style="display: none;" aria-hidden="true">
-                            <div class="modal-dialog modal-fullscreen" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalFullTitle">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                                            egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        </p>
-                                        <p>
-                                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor auctor.
-                                        </p>
-                                        <p>
-                                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque
-                                            nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-label-secondary waves-effect waves-float waves-light" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary waves-effect waves-float waves-light">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
 
                 </section>
                 <!-- Dashboard Ecommerce ends -->

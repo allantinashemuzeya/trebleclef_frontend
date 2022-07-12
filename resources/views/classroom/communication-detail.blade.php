@@ -9,7 +9,7 @@
                         <h2 class="content-header-title float-start mb-0">{{$communication['title']}}</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Communications</a>
                                 </li>

@@ -275,7 +275,7 @@
                                     <div class="item-options text-center">
                                         <a href="{{route('communications')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -294,13 +294,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('student-of-the-week')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -320,13 +319,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('events')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -346,13 +344,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('networks')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -372,14 +369,13 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('communication-by-type', 'NewsLetter')}}"
                                            class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -400,14 +396,13 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('communication-by-type', 'Competitions')}}"
                                            class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -426,13 +421,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('calendar')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -452,13 +446,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('classroom')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -478,13 +471,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('foundations')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -504,13 +496,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('office')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="book-open"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -531,13 +522,12 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            {{--                                                    <h1 class="mb-1 text-white">{{$nav_card['cardTitle']}}</h1>--}}
                                         </div>
                                     </div>
                                     <div class="item-options text-center">
                                         <a href="{{route('gallery')}}" class="btn btn-primary btn-cart">
                                             <i data-feather="image"></i>
-                                            <span class="add-to-cart">{{$nav_card['cardTitle']}}</span>
+                                            <span class="">{{$nav_card['cardTitle']}}</span>
                                         </a>
                                     </div>
                                 </div>

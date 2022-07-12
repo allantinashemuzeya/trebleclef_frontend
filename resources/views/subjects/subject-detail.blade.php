@@ -15,7 +15,7 @@
                     <h2 class="content-header-title float-start mb-0">{{$subject['name']}}</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#">Communications</a>
                             </li>
@@ -113,7 +113,7 @@
                                                         <a href="{{route('lesson', [$lesson['id'], $subject['id']])}}"
                                                            class="btn btn-primary btn-cart">
                                                             <i data-feather="book-open"></i>
-                                                            <span class="add-to-cart">{{$lesson['name']}}</span>
+                                                            <span >{{$lesson['name']}}</span>
                                                         </a>
                                                     </div>
                                                 </div>

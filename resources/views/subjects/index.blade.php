@@ -29,7 +29,7 @@
                     <h2 class="content-header-title float-start mb-0">Subjects</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                             </li>
                             <li class="breadcrumb-item"><a href="#"></a>
                             </li>
@@ -117,7 +117,7 @@
 {{--                                    <a href="{{$communication['url_alias'] !== null ? route('communication', str_replace('/', '',$communication['url_alias'] ) ) : ''}}" class="btn btn-primary btn-cart">--}}
                                     <a href="{{route('subject', $subject['id'])}}" class="btn btn-primary btn-cart">
                                         <i data-feather="book-open"></i>
-                                        <span class="add-to-cart">{{$subject['name']}}</span>
+                                        <span class="">{{$subject['name']}}</span>
                                     </a>
                                 </div>
                             </div>
