@@ -54,4 +54,21 @@ class SitePagesController extends Controller
         return view('office',  [ 'pageTitle' => '','currentUser'=>$currentUser,'tutors'=>$tutors_]);
     }
 
+    public function chat()
+    {
+
+        if(Auth::user()->userType === 1){
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+        else if(Auth::user()->userType === 2){
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        }
+        else{
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+
+        return view('chatify.index',  [ 'pageTitle' => '','currentUser'=>$currentUser,]);
+
+    }
+
 }

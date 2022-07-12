@@ -498,7 +498,7 @@
                         class="nav-link"
                         data-bs-placement="bottom"
                         data-bs-toggle="tooltip"
-                        href="/chatify"
+                        href="/chat"
                         title="Chat"
                     ><i class="ficon" data-feather="message-square"></i
                         ></a>
@@ -561,7 +561,7 @@
                     ><i class="me-50" data-feather="mail"></i> Inbox</a
                     ><a class="dropdown-item" href="app-todo.html"
                     ><i class="me-50" data-feather="check-square"></i> Task</a
-                    ><a class="dropdown-item" href="/chatify"
+                    ><a class="dropdown-item" href="/chat"
                     ><i class="me-50" data-feather="message-square"></i> Chats</a
                     >
                 </div>
@@ -635,16 +635,7 @@
                             ></a
                         >
                     </li>
-                    {{--                    <li>--}}
-                    {{--                        <a--}}
-                    {{--                            class="d-flex align-items-center"--}}
-                    {{--                            href="/"--}}
-                    {{--                        ><i data-feather="circle"></i--}}
-                    {{--                            ><span class="menu-item text-truncate" data-i18n="eCommerce"--}}
-                    {{--                            >My Zone </span--}}
-                    {{--                            ></a--}}
-                    {{--                        >--}}
-                    {{--                    </li>--}}
+
                 </ul>
             </li>
             <li class="navigation-header">
@@ -696,7 +687,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="d-flex align-items-center" href="/chatify"
+                <a class="d-flex align-items-center" href="/chat"
                 ><i data-feather="message-square"></i
                     ><span class="menu-title text-truncate" data-i18n="Calendar"
                     >Chat</span

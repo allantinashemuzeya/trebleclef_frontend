@@ -70,6 +70,7 @@ Route::controller(SitePagesController::class)->group(function(){
     Route::get('/networks', 'networks')->middleware(['auth'])->name('networks');
     Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
     Route::get('/office', 'office')->middleware(['auth'])->name('office');
+    Route::get('/chat', 'chat')->middleware(['auth'])->name('chat');
 });
 
 Route::controller(FeesProductsController::class)->group(function(){

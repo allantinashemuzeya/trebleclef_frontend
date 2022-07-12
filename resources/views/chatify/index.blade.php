@@ -21,6 +21,12 @@
             display: none;
         }
 
+        body > div.app-content.content > div.content-wrapper.container-xxl.p-0 > main > div.app-content.content.ecommerce-application.m-0 > div > iframe{
+            position: absolute;
+            top: -2%;
+            left: 0%;
+        }
+
     </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -59,103 +65,16 @@
             </div>
         </div>
     </div>
+
+
     <!-- BEGIN: Content-->
     <div class="app-content content ecommerce-application m-0">
 
         <div class="content-wrapper container-xxl p-0">
 
-            <div class="content-detached content-right">
-                <div class="content-body">
-                    <!-- E-commerce Content Section Starts -->
-                    <section id="ecommerce-header">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="ecommerce-header-items">
-                                    <div class="result-toggler">
-                                        <button class="navbar-toggler shop-sidebar-toggler" type="button"
-                                                data-bs-toggle="collapse">
-                                            <span class="navbar-toggler-icon d-block d-lg-none"><i
-                                                    data-feather="menu"></i></span>
-                                        </button>
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- E-commerce Content Section Starts -->
-
-                    <!-- background Overlay when sidebar is shown  starts-->
-                    <div class="body-content-overlay"></div>
-                    <!-- background Overlay when sidebar is shown  ends-->
-
-
-                    <!-- E-commerce Products Starts -->
-                    <section id="ecommerce-products" class="grid-view">
-
-                        @foreach($subjects as $subject)
-                            <div class="card ecommerce-card" style="height: 350px;">
-                                <div class="item-img text-center">
-
-                                    @if($subject['banner'] !== null)
-                                        <img class="img-fluid" src="{{$subject['banner']}}" alt="comm banner"/>
-                                    @endif
-                                </div>
-                                <div class="card-body">
-                                    <div class="item-wrapper">
-                                        <div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="item-options text-center">
-
-{{--                                    <a href="#" class="btn btn-light btn-wishlist">--}}
-{{--                                        <i data-feather="heart"></i>--}}
-{{--                                        <span>Wishlist</span>--}}
-{{--                                    </a>--}}
-{{--                                    <a href="{{$communication['url_alias'] !== null ? route('communication', str_replace('/', '',$communication['url_alias'] ) ) : ''}}" class="btn btn-primary btn-cart">--}}
-                                    <a href="{{route('subject', $subject['id'])}}" class="btn btn-primary btn-cart">
-                                        <i data-feather="book-open"></i>
-                                        <span class="">{{$subject['name']}}</span>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </section>
-                    <!-- E-commerce Products Ends -->
-
-                    @if(count($subjects) > 20)
-                        <!-- E-commerce Pagination Starts -->
-
-                            <section id="ecommerce-pagination">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination justify-content-center mt-2">
-                                            <li class="page-item prev-item"><a class="page-link" href="#"></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item" aria-current="page"><a class="page-link" href="#">4</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                            <li class="page-item next-item"><a class="page-link" href="#"></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- E-commerce Pagination Ends -->
-                    @endif
-
-
-                </div>
-            </div>
-
+            <iframe src="{{env('APP_URL').'/chatify'}}" title="" width="100%" height="850px">
+            </iframe>
         </div>
     </div>
     <!-- END: Content-->
