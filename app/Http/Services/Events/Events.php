@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Http;
 
     public function getSingleEvent($eventId): array
     {
-        $response = Http::get(env('BACKEND_API').'events/'.$eventId.'?include=field_event_banner,field_event_document,field_media.field_media_video_file,field_media.field_media_image,field_event_payment');
+        $response = Http::get(env('BACKEND_API').'events/'.$eventId.'?include=field_event_banner,field_event_document,field_media.field_media_video_file,field_media.field_media_image,field_payment');
 
         $data = json_decode($response);
         $event = $data->data;

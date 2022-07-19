@@ -103,55 +103,14 @@
                                     </button>
                                     <!-- Modal -->
 
-                                    <!-- Button trigger modal -->
-                                    <button type="button"
-                                            class="btn btn-outline-danger waves-effect"
-                                            onclick=" document.getElementById('eventPaymentCard').style.display = 'block'">
-                                        PAY FOR EVENT
-                                    </button>
-                                    <!-- Modal -->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
 
+                                    <button id="checkout-button" onclick="pay({{json_encode($event['event_payment'])}})" class="btn btn-outline-danger waves-effect me-0 me-sm-1 mb-1 mb-sm-0">
+                                        <i data-feather="shopping-cart" class="me-50"></i>
+                                        <span  title="Double tap to pay!" class="">PAY FOR EVENT </span>
+                                    </button>
 
                                     <!-- standard plan -->
-
-                                        <div class="col-12 col-md-4" id="eventPaymentCard" style="display:none">
-                                            <div class="card standard-pricing popular text-center">
-                                                <div class="card-body">
-                                                    <div class="pricing-badge text-end">
-                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
-                                                    </div>
-                                                    <img
-                                                        src="{{asset('app-assets/images/pay_plan_icon.png')}}"
-                                                        class="mb-1" alt="svg img" height="220px" width="220px"/>
-                                                    <h3>{{$event['event_payment']['title']}}</h3>
-                                                    {{--                                            <p class="card-text">For small to medium businesses</p>--}}
-                                                    <div class="annual-plan">
-                                                        <div class="plan-price mt-2">
-                                                            <sup class="font-medium-1 fw-bold text-primary">R</sup>
-                                                            <span
-                                                                class="pricing-standard-value fw-bolder text-primary">{{$event['event_payment']['price']}}</span>
-                                                            {{--<sub class="pricing-duration text-body font-medium-1 fw-bold">/month</sub>--}}
-                                                        </div>
-{{--                                                        <small class="annual-pricing d-none text-muted">{{$pay_plan['description']}}</small>--}}
-                                                    </div>
-                                                    <ul class="list-group list-group-circle text-start">
-                                                        {{--  <li class="list-group-item">Unlimited responses</li>--}}
-                                                        {{--  <li class="list-group-item">Unlimited forms and surveys</li>--}}
-                                                        {{--  <li class="list-group-item">Instagram profile page</li>--}}
-                                                        {{--  <li class="list-group-item">Google Docs integration</li>--}}
-                                                        {{--  <li class="list-group-item">Custom “Thank you” page</li>--}}
-                                                    </ul>
-                                                    <a href="{{$event['event_payment']['link']}}" class="btn w-100 btn-primary mt-2">Pay now</a>
-
-                                                    <br/>
-                                                    <br/>
-                                                    <div class="alert alert-danger" role="alert">
-                                                        <h4 class="alert-heading">Please make sure to use your<br/> Treble Clef App email address as<br/> reference on checkout page.</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <section id="component-swiper-gallery">
                                         <div class="card">
                                             <div class="card-header">
@@ -299,6 +258,64 @@
             </div>
         </div>
         <!-- END: Content-->
+
+    <!-- Include the Yoco SDK in your web page -->
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
+
+
+    <!-- Create a pay button that will open the popup-->
+    {{-- <button id="checkout-button">Pay</button>--}}
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+
+
+
+        function pay(pay_plan){
+
+            let yoco = new window.YocoSDK({
+                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+            });
+
+
+            let checkoutButton = document.querySelector('#checkout-button');
+            checkoutButton.addEventListener('click', function () {
+                yoco.showPopup({
+                    amountInCents: pay_plan['price'] * 100 ,
+                    currency: 'ZAR',
+                    name: 'Treble Clef Pay | ' + pay_plan['title'],
+                    description: 'Awesome description',
+                    callback: async  (result) =>{
+                        // This function returns a token that your server can use to capture a payment
+
+                        if (result.error) {
+                            const errorMessage = result.error.message;
+                            alert("error occured: " + errorMessage);
+                        } else {
+
+                            const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
+
+                            // e.g. Message with the new options
+                            if(results.data === 'successful'){
+                                Notiflix.Notify.success(
+                                    'Payment Successful, Awesome, well Done!!',
+                                    {
+                                        timeout: 10000,
+                                    },
+                                )
+                            }else{
+                                Notiflix.Notify.failure('Something went wrong. We are working on it!');
+                            }
+                        }
+                    }
+                })
+            });
+        }
+
+
+    </script>
+
 
 
     <div class="form-modal-ex">
