@@ -42,7 +42,26 @@
         #dashboard-analytics > div > div > div > div > a.btn.btn-primary.btn-cart.waves-effect.waves-float.waves-light {
             width: 100%;
         }
+
+        @media screen and (min-width: 769px){
+
+            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div{
+                margin-top:-10%;
+            }
+
+            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div > div > iframe{
+                margin-top: -16%;
+                margin-left: -10%;
+                width: 120%;
+                margin-bottom: -6%;
+                box-shadow: black 9px -1px 3px 3px;
+                opacity: 1.5;
+            }
+        }
+
+
     </style>
+
     <div class="content-body">
 
         @if(empty($currentUser->profile_picture))
@@ -143,47 +162,52 @@
                 @if(!empty($currentUser->profile_picture))
                     <div class="col-lg-4 col-md-6 col-12">
                         <a href="{{route('profile')}}">
+
                             <div class="card card-profile">
                                 <!-- <img src="{{asset('storage/profilePictures/'.$currentUser->cover_image)}}" class="img-fluid card-img-top" alt="Profile Cover Photo"> -->
                                 <div class="card-body">
-                                    <div class="profile-image-wrapper">
-                                        <div class="profile-image">
-                                            <div class="avatar">
-                                                <img
-                                                        src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
-                                                        alt="Profile Picture">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>
-                                    @foreach($schools as $school)
-                                        @if($school['id'] === $currentUser->school)
-                                            <h6 class="text-muted">{{$school['name']}}</h6>
-                                        @endif
-                                    @endforeach
-                                    <span
-                                            class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>
-                                    <hr class="mb-2">
-                                    @if(!empty($currentUser->bio))
-                                        <div class="text-center">
-                                            <h4 class="text-title">My Bio</h4>
-                                            <p class="card-text m-auto w-75 text-white-50">
-                                                {{$currentUser->bio}}
-                                            </p>
-                                        </div>
-                                        <hr/>
+                                    <iframe src="{{env('APP_URL').'/chatify'}}" title="" width="100%" height="700px">
+                                    </iframe>
+{{--                                    <div class="profile-image-wrapper">--}}
+{{--                                        <div class="profile-image">--}}
+{{--                                            <div class="avatar">--}}
+{{--                                                <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                    @endif
+{{--                                    <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>--}}
+{{--                                    @foreach($schools as $school)--}}
+{{--                                        @if($school['id'] === $currentUser->school)--}}
+{{--                                            <h6 class="text-muted">{{$school['name']}}</h6>--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
 
-                                    <br/><br/>
-                                    @if(count($musicQuotes)>0)
-                                        <div class="text-center">
-                                            <h4 class="text-title"> Quote of the day</h4>
-                                            <p class="card-text m-auto w-75 text-danger">
-                                                {{$musicQuotes[0]['text']}}
-                                            </p>
-                                        </div>
-                                    @endif
+{{--                                    <span--}}
+{{--                                        class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>--}}
+{{--                                    <hr class="mb-2">--}}
+{{--                                    @if(!empty($currentUser->bio))--}}
+{{--                                        <div class="text-center">--}}
+{{--                                            <h4 class="text-title">My Bio</h4>--}}
+{{--                                            <p class="card-text m-auto w-75 text-white-50">--}}
+{{--                                                {{$currentUser->bio}}--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <hr/>--}}
+
+{{--                                    @endif--}}
+
+{{--                                    <br/><br/>--}}
+{{--                                    @if(count($musicQuotes)>0)--}}
+{{--                                        <div class="text-center">--}}
+{{--                                            <h4 class="text-title"> Quote of the day</h4>--}}
+{{--                                            <p class="card-text m-auto w-75 text-danger">--}}
+{{--                                                {{$musicQuotes[0]['text']}}--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
+
+
                                 </div>
                             </div>
                         </a>
@@ -193,7 +217,7 @@
 
 
                 <div
-                        class="{{ !empty($currentUser->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}">
+                    class="{{ !empty($currentUser->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}">
 
                     <div class="card card-congratulations" style="background: linear-gradient(45deg, black, #1f0808);">
                         <div class="card-header">
@@ -221,12 +245,12 @@
                                                                 </video>
                                                             @elseif($item['type'] === 'remote_video')
                                                                 <iframe
-                                                                        width="100%"
-                                                                        height="450px"
-                                                                        src="{{$item['file']}}"
-                                                                        title="YouTube video player" frameborder="2"
-                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                                        allowfullscreen>
+                                                                    width="100%"
+                                                                    height="450px"
+                                                                    src="{{$item['file']}}"
+                                                                    title="YouTube video player" frameborder="2"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                    allowfullscreen>
                                                                 </iframe>
                                                             @else
                                                                 <img class="img-fluid " src="{{$item['file']}}" alt=""/>
