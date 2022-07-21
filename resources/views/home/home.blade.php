@@ -217,6 +217,7 @@
                 @endif
 
 
+
                 <div
                     class="{{ !empty($currentUser->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}">
 
@@ -232,11 +233,11 @@
 
                                     </div>
                                     <div class="card-body">
-                                        <div
-                                            class="swiper-gallery swiper-container gallery-top swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                                        <div class="swiper-gallery swiper-container gallery-top swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                                             <div class="swiper-wrapper" id="swiper-wrapper-7fb93a4b8b948735"
                                                  aria-live="polite"
                                                  style="transform: translate3d(-4224px, 0px, 0px); transition-duration: 0ms;">
+
                                                 @foreach($trebleClefTvContent['content']  as $item)
 
                                                     @if($item['type'] === 'video/mp4' || $item['type'] === 'video/quicktime' )
@@ -673,6 +674,8 @@
                     times_next_clicked--;
                     e.target.parentElement.getElementsByTagName('video')[times_next_clicked].play();
                 })
+
+                $('#swiper-wrapper-7fb93a4b8b948735').css('transform','translate3d(24px, 0px, 0px)')
 
             }, 1000);
         </script>
