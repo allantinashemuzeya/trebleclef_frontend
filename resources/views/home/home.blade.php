@@ -43,13 +43,13 @@
             width: 100%;
         }
 
-        @media screen and (min-width: 769px){
+        @media screen and (min-width: 769px) {
 
-            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div{
-                margin-top:-10%;
+            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div {
+                margin-top: -10%;
             }
 
-            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div > div > iframe{
+            #dashboard-analytics > div:nth-child(2) > div.col-lg-4.col-md-6.col-12 > a > div > div > iframe {
                 margin-top: -16%;
                 margin-left: -10%;
                 width: 120%;
@@ -122,6 +122,7 @@
                     </div>
                 </section>
                 <!--/ Responsive Breakpoints swiper -->
+
             @else
                 <!-- coverflow 3D effect swiper -->
                 <section id="component-swiper-coverflow">
@@ -168,44 +169,44 @@
                                 <div class="card-body">
                                     <iframe src="{{env('APP_URL').'/chatify'}}" title="" width="100%" height="700px">
                                     </iframe>
-{{--                                    <div class="profile-image-wrapper">--}}
-{{--                                        <div class="profile-image">--}}
-{{--                                            <div class="avatar">--}}
-{{--                                                <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="profile-image-wrapper">--}}
+                                    {{--                                        <div class="profile-image">--}}
+                                    {{--                                            <div class="avatar">--}}
+                                    {{--                                                <img src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}" alt="Profile Picture">--}}
+                                    {{--                                            </div>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
 
-{{--                                    <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>--}}
-{{--                                    @foreach($schools as $school)--}}
-{{--                                        @if($school['id'] === $currentUser->school)--}}
-{{--                                            <h6 class="text-muted">{{$school['name']}}</h6>--}}
-{{--                                        @endif--}}
-{{--                                    @endforeach--}}
+                                    {{--                                    <h3>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h3>--}}
+                                    {{--                                    @foreach($schools as $school)--}}
+                                    {{--                                        @if($school['id'] === $currentUser->school)--}}
+                                    {{--                                            <h6 class="text-muted">{{$school['name']}}</h6>--}}
+                                    {{--                                        @endif--}}
+                                    {{--                                    @endforeach--}}
 
-{{--                                    <span--}}
-{{--                                        class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>--}}
-{{--                                    <hr class="mb-2">--}}
-{{--                                    @if(!empty($currentUser->bio))--}}
-{{--                                        <div class="text-center">--}}
-{{--                                            <h4 class="text-title">My Bio</h4>--}}
-{{--                                            <p class="card-text m-auto w-75 text-white-50">--}}
-{{--                                                {{$currentUser->bio}}--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                        <hr/>--}}
+                                    {{--                                    <span--}}
+                                    {{--                                        class="badge badge-light-primary profile-badge">{{Auth::user()->student_level}}</span>--}}
+                                    {{--                                    <hr class="mb-2">--}}
+                                    {{--                                    @if(!empty($currentUser->bio))--}}
+                                    {{--                                        <div class="text-center">--}}
+                                    {{--                                            <h4 class="text-title">My Bio</h4>--}}
+                                    {{--                                            <p class="card-text m-auto w-75 text-white-50">--}}
+                                    {{--                                                {{$currentUser->bio}}--}}
+                                    {{--                                            </p>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                        <hr/>--}}
 
-{{--                                    @endif--}}
+                                    {{--                                    @endif--}}
 
-{{--                                    <br/><br/>--}}
-{{--                                    @if(count($musicQuotes)>0)--}}
-{{--                                        <div class="text-center">--}}
-{{--                                            <h4 class="text-title"> Quote of the day</h4>--}}
-{{--                                            <p class="card-text m-auto w-75 text-danger">--}}
-{{--                                                {{$musicQuotes[0]['text']}}--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                    @endif--}}
+                                    {{--                                    <br/><br/>--}}
+                                    {{--                                    @if(count($musicQuotes)>0)--}}
+                                    {{--                                        <div class="text-center">--}}
+                                    {{--                                            <h4 class="text-title"> Quote of the day</h4>--}}
+                                    {{--                                            <p class="card-text m-auto w-75 text-danger">--}}
+                                    {{--                                                {{$musicQuotes[0]['text']}}--}}
+                                    {{--                                            </p>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    @endif--}}
 
 
                                 </div>
@@ -220,57 +221,102 @@
                     class="{{ !empty($currentUser->profile_picture) ? 'col-lg-8 col-md-12 col-sm-12' : 'col-lg-12 col-md-12 col-sm-12'  }}">
 
                     <div class="card card-congratulations" style="background: linear-gradient(45deg, black, #1f0808);">
-                        <div class="card-header">
-                            <h2 class="card-title text-center" style="left: 44%;
-    position: absolute;">Treble Clef Tv</h2>
 
-                        </div>
                         <div class="card-body text-center">
                             {{-- treble clef tv  --}}
-                            <!-- Media Player -->
-                            <section id="media-player-wrapper">
-                                <div class="row">
-                                    <!-- progress swiper -->
-                                    <section id="component-swiper-progress">
+                            <section id="component-swiper-gallery">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title text-center" style="left: 44%;
+    position: absolute;">Treble Clef Tv</h2>
 
-                                        <div class="card-body" style="min-height:500px;">
-                                            <div class="swiper-progress swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    @foreach($trebleClefTvContent['content'] as $item)
-                                                        <div class="swiper-slide">
-                                                            @if($item['type'] === 'video/mp4')
-                                                                <video class="img-fluid" autoplay controls muted loop
+                                    </div>
+                                    <div class="card-body">
+                                        <div
+                                            class="swiper-gallery swiper-container gallery-top swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+                                            <div class="swiper-wrapper" id="swiper-wrapper-7fb93a4b8b948735"
+                                                 aria-live="polite"
+                                                 style="transform: translate3d(-4224px, 0px, 0px); transition-duration: 0ms;">
+                                                @foreach($trebleClefTvContent['content']  as $item)
+
+                                                    @if($item['type'] === 'video/mp4' || $item['type'] === 'video/quicktime' )
+
+                                                        <div class="swiper-slide" role="group"
+                                                             aria-label="1 / 5"
+                                                             style="width: 1398px; margin-right: 10px;">
+
+                                                                <video class="img-fluid"
+                                                                       controls muted loop autoplay
                                                                        style="padding-right:2px">
                                                                     <source src="{{$item['file']}}" type="video/mp4"/>
                                                                 </video>
-                                                            @elseif($item['type'] === 'remote_video')
-                                                                <iframe
-                                                                    width="100%"
-                                                                    height="450px"
-                                                                    src="{{$item['file']}}"
-                                                                    title="YouTube video player" frameborder="2"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                                    allowfullscreen>
-                                                                </iframe>
-                                                            @else
-                                                                <img class="img-fluid " src="{{$item['file']}}" alt=""/>
-                                                            @endif
                                                         </div>
-                                                    @endforeach
-                                                </div>
-                                                <!-- Add Pagination -->
-                                                <div class="swiper-pagination"></div>
-                                                <!-- Add Arrows -->
-                                                <div class="swiper-button-next"></div>
-                                                <div class="swiper-button-prev"></div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <!--/ progress swiper -->
 
+                                                    @else
+                                                        <div class="swiper-slide" role="group"
+                                                             aria-label="1 / 5">
+                                                            <img class="img-fluid" src="{{$item['file']}}"
+                                                                 alt="banner">
+                                                        </div>
+                                                    @endif
+
+                                                @endforeach
+
+                                            </div>
+
+                                            <!-- Add Arrows -->
+                                            <div class="swiper-button-next" tabindex="0" role="button"
+                                                 aria-label="Next slide"
+                                                 aria-controls="swiper-wrapper-7fb93a4b8b948735"
+                                                 aria-disabled="false"></div>
+                                            <div class="swiper-button-prev" tabindex="0" role="button"
+                                                 aria-label="Previous slide"
+                                                 aria-controls="swiper-wrapper-7fb93a4b8b948735"
+                                                 aria-disabled="false"></div>
+                                            <span class="swiper-notification" aria-live="assertive"
+                                                  aria-atomic="true">
+
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="swiper-container gallery-thumbs swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs">
+                                            <div class="swiper-wrapper mt-25"
+                                                 id="swiper-wrapper-10afee6a10d085e9c4" aria-live="polite"
+                                                 style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+
+
+                                                @foreach($trebleClefTvContent['content']  as $item)
+                                                    @if($item['type'] === 'video/mp4' || $item['type'] === 'video/quicktime' || $item['type'] === 'video/mov'  )
+
+                                                        <div
+                                                            class="swiper-slide swiper-slide-visible swiper-slide-active"
+                                                            role="group" aria-label="1 / 5"
+                                                            style="width: 342px; margin-right: 10px;">
+                                                            <video class="img-fluid"
+                                                                   controls muted loop
+                                                                   style="padding-right:2px">
+                                                                <source src="{{$item['file']}}"  type="video/mp4"/>
+                                                            </video>
+                                                        </div>
+
+                                                    @else
+
+                                                        <div
+                                                            class="swiper-slide swiper-slide-visible swiper-slide-active"
+                                                            role="group" aria-label="1 / 5"
+                                                            style="width: 342px; margin-right: 10px;">
+                                                            <img class="img-fluid" src="{{$item['file']}}"
+                                                                 alt="banner">
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+
+                                            </div>
+                                            <span class="swiper-notification" aria-live="assertive"
+                                                  aria-atomic="true"></span></div>
+                                    </div>
                                 </div>
                             </section>
-                            <!--/ Media Player -->
                         </div>
                     </div>
                 </div>

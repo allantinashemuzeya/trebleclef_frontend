@@ -96,6 +96,7 @@ class MessagesController extends Controller
             'fetch' => $fetch ?? [],
             'user_avatar' => $userAvatar ?? null,
         ]);
+
     }
 
     /**
