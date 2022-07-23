@@ -620,13 +620,13 @@
 
     @push('scripts')
         <script>
-            var times_next_clicked = 0;
+            var times_next_clicked = -1;
 
             function Scrolldown() {
                 window.scroll(0, 800);
             }
 
-            function myFunction(x) {
+            function myFunction(x) { 
                 if (x.matches) { // If media query matches
                     window.onload = Scrolldown;
 
@@ -656,13 +656,14 @@
                     const video = e.target.parentElement.getElementsByTagName('video')[times_next_clicked];
 
                     video.pause();
-                    const first_parent_div = video.parentElement
+                    const first_parent_div = video.parentElement 
                     first_parent_div.style.width = '100%'
                     first_parent_div.parentElement.style.transform = 'translate3d(-100%, 0px, 0px)';
 
-
-                    times_next_clicked++;
+   
+                    times_next_clicked++; 
                     e.target.parentElement.getElementsByTagName('video')[times_next_clicked].play();
+                    
                 })
 
                 prev_btn.addEventListener('click', (e) => {
