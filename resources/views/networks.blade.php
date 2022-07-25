@@ -122,10 +122,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <iframe src="https://sparkschools.co.za/schools/spark-{{$school['location']}}" height="900px" width="100%" title="Iframe Example"></iframe>
+                            <iframe src="https://sparkschools.co.za/schools/{{$school['location']}}" height="900px" width="100%" title="Iframe Example"></iframe>
                         </div>
                         <div class="modal-footer">
-                            <a target="_blank" href="https://sparkschools.co.za/schools/spark-{{$school['location']}}" type="button" class="btn btn-primary waves-effect waves-float waves-light" >Open on Spark's Website</a>
+                            <a target="_blank" href="https://sparkschools.co.za/schools/{{$school['location']}}" type="button" class="btn btn-primary waves-effect waves-float waves-light" >Open on Spark's Website</a>
                         </div>
                     </div>
                 </div>
