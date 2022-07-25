@@ -11,11 +11,12 @@ class School implements SchoolsInferface
     {
         // TODO: Implement getAll() method.
 
-        $response = Http::get(env('BACKEND_API').'schools?include=field_location');
+        $response = Http::get(env('BACKEND_API').'schools?include=field_location,field_banner');
         $data = json_decode($response);
 
         $schools = [];
 
+        dd($data);
         foreach($data->data as $item){
 
             $location = '';

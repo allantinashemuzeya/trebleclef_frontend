@@ -1015,26 +1015,7 @@
 {{--    >Classroom</a--}}
 {{--    >--}}
 {{--</div>--}}
-<script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
-<script>
-    window.start.init({
-        title: "Hi there ✌️",
-        message: "How may we help you? Just send us a message now to get assistance.",
-        color: "#861010", position: "right",
-        placeholder: "Enter your message",
-        withText: "Write with",
-        viaWhatsapp: "Or write us directly via Whatsapp",
-        gty: "Go to your", awu: "and write us",
-        connect: "Connect now",
-        button: "Contact Support",
-        device: "everywhere",
-        logo: "https://d2r80wdbkwti6l.cloudfront.net/1hnbbEeKP8bMcOhGowptlhTcJl4bTzCD.jpg",
-        person: "https://d2r80wdbkwti6l.cloudfront.net/ae7iuWzwAbDaf931xCX1bvTuoeisaxcf.jpg",
-        services: [{"name": "whatsapp", "content": "+27845899764"}, {
-            "name": "mail",
-            "content": "support@trebleclefacademy.co.za"
-        }]
-    })</script>
+
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>
 
