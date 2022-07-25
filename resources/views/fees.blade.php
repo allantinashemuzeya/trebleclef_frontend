@@ -87,8 +87,6 @@
                                         </div>
                                     </div>
 
-
-
                                 @endforeach
                             <!--/ standard plan -->
 

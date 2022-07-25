@@ -67,13 +67,16 @@ class FeesProductsController extends Controller
 
         ray(json_decode($result))->blue();
 
-        if(json_decode($result)->status === 'successful'){
-            ray('My God is Amazing');
-        }
+        $invoiceDetails = ['user' => Auth::user(), 'payPlan' => $request->payplan];
 
-    // convert response to a usable object
-        return response(json_decode($result)->status, 200)
-            ->header('Content-Type', 'application/json');
+        if(json_decode($result)->status === 'successful'){
+           if( (new InvoicingController)->generateInvoice($invoiceDetails)){
+               // convert response to a usable object
+               return response(json_decode($result)->status, 200)
+                   ->header('Content-Type', 'application/json');
+           }
+        }
+        return 0;
     }
 
 
