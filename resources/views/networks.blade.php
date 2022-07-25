@@ -84,7 +84,7 @@
             <div class="col-lg-3 col-md-12 col-sm-12">
 
                 <a href="">
-                    <div class="card card-congratulations" style="background-image:url({{asset('app-assets/images/banner/spark_schools_banner.png')}}); background-size: cover">
+                    <div class="card card-congratulations" style="background-image:url({{$school['banner']}}); background-size: cover">
                         <div class="card-body text-center">
 
                             <div class="avatar avatar-xl bg-primary shadow">
