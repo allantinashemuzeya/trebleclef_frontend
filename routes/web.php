@@ -9,6 +9,7 @@ use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FeesProductsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoicingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
 use App\Http\Controllers\TutorInvitesController;
@@ -88,6 +89,12 @@ Route::controller(TutorInvitesController::class)->group(function(){
     Route::get('/tutor_invite/{email_address}', 'index');
     Route::post('/tutor_invite/create', 'createTutor')->name('createTutor');
 });
+
+Route::controller(InvoicingController::class)->group(function(){
+    Route::post('/generateInvoice', 'generateInvoice');
+    Route::get('/previewInvoice/{invoice}', 'previewInvoice');
+});
+
 
 
 Route::get('/logout', function(){
