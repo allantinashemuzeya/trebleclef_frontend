@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
      *
      * @throws ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -47,9 +47,9 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name . ' ' . $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $request?->name . ' ' . $request?->last_name,
+            'email' => $request?->email,
+            'password' => Hash::make($request?->password),
         ]);
 
         if ($user) {
