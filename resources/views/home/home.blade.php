@@ -90,6 +90,7 @@
 
 
             @if($draggableSliderContent['sliderType'] === 'standard')
+
                 <!-- Responsive Breakpoints swiper  #Not-Standard-->
                 <section id="component-swiper-responsive-breakpoints">
                     <div class="card">
@@ -123,7 +124,42 @@
                 </section>
                 <!--/ Responsive Breakpoints swiper -->
 
+                @elseif($draggableSliderContent['sliderType'] === 'autoplay')
+                <section id="component-swiper-autoplay" >
+                    <div class="card">
+{{--                        <div class="card-header">--}}
+{{--                            <h4 class="card-title">Autoplay</h4>--}}
+{{--                        </div>--}}
+                        <div class="card-body">
+                            <div class="swiper-autoplay swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" style="max-height:400px">
+                                <div class="swiper-wrapper" id="swiper-wrapper-3b3adefa5ac7ceb6" aria-live="off" style="transform: translate3d(-1446px, 0px, 0px); transition-duration: 0ms;">
+
+                                    @foreach($draggableSliderContent['content'] as $item)
+                                        <div class="swiper-slide" aria-label="1 / 6">
+                                            @if($item['type'] === 'video/mp4')
+                                                <video class="img-fluid" autoplay controls muted loop
+                                                       style="border-radius:10px; ">
+                                                    <source src="{{$item['file']}}" type="video/mp4"/>
+                                                </video>
+                                            @else
+                                                <img class="img-fluid" src="{{$item['file']}}" alt="" style="width: 100%"/>
+                                            @endif
+                                        </div>
+
+                                    @endforeach
+
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span></div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-3b3adefa5ac7ceb6" aria-disabled="false"></div>
+                                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3b3adefa5ac7ceb6" aria-disabled="false"></div>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                        </div>
+                    </div>
+                </section>
             @else
+
                 <!-- coverflow 3D effect swiper -->
                 <section id="component-swiper-coverflow">
                     <div class="card" style="background: linear-gradient(45deg, black, #a5171738);">
