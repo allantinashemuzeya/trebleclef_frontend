@@ -3,22 +3,27 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminNotifierMail;
 use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function create()
     {
@@ -28,10 +33,10 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
@@ -42,31 +47,44 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' =>  $request->name . ' ' . $request->last_name,
+            'name' => $request->name . ' ' . $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        if($user){
+        if ($user) {
 
             $userModel = DB::table('users')->latest()->first();
 
             $studentModel = new Student();
 
-            $studentModel->user_id  =$userModel->id;
+            $studentModel->user_id = $userModel->id;
             $studentModel->gender = $request->gender;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
             $studentModel->school = $request->school;
             $studentModel->date_of_birth = $request->dob;
 
             $studentModel->save();
+
+
         }
 
-        event(new Registered($user));
+        if (event(new Registered($user))) {
+            $this->notifyAdmin($user);
+        }
+
 
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function notifyAdmin($data): bool
+    {
+        if (Mail::to('admin@trebleclefapp.co.za')->send(new AdminNotifierMail($data))) {
+            return true;
+        }
+        return false;
     }
 }
 
