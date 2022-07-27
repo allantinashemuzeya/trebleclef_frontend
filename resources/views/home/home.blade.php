@@ -137,8 +137,7 @@
                                     @foreach($draggableSliderContent['content'] as $item)
                                         <div class="swiper-slide" aria-label="1 / 6">
                                             @if($item['type'] === 'video/mp4')
-                                                <video class="img-fluid" autoplay controls muted loop
-                                                       style="border-radius:10px; ">
+                                                <video class="img-fluid" autoplay controls muted loop style="border-radius:10px; ">
                                                     <source src="{{$item['file']}}" type="video/mp4"/>
                                                 </video>
                                             @else

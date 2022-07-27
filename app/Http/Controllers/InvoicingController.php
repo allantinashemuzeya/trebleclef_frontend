@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Mail;
 
 class InvoicingController extends Controller
 {
+
+
     //
     public function generateInvoice(array $data):string
     {
 
-        // save invoice in the database
+        // Save invoice in the database
 
         ray($data);
 
@@ -28,20 +30,9 @@ class InvoicingController extends Controller
             "PayPlan" => $data['payPlan']['id']
         ]);
 
-//        $invoiceObject = new InvoicesModel();
-//        $invoiceObject->User = $data['user']->id;
-//        $invoiceObject->InvoiceNumber = $this->generateInvoiceNumber();
-//        $invoiceObject->PayPlan = $data['payPlan'];
 
-
-
-
-        ray('RESULT::: ', $result)->green();
-//        exit;
         if($result){
             $data['invoiceNumber'] = $result['InvoiceNumber'];
-
-            ray('RESULT::: ', $data)->green();
 
             // convert response to a usable object
             if (!empty(Auth::user()->email)) {
@@ -51,8 +42,6 @@ class InvoicingController extends Controller
                 return 'Something went wrong Generating!';
             }
         };
-
-
         return 0;
     }
 

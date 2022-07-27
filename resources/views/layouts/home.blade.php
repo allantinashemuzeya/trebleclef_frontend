@@ -423,8 +423,6 @@
 
     <link rel="stylesheet" href="{{asset('js/notiflix/dist/notiflix-3.2.5.min.css')}}" />
 
-
-
     <style>
         #freechat-popup > div.freechat-popup-header {
             background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
@@ -450,7 +448,6 @@
 
     </style>
 
-
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
 
     <style>
@@ -461,6 +458,7 @@
         }
 
     </style>
+
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 
 </head>
