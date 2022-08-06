@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoicingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
+use App\Http\Controllers\TheZoneController;
 use App\Http\Controllers\TutorInvitesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -95,6 +96,12 @@ Route::controller(InvoicingController::class)->group(function(){
     Route::get('/previewInvoice/{invoice}', 'previewInvoice');
 });
 
+
+//The Zone
+
+Route::controller(TheZoneController::class)->group(function () {
+    Route::get('/thezone', 'index')->name('thezone');
+});
 
 
 Route::get('/logout', function(){

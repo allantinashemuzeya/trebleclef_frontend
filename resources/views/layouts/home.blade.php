@@ -415,14 +415,17 @@
 
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/pages/app-ecommerce-details.min.css">
-    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/forms/form-number-input.min.css">
-    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/pages/app-ecommerce-details.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/forms/form-number-input.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
     <!-- END: Page CSS-->
 
-    <link rel="stylesheet" href="{{asset('js/notiflix/dist/notiflix-3.2.5.min.css')}}" />
-
+    <link rel="stylesheet" href="{{asset('js/notiflix/dist/notiflix-3.2.5.min.css')}}"/>
 
 
     <style>
@@ -636,6 +639,13 @@
                         >
                     </li>
 
+                    <li>
+                        <a class="d-flex align-items-center"
+                           href="{{route('thezone')}}"><i data-feather="circle"></i><span
+                                class="menu-item text-truncate" data-i18n="eCommerce">The Zone</span></a
+                        >
+                    </li>
+
                 </ul>
             </li>
             <li class="navigation-header">
@@ -705,39 +715,6 @@
                     >Logout</span
                     ></a>
             </li>
-
-
-            {{--            <li class="nav-item">--}}
-            {{--                <a class="d-flex align-items-center" href="#"--}}
-            {{--                ><i data-feather="shopping-cart"></i--}}
-            {{--                    ><span class="menu-title text-truncate" data-i18n="eCommerce"--}}
-            {{--                    >eCommerce</span--}}
-            {{--                    ></a--}}
-            {{--                >--}}
-            {{--                <ul class="menu-content">--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Premium Lessons</span--}}
-            {{--                            ></a>--}}
-            {{--                    </li>--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Instruments</span--}}
-            {{--                            ></a--}}
-            {{--                        >--}}
-            {{--                    </li>--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Swag</span--}}
-            {{--                            ></a--}}
-            {{--                        >--}}
-            {{--                    </li>--}}
-            {{--                </ul>--}}
-            {{--            </li>--}}
-        </ul>
     </div>
 </div>
 <!-- END: Main Menu-->
@@ -1105,14 +1082,19 @@
 <!-- END: Page JS-->
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
-<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/swiper.min.js"></script>
-<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/toastr.min.js"></script>
+<script
+    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"></script>
+<script
+    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/swiper.min.js"></script>
+<script
+    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/vendors/js/extensions/toastr.min.js"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Page JS-->
-<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/pages/app-ecommerce-details.min.js"></script>
-<script src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/forms/form-number-input.min.js"></script>
+<script
+    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/pages/app-ecommerce-details.min.js"></script>
+<script
+    src="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/js/scripts/forms/form-number-input.min.js"></script>
 <!-- END: Page JS-->
 
 
