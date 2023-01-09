@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -63,6 +64,10 @@ class RegisteredUserController extends Controller
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
             $studentModel->school = $request->school;
             $studentModel->date_of_birth = $request->dob;
+
+            $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
+
+            $studentModel->profile_picture = $user->id.'/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
 
             $studentModel->save();
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\InvoicingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
 use App\Http\Controllers\TutorInvitesController;
+use App\Http\Controllers\UserSubscriptionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,43 +36,43 @@ Route::get('/', function () {
 
 
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/dashboard/','index')->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard/','index')->middleware(['auth', 'hasSubscription'])->name('dashboard');
 });
 
 Route::controller(CommunicationController::class)->group(function(){
-    Route::get('/communications', 'index')->middleware(['auth'])->name('communications');
-    Route::get('/communications/{type}', 'communicationByType')->middleware(['auth'])->name('communication-by-type');
-    Route::get('/communication/{id}', 'communication')->middleware(['auth'])->name('communication');
-    Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(['auth'])->name('student-of-the-week');
-    Route::get('/foundations', 'foundations')->middleware(['auth'])->name('foundations');
+    Route::get('/communications', 'index')->middleware(['auth', 'hasSubscription'])->name('communications');
+    Route::get('/communications/{type}', 'communicationByType')->middleware(['auth', 'hasSubscription'])->name('communication-by-type');
+    Route::get('/communication/{id}', 'communication')->middleware(['auth', 'hasSubscription'])->name('communication');
+    Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(['auth', 'hasSubscription'])->name('student-of-the-week');
+    Route::get('/foundations', 'foundations')->middleware(['auth', 'hasSubscription'])->name('foundations');
 });
 
 Route::controller(ClassroomController::class)->group(function(){
-    Route::get('/classroom/', 'index')->name('classroom')->middleware(['auth']);
-    Route::get('/classroom/{studentLevel}/subjects', 'subjects')->middleware(['auth'])->name('subjects');
-    Route::get('/classroom/subject/{subject}', 'subject')->middleware(['auth'])->name('subject');
-    Route::get('/classroom/{subject}/lessons', 'lessons')->middleware(['auth'])->name('lessons');
-    Route::get('/classroom/lesson/{lesson}/{subject}', 'lesson')->middleware(['auth'])->name('lesson');
+    Route::get('/classroom/', 'index')->name('classroom')->middleware(['auth', 'hasSubscription']);
+    Route::get('/classroom/{studentLevel}/subjects', 'subjects')->middleware(['auth', 'hasSubscription'])->name('subjects');
+    Route::get('/classroom/subject/{subject}', 'subject')->middleware(['auth', 'hasSubscription'])->name('subject');
+    Route::get('/classroom/{subject}/lessons', 'lessons')->middleware(['auth', 'hasSubscription'])->name('lessons');
+    Route::get('/classroom/lesson/{lesson}/{subject}', 'lesson')->middleware(['auth', 'hasSubscription'])->name('lesson');
 });
 
-Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth'])->name('calendar');
+Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth', 'hasSubscription'])->name('calendar');
 
 Route::controller(ProfileController::class)->group(function(){
-    Route::get('/profile', 'index')->middleware(['auth'])->name('profile');
-    Route::post('/profile-update', 'updateProfile')->middleware(['auth'])->name('updateProfile');
+    Route::get('/profile', 'index')->middleware(['auth', 'hasSubscription'])->name('profile');
+    Route::post('/profile-update', 'updateProfile')->middleware(['auth', 'hasSubscription'])->name('updateProfile');
 });
 
 
 Route::controller(EventsController::class)->group(function(){
-    Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth'])->name('events');
-    Route::get('/event/{id}', [EventsController::class, 'event'])->middleware(['auth'])->name('event');
+    Route::get('/events/', [EventsController::class, 'index'])->middleware(['auth', 'hasSubscription'])->name('events');
+    Route::get('/event/{id}', [EventsController::class, 'event'])->middleware(['auth', 'hasSubscription'])->name('event');
 });
 
 Route::controller(SitePagesController::class)->group(function(){
-    Route::get('/networks', 'networks')->middleware(['auth'])->name('networks');
-    Route::get('/gallery', 'gallery')->middleware(['auth'])->name('gallery');
-    Route::get('/office', 'office')->middleware(['auth'])->name('office');
-    Route::get('/chat', 'chat')->middleware(['auth'])->name('chat');
+    Route::get('/networks', 'networks')->middleware(['auth', 'hasSubscription'])->name('networks');
+    Route::get('/gallery', 'gallery')->middleware(['auth', 'hasSubscription'])->name('gallery');
+    Route::get('/office', 'office')->middleware(['auth', 'hasSubscription'])->name('office');
+    Route::get('/chat', 'chat')->middleware(['auth', 'hasSubscription'])->name('chat');
 });
 
 Route::controller(FeesProductsController::class)->group(function(){
@@ -95,7 +96,9 @@ Route::controller(InvoicingController::class)->group(function(){
     Route::get('/previewInvoice/{invoice}', 'previewInvoice');
 });
 
-
+Route::controller(UserSubscriptionsController::class)->group(function(){
+    Route::get('/subscription', 'index')->middleware(['auth'])->name('subscription');
+});
 
 Route::get('/logout', function(){
     Auth::logout();

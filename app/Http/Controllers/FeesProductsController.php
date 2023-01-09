@@ -70,6 +70,11 @@ class FeesProductsController extends Controller
         $invoiceDetails = ['user' => Auth::user(), 'payPlan' => $request->payplan];
 
         if(json_decode($result)->status === 'successful'){
+
+            $user = Auth::user();
+            $user->hasSubscription = 1;
+            $user->save();
+
            if( (new InvoicingController)->generateInvoice($invoiceDetails)){
                // convert response to a usable object
                return response(json_decode($result)->status, 200)

@@ -30,8 +30,16 @@
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors"/>
 
-                    <form class="auth-login-form mt-2" method="POST" action="{{ route('register') }}">
+                    <form class="auth-login-form mt-2" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="d-flex">
+                            <a href="#" class="me-25">
+
+                            </a>
+
+                            <!--/ upload and reset button -->
+                        </div>
 
                         <div class="">
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
@@ -152,6 +160,18 @@
                                            type="password" value="12345678" name="password_confirmation" required
                                            autocomplete="current-password"/>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- upload and reset button -->
+                        <div class="mt-3 ">
+                            <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
+                                Add a profile picture
+                            </h5>
+
+                            <div class="mt-75 ms-1">
+                            <input class="btn btn-sm btn-secondary mb-75 me-75" name="profilePicture"  type="file" id="account-upload"  accept="image/*"/>
+                            <p>Allowed JPG, GIF or PNG.</p>
                             </div>
                         </div>
 
