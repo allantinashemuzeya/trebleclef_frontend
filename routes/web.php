@@ -96,10 +96,11 @@ Route::controller(InvoicingController::class)->group(function(){
     Route::get('/previewInvoice/{invoice}', 'previewInvoice');
 });
 
-Route::controller(UserSubscriptionsController::class)->group(function(){
-    Route::get('/subscription', 'index')->middleware(['auth'])->name('subscription');
-});
 
+    Route::controller(App\Http\Controllers\UserSubscriptionsController::class)->group(function(){
+	Route::get('/subscription', 'index')->name('subscription');
+        Route::post('/add-subscription', 'store')->name('attach_subscription_to_user');
+});
 Route::get('/logout', function(){
     Auth::logout();
     return to_route('dashboard');

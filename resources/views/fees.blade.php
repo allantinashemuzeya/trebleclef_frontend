@@ -25,10 +25,7 @@
                     <!-- title text and switch button -->
                     <div class="text-center">
                         <h1 class="mt-5">Pricing Plans</h1>
-                        <p class="mb-2 pb-75">
-                            All plans include 40+ advanced tools and features to boost your product. Choose the best
-                            plan to fit your needs.
-                        </p>
+                    
                         {{--                        <div class="d-flex align-items-center justify-content-center mb-5 pb-50">--}}
                         {{--                            <h6 class="me-1 mb-0">Monthly</h6>--}}
                         {{--                            <div class="form-check form-switch">--}}

@@ -7,6 +7,7 @@ use App\Mail\AdminNotifierMail;
 use App\Models\Student;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class RegisteredUserController extends Controller
      * @return RedirectResponse
      *
      * @throws ValidationException
+     * @throws GuzzleException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -67,17 +69,19 @@ class RegisteredUserController extends Controller
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
-            $studentModel->profile_picture = $user->id.'/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
+
+            if($path){
+                $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            }
 
             $studentModel->save();
-
-
         }
 
         if (event(new Registered($user))) {
             $this->notifyAdmin($user);
+            (new \App\Http\Services\Students\Student)->createStudent($user);
         }
-
 
         Auth::login($user);
 

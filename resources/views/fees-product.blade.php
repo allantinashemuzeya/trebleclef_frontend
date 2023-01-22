@@ -130,7 +130,7 @@
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
 
 
@@ -139,7 +139,7 @@
                 yoco.showPopup({
                     amountInCents: pay_plan['price'] * 100 ,
                     currency: 'ZAR',
-                    name: 'Your Store or Product',
+                    name: 'Trebleclef Academy',
                     description: 'Awesome description',
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment

@@ -20,6 +20,7 @@ class SchoolFees implements SchoolFeesInterface
             'description'=> $pay_plan->attributes->field_description,
             'price'=> $pay_plan->attributes->field_price,
             'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
+            'type' => $pay_plan->attributes?->field_type
         ];
     }
 
@@ -38,6 +39,7 @@ class SchoolFees implements SchoolFeesInterface
                 'description'=> $pay_plan->attributes->field_description,
                 'price'=> $pay_plan->attributes->field_price,
                 'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
+                'type' => $pay_plan->attributes->field_type
             ];
         }
 
