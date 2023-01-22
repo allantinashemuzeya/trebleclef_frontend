@@ -2,11 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Services\Schools\School;
-use App\Models\Student;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use App\Http\Services\StudentLevels\StudentLevels;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,9 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $viewShare['studentLevels'] = (new StudentLevels())->getAll();
-        $viewShare['schools'] = (new School())->getAll();
 
-        view()->share($viewShare);
     }
 }

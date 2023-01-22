@@ -3,34 +3,35 @@
 namespace App\Http\Services\StudentLevels;
 
 use Illuminate\Support\Facades\Http;
-use Carbon\Carbon;
 
 class StudentLevels implements studentLevelsInterface {
 
 
     public function get($studentLevelId) {
         $includes = 'include=field_banner';
-        $response = Http::get(env('BACKEND_API') . 'student_level/'.$studentLevelId.'?' . $includes);
+        $response = Http::get(config('trebleclef.backend_api') . 'student_level/' . $studentLevelId . '?' . $includes);
         if ($response->status() === 200) {
             $data = json_decode($response);
             return $data;
-        }
-        else {
+        } else {
             return ['error' => $response->status()];
         }
     }
+
     //SECTION GET STUDENT LEVELS
-    public function getAll(): array {
+    public function getAll(): array
+    {
         // TODO: Implement getAll() method.
         $includes = 'include=field_banner';
-        $response = Http::get(env('BACKEND_API') . 'student_level?include=field_banner');
 
-        $studentLevels  = [];
+        $response = Http::get(config('trebleclef.backend_api') . 'student_level/?include=field_banner');
+
+        $studentLevels = [];
 
         if ($response->status() === 200) {
             $data = json_decode($response);
 
-            foreach($data->data as $item){
+            foreach ($data->data as $item) {
                 array_push($studentLevels, $this->processStudentLevel($item));
             }
 
@@ -56,7 +57,7 @@ class StudentLevels implements studentLevelsInterface {
     public function getStudentLevelBanner($studentLevelId): array|string|null {
 
         $includes = 'include=field_banner';
-        $response = Http::get(env('BACKEND_API') . 'student_level/'.$studentLevelId.'?' . $includes);
+        $response = Http::get(config('trebleclef.backend_api') . 'student_level/' . $studentLevelId . '?' . $includes);
 
         if ($response->status() === 200) {
             $data =  json_decode($response);
@@ -84,7 +85,7 @@ class StudentLevels implements studentLevelsInterface {
         //        $cid = $this->getCid($url_alias);
 
         $includes = 'include=field_banner';
-        $response = Http::get(env('BACKEND_API') . 'student_level/'.$id.'?' . $includes);
+        $response = Http::get(config('trebleclef.backend_api') . 'student_level/' . $id . '?' . $includes);
         if ($response->status() === 200) {
             $data = json_decode($response);
 

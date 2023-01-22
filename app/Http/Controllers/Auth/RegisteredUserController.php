@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Schools\School;
 use App\Mail\AdminNotifierMail;
 use App\Models\Student;
 use App\Models\User;
@@ -29,7 +30,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $data['schools'] = app(School::class)->getAll();
+        return view('auth.register', $data);
     }
 
     /**

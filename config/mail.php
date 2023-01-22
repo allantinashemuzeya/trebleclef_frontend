@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', 'mail.trebleclefapp.co.za'),
             'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'encryption' => env('MAIL_ENCRYPTION', null),
+            'username' => env('MAIL_USERNAME', 'registrations@trebleclefapp.co.za'),
+            'password' => env('MAIL_PASSWORD', 'Kungfucool24'),
             'timeout' => null,
             'verify_peer' => false,   // <------ IT HAS TO BE HERE
         ],
@@ -92,8 +92,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'trebleclefapp@nextpluspath.co.za'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'registrations@trebleclefapp.co.za'),
+        'name' => env('MAIL_FROM_NAME', 'Treble Clef App'),
     ],
 
     /*
