@@ -79,13 +79,8 @@ class Student implements StudentsInterface
                 'Authorization: Basic YWxsYW46S3VuZ2Z1Y29vbDI0'
             ),
         ));
-
         $response = curl_exec($curl);
-
         curl_close($curl);
-        dd($response);
-
-
     }
 
     public function updateStudent(string $studentId, array $studentData): array
