@@ -73,8 +73,8 @@ class RegisteredUserController extends Controller
 
             $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
 
-            if($path){
-                $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            if ($path && $request->file('profilePicture') !== null) {
+                $studentModel->profile_picture = $user->id . '/' . $date . '/' . $request->file('profilePicture')->getClientOriginalName();
             }
 
             $studentModel->save();
