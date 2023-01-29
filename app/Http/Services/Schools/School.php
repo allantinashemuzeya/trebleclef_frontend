@@ -15,7 +15,6 @@ class School implements SchoolsInferface
     {
         $this->client = new Client([
             'base_uri' => config('trebleclef.cms_base_url'),
-            'timeout' => 2.0,
         ]);
     }
 
