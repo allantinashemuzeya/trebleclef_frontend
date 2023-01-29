@@ -42,7 +42,7 @@ class StudentFeeder {
                     'Kungfucool24'
                 ]
             ]);
-        return ($response->getBody()->getContents());
+        dd($response->getBody()->getContents());
     }
     public function getCsrfToken(){
         $response = $this->client->request('POST', 'session/token?_format=hal_json', [
