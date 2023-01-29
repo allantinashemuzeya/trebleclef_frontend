@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\DrupalRestFeederService\StudentFeeder;
-use App\Http\Services\Schools\School;
+use App\Models\School;
 use App\Mail\AdminNotifierMail;
 use App\Models\Student;
 use App\Models\User;
@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $data['schools'] = app(School::class)->getAll();
+        $data['schools'] = School::all();
         return view('auth.register', $data);
     }
 
