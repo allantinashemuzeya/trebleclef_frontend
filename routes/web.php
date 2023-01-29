@@ -1,5 +1,8 @@
-<?php /** @noinspection SpellCheckingInspection */
+<?php
 
+/** @noinspection PhpUndefinedClassInspection */
+/** @noinspection PhpUndefinedNamespaceInspection */
+/** @noinspection SpellCheckingInspection */
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 use App\Http\Controllers\CalendarController;
@@ -14,6 +17,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
 use App\Http\Controllers\TutorInvitesController;
 use App\Http\Controllers\UserSubscriptionsController;
+use App\Http\Controllers\DrupalRestFeederController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -106,4 +110,6 @@ Route::get('/logout', function(){
     return to_route('dashboard');
 })->name('logout');
 
+
+Route::get('/drupal', [DrupalRestFeederController::class, 'index']);
 require __DIR__.'/auth.php';

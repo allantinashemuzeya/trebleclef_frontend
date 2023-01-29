@@ -30,7 +30,6 @@ class AdminNotifierMail extends Mailable
      */
     public function build()
     {
-        ray($this->data)->green();
         return $this->view('email.NotifyAdminMail', array('data' => $this->data));
     }
 }

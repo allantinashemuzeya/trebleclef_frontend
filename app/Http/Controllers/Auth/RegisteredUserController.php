@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\DrupalRestFeederService\StudentFeeder;
 use App\Http\Services\Schools\School;
 use App\Mail\AdminNotifierMail;
 use App\Models\Student;
@@ -62,7 +63,6 @@ class RegisteredUserController extends Controller
             $userModel = DB::table('users')->latest()->first();
 
             $studentModel = new Student();
-
             $studentModel->user_id = $userModel->id;
             $studentModel->gender = $request->gender;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
@@ -71,18 +71,18 @@ class RegisteredUserController extends Controller
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
-            $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
-
-            if($path){
-                $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            if($request->file('profile_picture') != null){
+                $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
+                if($path){
+                    $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+                }
             }
-
             $studentModel->save();
         }
 
         if (event(new Registered($user))) {
             $this->notifyAdmin($user);
-            (new \App\Http\Services\Students\Student)->createStudent($user);
+            (new StudentFeeder($user))->createStudent();
         }
 
         Auth::login($user);
