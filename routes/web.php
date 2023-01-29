@@ -86,24 +86,24 @@ Route::controller(FeesProductsController::class)->group(function(){
 });
 
 Route::controller(ChatApplication::class)->group(function(){
-    Route::post('chat/', 'chatTutor')->name('chat-tutor');
+    Route::post('chat/', 'chatTutor')->middleware(['auth'])->name('chat-tutor');
 });
 
 
 Route::controller(TutorInvitesController::class)->group(function(){
-    Route::get('/tutor_invite/{email_address}', 'index');
-    Route::post('/tutor_invite/create', 'createTutor')->name('createTutor');
+    Route::get('/tutor_invite/{email_address}', 'index')->middleware(['auth']);
+    Route::post('/tutor_invite/create', 'createTutor')->middleware(['auth'])->name('createTutor');
 });
 
 Route::controller(InvoicingController::class)->group(function(){
-    Route::post('/generateInvoice', 'generateInvoice');
-    Route::get('/previewInvoice/{invoice}', 'previewInvoice');
+    Route::post('/generateInvoice', 'generateInvoice')->middleware(['auth']);
+    Route::get('/previewInvoice/{invoice}', 'previewInvoice')->middleware(['auth']);
 });
 
 
-    Route::controller(App\Http\Controllers\UserSubscriptionsController::class)->group(function(){
-	Route::get('/subscription', 'index')->name('subscription');
-        Route::post('/add-subscription', 'store')->name('attach_subscription_to_user');
+Route::controller(App\Http\Controllers\UserSubscriptionsController::class)->group(function(){
+	Route::get('/subscription', 'index')->middleware(['auth'])->name('subscription');
+    Route::post('/add-subscription', 'store')->middleware(['auth'])->name('attach_subscription_to_user');
 });
 Route::get('/logout', function(){
     Auth::logout();
