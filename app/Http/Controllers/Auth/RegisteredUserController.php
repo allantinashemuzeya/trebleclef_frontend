@@ -60,11 +60,9 @@ class RegisteredUserController extends Controller
 
         if ($user) {
 
-            $userModel = DB::table('users')->latest()->first();
-
             $studentModel = new Student();
 
-            $studentModel->user_id = $userModel->id;
+            $studentModel->user_id = $user->id;
             $studentModel->gender = $request->gender;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
             $studentModel->school = $request->school;

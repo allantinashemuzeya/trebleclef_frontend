@@ -12,10 +12,12 @@
 
     <div class="auth-wrapper auth-v2">
         <div class="auth-inner row m-0">
+            <div class="d-none d-lg-flex col-lg-7 align-items-center first">
 
-            <video class="d-flex bg-white  col-lg-7" autoplay muted loop>
-                <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
-            </video>
+                <video class="d-flex col-lg-12 first" autoplay muted loop style="border-radius: 25px">
+                    <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
+                </video>
+            </div>
             <!-- Login style="overflow:scroll;height:100vh;padding-top: 50vh!important;" -->
             <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-5">
                 <div style="overflow-y: scroll;height: 90vh;" class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
