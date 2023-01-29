@@ -79,7 +79,7 @@ class StudentFeeder {
             ],
             "title" => [
                 [
-                    "value" => "Student Registration"
+                    "value" => $this->user->name
                 ]
             ],
             "field_full_name" => [
@@ -97,7 +97,7 @@ class StudentFeeder {
                     "value" => $data->instrument
                 ]
             ],
-            "field_grade" => [
+            "field_school_grade" => [
                 [
                     "value" => $data->grade
                 ]
@@ -124,6 +124,11 @@ class StudentFeeder {
             "field_date_of_birth" => [
                 [
                     "value" => $data->date_of_birth
+                ]
+            ],
+            "field_email_address" => [
+                [
+                    "value" => $this->user->email
                 ]
             ]
         ];
