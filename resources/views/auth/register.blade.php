@@ -2,7 +2,7 @@
 @section('content')
     <style>
         .reg-title {
-            width: 35%;
+            width: 45%;
             border-radius: 20px;
             text-align: center;
             padding: 3px;
@@ -22,7 +22,7 @@
             <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-5">
                 <div style="overflow-y: scroll;height: 90vh;" class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                     <h2 class="card-title fw-bold mb-1">
-                        Get Treble Clef Academy Account 👋
+                        Get A Treble Clef Academy Account Now👋
                     </h2>
                     <p class="card-text mb-2">Please register your account and start the adventure</p>
 
@@ -53,21 +53,11 @@
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
-                                        <label class="form-label" for="login-email">First Name</label>
+                                        <label class="form-label" for="login-email">First Name and Last Name</label>
                                         <input id="first_name" class="form-control" type="text" name="name"
                                                :value="old('firstname')" required autofocus/>
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="login-email">Surname</label>
-                                        <input id="last_name" class="form-control" type="text" name="last_name"
-                                               :value="old('lastname')" required autofocus/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
 
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
@@ -77,6 +67,9 @@
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="login-gender">Gender</label>
@@ -93,25 +86,50 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="login-school">School</label>
-                                    <select id="login-school" class="form-control" type="text" name="school" required autofocus>
-                                        @foreach($schools as $school)
-                                            <option value="{{$school->uuid}}">
-                                                {{$school->name}}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-email">Instrument/Activity</label>
+                                        <select id="login-school" class="form-control" type="text" name="grade" required autofocus>
+                                            @foreach($instruments as $instrument)
+                                                <option value="{{$instrument->value}}">
+                                                    {{$instrument->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-school">School</label>
+                                        <select id="login-school" class="form-control" type="text" name="school" required autofocus>
+                                            @foreach($schools as $school)
+                                                <option value="{{$school->uuid}}">
+                                                    {{$school->name}}
 
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-school">Grade</label>
+                                        <select id="login-school" class="form-control" type="text" name="grade" required autofocus>
+                                                @foreach($grades as $grade)
+                                                    <option value="{{$grade->value}}">
+                                                        {{$grade->name}}
+                                                    </option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="mt-3 ">
+                        <div class="mt-1 ">
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
                                 Contact Details
                             </h5>
@@ -120,7 +138,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="login-email">Cellphone Number</label>
-                                        <input id="cell1" class="form-control" type="number" name="cellphoneNumber"
+                                        <input id="cell1" class="form-control" type="tel" name="cellphoneNumber"
                                               placeholder="(+27)...." required autofocus/>
                                     </div>
                                 </div>

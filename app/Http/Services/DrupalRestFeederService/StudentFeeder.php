@@ -92,6 +92,22 @@ class StudentFeeder {
                     "value" => $data->gender
                 ]
             ],
+            "field_instrument" => [
+                [
+                    "value" => $data->instrument
+                ]
+            ],
+            "field_grade" => [
+                [
+                    "value" => $data->grade
+                ]
+            ],
+            "field_cellphone_number" => [
+                [
+                    "value" => $data->cellphoneNumber
+                ]
+            ],
+
             "field_school" => [
                 [
                     "target_id" => str_replace('/node/', '', $this->school->url),
