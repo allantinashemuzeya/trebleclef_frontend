@@ -1,19 +1,29 @@
 @extends('layouts.login')
 @section('content')
 
+    <style>
+        video{
+            height: 459px;
+            position: relative;
+            margin-top: -1%;
+            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);        }
+    </style>
 
 <div class="auth-wrapper auth-v2">
     <div class="auth-inner row m-0">
 
-        <video class="d-flex col-lg-8" autoplay muted loop>
-            <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
-        </video>
+        <div class="d-none d-lg-flex col-lg-8 align-items-center first">
+
+            <video class="d-flex col-lg-12 first" autoplay muted loop style="border-radius: 25px">
+                <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
+            </video>
+        </div>
 
         <!-- Login-->
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <h2 class="card-title fw-bold mb-1">
-                    Welcome to Treble Clef Academy 👋
+                    Welcome CodeMaster Treble Clef App Dev Instance 👋
                 </h2>
                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
 

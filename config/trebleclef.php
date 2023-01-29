@@ -13,7 +13,7 @@ return [
 
     'cms_write_password' => env('CMS_WRITE_PASSWORD', 'Kungfucool24'),
 
-    'cms_base_url' => env('CMS_BASE_URL', 'http://cms.trebleclefapp.co.za'),
+    'cms_base_url' => env('CMS_BASE_URL', 'https://cms.trebleclefapp.co.za'),
 
     'yoco_test_public_key' => env('YOO_TEST_PUBLIC_KEY', 'pk_test_5b6431ceoWRGGlJ3b914'),
 
