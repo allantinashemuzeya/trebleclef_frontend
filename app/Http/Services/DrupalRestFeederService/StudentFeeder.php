@@ -5,12 +5,14 @@ namespace App\Http\Services\DrupalRestFeederService;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use App\Models\User;
+use App\Models\School;
 
 class StudentFeeder {
 
     public $student;
     public $user;
     public $client;
+    public $school;
 
     public function __construct(User $user)
     {
@@ -21,6 +23,8 @@ class StudentFeeder {
         $this->user = $user;
         $this->student = $user->student;
         $this->student->name = $user->name;
+        $this->school = School::where('uuid',$this->student->school)->first();
+
     }
 
     public function createStudent()
@@ -38,7 +42,7 @@ class StudentFeeder {
                     'Kungfucool24'
                 ]
             ]);
-        dd($response->getBody()->getContents());
+        return ($response->getBody()->getContents());
     }
     public function getCsrfToken(){
         $response = $this->client->request('POST', 'session/token?_format=hal_json', [
@@ -57,6 +61,9 @@ class StudentFeeder {
             "_links" => [
                 "type" => [
                     "href" => config('trebleclef.cms_base_url')."/rest/type/node/student"
+                ],
+                config('trebleclef.cms_base_url') . "" => [
+                    "href" => config('trebleclef.cms_base_url')."/node?_format=hal_json"
                 ]
             ],
             "type" => [
@@ -87,8 +94,10 @@ class StudentFeeder {
             ],
             "field_school" => [
                 [
+                    "target_id" => str_replace('/node/', '', $this->school->url),
                     "target_type" => "node",
-                    "target_uuid" => $data->school,
+                    "target_uuid" => $this->school->uuid,
+                    "url" => $this->school->url,
                 ]
             ],
             "field_user_id" => [

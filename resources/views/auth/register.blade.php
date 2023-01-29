@@ -98,8 +98,8 @@
                                     <label class="form-label" for="login-school">School</label>
                                     <select id="login-school" class="form-control" type="text" name="school" required autofocus>
                                         @foreach($schools as $school)
-                                            <option value="{{$school['id']}}">
-                                                {{$school['name']}}
+                                            <option value="{{$school->uuid}}">
+                                                {{$school->name}}
                                             </option>
                                         @endforeach
                                     </select>
