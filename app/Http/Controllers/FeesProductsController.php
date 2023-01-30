@@ -33,7 +33,7 @@ class FeesProductsController extends Controller
         ];
 
     // Anonymous test key. Replace with your key.
-        $secret_key = env('YOCO_TEST_SECRET_KEY');
+        $secret_key = env('YOCO_LIVE_SECRET_KEY');
 
     // Initialise the curl handle
         $ch = curl_init();
