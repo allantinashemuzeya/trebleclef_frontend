@@ -26,18 +26,10 @@ class InvoicingController extends Controller
             "PayPlan" => $data['payPlan']['id']
         ]);
 
-//        $invoiceObject = new InvoicesModel();
-//        $invoiceObject->User = $data['user']->id;
-//        $invoiceObject->InvoiceNumber = $this->generateInvoiceNumber();
-//        $invoiceObject->PayPlan = $data['payPlan'];
-
-
-
 
 //        exit;
         if($result){
             $data['invoiceNumber'] = $result['InvoiceNumber'];
-
             // convert response to a usable object
             if (!empty(Auth::user()->email)) {
                 if (Mail::to(Auth::user()->email)->send(new InvoiceMail($data))) {
@@ -57,9 +49,7 @@ class InvoicingController extends Controller
 
     public function generateInvoiceNumber(): string
     {
-
         $number = rand(10,10000);
-
         return '#'.$number;
     }
 }

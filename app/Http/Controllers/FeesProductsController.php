@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Log;
 
 class FeesProductsController extends Controller
 {
-
-    //
-
     public function pay($productId)
     {
         $currentUser = $this->getCurrentUser();
@@ -85,17 +82,6 @@ class FeesProductsController extends Controller
     {
         $structures = (new SchoolFees())->getAll();
 
-        $currentUser = $this->getCurrentUser();
-
-        return view('fees', ['pay_plans' => $structures, 'pageTitle' => '', 'currentUser' => $currentUser,
-        ]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrentUser()
-    {
         if (Auth::user()->userType === 1) {
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
         } else if (Auth::user()->userType === 2) {

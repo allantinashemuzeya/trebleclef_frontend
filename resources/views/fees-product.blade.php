@@ -23,15 +23,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Product Details</h2>
+                            <h2 class="content-header-title float-start mb-0">Pay Details</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#"></a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="app-ecommerce-shop.html"></a>
-                                    </li>
+
                                     <li class="breadcrumb-item active">Details
                                     </li>
                                 </ol>
@@ -60,7 +57,6 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
-                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img
                                                         src="{{asset('app-assets/images/pay_plan_icon.png')}}"
@@ -88,7 +84,7 @@
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double Tap to Pay</span>
+                                            <span  class="">Double tap to pay.</span>
                                         </button>
 
                                     </div>
@@ -115,16 +111,13 @@
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-
-
-
         function pay(pay_plan){
-
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
+
 
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
@@ -145,7 +138,6 @@
 
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
-                                alert('Payment Successful');
                                 Notiflix.Notify.success(
                                     'Payment Successful, Awesome, well Done!!',
                                     {
@@ -160,8 +152,6 @@
                 })
             });
         }
-
-
     </script>
 
 @endsection

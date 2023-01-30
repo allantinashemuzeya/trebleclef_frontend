@@ -54,6 +54,7 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
+                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img src="{{asset('app-assets/images/pay_plan_icon.png')}}"
                                                             class="mb-1" alt="svg img" height="220px" width="220px"/>
@@ -102,6 +103,7 @@
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
+
 
     <!-- Create a pay button that will open the popup-->
     {{-- <button id="checkout-button">Pay</button>--}}
