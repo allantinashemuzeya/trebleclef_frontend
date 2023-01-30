@@ -20,8 +20,6 @@ class InvoicingController extends Controller
 
         // save invoice in the database
 
-        ray($data);
-
         $result = InvoicesModel::create([
             "UserId" => $data['user']->id,
             "InvoiceNumber" => $this->generateInvoiceNumber(),
@@ -36,12 +34,9 @@ class InvoicingController extends Controller
 
 
 
-        ray('RESULT::: ', $result)->green();
 //        exit;
         if($result){
             $data['invoiceNumber'] = $result['InvoiceNumber'];
-
-            ray('RESULT::: ', $data)->green();
 
             // convert response to a usable object
             if (!empty(Auth::user()->email)) {
@@ -52,13 +47,11 @@ class InvoicingController extends Controller
             }
         };
 
-
         return 0;
     }
 
     public function previewInvoice(InvoicesModel $invoice): Factory|View|Application
     {
-        ray('Invoice ', $invoice);
         return view('ShowInvoice.index', ['data' => $invoice]);
     }
 

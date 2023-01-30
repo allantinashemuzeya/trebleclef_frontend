@@ -13,7 +13,6 @@
 
     </style>
 
-
     <!-- BEGIN: Content-->
     <div class="app-content content ecommerce-application m-0">
         <div class="content-overlay"></div>
@@ -28,10 +27,6 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">eCommerce</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="app-ecommerce-shop.html">Shop</a>
-                                    </li>
                                     <li class="breadcrumb-item active">Details
                                     </li>
                                 </ol>
@@ -43,7 +38,6 @@
                     <div class="mb-1 breadcrumb-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -60,7 +54,6 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
-                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img src="{{asset('app-assets/images/pay_plan_icon.png')}}"
                                                             class="mb-1" alt="svg img" height="220px" width="220px"/>
@@ -110,7 +103,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
 
-
     <!-- Create a pay button that will open the popup-->
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -123,7 +115,6 @@
                 publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
 
-
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
                 yoco.showPopup({
@@ -134,37 +125,26 @@
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
 
-                        var userSubscribe;
                         if (result.error) {
                             const errorMessage = result.error.message;
                             alert("error occured: " + errorMessage);
                         } else {
 
-                            const results = await axios.post('/payfees/process-payment', {
-                                'payplan': pay_plan,
-                                '_token': '{{ csrf_token() }}',
-                                'cardToken': result.id
-                            });
+                            const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
 
                             // e.g. Message with the new options
-                            if (results.data === 'successful') {
-
-                                userSubscribe = await axios.post('/add-subscription', {
-                                    'payplan': pay_plan,
-                                    '_token': '{{ csrf_token() }}'
-                                });
-
+                            if(results.data === 'successful'){
+                                alert('Payment Successful');
                                 Notiflix.Notify.success(
                                     'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
                                     },
                                 )
-                                window.location.href = '/dashboard';
-
-                            } else {
+                            }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }
+                        }
                         }
                     }
                 })
