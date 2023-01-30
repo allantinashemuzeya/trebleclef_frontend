@@ -73,9 +73,9 @@
                                 </div>
                                 <div class="col-12 col-md-7">
                                     <h2>{{$pay_plan['title']}}</h2>
-                                    <span class="card-text item-company">By <a href="#" class="company-name">Apple</a></span>
                                     <div class="ecommerce-details-price d-flex flex-wrap mt-1">
                                         <h4 class="item-price me-1">R{{$pay_plan['price']}}</h4>
+
                                     </div>
                                     <p class="card-text">
                                         {{$pay_plan['description']}}
@@ -88,7 +88,7 @@
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double tap to tap</span>
+                                            <span  class="">Double tap to pay</span>
                                         </button>
 
                                     </div>
@@ -120,7 +120,7 @@
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
 
 

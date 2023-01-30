@@ -24,6 +24,11 @@ class InvoicingController extends Controller
             "PayPlan" => $data['payPlan']['id']
         ]);
 
+//        $invoiceObject = new InvoicesModel();
+//        $invoiceObject->User = $data['user']->id;
+//        $invoiceObject->InvoiceNumber = $this->generateInvoiceNumber();
+//        $invoiceObject->PayPlan = $data['payPlan'];
+
 
 //        exit;
         if($result){
@@ -47,12 +52,15 @@ class InvoicingController extends Controller
 
     public function previewInvoice(InvoicesModel $invoice): Factory|View|Application
     {
+        ray('Invoice ', $invoice);
         return view('ShowInvoice.index', ['data' => $invoice]);
     }
 
     public function generateInvoiceNumber(): string
     {
+
         $number = rand(10,10000);
+
         return '#'.$number;
     }
 }
