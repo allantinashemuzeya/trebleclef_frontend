@@ -76,13 +76,6 @@
                                     <h2>{{$pay_plan['title']}}</h2>
                                     <div class="ecommerce-details-price d-flex flex-wrap mt-1">
                                         <h4 class="item-price me-1">R{{$pay_plan['price']}}</h4>
-                                        <ul class="unstyled-list list-inline ps-1 border-start">
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
-                                        </ul>
                                     </div>
                                     <p class="card-text">
                                       {{$pay_plan['description']}}
