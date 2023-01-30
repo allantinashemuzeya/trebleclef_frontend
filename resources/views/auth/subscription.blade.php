@@ -43,7 +43,6 @@
                     <div class="mb-1 breadcrumb-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -60,7 +59,6 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
-                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img src="{{asset('app-assets/images/pay_plan_icon.png')}}"
                                                             class="mb-1" alt="svg img" height="220px" width="220px"/>
@@ -73,16 +71,8 @@
                                 </div>
                                 <div class="col-12 col-md-7">
                                     <h2>{{$pay_plan['title']}}</h2>
-                                    <span class="card-text item-company">By <a href="#" class="company-name">Apple</a></span>
                                     <div class="ecommerce-details-price d-flex flex-wrap mt-1">
                                         <h4 class="item-price me-1">R{{$pay_plan['price']}}</h4>
-                                        <ul class="unstyled-list list-inline ps-1 border-start">
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
-                                            <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
-                                        </ul>
                                     </div>
                                     <p class="card-text">
                                         {{$pay_plan['description']}}
@@ -90,14 +80,12 @@
                                     <ul class="product-features list-unstyled">
 
                                     </ul>
-
                                     <hr />
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Pay</span>
+                                            <span  class="">Double tap to tap</span>
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
@@ -122,15 +110,12 @@
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-
         function pay(pay_plan){
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
                 publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
-
-
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
                 yoco.showPopup({
@@ -141,33 +126,22 @@
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
 
-                        var userSubscribe;
                         if (result.error) {
                             const errorMessage = result.error.message;
                             alert("error occured: " + errorMessage);
                         } else {
 
-                            const results = await axios.post('/payfees/process-payment', {
-                                'payplan': pay_plan,
-                                '_token': '{{ csrf_token() }}',
-                                'cardToken': result.id
-                            });
+                            const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
 
                             // e.g. Message with the new options
-                            if (results.data === 'successful') {
-
-                                userSubscribe = await axios.post('/add-subscription', {
-                                    'payplan': pay_plan,
-                                    '_token': '{{ csrf_token() }}'
-                                });
-
+                            if(results.data === 'successful'){
                                 Notiflix.Notify.success(
                                     'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
                                     },
                                 )
-                            } else {
+                            }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }
                         }
@@ -175,8 +149,6 @@
                 })
             });
         }
-
-
     </script>
 
 @endsection
