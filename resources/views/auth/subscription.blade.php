@@ -127,7 +127,7 @@
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
 
 
@@ -152,22 +152,15 @@
                                 '_token': '{{ csrf_token() }}',
                                 'cardToken': result.id
                             });
-
                             // e.g. Message with the new options
-                            if (results.data === 'successful') {
-
-                                userSubscribe = await axios.post('/add-subscription', {
-                                    'payplan': pay_plan,
-                                    '_token': '{{ csrf_token() }}'
-                                });
-
+                            if(results.data === 'successful'){
                                 Notiflix.Notify.success(
                                     'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
                                     },
                                 )
-                            } else {
+                            }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }
                         }
