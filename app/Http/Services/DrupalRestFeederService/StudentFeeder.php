@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
 
 namespace App\Http\Services\DrupalRestFeederService;
 
@@ -9,9 +9,9 @@ use App\Models\School;
 
 class StudentFeeder {
 
-    public $student;
-    public $user;
-    public $client;
+    public mixed $student;
+    public User $user;
+    public Client $client;
     public $school;
 
     public function __construct(User $user)
@@ -27,7 +27,7 @@ class StudentFeeder {
 
     }
 
-    public function createStudent()
+    public function createStudent(): string
     {
         $serializedStudent = $this->serializeStudent();
         $response = $this->client->request('POST', '/node?_format=hal_json', [
@@ -35,25 +35,16 @@ class StudentFeeder {
                 'headers' => [
                     'Content-Type' => 'application/hal+json',
                     'Accept' => 'application/hal+json',
-                    'X-CSRF-Token' => $this->getCsrfToken(),
+                    'X-CSRF-Token' => (new DrupalRestFeeder())->getCsrfToken(),
                 ],
                 'auth' => [
-                    'allan',
-                    'Kungfucool24'
+                    config('trebleclef.cms_write_username'),
+                    config('trebleclef.cms_write_password')
                 ]
             ]);
         return ($response->getBody()->getContents());
     }
-    public function getCsrfToken(){
-        $response = $this->client->request('POST', 'session/token?_format=hal_json', [
-            'headers' => [
-                'Accept' => 'application/hal+json',
-                'Content-Type' => 'application/hal+json',
-            ],
 
-        ]);
-        return $response->getBody()->getContents();
-    }
     public function serializeStudent(): array{
 
         $data = $this->student;
@@ -79,7 +70,7 @@ class StudentFeeder {
             ],
             "title" => [
                 [
-                    "value" => "Student Registration"
+                    "value" => $this->user->name
                 ]
             ],
             "field_full_name" => [
@@ -92,6 +83,22 @@ class StudentFeeder {
                     "value" => $data->gender
                 ]
             ],
+            "field_instrument" => [
+                [
+                    "value" => $data->instrument
+                ]
+            ],
+            "field_school_grade" => [
+                [
+                    "value" => $data->grade
+                ]
+            ],
+            "field_cellphone_number" => [
+                [
+                    "value" => $data->cellphoneNumber
+                ]
+            ],
+
             "field_school" => [
                 [
                     "target_id" => str_replace('/node/', '', $this->school->url),
@@ -108,6 +115,11 @@ class StudentFeeder {
             "field_date_of_birth" => [
                 [
                     "value" => $data->date_of_birth
+                ]
+            ],
+            "field_email_address" => [
+                [
+                    "value" => $this->user->email
                 ]
             ]
         ];

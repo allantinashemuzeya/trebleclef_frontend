@@ -32,6 +32,8 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $data['schools'] = School::all();
+        $data['grades'] = Student::getGrades();
+        $data['instruments'] = Student::getInstruments();
         return view('auth.register', $data);
     }
 
@@ -53,20 +55,20 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request?->name . ' ' . $request?->last_name,
+            'name' => $request?->name,
             'email' => $request?->email,
             'password' => Hash::make($request?->password),
         ]);
 
         if ($user) {
-
             $studentModel = new Student();
-
             $studentModel->user_id = $user->id;
             $studentModel->gender = $request->gender;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
             $studentModel->school = $request->school;
             $studentModel->date_of_birth = $request->dob;
+            $studentModel->grade = $request->grade;
+            $studentModel->instrument = $request->instrument;
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 

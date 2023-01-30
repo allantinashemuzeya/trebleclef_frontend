@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InviteTutor;
+use App\Models\School;
 use App\Models\Student;
 use App\Models\TutorInvites;
 use App\Models\Tutors;
@@ -34,7 +35,7 @@ class ProfileController extends Controller
 //           $currentUser = O::where('user_id', Auth::user()->id)->first();
 //        }
 
-        return view('profile.profile', ['currentUser'=>$currentUser]);
+        return view('profile.profile', ['currentUser'=>$currentUser, 'schools'=>School::all()]);
     }
 
     public function updateProfile(Request $request)

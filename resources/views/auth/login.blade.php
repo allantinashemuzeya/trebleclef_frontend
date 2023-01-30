@@ -6,7 +6,9 @@
 
         <div class="d-none d-lg-flex col-lg-8 align-items-center first">
 
-            <video class="d-flex col-lg-12 first" autoplay muted loop style="border-radius: 25px">
+            <video class="d-flex col-lg-12 first" autoplay muted loop style="border-radius: 25px;
+clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 100%, 35% 100%, 35% 50%, 10% 50%);
+">
                 <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
             </video>
         </div>
