@@ -28,10 +28,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">eCommerce</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="app-ecommerce-shop.html">Shop</a>
-                                    </li>
+
                                     <li class="breadcrumb-item active">Details
                                     </li>
                                 </ol>
@@ -60,7 +57,6 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
-                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img
                                                         src="{{asset('app-assets/images/pay_plan_icon.png')}}"
@@ -123,9 +119,6 @@
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-
-
-
         function pay(pay_plan){
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
@@ -167,8 +160,6 @@
                 })
             });
         }
-
-
     </script>
 
 @endsection

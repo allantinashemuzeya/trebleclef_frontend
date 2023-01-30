@@ -23,7 +23,6 @@ class HomeController extends Controller
         if(Auth::check()){
             $user = User::where('id', Auth::user()->id)->get();
             $user->name = $user->firstname . ' ' . $user->lastname;
-
             $user->save();
         }
 
@@ -38,16 +37,7 @@ class HomeController extends Controller
 
       shuffle($musicQuotes);
 
-        if(Auth::user()->userType === 1){
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
-        else if(Auth::user()->userType === 2){
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        }
-        else{
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
-
+        $currentUser = $this->getCurrentUser();
 
         $data = [
           'draggableSliderContent' => $draggableSlider,
@@ -58,10 +48,23 @@ class HomeController extends Controller
 
       ];
 
-
-
       return view('home.home', $data);
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentUser()
+    {
+        if (Auth::user()->userType === 1) {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        } else if (Auth::user()->userType === 2) {
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        } else {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+        return $currentUser;
     }
 
 }
