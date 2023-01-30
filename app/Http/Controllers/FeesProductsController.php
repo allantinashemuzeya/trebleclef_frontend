@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\DrupalRestFeederService\ReceiptFeeder;
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Models\Student;
 use App\Models\Tutors;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -16,13 +18,7 @@ class FeesProductsController extends Controller
 
     public function pay($productId)
     {
-        if (Auth::user()->userType === 1) {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        } else if (Auth::user()->userType === 2) {
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        } else {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
+        $currentUser = $this->getCurrentUser();
 
         $pay_plan = (new SchoolFees())->get($productId);
 
@@ -34,6 +30,7 @@ class FeesProductsController extends Controller
     public function chargeCard(Request $request)
     {
 
+
         // values extracted from request
         $data = [
             'token' => $request->cardToken, // Your token for this transaction here
@@ -42,7 +39,7 @@ class FeesProductsController extends Controller
         ];
 
     // Anonymous test key. Replace with your key.
-        $secret_key = env('YOCO_LIVE_SECRET_KEY');
+        $secret_key = env('YOCO_TEST_SECRET_KEY');
 
     // Initialise the curl handle
         $ch = curl_init();
@@ -65,14 +62,14 @@ class FeesProductsController extends Controller
     // close the connection
         curl_close($ch);
 
-        ray(json_decode($result))->blue();
-
         $invoiceDetails = ['user' => Auth::user(), 'payPlan' => $request->payplan];
 
         if(json_decode($result)->status === 'successful'){
 
+            $this->sendReceipt($result, $request->payplan);
+
             $user = Auth::user();
-            $user->hasSubscription = 1;
+            $user->hasSubscription = true;
             $user->save();
 
            if( (new InvoicingController)->generateInvoice($invoiceDetails)){
@@ -84,11 +81,21 @@ class FeesProductsController extends Controller
         return 0;
     }
 
-
     public function fees()
     {
         $structures = (new SchoolFees())->getAll();
 
+        $currentUser = $this->getCurrentUser();
+
+        return view('fees', ['pay_plans' => $structures, 'pageTitle' => '', 'currentUser' => $currentUser,
+        ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentUser()
+    {
         if (Auth::user()->userType === 1) {
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
         } else if (Auth::user()->userType === 2) {
@@ -96,8 +103,21 @@ class FeesProductsController extends Controller
         } else {
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
         }
+        return $currentUser;
+    }
 
-        return view('fees', ['pay_plans' => $structures, 'pageTitle' => '', 'currentUser' => $currentUser,
-        ]);
+    /**
+     * @throws GuzzleException
+     */
+    private function sendReceipt(bool|string $result, mixed $payplan)
+    {
+        $data = (object)[
+            (object)['user' => Auth::user()],
+            (object)['payPlan' => $payplan],
+            (object)['student' => Auth::user()->student],
+            (object)['chargeObject' => $result],
+        ];
+
+        (new ReceiptFeeder($data))->createReceipt();
     }
 }
