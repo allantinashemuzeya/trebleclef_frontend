@@ -128,6 +128,7 @@
                                     <div class="d-flex">
                                         <a href="#" class="me-25">
                                             <img
+
                                                 src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
                                                 id="account-upload-img"
                                                 class="rounded me-50"

@@ -23,7 +23,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Pay Details</h2>
+                            <h2 class="content-header-title float-start mb-0">Product Details</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
@@ -57,6 +57,7 @@
                                             <div class="card standard-pricing popular text-center">
                                                 <div class="card-body">
                                                     <div class="pricing-badge text-end">
+                                                        {{--                                                    <span class="badge rounded-pill badge-light-primary">Popular</span>--}}
                                                     </div>
                                                     <img
                                                         src="{{asset('app-assets/images/pay_plan_icon.png')}}"
@@ -70,8 +71,16 @@
                                 </div>
                                 <div class="col-12 col-md-7">
                                     <h2>{{$pay_plan['title']}}</h2>
+                                    <span class="card-text item-company">By <a href="#" class="company-name">Apple</a></span>
                                     <div class="ecommerce-details-price d-flex flex-wrap mt-1">
                                         <h4 class="item-price me-1">R{{$pay_plan['price']}}</h4>
+                                        <ul class="unstyled-list list-inline ps-1 border-start">
+                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
+                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
+                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
+                                            <li class="ratings-list-item"><i data-feather="star" class="filled-star"></i></li>
+                                            <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i></li>
+                                        </ul>
                                     </div>
                                     <p class="card-text">
                                       {{$pay_plan['description']}}
@@ -111,6 +120,9 @@
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
+
+
+
         function pay(pay_plan){
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
@@ -152,6 +164,8 @@
                 })
             });
         }
+
+
     </script>
 
 @endsection
