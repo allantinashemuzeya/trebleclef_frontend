@@ -22,7 +22,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Product Details</h2>
+                            <h2 class="content-header-title float-start mb-0">Pay Plan</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
@@ -124,14 +124,12 @@
                     description: 'Awesome description',
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
-
                         if (result.error) {
                             const errorMessage = result.error.message;
                             alert("error occured: " + errorMessage);
-                        } else {
-
+                        }
+                        else {
                             const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
-
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
                                 alert('Payment Successful');
@@ -141,16 +139,15 @@
                                         timeout: 10000,
                                     },
                                 )
+                                window.location = '/dashboard';
                             }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }
                         }
                         }
-                    }
-                })
-            });
-        }
-
+                    });
+                });
+            }
 
     </script>
 

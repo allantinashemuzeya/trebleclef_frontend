@@ -61,4 +61,9 @@ class Student extends Model
             (object)['name' => 'All', 'value' => 'all']
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
