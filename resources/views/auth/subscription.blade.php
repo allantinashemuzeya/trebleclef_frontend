@@ -171,9 +171,12 @@
     </script>
 
     <style>
-        #CheckoutIframe{
-            margin-top:21% !important;
+        @media screen and(max-width: 767px) {
+            #CheckoutIframe{
+                margin-top:21% !important;
+            }
         }
+
     </style>
 
 
