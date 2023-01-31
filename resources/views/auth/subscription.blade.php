@@ -131,6 +131,11 @@
                             alert("error occured: " + errorMessage);
                         } else {
 
+                            Notiflix.Notify.info('Please wait while we process your payment...',
+                                {
+                                    timeout: 500,
+                                },
+                            )
                             const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
 
                             // e.g. Message with the new options
