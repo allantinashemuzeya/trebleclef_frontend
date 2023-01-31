@@ -100,6 +100,6 @@ class FeesProductsController extends Controller
             (object)['chargeObject' => $result],
         ];
 
-        (new ReceiptFeeder($data))->createReceipt();
+        dd((new ReceiptFeeder($data))->createReceipt());
     }
 }
