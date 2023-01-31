@@ -90,7 +90,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="login-email">Instrument/Activity</label>
-                                        <select id="login-school" class="form-control" type="text" name="grade" required autofocus>
+                                        <select id="login-school" class="form-control" type="text" name="instrument" required autofocus>
                                             @foreach($instruments as $instrument)
                                                 <option value="{{$instrument->value}}">
                                                     {{$instrument->name}}</option>

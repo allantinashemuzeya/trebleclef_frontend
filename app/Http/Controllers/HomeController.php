@@ -37,6 +37,7 @@ class HomeController extends Controller
       $musicQuotes = (new MusicQuotes())->getAll();
 
       shuffle($musicQuotes);
+
         $currentUser = $this->getCurrentUser();
 
         $data = [
@@ -52,21 +53,6 @@ class HomeController extends Controller
 
       return view('home.home', $data);
 
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrentUser()
-    {
-        if (Auth::user()->userType === 1) {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        } else if (Auth::user()->userType === 2) {
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        } else {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
-        return $currentUser;
     }
 
 }
