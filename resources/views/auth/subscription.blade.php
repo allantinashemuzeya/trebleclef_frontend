@@ -23,14 +23,14 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Product Details</h2>
+                            <h2 class="content-header-title float-start mb-0">Registration Payment</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">eCommerce</a>
+                                    <li class="breadcrumb-item"><a href="#">Subscription</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="app-ecommerce-shop.html">Shop</a>
+                                    <li class="breadcrumb-item"><a href="">Registration Fee</a>
                                     </li>
                                     <li class="breadcrumb-item active">Details
                                     </li>
@@ -141,6 +141,7 @@
                                         timeout: 10000,
                                     },
                                 )
+                                window.location.href = '/dashboard';
                             }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }
