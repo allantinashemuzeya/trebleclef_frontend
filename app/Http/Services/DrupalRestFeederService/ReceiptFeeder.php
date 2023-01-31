@@ -101,7 +101,7 @@ class ReceiptFeeder
             ],
             "field_app_" => [
                 [
-                    "value" => $this->user->id
+                    "value" => $this->student->id
                 ]
             ],
             "field_app_user_id" => [
