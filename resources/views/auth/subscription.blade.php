@@ -105,7 +105,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
 
-
     <!-- Create a pay button that will open the popup-->
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -134,7 +133,7 @@
                             Notiflix.Notify.info('Please wait while we process your payment...',
                                 {
                                     timeout: 2000,
-                                    position: 'right-bottom',
+                                    position: 'center-center',
                                     cssAnimationStyle: 'from-right',
                                     cssAnimationDuration: 500,
                                     useGoogleFont: true,
@@ -152,6 +151,12 @@
                                     'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
+                                        position: 'center-center',
+                                        cssAnimationStyle: 'from-left',
+                                        cssAnimationDuration: 1000,
+                                        useGoogleFont: true,
+                                        fontFamily: 'comfortaa',
+                                        fontSize: '18px',
                                     },
                                 )
                                 window.location.href = '/dashboard';
@@ -164,6 +169,13 @@
             });
         }
     </script>
+
+    <style>
+        #CheckoutIframe{
+            margin-top:21% !important;
+        }
+    </style>
+
 
 @endsection
 
