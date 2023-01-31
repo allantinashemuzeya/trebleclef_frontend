@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Helper;
 use App\Http\Services\Home\Home;
 use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Models\Student;
@@ -38,7 +39,7 @@ class HomeController extends Controller
 
       shuffle($musicQuotes);
 
-        $currentUser = $this->getCurrentUser();
+        $currentUser = Helper::getCurrentUser();
 
         $data = [
           'draggableSliderContent' => $draggableSlider,
@@ -48,8 +49,6 @@ class HomeController extends Controller
           'currentUser' => $currentUser
 
       ];
-
-
 
       return view('home.home', $data);
 
