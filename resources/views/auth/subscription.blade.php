@@ -170,21 +170,6 @@
         }
     </script>
 
-    <style>
-        @media screen and(max-width: 767px) {
-            #CheckoutIframe{
-                margin-top:21% !important;
-            }
-        }
-        @media screen and(max-width: 390px) {
-            #CheckoutIframe{
-                margin-top:52% !important;
-            }
-        }
-
-
-    </style>
-
 
 @endsection
 
