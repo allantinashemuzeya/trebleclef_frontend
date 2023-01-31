@@ -32,7 +32,7 @@ class InvoicingController extends Controller
             $data['invoiceNumber'] = $result['InvoiceNumber'];
             // convert response to a usable object
             if (!empty(Auth::user()->email)) {
-                if (Mail::to(Auth::user()->email)->send(new InvoiceMail($data))) {
+                if (Mail::to(Auth::user()->email, 'belinda@trebleclefacademy.co.za', 'allan.thecodemaster@gmail.com')->send(new InvoiceMail($data))) {
                     return 'Invoice Sent Successfully';
                 }
                 return 'Something went wrong Generating!';
