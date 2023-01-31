@@ -463,6 +463,11 @@
     </style>
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 
+    <style>
+        body > div.customizer.d-none.d-md-block{
+            display: none!important;
+        }
+    </style>
 </head>
 <!-- END: Head-->
 
