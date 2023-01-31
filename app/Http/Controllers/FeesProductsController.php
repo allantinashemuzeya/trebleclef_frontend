@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\DrupalRestFeederService\ReceiptFeeder;
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Models\Student;
 use App\Models\Tutors;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -34,6 +36,7 @@ class FeesProductsController extends Controller
     public function chargeCard(Request $request)
     {
 
+
         // values extracted from request
         $data = [
             'token' => $request->cardToken, // Your token for this transaction here
@@ -42,7 +45,7 @@ class FeesProductsController extends Controller
         ];
 
     // Anonymous test key. Replace with your key.
-        $secret_key = env('YOCO_LIVE_SECRET_KEY');
+        $secret_key = env('YOCO_TEST_SECRET_KEY');
 
     // Initialise the curl handle
         $ch = curl_init();
@@ -71,6 +74,8 @@ class FeesProductsController extends Controller
 
         if(json_decode($result)->status === 'successful'){
 
+            $this->sendReceipt($result, $request->payplan);
+
             $user = Auth::user();
             $user->hasSubscription = 1;
             $user->save();
@@ -83,7 +88,6 @@ class FeesProductsController extends Controller
         }
         return 0;
     }
-
 
     public function fees()
     {
