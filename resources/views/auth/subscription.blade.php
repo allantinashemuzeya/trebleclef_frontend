@@ -120,8 +120,8 @@
                 yoco.showPopup({
                     amountInCents: pay_plan['price'] * 100 ,
                     currency: 'ZAR',
-                    name: 'Trebleclef Academy',
-                    description: 'Awesome description',
+                    name: '',
+                    description: '',
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
 
