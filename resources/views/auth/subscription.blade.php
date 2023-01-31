@@ -133,10 +133,18 @@
 
                             Notiflix.Notify.info('Please wait while we process your payment...',
                                 {
-                                    timeout: 500,
+                                    timeout: 2000,
+                                    position: 'right-bottom',
+                                    cssAnimationStyle: 'from-right',
+                                    cssAnimationDuration: 500,
+                                    useGoogleFont: true,
+                                    fontFamily: 'Roboto',
+                                    fontSize: '16px',
                                 },
                             )
-                            const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
+                            const results = await axios.post('/payfees/process-payment',
+                                {'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id},
+                            );
 
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
