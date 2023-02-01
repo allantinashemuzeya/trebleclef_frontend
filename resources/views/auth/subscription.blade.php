@@ -13,7 +13,6 @@
 
     </style>
 
-
     <!-- BEGIN: Content-->
     <div class="app-content content ecommerce-application m-0">
         <div class="content-overlay"></div>
@@ -91,7 +90,7 @@
                             </div>
                         </div>
                         <!-- Product Details ends -->
-
+                    </div>
                 </section>
                 <!-- app e-commerce details end -->
 
@@ -148,7 +147,7 @@
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
                                 Notiflix.Notify.success(
-                                    'Payment Successful, Awesome, well Done!!',
+                                    'Payment Successful, Awesome, thank you!',
                                     {
                                         timeout: 10000,
                                         position: 'center-center',

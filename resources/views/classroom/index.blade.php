@@ -1,24 +1,31 @@
 @extends('layouts.home')
 @section('content')
-
     <style>
         .ecommerce-application .grid-view:not(.wishlist-items), .ecommerce-application .list-view:not(.wishlist-items) {
             margin-top: -5rem;
             /*margin-left: -402px!important;*/
         }
+
         body .content-detached.content-right .content-body {
-             margin-left: 0!important;
+            margin-left: 0 !important;
         }
-          div.item-img.text-center > img{
-    object-fit: cover;
-    height: 100%;
-  }
-  div.item-img.text-center{
-    height: 100%;
-  }
-  div.card-body, #ecommerce-header{
-    display: none;
-  }
+
+        div.item-img.text-center > img {
+            object-fit: cover;
+            height: 100%;
+        }
+
+        div.item-img.text-center {
+            height: 100%;
+        }
+
+        div.card-body, #ecommerce-header {
+            display: none;
+        }
+
+        #ecommerce-products > div > div.item-img.text-center > img {
+            width: 100%;
+        }
     </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
@@ -108,9 +115,10 @@
                                     </h6>
                                 </div>
                                 <div class="item-options text-center">
-                                      <a href="{{route('subjects', $studentLevel['id'])}}" class="btn btn-primary btn-cart">
+                                    <a href="{{route('subjects', $studentLevel['id'])}}"
+                                       class="btn btn-primary btn-cart">
                                         <i data-feather="book-open"></i>
-                                        <span >{{$studentLevel['title']}}</span>
+                                        <span>{{$studentLevel['title']}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -122,7 +130,7 @@
                     @if(count($studentLevels) > 20)
                         <!-- E-commerce Pagination Starts -->
 
-                            <section id="ecommerce-pagination">
+                        <section id="ecommerce-pagination">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <nav aria-label="Page navigation example">
@@ -131,7 +139,8 @@
                                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                                             <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item" aria-current="page"><a class="page-link" href="#">4</a>
+                                            <li class="page-item" aria-current="page"><a class="page-link"
+                                                                                         href="#">4</a>
                                             </li>
                                             <li class="page-item"><a class="page-link" href="#">5</a></li>
                                             <li class="page-item"><a class="page-link" href="#">6</a></li>
