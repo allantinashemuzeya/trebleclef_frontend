@@ -91,16 +91,6 @@
 
                     <!-- create tutor -->
 {{--                    @if(Auth::user()->userType === 3)--}}
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            id="account-pill-info"
-                            data-bs-toggle="pill"
-                            href="#invite-tutor"
-                            aria-expanded="false">
-                            <i data-feather="user" class="font-medium-3 me-1"></i>
-                            <span class="fw-bold">Invite Tutor</span>
-                        </a>
-                    </li>
 {{--                    @endif--}}
                 </ul>
             </div>
@@ -144,9 +134,9 @@
                                             <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
                                             <p>Allowed JPG, GIF or PNG.</p>
                                             <script type="text/javascript">
-                                                document.getElementById("account-upload").onchange = function () {
-                                                    document.getElementById("profileValue").innerHTML = this.value = this.value.replace(/^.*[\\\/]/, '');
-                                                };
+                                                document.getElementById('account-upload').addEventListener('change', function(){
+                                                    document.getElementById('profileValue').innerHTML = document.getElementById('account-upload').value
+                                                });
                                             </script>
                                         </div>
                                     </div>
