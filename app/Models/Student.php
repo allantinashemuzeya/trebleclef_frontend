@@ -34,7 +34,8 @@ class Student extends Model
     static function getGrades(): array
     {
         return [
-            (object)['name' => 'Grade 1', 'value' => '1'],
+            (object)['name' => 'Grade R', 'value' => 'r'],
+            (object)['name' => 'Grade 0', 'value' => '0'],
             (object)['name' => 'Grade 2', 'value' => '2'],
             (object)['name' => 'Grade 3', 'value' => '3'],
             (object)['name' => 'Grade 4', 'value' => '4'],

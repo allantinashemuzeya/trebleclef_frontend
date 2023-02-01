@@ -140,11 +140,15 @@
                                         <div class="mt-75 ms-1">
                                             <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">Upload Profile Picture</label>
                                             <input name="profilePicture" hidden type="file" id="account-upload"  accept="image/*"/>
+                                            <p class="text-center text-success" id="profileValue"></p>
                                             <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
                                             <p>Allowed JPG, GIF or PNG.</p>
+                                            <script type="text/javascript">
+                                                document.getElementById("account-upload").onchange = function () {
+                                                    document.getElementById("profileValue").innerHTML = this.value = this.value.replace(/^.*[\\\/]/, '');
+                                                };
+                                            </script>
                                         </div>
-
-                                        <!--/ upload and reset button -->
                                     </div>
                                     <!--/ header section -->
 

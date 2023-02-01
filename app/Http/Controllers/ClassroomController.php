@@ -14,8 +14,7 @@ class ClassroomController extends Controller
     public function index(){
         $studentLevels = (new StudentLevels())->getAll();
 
-        return view('classroom.index', ['pageTitle'=>'Choose a Student Level', 'studentLevels'=>$studentLevels, 'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
-        ]);
+        return view('classroom.index', ['pageTitle'=>'Choose a Student Level', 'studentLevels'=>$studentLevels, 'currentUser'=> Student::where('user_id', Auth::user()->id)->first()]);
     }
     //
     public function subjects($studentLevel) {
