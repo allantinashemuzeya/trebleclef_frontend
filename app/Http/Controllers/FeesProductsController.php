@@ -93,13 +93,13 @@ class FeesProductsController extends Controller
      */
     private function sendReceipt(bool|string $result, mixed $payplan)
     {
-        $data = (object)[
-            (object)['user' => Auth::user()],
-            (object)['payPlan' => $payplan],
-            (object)['student' => Auth::user()->student],
-            (object)['chargeObject' => $result],
+        $data = [
+            'user' => Auth::user(),
+            'payPlan' => $payplan,
+            'student' => Auth::user()->student,
+            'chargeObject' => $result,
         ];
 
-        dd((new ReceiptFeeder($data))->createReceipt());
+        (new ReceiptFeeder())->createReceipt($data);
     }
 }

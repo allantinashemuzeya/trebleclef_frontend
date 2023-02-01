@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use App\Models\User;
 use App\Models\School;
+use GuzzleHttp\Exception\GuzzleException;
 
 class StudentFeeder {
 
@@ -27,6 +28,9 @@ class StudentFeeder {
 
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function createStudent(): string
     {
         $serializedStudent = $this->serializeStudent();
