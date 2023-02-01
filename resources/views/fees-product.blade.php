@@ -115,7 +115,7 @@
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
 
 

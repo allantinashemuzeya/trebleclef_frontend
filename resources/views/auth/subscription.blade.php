@@ -84,7 +84,7 @@
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double tap to tap</span>
+                                            <span  class="">Double tap to pay</span>
                                         </button>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
             {{--console.log({!! json_encode($pay_plan) !!})--}}
 
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
