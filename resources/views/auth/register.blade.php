@@ -154,7 +154,7 @@
                             <!-- Password -->
                             <hr/>
                             <h5 class="card-title  btn-primary text-white reg-title fw-bold mb-1">
-                                Account Details
+                                Create a password
                             </h5>
 
 
