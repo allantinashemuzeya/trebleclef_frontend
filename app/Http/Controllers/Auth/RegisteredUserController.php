@@ -72,7 +72,7 @@ class RegisteredUserController extends Controller
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
-            if($request->file('profile_picture') != null){
+            if($request->file('profilePicture') != null){
                 $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
                 if($path){
                     $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();

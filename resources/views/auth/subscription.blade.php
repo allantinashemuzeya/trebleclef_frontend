@@ -83,7 +83,7 @@
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double tap to pay</span>
+                                            <span  class="">Double tap to tap</span>
                                         </button>
                                     </div>
                                 </div>
@@ -91,7 +91,6 @@
                         </div>
                         <!-- Product Details ends -->
 
-                    </div>
                 </section>
                 <!-- app e-commerce details end -->
 
@@ -124,6 +123,7 @@
                     description: '',
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
+
                         if (result.error) {
                             const errorMessage = result.error.message;
                             alert("error occured: " + errorMessage);
