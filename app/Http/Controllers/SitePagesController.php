@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Gallery\Gallery;
 use App\Http\Services\SchoolFees\SchoolFees;
+use App\Models\School;
 use App\Models\Student;
 use App\Models\Tutors;
 use App\Models\User;
@@ -18,9 +19,11 @@ class SitePagesController extends Controller
 
         $currentStudent = Student::where('user_id', Auth::user()->id)->first();
 
+        $schools =School::all();
         $data = [
-            'currentStudent'=>$currentStudent,
-            'pageTitle' => 'Treble Clef Networks'
+            'currentUser'=>$currentStudent,
+            'pageTitle' => 'Treble Clef Networks',
+            'schools' => $schools
         ];
 
         return view('networks', $data );
