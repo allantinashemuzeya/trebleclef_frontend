@@ -18,10 +18,6 @@ class InvoicingController extends Controller
     public function generateInvoice(array $data):string
     {
 
-        // save invoice in the database
-
-        ray($data);
-
         $result = InvoicesModel::create([
             "UserId" => $data['user']->id,
             "InvoiceNumber" => $this->generateInvoiceNumber(),
@@ -34,18 +30,16 @@ class InvoicingController extends Controller
 //        $invoiceObject->PayPlan = $data['payPlan'];
 
 
-
-
-        ray('RESULT::: ', $result)->green();
 //        exit;
         if($result){
             $data['invoiceNumber'] = $result['InvoiceNumber'];
-
-            ray('RESULT::: ', $data)->green();
-
             // convert response to a usable object
             if (!empty(Auth::user()->email)) {
-                if (Mail::to(Auth::user()->email)->send(new InvoiceMail($data))) {
+                if (Mail::to([
+                    Auth::user()->email,
+                    'belinda@trebleclefacademy.co.za',
+                    'allan.thecodemaster@gmail.com',
+                    'admin@trebleclefapp.co.za'])->send(new InvoiceMail($data))) {
                     return 'Invoice Sent Successfully';
                 }
                 return 'Something went wrong Generating!';

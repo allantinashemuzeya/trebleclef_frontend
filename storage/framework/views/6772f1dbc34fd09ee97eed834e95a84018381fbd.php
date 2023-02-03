@@ -1,0 +1,1 @@
+<?php /**PATH /var/www/dev/resources/views/components/application-logo.blade.php ENDPATH**/ ?>

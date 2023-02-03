@@ -31,8 +31,6 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        ray($this->data)->green();
-
         return $this
             ->view('email.InvoiceMail', ['data' => $this->data])
             ->subject('Payment Invoice');
