@@ -7,7 +7,7 @@
     <meta name="x-apple-disable-message-reformatting">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="telephone=no" name="format-detection">
-    <title>New message 3</title><!--[if (mso 16)]>
+    <title>Your Receipt</title><!--[if (mso 16)]>
     <style type="text/css">
         a {
             text-decoration: none;
@@ -425,7 +425,7 @@
                                                             <td align="center" class="es-infoblock"
                                                                 style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC">
                                                                 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">
-                                                                    <a target="_blank" href="{{env('APP_URL'.'/previewInvoice')}}"
+                                                                    <a target="_blank" href="{{env('APP_URL').'/previewInvoice'}}"
                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#CCCCCC;font-size:12px">View
                                                                         online version</a></p></td>
                                                         </tr>
@@ -653,7 +653,7 @@
                                                                             style="padding:0;Margin:0;width:130px"><span
                                                                                 class="es-button-border"
                                                                                 style="border-style:solid;border-color:#2CB543;background:#cc0000;border-width:0px;display:inline-block;border-radius:5px;width:auto"><a
-                                                                                    href="" class="es-button"
+                                                                                    href="https://trebleclefapp.co.za" class="es-button"
                                                                                     target="_blank"
                                                                                     style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#cc0000;border-width:10px 30px 10px 30px;display:inline-block;background:#cc0000;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center">Login</a></span>
                                                                         </td>

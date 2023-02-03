@@ -11,6 +11,9 @@
             height: 100%;
             width: 100%;
         }
+        #ecommerce-products > div > div.item-img.text-center > img{
+            width: 100%;
+        }
     </style>
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">

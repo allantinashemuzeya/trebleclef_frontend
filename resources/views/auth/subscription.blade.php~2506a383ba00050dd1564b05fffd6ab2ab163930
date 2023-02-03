@@ -13,6 +13,7 @@
 
     </style>
 
+
     <!-- BEGIN: Content-->
     <div class="app-content content ecommerce-application m-0">
         <div class="content-overlay"></div>
@@ -83,14 +84,14 @@
                                     <div class="d-flex flex-column flex-sm-row pt-1">
                                         <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double tap to pay</span>
+                                            <span  class="">Double tap to tap</span>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Product Details ends -->
-                    </div>
+
                 </section>
                 <!-- app e-commerce details end -->
 
@@ -103,6 +104,7 @@
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
+
 
     <!-- Create a pay button that will open the popup-->
     {{-- <button id="checkout-button">Pay</button>--}}
@@ -123,6 +125,7 @@
                     description: '',
                     callback: async  (result) =>{
                         // This function returns a token that your server can use to capture a payment
+
                         if (result.error) {
                             const errorMessage = result.error.message;
                             alert("error occured: " + errorMessage);
@@ -146,15 +149,9 @@
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
                                 Notiflix.Notify.success(
-                                    'Payment Successful, Awesome, thank you!',
+                                    'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
-                                        position: 'center-center',
-                                        cssAnimationStyle: 'from-left',
-                                        cssAnimationDuration: 1000,
-                                        useGoogleFont: true,
-                                        fontFamily: 'comfortaa',
-                                        fontSize: '18px',
                                     },
                                 )
                                 window.location.href = '/dashboard';
