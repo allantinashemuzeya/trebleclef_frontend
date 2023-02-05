@@ -58,7 +58,7 @@
                     <!-- Remember Me -->
                     <div class="mb-1">
                          <div class="form-check">
-                            <input class="form-check-input" value="1" id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                            <input value="1" id="remember_me" type="checkbox" class="form-check-input rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                             <label class="form-check-label" for="remember-me"> Remember Me</label>
                         </div>
                     </div>

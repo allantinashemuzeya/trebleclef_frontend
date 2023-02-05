@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -41,11 +43,25 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'activites' => 'array'
+        'activities' => 'array'
     ];
 
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
 
-    public function student()
+    public function teacher(): HasOne
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function parent(): HasOne
+    {
+        return $this->hasOne(Parent::class);
+    }
+
+    public function student(): HasOne
     {
         return $this->hasOne(Student::class);
     }
