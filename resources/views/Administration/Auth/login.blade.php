@@ -45,6 +45,7 @@
                             <a href="">Forgot Password?</a>
                         </div>
                     </div>
+                    <input type="text" hidden="" name="context" value="administration" />
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
                     </div>

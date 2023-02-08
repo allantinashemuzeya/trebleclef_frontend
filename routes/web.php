@@ -122,6 +122,8 @@ require __DIR__.'/auth.php';
 | Which is only accessible to administrators and an entire different application.
 */
 Route::controller(AdministrationController::class)->group(function (){
-    Route::get('/admin/login', 'login')->middleware('isNotAlreadyLoggedIn')->name('admin_login');
-    Route::get('/admin/register', 'register')->middleware('isNotAlreadyLoggedIn')->name('admin_register');
+    Route::get('/admin/login', 'login')->name('admin_login');
+    Route::get('/admin/register', 'register')->name('admin_register');
+    Route::get('/admin/dashboard', 'dashboard')->middleware(['auth','isAdmin'])->name('admin_dashboard');
+    Route::get('/admin/profile', 'profile')->middleware(['auth','isAdmin'])->name('admin_profile');
 });

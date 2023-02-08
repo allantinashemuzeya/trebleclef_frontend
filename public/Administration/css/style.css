@@ -72,7 +72,7 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 :root {
-  --primary: #bb363b;
+  --primary: #191e3a;
   --secondary: #9b080e;
   --primary-hover: #ff252d;
   --primary-light: #fbe5dc;
@@ -27639,7 +27639,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 9.375rem; }
 
 :root {
-  --primary: #bb363b;
+  --primary: #191e3a;
   --secondary: #6418C3;
   --primary-hover: #d0181e;
   --primary-light: #fbe5dc;

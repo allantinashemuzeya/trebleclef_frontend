@@ -1,7 +1,7 @@
 
 var dezSettingsOptions = {};
 
-function getUrlParams(dParam) 
+function getUrlParams(dParam)
 	{
 		var dPageURL = window.location.search.substring(1),
 			dURLVariables = dPageURL.split('&'),
@@ -18,14 +18,14 @@ function getUrlParams(dParam)
 	}
 
 (function($) {
-	
+
 	"use strict"
-	
+
 	var direction =  getUrlParams('dir');
-	
+
 	dezSettingsOptions = {
 		typography: "poppins",
-			version: "light",
+			version: "dark",
 			layout: "vertical",
 			headerBg: "color_1",
 			navheaderBg: "color_1",
@@ -37,22 +37,22 @@ function getUrlParams(dParam)
 			direction: direction
 		};
 
-	
+
 	if(direction == 'rtl')
 	{
-        direction = 'rtl'; 
+        direction = 'rtl';
     }else{
-        direction = 'ltr'; 
+        direction = 'ltr';
     }
-	
-	new dezSettings(dezSettingsOptions); 
+
+	new dezSettings(dezSettingsOptions);
 
 	jQuery(window).on('resize',function(){
         /*Check container layout on resize */
         dezSettingsOptions.containerLayout = $('#container_layout').val();
         /*Check container layout on resize END */
-        
-		new dezSettings(dezSettingsOptions); 
+
+		new dezSettings(dezSettingsOptions);
 	});
-	
+
 })(jQuery);
