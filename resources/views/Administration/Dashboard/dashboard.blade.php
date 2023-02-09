@@ -182,12 +182,12 @@
                             <table class="table verticle-middle table-responsive-md">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Ward No.</th>
-                                    <th scope="col">Patient</th>
-                                    <th scope="col">Dr Name</th>
+                                    <th scope="col">Pay Plan</th>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Bills</th>
+                                    <th scope="col">Amount</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>

@@ -10,7 +10,6 @@
             color: #ede7e7 !important;
         }
 
-
     </style>
 
     <!-- BEGIN: Content-->
@@ -109,8 +108,6 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         function pay(pay_plan){
-            {{--console.log({!! json_encode($pay_plan) !!})--}}
-
             let yoco = new window.YocoSDK({
                 publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });

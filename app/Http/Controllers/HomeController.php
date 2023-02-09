@@ -55,4 +55,20 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCurrentUser(): mixed
+    {
+        if (Auth::user()->userType === 1) {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        } else if (Auth::user()->userType === 2) {
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        } else {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        }
+        return $currentUser;
+    }
+
+
 }

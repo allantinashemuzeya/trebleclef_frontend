@@ -27,6 +27,7 @@ class Transactions extends Model
         'exp_month',
         'exp_year',
         'invoice_id',
+        'name'
 
     ];
 

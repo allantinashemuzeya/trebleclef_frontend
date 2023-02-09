@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->foreignId('user_id');
-            $table->foreignId('student_id');
             $table->unsignedBigInteger('payplan_id');
-            $table->unsignedBigInteger('payment_id');
             $table->float('amount_in_cents');
             $table->string('currency')->default('ZAR');
             $table->string('status')->default('successful');
@@ -28,9 +27,9 @@ return new class extends Migration
             $table->string('yoco_livemode')->default('false');
             $table->string('card_brand')->nullable();
             $table->string('masked_card')->nullable();
-            $table->string('fingerprint');
-            $table->string('exp_month');
-            $table->string('exp_year');
+            $table->string('fingerprint')->nullable();
+            $table->string('exp_month')->nullable();
+            $table->string('exp_year')->nullable();
             $table->timestamps();
         });
     }
