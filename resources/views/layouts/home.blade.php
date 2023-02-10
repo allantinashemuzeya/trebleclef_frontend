@@ -526,7 +526,6 @@
 
             <li class="nav-item dropdown dropdown-user">
                 <a
-
                     class="nav-link dropdown-user-link"
                     data-bs-toggle="dropdown"
                     href="{{route('profile')}}"
@@ -571,6 +570,7 @@
                     >
                 </div>
             </li>
+           @endif
         </ul>
     </div>
 </nav>
@@ -711,37 +711,6 @@
                     ></a>
             </li>
 
-
-            {{--            <li class="nav-item">--}}
-            {{--                <a class="d-flex align-items-center" href="#"--}}
-            {{--                ><i data-feather="shopping-cart"></i--}}
-            {{--                    ><span class="menu-title text-truncate" data-i18n="eCommerce"--}}
-            {{--                    >eCommerce</span--}}
-            {{--                    ></a--}}
-            {{--                >--}}
-            {{--                <ul class="menu-content">--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Premium Lessons</span--}}
-            {{--                            ></a>--}}
-            {{--                    </li>--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Instruments</span--}}
-            {{--                            ></a--}}
-            {{--                        >--}}
-            {{--                    </li>--}}
-            {{--                    <li>--}}
-            {{--                        <a class="d-flex align-items-center" href="/">--}}
-            {{--                            <i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop"--}}
-            {{--                            >Swag</span--}}
-            {{--                            ></a--}}
-            {{--                        >--}}
-            {{--                    </li>--}}
-            {{--                </ul>--}}
-            {{--            </li>--}}
         </ul>
     </div>
 </div>
