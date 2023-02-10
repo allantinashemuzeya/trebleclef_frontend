@@ -11,12 +11,12 @@ class AdministrationController extends Controller
 {
     public function login()
     {
-        return view('administration.auth.login');
+        return view('Administration.auth.login');
     }
 
     public function register()
     {
-        return view('administration.auth.register');
+        return view('Administration.auth.register');
     }
 
     public function dashboard()
