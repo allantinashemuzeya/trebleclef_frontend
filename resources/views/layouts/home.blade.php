@@ -541,7 +541,6 @@
                             <span class="user-status">Admin</span>
                         @elseif(Auth::user()->userType === 4)
                             <span class="user-status">Office</span>
-
                         @endif
                     </div>
                     @if(!empty($currentUser->profile_picture))
@@ -553,7 +552,7 @@
                             src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
                             width="40"/><span class="avatar-status-online"></span></span
                         ></a>
-                @endif
+                  @endif
 
 
                 <div
@@ -570,7 +569,6 @@
                     >
                 </div>
             </li>
-           @endif
         </ul>
     </div>
 </nav>
