@@ -101,7 +101,6 @@
                                 <div class="progress mb-2 bg-secondary">
                                     <div class="progress-bar progress-animated bg-light" style="width: 30%"></div>
                                 </div>
-                                <small>30% Increase in 30 Days</small>
                             </div>
                         </div>
                     </div>
@@ -145,27 +144,6 @@
                                         <td><span class="badge badge-success">Complete</span></td>
                                         <td>R {{round($transaction->amount_in_cents /100,2)}}</td>
                                         <td>{{$transaction->user->email}}</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div class="btn sharp btn-primary tp-btn" data-bs-toggle="dropdown">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"
-                                                         height="18px" viewBox="0 0 24 24" version="1.1">
-                                                        <g stroke="none" stroke-width="1" fill="none"
-                                                           fill-rule="evenodd">
-                                                            <rect x="0" y="0" width="24" height="24"/>
-                                                            <circle fill="#000000" cx="12" cy="5" r="2"/>
-                                                            <circle fill="#000000" cx="12" cy="12" r="2"/>
-                                                            <circle fill="#000000" cx="12" cy="19" r="2"/>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
                                     </tr>
                                 @endforeach
 

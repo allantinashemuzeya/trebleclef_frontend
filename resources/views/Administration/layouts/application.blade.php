@@ -82,7 +82,7 @@ Footer start
 <div class="footer">
     <div class="copyright">
         <p>Copyright © Designed &amp; Developed by <a href="" target="_blank">Allan T Muzeya</a>
-            2021</p>
+            2022</p>
     </div>
 </div>
 <!--**********************************
