@@ -5,6 +5,7 @@
 /** @noinspection SpellCheckingInspection */
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 
+use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ChatApplication;
 use App\Http\Controllers\ClassroomController;
@@ -37,7 +38,6 @@ Auth::routes(['verify' => true]);
 Route::get('/', function () {
     return to_route('dashboard');
 });
-
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/dashboard/','index')->middleware(['auth', 'hasSubscription'])->name('dashboard');
@@ -89,7 +89,6 @@ Route::controller(ChatApplication::class)->group(function(){
     Route::post('chat/', 'chatTutor')->middleware(['auth'])->name('chat-tutor');
 });
 
-
 Route::controller(TutorInvitesController::class)->group(function(){
     Route::get('/tutor_invite/{email_address}', 'index')->middleware(['auth']);
     Route::post('/tutor_invite/create', 'createTutor')->middleware(['auth'])->name('createTutor');
@@ -100,11 +99,11 @@ Route::controller(InvoicingController::class)->group(function(){
     Route::get('/previewInvoice/{invoice}', 'previewInvoice')->middleware(['auth']);
 });
 
-
 Route::controller(App\Http\Controllers\UserSubscriptionsController::class)->group(function(){
 	Route::get('/subscription', 'index')->middleware(['auth'])->name('subscription');
     Route::post('/add-subscription', 'store')->middleware(['auth'])->name('attach_subscription_to_user');
 });
+
 Route::get('/logout', function(){
     Auth::logout();
     return to_route('dashboard');
@@ -113,3 +112,18 @@ Route::get('/logout', function(){
 
 Route::get('/drupal', [DrupalRestFeederController::class, 'index']);
 require __DIR__.'/auth.php';
+
+/*
+|--------------------------------------------------------------------------
+| Administration Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where we can register web routes for the administration section of the application.
+| Which is only accessible to administrators and an entire different application.
+*/
+Route::controller(AdministrationController::class)->group(function (){
+    Route::get('/admin/login', 'login')->name('admin_login');
+    Route::get('/admin/register', 'register')->name('admin_register');
+    Route::get('/admin/dashboard', 'dashboard')->middleware(['auth','isAdmin'])->name('admin_dashboard');
+    Route::get('/admin/profile', 'profile')->middleware(['auth','isAdmin'])->name('admin_profile');
+});

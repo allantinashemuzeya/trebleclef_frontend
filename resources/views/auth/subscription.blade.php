@@ -10,7 +10,6 @@
             color: #ede7e7 !important;
         }
 
-
     </style>
 
     <!-- BEGIN: Content-->
@@ -90,7 +89,7 @@
                             </div>
                         </div>
                         <!-- Product Details ends -->
-                    </div>
+
                 </section>
                 <!-- app e-commerce details end -->
 
@@ -109,8 +108,6 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         function pay(pay_plan){
-            {{--console.log({!! json_encode($pay_plan) !!})--}}
-
             let yoco = new window.YocoSDK({
                 publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
@@ -147,7 +144,7 @@
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
                                 Notiflix.Notify.success(
-                                    'Payment Successful, Awesome, thank you!',
+                                    'Payment Successful, Awesome, well Done!!',
                                     {
                                         timeout: 10000,
                                         position: 'center-center',

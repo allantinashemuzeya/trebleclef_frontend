@@ -25,19 +25,6 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
-     *
-     * @return View
-     */
-    public function create()
-    {
-        $data['schools'] = School::all();
-        $data['grades'] = Student::getGrades();
-        $data['instruments'] = Student::getInstruments();
-        return view('auth.register', $data);
-    }
-
-    /**
      * Handle an incoming registration request.
      *
      * @param Request $request
@@ -60,7 +47,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request?->password),
         ]);
 
-        if ($user) {
+        if (event(new Registered($user)) && $request->has('context') && $request->context === 'student') {
             $studentModel = new Student();
             $studentModel->user_id = $user->id;
             $studentModel->gender = $request->gender;
@@ -72,23 +59,41 @@ class RegisteredUserController extends Controller
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
-            if($request->file('profilePicture') != null){
-                $path = $request->file('profilePicture')->storeAs('public/profilePictures/'.$user->id.'/'.$date, $request->file('profilePicture')->getClientOriginalName());
-                if($path){
-                    $studentModel->profile_picture =  $user->id . '/' . $date .'/' . $request->file('profilePicture')->getClientOriginalName();
+            if ($request->file('profilePicture') != null) {
+                $path = $request->file('profilePicture')->storeAs('public/profilePictures/' . $user->id . '/' . $date, $request->file('profilePicture')->getClientOriginalName());
+                if ($path) {
+                    $studentModel->profile_picture = $user->id . '/' . $date . '/' . $request->file('profilePicture')->getClientOriginalName();
                 }
             }
             $studentModel->save();
-        }
 
-        if (event(new Registered($user))) {
             $this->notifyAdmin($user);
             (new StudentFeeder($user))->createStudent();
+
+            Auth::login($user);
+            return redirect(RouteServiceProvider::HOME);
         }
-
-        Auth::login($user);
-
+        elseif (event(new Registered($user)) && $request->has('context') &&
+            $request->context === 'administration'){
+            $user->role_id = 1; // 1 is the role ID for admin
+            $user->hasSubscription = true;
+            $user->save();
+            return redirect(RouteServiceProvider::ADMINISTRATION)->with('context', 'administration');
+        }
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    /**
+     * Display the registration view.
+     *
+     * @return View
+     */
+    public function create()
+    {
+        $data['schools'] = School::all();
+        $data['grades'] = Student::getGrades();
+        $data['instruments'] = Student::getInstruments();
+        return view('auth.register', $data);
     }
 
     public function notifyAdmin($data): bool

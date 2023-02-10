@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Model
 {
@@ -62,5 +63,15 @@ class Student extends Model
             (object)['name' => 'Both Guitar & Singing', 'value' => 'both_guitar_singing'],
             (object)['name' => 'All', 'value' => 'all']
         ];
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function school_(): BelongsTo
+    {
+        return $this->belongsTo(School::class, 'school');
     }
 }

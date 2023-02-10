@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\DrupalRestFeederService\ReceiptFeeder;
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Models\Student;
+use App\Models\Transactions;
 use App\Models\Tutors;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class FeesProductsController extends Controller
 {
-    public function pay($productId)
+
+    public function pay($productId): Factory|View|Application
     {
         $currentUser = $this->getCurrentUser();
 
@@ -22,72 +31,61 @@ class FeesProductsController extends Controller
         return view('fees-product', ['currentUser' => $currentUser, 'pay_plan' => $pay_plan, 'structures' => $structures]);
     }
 
-    public function chargeCard(Request $request)
+    /**
+     * @throws GuzzleException
+     */
+    public function chargeCard(Request $request): Response|int|Application|ResponseFactory
     {
-
-        // values extracted from request
         $data = [
             'token' => $request->cardToken, // Your token for this transaction here
             'amountInCents' => $request->payplan['price'] * 100, // payment in cents amount here
             'currency' => 'ZAR' // currency here
         ];
 
-    // Anonymous test key. Replace with your key.
-        $secret_key = env('YOCO_LIVE_SECRET_KEY');
-
-    // Initialise the curl handle
-        $ch = curl_init();
-
-    // Setup curl
-        curl_setopt($ch, CURLOPT_URL,"https://online.yoco.com/v1/charges/");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-
-    // Basic Authentication method
-    // Specify the secret key using the CURLOPT_USERPWD option
-        curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ":");
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-
-    // send to yoco
-        $result = curl_exec($ch);
-        Log::debug(curl_getinfo($ch, CURLINFO_HTTP_CODE));
-
-    // close the connection
-        curl_close($ch);
+        $result = $this->processCharge($data);
 
         $invoiceDetails = ['user' => Auth::user(), 'payPlan' => $request->payplan];
-
         if(json_decode($result)->status === 'successful'){
-
-            $user = Auth::user();
-            $user->hasSubscription = true;
-            $user->save();
-
-           if( (new InvoicingController)->generateInvoice($invoiceDetails)){
-               // convert response to a usable object
-               return response(json_decode($result)->status, 200)
+            $this->runSuccessOperations($invoiceDetails, json_decode($result), $request);
+            return response(json_decode($result)->status, 200)
                    ->header('Content-Type', 'application/json');
-           }
         }
-        return 0;
+        return response(json_decode($result)->status, 500)
+            ->header('Content-Type', 'application/json');
     }
 
 
-    public function fees()
+    /**
+     * @throws GuzzleException
+     * @throws GuzzleException
+     */
+    private function recordTransaction($chargeObject, mixed $payplan, string $invoiceId)
     {
-        $structures = (new SchoolFees())->getAll();
-
-        $currentUser = $this->getCurrentUser();
-
-        return view('fees', ['pay_plans' => $structures, 'pageTitle' => '', 'currentUser' => $currentUser,
+        //convert $result to object
+        Transactions::create([
+            'name' => $payplan['title'],
+            'user_id' => Auth::user()->id,
+            'payplan_id' => $payplan['id'],
+            'amount_in_cents' => $chargeObject->amountInCents,
+            'invoice_id' => $invoiceId,
+            'currency' => 'ZAR',
+            'status' => $chargeObject->status,
+            'yoco_charge_id' => (string)$chargeObject->id,
+            'yoco_payment_id' => (string)$chargeObject->source->id,
+            'yoco_livemode' => 'TEST',
+            'card_brand' => (string)$chargeObject->source->brand,
+            'masked_card' => (string)$chargeObject->source->maskedCard,
+            'fingerprint' => (string)$chargeObject->source->fingerprint,
+            'exp_month' => (string)$chargeObject->source->expiryMonth,
+            'exp_year' => (string)$chargeObject->source->expiryYear,
         ]);
+
     }
 
     /**
      * @return mixed
      */
-    public function getCurrentUser()
+    public function getCurrentUser(): mixed
     {
         if (Auth::user()->userType === 1) {
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
@@ -97,5 +95,56 @@ class FeesProductsController extends Controller
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
         }
         return $currentUser;
+    }
+
+    /**
+     * @return void
+     */
+    public function updateUser(): void
+    {
+        $user = Auth::user();
+        $user->hasSubscription = 1;
+        $user->save();
+    }
+
+    /**
+     * @param array $invoiceDetails
+     * @param bool|string $result
+     * @param Request $request
+     * @return void
+     * @throws GuzzleException
+     */
+    private function runSuccessOperations(array $invoiceDetails, mixed $result, Request $request): void
+    {
+        $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
+        $this->updateUser();
+        $this->recordTransaction($result, $request->payplan, $invoice);
+    }
+
+    /**
+     * @param array $data
+     * @return bool|string
+     */
+    private function processCharge(array $data): string|bool
+    {
+        $secret_key = env('YOCO_TEST_SECRET_KEY');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://online.yoco.com/v1/charges/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+
+        // Basic Authentication method
+        // Specify the secret key using the CURLOPT_USERPWD option
+        curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ":");
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+
+        // send to yoco
+        $result = curl_exec($ch);
+        Log::debug(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+
+        // close the connection
+        curl_close($ch);
+        return $result;
     }
 }

@@ -23,10 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if($request->has('context') && $request->context == 'administration')
+                    return redirect(RouteServiceProvider::ADMINISTRATION);
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-
         return $next($request);
     }
 }

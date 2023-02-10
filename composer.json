@@ -17,7 +17,8 @@
         "laravel/vapor-core": "^2.28",
         "livewire/livewire": "^2.10",
         "munafio/chatify": "^1.5",
-        "realrashid/sweet-alert": "^5.0"
+        "realrashid/sweet-alert": "^5.0",
+        "spatie/laravel-ray": "^1.32"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

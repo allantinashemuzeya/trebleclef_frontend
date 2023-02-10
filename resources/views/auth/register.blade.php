@@ -195,7 +195,7 @@
                             </div>
                         </div>
 
-
+                        <input type="text" hidden="" name="context" value="student" />
                         <button type="submit" class="btn btn-primary w-100" tabindex="4">Sign Up</button>
 
                     </form>

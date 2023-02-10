@@ -23,6 +23,7 @@ class HomeController extends Controller
         if(Auth::check()){
             $user = User::where('id', Auth::user()->id)->get();
             $user->name = $user->firstname . ' ' . $user->lastname;
+
             $user->save();
         }
 
@@ -48,6 +49,8 @@ class HomeController extends Controller
 
       ];
 
+
+
       return view('home.home', $data);
 
     }
@@ -55,7 +58,7 @@ class HomeController extends Controller
     /**
      * @return mixed
      */
-    public function getCurrentUser()
+    public function getCurrentUser(): mixed
     {
         if (Auth::user()->userType === 1) {
             $currentUser = Student::where('user_id', Auth::user()->id)->first();
@@ -66,5 +69,6 @@ class HomeController extends Controller
         }
         return $currentUser;
     }
+
 
 }

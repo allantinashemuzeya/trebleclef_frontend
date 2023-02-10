@@ -32,9 +32,7 @@ class UserDetails extends Component
         parent::__construct($id);
 
         $this->currentStudent = Student::where('user_id', Auth::user()->id)->first();
-
         $this->currentUser = Auth::user();
-
         $this->firstName = $this->currentUser->firstname;
         $this->lastName = $this->currentUser->lastname;
         $this->emailAddress = $this->currentUser->email;
@@ -63,13 +61,11 @@ class UserDetails extends Component
 //           return to_route('profile')->with(['response'=>'Information Saved Successfully']);
         }
     }
-
     public function save(){
         $this->validate([
             'coverImage' => 'image|max:5024', // 5MB Max
             'profilePicture' => 'image|max:5024', // 5MB Max
         ]);
-
         $this->coverImage->store('coverImages');
         $this->profilePicture->store('profilePictures');
     }
