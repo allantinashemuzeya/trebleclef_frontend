@@ -11,14 +11,14 @@
             </li>
 
             <li class="{{ Route::current()->getName() === 'admin_transactions' ? 'mm-active' :'' }}">
-                <a class="ai-icon" href="javascript:void()" aria-expanded="false">
+                <a class="ai-icon text-gray bg-gray" style="background: #a49f9f7a;"  aria-expanded="false">
                     <i class="flaticon-092-money"></i>
                     <span class="nav-text">Transactions</span>
                 </a>
             </li>
 
             <li class="{{ Route::current()->getName() === 'admin_users' ? 'mm-active' :'' }}">
-                <a class="ai-icon" href="javascript:void()" aria-expanded="false">
+                <a class="ai-icon" style="background: #a49f9f7a;"  aria-expanded="false">
                     <i class="flaticon-028-user-1"></i>
                     <span class="nav-text">Users</span>
                 </a>
