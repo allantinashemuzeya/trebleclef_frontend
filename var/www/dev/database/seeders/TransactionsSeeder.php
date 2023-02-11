@@ -22,7 +22,7 @@ class TransactionsSeeder extends Seeder
         $this->getInvoices()->each(function ($invoice) {
             $pay_plan_title = $this->getPayPlanInfo($invoice->PayPlan);
             Transactions::factory()->create([
-                'name' => $pay_plan_title['title'],
+                'name' => $pay_plan_title,
                 'user_id' => $invoice->UserId,
                 'payplan_id' => $invoice->PayPlan,
                 'amount_in_cents' => $this->getPayPlanInfo($invoice->PayPlan)['price'] * 100,
@@ -38,9 +38,10 @@ class TransactionsSeeder extends Seeder
 
     public function getPayPlanInfo($payplan_id){
         $pay_plans = (new SchoolFees())->getAll();
+        dd($pay_plans);
         foreach ($pay_plans as $payplan){
             if ($payplan['id'] == $payplan_id){
-               return $payplan;
+                return $payplan;
             }
         }
     }

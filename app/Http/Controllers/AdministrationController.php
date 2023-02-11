@@ -35,7 +35,7 @@ class AdministrationController extends Controller
         $students = Student::all()->count();
         $users = User::all()->count();
         $newStudents = Student::where('created_at', '>=', now()->subDays(7))->get()->count();
-        $transactions = Transactions::all();
+        $transactions = Transactions::all()->sortByDesc('created_at');
 
         //go through transactions and get total amount
         $totalAmount = 0;
