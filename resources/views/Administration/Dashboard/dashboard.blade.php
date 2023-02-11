@@ -136,8 +136,8 @@
                                         <td>{{$transaction->user->name}}</td>
                                         @foreach($transaction->user->student as $student)
                                             @if($student->user_id === $transaction->user->id)
-                                                <td>{{$student !== null ? $student->school_->name : 'null'}}</td>
-                                                <td>{{$student !== null ? 'Grade '.$student->grade : 'null'}}</td>
+                                                <td>{{$student->school_ !== null ? $student->school_->name : 'null'}}</td>
+                                                <td>{{$student->school_ !== null ? 'Grade '.$student->grade : 'null'}}</td>
                                             @endif
                                         @endforeach
                                         <td>{{Carbon\Carbon::parse($transaction->created_at)->isoFormat('DD MMM YYYY - HH:mm')}}</td>
