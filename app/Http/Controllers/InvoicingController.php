@@ -44,7 +44,6 @@ class InvoicingController extends Controller
 
     public function previewInvoice(InvoicesModel $invoice): Factory|View|Application
     {
-        ray('Invoice ', $invoice);
         return view('ShowInvoice.index', ['data' => $invoice]);
     }
 

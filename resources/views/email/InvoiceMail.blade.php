@@ -570,15 +570,6 @@
                                                                 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                     This email is to confirm&nbsp;your payment was successful.</p></td>
                                                         </tr>
-
-                                                        <tr>
-                                                            <td align="center" style="padding:0;Margin:0"><span
-                                                                    class="es-button-border"
-                                                                    style="border-style:solid;border-color:#5c68e2;background:#cc0000;border-width:2px;display:inline-block;border-radius:6px;width:auto"><a
-                                                                        href="{{'https://trebleclefapp.co.za/previewInvoice/'.$data['invoiceNumber']}}" class="es-button" target="_blank"
-                                                                        style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;border-style:solid;border-color:#cc0000;border-width:10px 30px 10px 30px;display:inline-block;background:#cc0000;border-radius:6px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px;width:auto;text-align:center;border-left-width:30px;border-right-width:30px">VIEW IN APP</a></span>
-                                                            </td>
-                                                        </tr>
                                                     </table>
                                                 </td>
                                             </tr>
@@ -781,12 +772,11 @@
                                                                 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                     Got a question?&nbsp;Email us at&nbsp;<a
                                                                         target="_blank" href=""
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">support@</a><a
-                                                                        target="_blank" href="https://mailto"
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">trebleclefapp.co.za </a>or
+                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">info@</a><a
+                                                                        target="_blank" href="https://mailto:info@trebleclefacademy.co.za"
+                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">trebleclefacademy.co.za</a>or
                                                                     give us a call at&nbsp;<a target="_blank" href=""
-                                                                                              style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">+000
-                                                                        123 456</a>.</p></td>
+                                                                                              style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">+27 62 014 3473</a>.</p></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -858,7 +848,7 @@
                                                             <td align="center"
                                                                 style="padding:0;Margin:0;padding-bottom:35px"><p
                                                                     style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;color:#333333;font-size:12px">
-                                                                    Treble Clef Music &amp; Arts Academy © 2022 . All
+                                                                    Treble Clef Music &amp; Arts Academy © 2023 . All
                                                                     Rights Reserved.</p>
                                                                 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;color:#333333;font-size:12px">
                                                                     The Parks Lifestyle Apartments Riversands
