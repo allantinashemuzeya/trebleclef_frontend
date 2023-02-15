@@ -136,9 +136,9 @@
                                         <td>{{$transaction->user->name}}</td>
                                             @if(count($transaction->user->student))
                                                 @foreach($transaction->user->student as $student)
-                                                    @if($student->user_id === $transaction->user->id)
-                                                        <td>{{$student->school_ !== null ? $student->school_->name : 'null'}}</td>
-                                                        <td>{{$student->school_ !== null ? 'Grade '.$student->grade : 'null'}}</td>
+                                                     @if($student->user_id === $transaction->user->id)
+                                                        <td>{{$student->school !== null ? $student->school->name : 'null'}}</td>
+                                                        <td>{{$student->school !== null ? 'Grade '.$student->grade : 'null'}}</td>
                                                     @else
                                                         <td>Null</td>
                                                         <td>Null</td>
@@ -148,7 +148,7 @@
                                                 <td>Null</td>
                                                 <td>Null</td>
                                             @endif
-                                        
+
                                         <td>{{Carbon\Carbon::parse($transaction->created_at)->isoFormat('DD MMM YYYY - HH:mm')}}</td>
                                         <td><span class="badge badge-success">Complete</span></td>
                                         <td>R {{round($transaction->amount_in_cents /100,2)}}</td>
