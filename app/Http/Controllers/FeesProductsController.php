@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Log;
 
 class FeesProductsController extends Controller
 {
+    public function fees(): Factory|View|Application
+    {
+        $currentUser = $this->getCurrentUser();
+
+        $structures = (new SchoolFees())->getAll();
+
+        return view('fees', ['currentUser' => $currentUser, 'structures' => $structures]);
+    }
 
     public function pay($productId): Factory|View|Application
     {

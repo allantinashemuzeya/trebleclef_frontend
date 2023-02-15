@@ -42,7 +42,7 @@ class UpdateSchools extends Command
 
             $schoolModel = \App\Models\School::updateOrCreate(
                 ['uuid' => $school['uuid'][0]['value']],
-                [
+                 [
                     'name' => $school['field_name'][0]['value'],
                     'banner' => $school['_links'] [$relations_base_key . 'field_banner'][0]['href'],
                     'target_type' => 'node',
@@ -55,6 +55,7 @@ class UpdateSchools extends Command
             $this->info('-------------------------------Y--A--Y-------------------------------------------');
             $this->info($school['field_name'][0]['value'] . ' saved');
         }
+
         $this->info('Schools updated!');
     }
 }

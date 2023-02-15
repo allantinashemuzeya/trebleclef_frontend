@@ -109,7 +109,7 @@
     <script>
         function pay(pay_plan){
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
@@ -126,36 +126,28 @@
                             alert("error occured: " + errorMessage);
                         } else {
 
-                            Notiflix.Notify.info('Please wait while we process your payment...',
-                                {
-                                    timeout: 2000,
-                                    position: 'center-center',
-                                    cssAnimationStyle: 'from-right',
-                                    cssAnimationDuration: 500,
-                                    useGoogleFont: true,
-                                    fontFamily: 'Roboto',
-                                    fontSize: '16px',
-                                },
-                            )
+                            // only timeout the notiflix alert when the payment is successful
+                            Notiflix.Loading.pulse('Processing payment...');
                             const results = await axios.post('/payfees/process-payment',
                                 {'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id},
                             );
 
                             // e.g. Message with the new options
                             if(results.data === 'successful'){
+                                Notiflix.Loading.remove();
                                 Notiflix.Notify.success(
-                                    'Payment Successful, Awesome, well Done!!',
+                                    'Payment Successful, Awesome! Redirecting you to your dashboard...',
                                     {
-                                        timeout: 10000,
+                                        timeout: 5000,
                                         position: 'center-center',
                                         cssAnimationStyle: 'from-left',
                                         cssAnimationDuration: 1000,
-                                        useGoogleFont: true,
-                                        fontFamily: 'comfortaa',
-                                        fontSize: '18px',
+                                        fontSize: '14px',
                                     },
-                                )
-                                window.location.href = '/dashboard';
+                                );
+                                setTimeout(function(){
+                                    window.location.href = '/dashboard';
+                                }, 5000);
                             }else{
                                 Notiflix.Notify.failure('Something went wrong. We are working on it!');
                             }

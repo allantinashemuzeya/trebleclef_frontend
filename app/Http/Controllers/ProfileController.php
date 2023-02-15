@@ -234,7 +234,7 @@ class ProfileController extends Controller
         $currentUser->postal_address = $request->postal_address;
         $currentUser->residential_address = $request->residential_address;
         $currentUser->bio = $request->bio;
-        $currentUser->school = $request->school;
+        $currentUser->school_id = $request->school;
         $currentUser->cellphoneNumber = $request->cellphone_number;
         $currentUser->next_of_kin_fullName = $request->next_of_kin_fullName;
         $currentUser->next_of_kin_cellphoneNumber = $request->next_of_kin_cellphoneNumber;

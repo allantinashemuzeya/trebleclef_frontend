@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
             $studentModel->user_id = $user->id;
             $studentModel->gender = $request->gender;
             $studentModel->cellphoneNumber = $request->cellphoneNumber;
-            $studentModel->school = $request->school;
+            $studentModel->school_id = $request->school;
             $studentModel->date_of_birth = $request->dob;
             $studentModel->grade = $request->grade;
             $studentModel->instrument = $request->instrument;

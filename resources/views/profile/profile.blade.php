@@ -339,10 +339,10 @@
                                                         <label class="form-label" for="accountSelect">School</label>
                                                         <select class="form-select" id="accountSelect" name="school">
                                                             @foreach($schools as $school)
-                                                                @if($school['id'] === $currentUser->school)
-                                                                    <option selected value="{{$school['id']}}">{{$school['name']}}</option>
+                                                                @if($school->id === Auth::user()->student[0]->school_id)
+                                                                    <option selected value="{{$school->id}}">{{$school->name}}</option>
                                                                 @else
-                                                                    <option value="{{$school['id']}}">{{$school['name']}}</option>
+                                                                    <option value="{{$school->id}}">{{$school->name}}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>

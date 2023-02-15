@@ -25,7 +25,8 @@ class Student extends Model
         'studentLevel',
         'gender',
         'grade',
-        'instrument'
+        'instrument',
+        'school_id',
     ];
 
     protected $casts = [
@@ -70,8 +71,8 @@ class Student extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function school_(): BelongsTo
+    public function school(): BelongsTo
     {
-        return $this->belongsTo(School::class, 'school');
+        return $this->belongsTo(School::class);
     }
 }

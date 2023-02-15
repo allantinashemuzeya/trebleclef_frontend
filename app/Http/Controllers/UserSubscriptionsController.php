@@ -12,7 +12,6 @@ class UserSubscriptionsController extends Controller
     public function index()
     {
         $structures = (new SchoolFees())->getAll();
-
         $registrations = [];
 
         foreach ($structures as $structure) {

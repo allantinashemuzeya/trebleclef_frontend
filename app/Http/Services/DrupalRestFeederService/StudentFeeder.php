@@ -21,10 +21,9 @@ class StudentFeeder {
             'timeout'  => 2.0,
         ]);
         $this->user = $user;
-        $this->student = $user->student;
+        $this->student = $user->student[0];
         $this->student->name = $user->name;
-        $this->school = School::where('uuid',$this->student->school)->first();
-
+        $this->school = $user->student[0]->school;
     }
 
     public function createStudent(): string

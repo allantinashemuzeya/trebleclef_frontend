@@ -43,7 +43,7 @@ class updateStudentDetails extends Command
                 if ($student->school == $school->uuid) {
                     $this->info('-------------------------------Y--A--Y-------------------------------------------');
                     $this->info($student->name . ' saved');
-                    $student->school = $school->id;
+                    $student->school_id = $student->school;
                     $student->save();
                     $this->info($student->name . ' saved');
                 }
