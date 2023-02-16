@@ -135,7 +135,7 @@ class FeesProductsController extends Controller
      */
     private function processCharge(array $data): string|bool
     {
-        $secret_key = env('YOCO_TEST_SECRET_KEY');
+        $secret_key = env('YOCO_LIVE_SECRET_KEY');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://online.yoco.com/v1/charges/");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

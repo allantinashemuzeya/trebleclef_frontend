@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <!-- Product Details ends -->
-
+                    </div>
                 </section>
                 <!-- app e-commerce details end -->
 
@@ -109,7 +109,7 @@
     <script>
         function pay(pay_plan){
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
             let checkoutButton = document.querySelector('#checkout-button');
             checkoutButton.addEventListener('click', function () {
