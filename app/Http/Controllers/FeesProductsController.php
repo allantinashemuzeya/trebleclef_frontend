@@ -25,7 +25,7 @@ class FeesProductsController extends Controller
 
         $structures = (new SchoolFees())->getAll();
 
-        return view('fees', ['currentUser' => $currentUser, 'structures' => $structures]);
+        return view('fees', ['currentUser' => $currentUser, 'pay_plans' => $structures]);
     }
 
     public function pay($productId): Factory|View|Application
