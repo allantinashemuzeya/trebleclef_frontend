@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html
     class="loading dark-layout"
     data-layout="dark-layout"
     data-textdirection="ltr"
-    lang="en"
->
+    lang="en">
 <!-- BEGIN: Head-->
 
 <head>
@@ -344,29 +342,17 @@
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link
-        href="{{asset('assets/css/style.css')}}"
-        rel="stylesheet"
-        type="text/css"
-    />
-
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}">
     <!-- END: Page CSS-->
-
     <!-- END: Custom CSS-->
-
-
     <!-- BEGIN: Vendor CSS-->
     <link href="{{asset('app-assets/vendors/css/vendors.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('app-assets/vendors/css/extensions/swiper.min.css')}}" rel="stylesheet" type="text/css">
     <!-- END: Vendor CSS-->
-
-
     <!-- BEGIN: Theme CSS-->
     <link href="{{asset('app-assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('app-assets/css/bootstrap-extended.min.css')}}" rel="stylesheet" type="text/css">
@@ -375,21 +361,15 @@
     <link href="{{asset('app-assets/css/themes/dark-layout.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('app-assets/css/themes/bordered-layout.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('app-assets/css/themes/semi-dark-layout.min.css')}}" rel="stylesheet" type="text/css">
-
     <!-- BEGIN: Page CSS-->
     <link href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}" rel="stylesheet"
           type="text/css">
-    <link href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}" rel="stylesheet"
-
+    <link href="{{asset('app-assets/css/plugins/extensions/ext-component-swiper.min.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-profile.min.css')}}">
-
     <!-- END: Page CSS-->
-
     <!-- BEGIN: Custom CSS-->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <!-- END: Custom CSS-->
-
-
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
           href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
@@ -399,58 +379,20 @@
           href="{{asset('app-assets/css/plugins/forms/pickers/form-flat-pickr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
     <!-- END: Page CSS-->
-
-
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/charts/chart-apex.min.css')}}">
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-toastr.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/dashboard-ecommerce.min.css')}}">
-
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
-
-
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css')}}">
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/core/menu/menu-types/vertical-menu.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/pages/app-ecommerce-details.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/forms/form-number-input.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
     <!-- END: Page CSS-->
-
     <link rel="stylesheet" href="{{asset('js/notiflix/dist/notiflix-3.2.5.min.css')}}" />
-
-
-
-    <style>
-        #freechat-popup > div.freechat-popup-header {
-            background: #0e111d url("{{asset('app-assets/images/banner/treble Clef_logo original.png')}}");
-        }
-
-        #freechat-popup > div.freechat-popup-header > div.freechat-popup-top > h1 {
-            color: #fff;
-            background: #300606;
-            border-radius: 7px;
-            padding: 0.15em;
-        }
-
-        #freechat-popup > div.freechat-popup-content > p {
-            background-color: #502734 !important;
-            color: #fff !important;
-        }
-
-
-        #main-menu-navigation {
-            margin-top: 57px;
-        }
-
-
-    </style>
-
-
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-pricing.min.css')}}">
 
     <style>
@@ -555,18 +497,24 @@
                   @endif
 
 
-                <div
-                    aria-labelledby="dropdown-user"
-                    class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="page-profile.html"
-                    ><i class="me-50" data-feather="user"></i> Profile</a
-                    ><a class="dropdown-item" href="app-email.html"
-                    ><i class="me-50" data-feather="mail"></i> Inbox</a
-                    ><a class="dropdown-item" href="app-todo.html"
-                    ><i class="me-50" data-feather="check-square"></i> Task</a
-                    ><a class="dropdown-item" href="/chat"
-                    ><i class="me-50" data-feather="message-square"></i> Chats</a
-                    >
+                <div aria-labelledby="dropdown-user" class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="page-profile.html">
+                        <i class="me-50" data-feather="user"></i>
+                        Profile
+                    </a>
+
+                    <a class="dropdown-item" href="app-email.html">
+                        <i class="me-50" data-feather="mail"></i>
+                        Inbox
+                    </a>
+
+                    <a class="dropdown-item" href="app-todo.html">
+                        <i class="me-50" data-feather="check-square"></i> Task
+                    </a>
+
+                    <a class="dropdown-item" href="/chat">
+                        <i class="me-50" data-feather="message-square"></i>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -581,30 +529,28 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto">
-                <a class="navbar-brand" href="/"
-                ><span class="brand-logo">
-
+                <a class="navbar-brand" href="/">
+                    <span class="brand-logo">
                         <img src="{{asset('app-assets/images/logo/treble Clef white.jpeg')}}" style="    max-width: 124%;
     margin-top: -25px;
     margin-left: -23px;"/>
-                    </span></a>
+                    </span>
+                </a>
 
             </li>
             <li class="nav-item nav-toggle">
-                <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"
-                ><i
-                        class="d-block d-xl-none text-primary toggle-icon font-medium-4"
-                        data-feather="x"
-                    ></i
-                    ><i
-                        class="d-none d-xl-block collapse-toggle-icon font-medium-4 text-primary"
+                <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4"
+                       data-feather="x"></i>
+                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4 text-primary"
                         data-feather="disc"
-                        data-ticon="disc"
-                    ></i
-                    ></a>
+                        data-ticon="disc">
+                    </i>
+                </a>
             </li>
         </ul>
     </div>
+
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main"
