@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\DrupalRestFeederService\StudentFeeder;
+use App\Models\RegistrationProcess;
 use App\Models\School;
 use App\Mail\AdminNotifierMail;
 use App\Models\Student;
@@ -11,6 +12,8 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -36,64 +39,32 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request?->name,
+            'username' => $request?->username,
             'email' => $request?->email,
             'password' => Hash::make($request?->password),
         ]);
 
-        if (event(new Registered($user)) && $request->has('context') && $request->context === 'student') {
-            $studentModel = new Student();
-            $studentModel->user_id = $user->id;
-            $studentModel->gender = $request->gender;
-            $studentModel->cellphoneNumber = $request->cellphoneNumber;
-            $studentModel->school_id = $request->school;
-            $studentModel->date_of_birth = $request->dob;
-            $studentModel->grade = $request->grade;
-            $studentModel->instrument = $request->instrument;
+        event(new Registered($user));
 
-            $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
+        Auth::login($user);
 
-            if ($request->file('profilePicture') != null) {
-                $path = $request->file('profilePicture')->storeAs('public/profilePictures/' . $user->id . '/' . $date, $request->file('profilePicture')->getClientOriginalName());
-                if ($path) {
-                    $studentModel->profile_picture = $user->id . '/' . $date . '/' . $request->file('profilePicture')->getClientOriginalName();
-                }
-            }
-            $studentModel->save();
-
-            $this->notifyAdmin($user);
-            (new StudentFeeder($user))->createStudent();
-
-            Auth::login($user);
-            return redirect(RouteServiceProvider::HOME);
-        }
-        elseif (event(new Registered($user)) && $request->has('context') &&
-            $request->context === 'administration'){
-            $user->role_id = 1; // 1 is the role ID for admin
-            $user->hasSubscription = true;
-            $user->save();
-            return redirect(RouteServiceProvider::ADMINISTRATION)->with('context', 'administration');
-        }
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::REGISTRATION_PROCESS);
     }
 
     /**
      * Display the registration view.
      *
-     * @return View
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function create()
+    public function create(): Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
-        $data['schools'] = School::all();
-        $data['grades'] = Student::getGrades();
-        $data['instruments'] = Student::getInstruments();
-        return view('auth.register', $data);
+        return view('tca_online.main_application.auth.register');
     }
 
     public function notifyAdmin($data): bool

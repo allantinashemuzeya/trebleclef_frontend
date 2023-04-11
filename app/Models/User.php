@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\CrmAdminController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,11 +21,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
-        'hasSubscription',
-        'role_id',
     ];
 
     /**
@@ -45,26 +43,69 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'activities' => 'array'
     ];
 
-    public function role(): BelongsTo
+    /**
+     * Get the registration process record associated with the user.
+     */
+    public function registrationProcess(): HasOne
     {
-        return $this->belongsTo(Role::class);
+        return $this->hasOne(RegistrationProcess::class);
     }
 
-    public function teacher(): HasOne
+    /**
+     * Get the tutor record associated with the user.
+     */
+    public function tutor(): HasOne
     {
-        return $this->hasOne(Teacher::class);
+        return $this->hasOne(Tutor::class);
     }
 
+    /**
+     * Get the student record associated with the user.
+     */
+    public function student(): HasOne
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    /**
+     * Get the parent record associated with the user.
+     */
     public function parent(): HasOne
     {
         return $this->hasOne(Parent::class);
     }
 
-    public function student(): HasMany
+    /**
+     * Get the admin record associated with the user.
+     */
+    public function admin(): HasOne
     {
-        return $this->hasMany(Student::class);
+        return $this->hasOne(CrmAdminController::class);
+    }
+
+    /**
+     * Get the super admin record associated with the user.
+     */
+    public function superAdmin(): HasOne
+    {
+        return $this->hasOne(SuperAdmin::class);
+    }
+
+    /**
+     * Get the user's activities
+     */
+    public function activities(): HasOne
+    {
+        return $this->hasOne(UserActivity::class);
+    }
+
+    /**
+     * Get the user's registration process status
+     */
+    public function registrationStatus(): HasOne
+    {
+        return $this->hasOne(RegistrationProcess::class);
     }
 }

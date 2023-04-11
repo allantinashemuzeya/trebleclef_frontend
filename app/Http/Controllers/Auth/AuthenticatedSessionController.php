@@ -5,26 +5,30 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      *
-     * @return \Illuminate\View\View
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function create()
+    public function create(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|Factory|Application
     {
-        return view('auth.login');
+        return view('tca_online.main_application.login');
     }
 
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param LoginRequest $request
+     * @return RedirectResponse
      */
     public function store(LoginRequest $request)
     {
@@ -39,7 +43,7 @@ class AuthenticatedSessionController extends Controller
      * Destroy an authenticated session.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(Request $request)
     {
