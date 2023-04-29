@@ -8,25 +8,20 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tutor_details', function (Blueprint $table) {
-            $table->id();
-
+        Schema::create('followers', function (Blueprint $table) {
+            $table->uuid('id');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tutor_details');
+        Schema::dropIfExists('followers');
     }
 };
