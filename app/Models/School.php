@@ -2,27 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class School extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $table = 'schools';
 
     protected $fillable = [
-        'uuid',
-        'target_uid',
         'name',
-        'location',
         'banner',
-        'target_type',
-        'target_id',
-        'url'
-        ];
-
+        'drupal_uuid',
+    ];
     public function students(): HasMany
     {
         return $this->hasMany(Student::class, 'school', 'id');
