@@ -56,8 +56,7 @@
                             id="account-pill-general"
                             data-bs-toggle="pill"
                             href="#account-vertical-general"
-                            aria-expanded="true"
-                        >
+                            aria-expanded="true">
                             <i data-feather="user" class="font-medium-3 me-1"></i>
                             <span class="fw-bold">General</span>
                         </a>
@@ -117,9 +116,10 @@
                                     <!-- header section -->
                                     <div class="d-flex">
                                         <a href="#" class="me-25">
-                                            <img
 
-                                                src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
+                                            <img src="https://ui-avatars.com/api/?name={{
+                                                 Auth::user()->data['first_name']}}+{{Auth::user()->data['last_name']}}
+                                                 &size=128&background=0D8ABC&color=fff"
                                                 id="account-upload-img"
                                                 class="rounded me-50"
                                                 alt="profile image"
