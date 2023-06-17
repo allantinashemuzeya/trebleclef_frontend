@@ -11,9 +11,11 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
-
 class HomeController extends Controller
 {
+
+    //
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
@@ -21,6 +23,7 @@ class HomeController extends Controller
         if(Auth::check()){
             $user = User::where('id', Auth::user()->id)->get();
             $user->name = $user->firstname . ' ' . $user->lastname;
+
             $user->save();
         }
 
@@ -45,6 +48,9 @@ class HomeController extends Controller
           'currentUser' => $currentUser
 
       ];
+
+
+
       return view('home.home', $data);
 
     }

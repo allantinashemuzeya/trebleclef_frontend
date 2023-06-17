@@ -79,13 +79,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function getDashboard($user): Redirector|RedirectResponse
     {
         if ($user->hasRole('admin')) {
-            return redirect(RouteServiceProvider::ADMINISTRATION);
+            return redirect()->route(RouteServiceProvider::ADMINISTRATION);
         } elseif ($user->hasRole('tutor')) {
-            return redirect(RouteServiceProvider::TUTOR);
+            return redirect()->route(RouteServiceProvider::TUTOR);
         } elseif ($user->hasRole('parent')) {
-            return redirect(RouteServiceProvider::PARENT);
+            return redirect()->route(RouteServiceProvider::PARENT);
         } elseif ($user->hasRole('student')) {
-            return redirect(RouteServiceProvider::STUDENT);
+            return redirect()->route(RouteServiceProvider::STUDENT);
         } else {
             return redirect()->route('login');
         }
