@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 $user = Auth::user();
-                User::getDashboard($user);
+               return redirect(User::getDashboard($user));
             }
         }
         return $next($request);

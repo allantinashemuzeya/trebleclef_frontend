@@ -76,18 +76,18 @@ class User extends Authenticatable implements MustVerifyEmail
      * @param  $user
      * @return RedirectResponse|Redirector
      */
-    public static function getDashboard($user): Redirector|RedirectResponse
+    public static function getDashboard($user)
     {
         if ($user->hasRole('admin')) {
-            return redirect()->route(RouteServiceProvider::ADMINISTRATION);
+            return RouteServiceProvider::ADMINISTRATION;
         } elseif ($user->hasRole('tutor')) {
-            return redirect()->route(RouteServiceProvider::TUTOR);
+            return RouteServiceProvider::TUTOR;
         } elseif ($user->hasRole('parent')) {
-            return redirect()->route(RouteServiceProvider::PARENT);
+            return RouteServiceProvider::PARENT;
         } elseif ($user->hasRole('student')) {
-            return redirect()->route(RouteServiceProvider::STUDENT);
+            return RouteServiceProvider::STUDENT;
         } else {
-            return redirect()->route('login');
+            return '/login';
         }
     }
 
