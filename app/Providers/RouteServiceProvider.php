@@ -17,13 +17,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const STUDENT = 'student-dashboard';
+    public const STUDENT = '/student/dashboard';
 
-    public const PARENT = 'parent-dashboard';
+    public const PARENT = '/parents/dashboard';
 
-    public const TUTOR = 'tutor-dashboard';
+    public const TUTOR = '/tutor/dashboard';
 
-    public const ADMINISTRATION = 'administrator-dashboard';
+    public const ADMINISTRATION = '/admin/dashboard';
 
     public const ACCOUNTANT =  'accountant-dashboard';
 

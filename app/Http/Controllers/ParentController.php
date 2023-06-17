@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ParentController extends Controller
 {
-    //
+
     /**
      * Shows the Parent Dashboard
      *
@@ -39,7 +39,7 @@ class ParentController extends Controller
         foreach ($students as $student){
             $menu['dashboards'][] = [
                 'name' => $student->name,
-                'link' => route(RouteServiceProvider::STUDENT, $student->id),
+                'link' => RouteServiceProvider::STUDENT,
                 'active' => false,
                 'icon' => 'fa fa-dashboard',
                 'class' => '',
@@ -123,7 +123,5 @@ class ParentController extends Controller
             ],
         ];
     }
-
-
 }
 
