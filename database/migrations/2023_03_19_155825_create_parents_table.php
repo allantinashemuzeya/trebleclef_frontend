@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('parents', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->uuid('id');
+            $table->unsignedBigInteger('user_id');
             $table->json('data');
             $table->timestamps();
         });

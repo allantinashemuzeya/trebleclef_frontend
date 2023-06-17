@@ -13,10 +13,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->unsignedBigInteger('invoice_id')->constrained();
-            $table->unsignedBigInteger('receipt_id')->constrained();
+            $table->uuid('id');
+            $table->unsignedBigInteger('user_id');
+            $table->uuid('invoice_uuid');
+            $table->uuid('receipt_uuid');
             $table->string('payment_method');
             $table->string('payment_status');
             $table->string('payment_reference')->default('School Fees');

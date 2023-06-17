@@ -41,14 +41,10 @@ class UpdateSchools extends Command
             $relations_base_key = config('trebleclef.cms_base_url') . '/rest/relation/node/schools/';
 
             $schoolModel = \App\Models\School::updateOrCreate(
-                ['uuid' => $school['uuid'][0]['value']],
+                ['drupal_uuid' => $school['uuid'][0]['value']],
                  [
                     'name' => $school['field_name'][0]['value'],
                     'banner' => $school['_links'] [$relations_base_key . 'field_banner'][0]['href'],
-                    'target_type' => 'node',
-                    'target_id' => $school['type'][0]['target_id'],
-                    'target_uuid' => $school['uuid'][0]['value'],
-                    'url' => '/node/'. $school['nid'][0]['value'],
                 ]
             );
             $schoolModel->save();

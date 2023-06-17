@@ -12,7 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('meetings', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('location')->default('online');
+            $table->string('type')->default('meeting');
+            $table->string('status')->default('scheduled');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->string('timezone');
+            $table->string('password')->nullable();
+            $table->string('join_url')->nullable();
+            $table->uuid('user_uuid');
+            $table->string('host_email')->nullable();
             $table->timestamps();
         });
     }

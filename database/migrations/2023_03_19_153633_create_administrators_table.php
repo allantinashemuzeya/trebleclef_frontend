@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('administrators', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->unsignedBigInteger('user_id');
             $table->json('data')->nullable();
             $table->timestamps();
         });

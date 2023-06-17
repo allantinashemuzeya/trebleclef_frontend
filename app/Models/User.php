@@ -1,17 +1,23 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Models;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Http\Controllers\CrmAdminController;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
+use Livewire\Redirector;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -22,8 +28,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'name',
         'email',
+        'username',
         'password',
+        'data'
     ];
 
     /**
@@ -43,69 +52,90 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'data' => 'array',
     ];
 
-    /**
-     * Get the registration process record associated with the user.
-     */
-    public function registrationProcess(): HasOne
+    public function teacher(): HasOne
     {
-        return $this->hasOne(RegistrationProcess::class);
+        return $this->hasOne(Teacher::class);
     }
 
-    /**
-     * Get the tutor record associated with the user.
-     */
-    public function tutor(): HasOne
-    {
-        return $this->hasOne(Tutor::class);
-    }
-
-    /**
-     * Get the student record associated with the user.
-     */
-    public function student(): HasOne
-    {
-        return $this->hasOne(Student::class);
-    }
-
-    /**
-     * Get the parent record associated with the user.
-     */
     public function parent(): HasOne
     {
         return $this->hasOne(Parent::class);
     }
 
-    /**
-     * Get the admin record associated with the user.
-     */
-    public function admin(): HasOne
+    public function students(): HasMany
     {
-        return $this->hasOne(CrmAdminController::class);
+        return $this->hasMany(Student::class);
     }
 
     /**
-     * Get the super admin record associated with the user.
+     * Gets the user's dashboard based on their role. If they are not logged in,
+     * they are redirected to the login page.
+     * @param  $user
+     * @return RedirectResponse|Redirector
      */
-    public function superAdmin(): HasOne
+    public static function getDashboard($user): Redirector|RedirectResponse
     {
-        return $this->hasOne(SuperAdmin::class);
+        if ($user->hasRole('admin')) {
+            return redirect(RouteServiceProvider::ADMINISTRATION);
+        } elseif ($user->hasRole('tutor')) {
+            return redirect(RouteServiceProvider::TUTOR);
+        } elseif ($user->hasRole('parent')) {
+            return redirect(RouteServiceProvider::PARENT);
+        } elseif ($user->hasRole('student')) {
+            return redirect(RouteServiceProvider::STUDENT);
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
-     * Get the user's activities
+     * @param $UserData
+     * @param $user
+     * @return void
      */
-    public function activities(): HasOne
+    public static function assignRoles($UserData, $user): void
     {
-        return $this->hasOne(UserActivity::class);
+        if ($UserData->data['account_type'] == 'student') {
+            $user->assignRole('student');
+        } else if ($UserData->data['account_type'] == 'parent') {
+            $user->assignRole('parent');
+        } else if ($UserData->data['account_type'] == 'teacher') {
+            $user->assignRole('teacher');
+        } else if ($UserData->data['account_type'] == 'admin') {
+            $user->assignRole('admin');
+        } else if ($UserData->data['account_type'] == 'accountant') {
+            $user->assignRole('accountant');
+        }
     }
 
     /**
-     * Get the user's registration process status
+     * Gets the user's dashboard constant based on their role.
+     * @return string
      */
-    public function registrationStatus(): HasOne
+    public static function getUserDashboardRouteConstant(): string
     {
-        return $this->hasOne(RegistrationProcess::class);
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user->hasRole('parent')){
+                return RouteServiceProvider::PARENT;
+            }
+            else if ($user->hasRole('student')) {
+                return RouteServiceProvider::STUDENT;
+            }
+            else if ($user->hasRole('teacher')) {
+                return RouteServiceProvider::TUTOR;
+            }
+            else if ($user->hasRole('admin')) {
+                return RouteServiceProvider::ADMINISTRATION;
+            }
+            else if ($user->hasRole('accountant')) {
+                return RouteServiceProvider::ACCOUNTANT;
+            }
+
+        }
+        return RouteServiceProvider::HOME;
     }
 }

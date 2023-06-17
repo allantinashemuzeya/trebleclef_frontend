@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_activities', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->uuid('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('context');
             $table->longText('description');
             $table->timestamps();

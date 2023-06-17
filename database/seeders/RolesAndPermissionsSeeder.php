@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Contracts\Role as RoleContract;
+use Spatie\Permission\Contracts\Permission as PermissionContract;
 
 
 class RolesAndPermissionsSeeder extends Seeder
@@ -14,11 +14,10 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-
         /**
          * Create admin roles and permissions
          */
-        $admin_role = Role::create(['name' => 'admin']);
+        $admin_role = app(RoleContract::class)->create(['name' => 'admin']);
         $admin_permissions = [
             'create user',
             'read user',
@@ -211,15 +210,17 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete schools',
         ];
         foreach ($admin_permissions as $admin_permission) {
-            if (!Permission::where('name', $admin_permission)->first())
-                Permission::create(['name' => $admin_permission]);
+            if (!app(PermissionContract::class)->where('name', $admin_permission)->first())
+                app(PermissionContract::class)->create(['name' => $admin_permission]);
         }
         $admin_role->syncPermissions($admin_permissions);
 
         /**
-         * Create teacher roles and permissions
+         * Create teacher permissions and assign to teacher role 
+         * 
          */
-        $teacher_role = Role::create(['name' => 'teacher']);
+        
+        $teacher_role = app(RoleContract::class)->create(['name' => 'teacher']);
         $teacher_permissions = [
             'create post',
             'read post',
@@ -307,8 +308,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete notice'
         ];
         foreach ($teacher_permissions as $teacher_permission) {
-            if (!Permission::where('name', $teacher_permission)->first()) {
-                Permission::create(['name' => $teacher_permission]);
+            if (!app(PermissionContract::class)->where('name', $teacher_permission)->first()) {
+                app(PermissionContract::class)->create(['name' => $teacher_permission]);
             }
         }
         $teacher_role->syncPermissions($teacher_permissions);
@@ -316,7 +317,7 @@ class RolesAndPermissionsSeeder extends Seeder
         /**
          * Create student roles and permissions
          */
-        $student_role = Role::create(['name' => 'student']);
+        $student_role = app(RoleContract::class)->create(['name' => 'student']);
         $student_permissions = [
             'create post',
             'read post',
@@ -360,15 +361,15 @@ class RolesAndPermissionsSeeder extends Seeder
 
         ];
         foreach ($student_permissions as $student_permission) {
-            if (!Permission::where('name', $student_permission)->first())
-                Permission::create(['name' => $student_permission]);
+            if (!app(PermissionContract::class)->where('name', $student_permission)->first())
+                app(PermissionContract::class)->create(['name' => $student_permission]);
         }
         $student_role->syncPermissions($student_permissions);
 
         /**
          * Create parent roles and permissions
          */
-        $parent_role = Role::create(['name' => 'parent']);
+        $parent_role = app(RoleContract::class)->create(['name' => 'parent']);
         $parent_permissions = [
             'create student',
             'read student',
@@ -402,8 +403,8 @@ class RolesAndPermissionsSeeder extends Seeder
 
         ];
         foreach ($parent_permissions as $parent_permission) {
-            if (!Permission::where('name', $parent_permission)->first()) {
-                Permission::create(['name' => $parent_permission]);
+            if (!app(PermissionContract::class)->where('name', $parent_permission)->first()) {
+                app(PermissionContract::class)->create(['name' => $parent_permission]);
             }
         }
         $parent_role->syncPermissions($parent_permissions);
@@ -411,7 +412,7 @@ class RolesAndPermissionsSeeder extends Seeder
         /**
          * Create accountant roles and permissions
          */
-        $accountant_role = Role::create(['name' => 'accountant']);
+        $accountant_role = app(RoleContract::class)->create(['name' => 'accountant']);
         $accountant_permissions = [
             'create fees structures',
             'read fees structures',
@@ -441,8 +442,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'read transactions',
         ];
         foreach ($accountant_permissions as $accountant_permission) {
-            if (!Permission::where('name', $accountant_permission)->first()) {
-                Permission::create(['name' => $accountant_permission]);
+            if (!app(PermissionContract::class)->where('name', $accountant_permission)->first()) {
+                app(PermissionContract::class)->create(['name' => $accountant_permission]);
             }
         }
         $accountant_role->syncPermissions($accountant_permissions);
@@ -450,7 +451,7 @@ class RolesAndPermissionsSeeder extends Seeder
         /**
          * Create event organiser roles and permissions
          */
-        $event_organiser_role = Role::create(['name' => 'event_organiser']);
+        $event_organiser_role = app(RoleContract::class)->create(['name' => 'event_organiser']);
         $event_organiser_permissions = [
             'create event',
             'read event',
@@ -558,8 +559,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'delete event payment method',
         ];
         foreach ($event_organiser_permissions as $event_organiser_permission) {
-            if (!Permission::where('name', $event_organiser_permission)->exists()) {
-                Permission::create(['name' => $event_organiser_permission]);
+            if (!app(PermissionContract::class)->where('name', $event_organiser_permission)->exists()) {
+                app(PermissionContract::class)->create(['name' => $event_organiser_permission]);
             }
         }
         $event_organiser_role->syncPermissions($event_organiser_permissions);
