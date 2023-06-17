@@ -48,7 +48,7 @@ Route::get('/home', function () {
 
 
 Route::get('/dashboard/',function (){
-   return redirect(User::getDashboard(Auth::user()));
+   return User::getDashboard(Auth::user());
 })->middleware(['auth'])->name('dashboard');
 
 
