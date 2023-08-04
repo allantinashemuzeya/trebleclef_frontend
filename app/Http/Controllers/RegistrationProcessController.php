@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Province;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -26,23 +28,23 @@ class RegistrationProcessController extends Controller
 
     public function getPageData(): array
     {
-       $scripts = '<script src="/tca_online/main_application/assets/js/scrollspyNav.js"></script>
-<script src="/tca_online/main_application/plugins/jquery-step/jquery.steps.min.js"></script>
-<script src="/tca_online/main_application/plugins/jquery-step/custom-jquery.steps.js"></script>
-';
+        $scripts = '<script src="/tca_online/main_application/assets/js/scrollspyNav.js"></script>
+        <script src="/tca_online/main_application/plugins/jquery-step/jquery.steps.min.js"></script>
+        <script src="/tca_online/main_application/plugins/jquery-step/custom-jquery.steps.js"></script>
+        ';
 
-       $styles = '<link href="/tca_online/main_application/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="/tca_online/main_application/plugins/jquery-step/jquery.steps.css">
-<style>
-    #formValidate .wizard > .content {min-height: 25em;}
-    #example-vertical.wizard > .content {min-height: 24.5em;}
-</style>
-';
+        $styles = '<link href="/tca_online/main_application/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="/tca_online/main_application/plugins/jquery-step/jquery.steps.css">
+        <style>
+            #formValidate .wizard > .content {min-height: 25em;}
+            #example-vertical.wizard > .content {min-height: 24.5em;}
+        </style>';
+
         return [
             'title' => 'Registration Process',
             'headContent' => $styles,
             'bodyContent' => $scripts,
-            'mainContainerAttributes'=> 'data-spy="scroll" data-target="#navSection" data-offset="100"'
+            'mainContainerAttributes'=> 'data-spy="scroll" data-target="#navSection" data-offset="100"',
         ];
     }
 

@@ -105,7 +105,7 @@ class RegisteredUserController extends Controller
             ],
         ];
 
-        $country = Country::where('code', 'ZA')->first();
+        $country = Country::where('code', config('app.current_country_code'))->first();
         $provinces = Province::where('country_id', $country->id)->get();
 
         return [

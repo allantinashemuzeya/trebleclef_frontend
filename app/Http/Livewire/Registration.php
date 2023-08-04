@@ -29,9 +29,10 @@ class Registration extends Component
     public string $phoneNumber = '254712345678';
     public string $address = '123 Main Street';
     public string $city = '';
-    public string $province = '991a625d-a434-4544-89b3-35049517fe5f';
-    public string $postalCode;
-    public string $country = '991a625d-63ef-4774-909c-ec4110184a52';
+    public string $province = '';
+    public string $postalCode = '';
+    public string $country = '';
+    public array $provinces = [];
     public string $grade = '';
     public string $school = '';
     public array $activities = [];
@@ -49,11 +50,6 @@ class Registration extends Component
         return view('livewire.registration');
     }
 
-    public function getProvinces(): void
-    {
-        $this->page['provinces'] = Province::where('country_id', $this->country)
-            ->get();
-    }
 
     /**
      * Submit the registration form.
@@ -61,6 +57,7 @@ class Registration extends Component
      */
     public function submit()
     {
+        //dd($this->province);
         $userData = new \stdClass();
         $userData->name = $this->username;
         $userData->email = $this->email;
@@ -74,9 +71,9 @@ class Registration extends Component
             'phone_number' => $this->phoneNumber,
             'address' => $this->address,
             'city' => $this->city,
-            'province' => Province::where('id', $this->province)->first()->name,
+            'province' =>$this->province,
             'postal_code' => $this->postalCode,
-            'country' => Country::where('id', $this->country)->first()->name,
+            'country' => config('app.current_country')
         ];
 
         $response = ((new RegisteredUserController)->store($userData));

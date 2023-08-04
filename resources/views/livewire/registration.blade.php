@@ -199,6 +199,7 @@
                         <input type="text" id="multiStepsPincode"
                                wire:model="postalCode"
                                class="form-control multi-steps-pincode"
+                               required
                                placeholder="Postal Code" maxlength="6"/>
                     </div>
                     <div class="col-md-6">
@@ -208,21 +209,6 @@
                                wire:model="address"
                                required
                                placeholder="Address"/>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label class="form-label" for="country">Country</label>
-                        <select id="country" class="select2 form-select"
-                                data-allow-clear="true"
-                                placeholder="Select a province"
-                                wire:model="country"
-                                wire:change="getProvinces"
-                                required>
-                            <option value="">Select a province</option>
-                            <option value="{{$page['country']['id']}}">
-                                {{$page['country']['name']}}
-                            </option>
-                        </select>
                     </div>
 
                     <div class="col-sm-6">
@@ -242,9 +228,10 @@
                                 data-allow-clear="true" type="text"
                                 wire:model="province">
                             <option value="">Select</option>
-                            @foreach( $page['provinces'] as $province )
-                                    <option value="{{$province['id']}}">
-                                        {{$province['name']}}</option>
+                            @foreach($page['provinces'] as $province)
+                                <option value="{{$province['id']}}">
+                                    {{$province['name']}}
+                                </option>
                             @endforeach
                         </select>
                     </div>
