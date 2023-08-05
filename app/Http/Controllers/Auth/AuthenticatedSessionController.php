@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        return redirect()->intended(User::getDashboard($user));
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

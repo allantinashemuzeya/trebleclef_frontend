@@ -5,9 +5,8 @@
     <div class="container-xxl">
         <div
             class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
-            <a class="app-brand-link gap-2" href="index-2.html">
-                <span
-                    class="app-brand-logo demo">
+            <a class="app-brand-link gap-2" href="">
+                <span class="app-brand-logo demo">
                     <svg
                         fill="none" height="22" viewBox="0 0 32 22"
                         width="32"
@@ -36,7 +35,7 @@
                             fill-rule="evenodd"/>
                     </svg>
                 </span>
-                <span class="app-brand-text demo menu-text fw-bold">TCA Online | Parents</span>
+                <span class="app-brand-text demo menu-text fw-bold">{{$title}}</span>
             </a>
             <a class="layout-menu-toggle menu-link text-large ms-auto d-xl-none"
                href="javascript:void(0);">

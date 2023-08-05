@@ -32,4 +32,47 @@
             top: 28%;
         }
     </style>
+    
+    <style>
+    .fade-in {
+        transition: border-color 0.5s ease-out,
+        background-color 0.5s ease-out,
+        color 0.5s ease-out;
+    }
+</style>
+
+<!-- Scripts -->
+<script>
+    const parentInput = $('#parentAccountTypeInput');
+    const studentInput = $('#studentAccountTypeInput');
+
+    parentInput.on('change', function() {
+        const parentContainer = $('.custom-option-icon.parent-container');
+        const color = parentInput.prop('checked') ? '#ea5455' : 'black';
+
+        // Add the 'fade-in' class to trigger the CSS transition
+        parentContainer.addClass('fade-in');
+
+        setTimeout(function() {
+            parentContainer.css('border', '1px solid ' + color);
+            parentContainer.find('i').css('color', color);
+            parentContainer.removeClass('fade-in');
+        }, 50);
+    });
+
+    studentInput.on('change', function() {
+        const studentContainer = $('.custom-option-icon.student-container');
+        const color = studentInput.prop('checked') ? '#ea5455' : 'black';
+
+        // Add the 'fade-in' class to trigger the CSS transition
+        studentContainer.addClass('fade-in');
+
+        setTimeout(function() {
+            studentContainer.css('border', '1px solid ' + color);
+            studentContainer.find('i').css('color', color);
+            studentContainer.removeClass('fade-in');
+        },50);
+    });
+</script>
+
 @endsection

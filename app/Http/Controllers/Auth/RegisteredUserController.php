@@ -57,6 +57,8 @@ class RegisteredUserController extends Controller
 
         User::assignRoles($UserData, $user);
 
+        $this->notifyAdmin($user);
+
         return [
             'status' => 'success',
             'message' => 'User created successfully',

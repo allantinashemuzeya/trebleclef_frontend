@@ -17,6 +17,7 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitePagesController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TrebleclefTVController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\TutorInvitesController;
 use App\Http\Controllers\UserSubscriptionsController;
@@ -39,7 +40,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
-    return Auth::check() ? redirect('/dashboard') : view('welcome');
+    return Auth::check() ? redirect('/dashboard') : redirect('/login');
 });
 
 Route::get('/home', function () {
@@ -70,7 +71,6 @@ Route::controller(CommunicationController::class)->group(
     Route::get('/foundations', 'foundations')->middleware(
         ['auth', 'hasSubscription'])->name('foundations');
 });
-
 Route::controller(ClassroomController::class)->group(
     function(){
     Route::get('/classroom/', 'index')->name('classroom')
@@ -88,14 +88,12 @@ Route::controller(ClassroomController::class)->group(
 
         ->middleware(['auth', 'hasSubscription'])->name('lesson');
 });
-
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile', 'index')->middleware(
         ['auth', 'hasSubscription'])->name('profile');
     Route::post('/profile-update', 'updateProfile')->middleware(
         ['auth', 'hasSubscription'])->name('updateProfile');
 });
-
 Route::controller(EventsController::class)->group(
     function(){
     Route::get('/events/', [EventsController::class, 'index'])
@@ -104,7 +102,6 @@ Route::controller(EventsController::class)->group(
     Route::get('/event/{id}', [EventsController::class, 'event'])
         ->middleware(['auth', 'hasSubscription'])->name('event');
 });
-
 Route::controller(SitePagesController::class)->group(
     function(){
     Route::get('/networks', 'networks')->middleware(
@@ -119,7 +116,6 @@ Route::controller(SitePagesController::class)->group(
     Route::get('/chat', 'chat')->middleware(
         ['auth', 'hasSubscription'])->name('chat');
 });
-
 Route::controller(FeesProductsController::class)->group(
     function(){
     Route::get('/payfees', 'fees')->middleware(['auth'])
@@ -131,13 +127,11 @@ Route::controller(FeesProductsController::class)->group(
     Route::post('/payfees/process-payment', 'chargeCard')->name(
         'processPayment');
 });
-
 Route::controller(ChatApplication::class)->group(
     function(){
     Route::post('chat/', 'chatTutor')->middleware(
         ['auth'])->name('chat-tutor');
 });
-
 Route::controller(TutorInvitesController::class)->group(
     function(){
     Route::get('/tutor_invite/{email_address}', 'index')->middleware(
@@ -146,8 +140,6 @@ Route::controller(TutorInvitesController::class)->group(
     Route::post('/tutor_invite/create', 'createTutor')->middleware(
         ['auth'])->name('createTutor');
 });
-
-
 Route::controller(InvoicingController::class)->group(
     function(){
     Route::post('/generateInvoice', 'generateInvoice')->middleware(
@@ -156,7 +148,6 @@ Route::controller(InvoicingController::class)->group(
     Route::get('/previewInvoice/{invoice}', 'previewInvoice')->middleware(
         ['auth']);
 });
-
 Route::controller(UserSubscriptionsController::class)->group(
     function(){
 	Route::get('/subscription', 'index')->middleware(
@@ -165,20 +156,20 @@ Route::controller(UserSubscriptionsController::class)->group(
     Route::post('/add-subscription', 'store')->middleware(
         ['auth'])->name('attach_subscription_to_user');
 });
-
 Route::controller(StudentController::class)->group(
     function(){
         Route::get('/student/dashboard', 'index')->middleware(
             ['auth'])->name('student-dashboard');
     }
 );
-
 Route::controller(ParentController::class)->group(function(){
     Route::get('/parents/dashboard', 'index')->middleware(
         ['auth'])->name('parent-dashboard');
 
     Route::get('/parents/profile', 'profile')->middleware(
         ['auth'])->name('parent-profile');
+
+    Route::get('/school-calendar', \App\Livewire\Calendar::class);
 
     Route::get('/parents/student-manager', 'profile')->middleware(
         ['auth'])->name('student-manager');
@@ -190,6 +181,10 @@ Route::controller(ParentController::class)->group(function(){
         ['auth'])->name('account-settings');
     }
 );
+
+Route::controller(TrebleclefTVController::class)->group(function(){
+    Route::get('/tca_tv', 'index')->name('tca.tv');
+});
 
 Route::controller(TutorController::class)->group(
     function () {
@@ -207,7 +202,7 @@ Route::get('/support', function(){
 })->name('support');
 
 Route::get('/calendar', [CalendarController::class, 'index'])
-    ->middleware(['auth', 'hasSubscription'])->name('school-calendar');
+    ->middleware(['auth', 'hasSubscription'])->name('calendar');
 
 Route::get('/logout', function(){
     Auth::logout();
