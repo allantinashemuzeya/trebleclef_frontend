@@ -36,7 +36,7 @@
                             fill-rule="evenodd"/>
                     </svg>
                 </span>
-                <span class="app-brand-text demo menu-text fw-bold">TCA Online | Parents</span>
+                <span class="app-brand-text demo menu-text fw-bold">{{$title}}</span>
             </a>
             <a class="layout-menu-toggle menu-link text-large ms-auto d-xl-none"
                href="javascript:void(0);">

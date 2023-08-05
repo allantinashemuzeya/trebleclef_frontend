@@ -100,7 +100,7 @@
     class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
     <div class="layout-container">
 
-        <x-v2.app.navbar :navbar="$navbar"/>
+        <x-v2.app.navbar :navbar="$navbar" :title="$title"/>
 
         <!-- Layout container -->
         <div class="layout-page">

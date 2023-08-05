@@ -39,7 +39,7 @@
     </div>
 
     <div class="bs-stepper-content">
-        <form id="multiStepsForm" wire:submit.prevent wire:ignore>
+        <form id="multiStepsForm" wire:submit wire:ignore>
             <!-- Account Details -->
             <div id="accountDetailsValidation" class="content">
                 <div class="content-header mb-4">
@@ -64,7 +64,7 @@
                                                type="radio"
                                                value="parent"
                                                id="parentAccountTypeInput"
-                                               wire:model="accountType">
+                                               wire:model.live="accountType">
                                     </label>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                         <input  class="form-check-input"
                                                type="radio" value="student"
                                                id="studentAccountTypeInput"
-                                               wire:model="accountType">
+                                               wire:model.live="accountType">
                                     </label>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                         <label class="form-label" for="multiStepsUsername">Username</label>
                         <input type="text" name="multiStepsUsername"
                                id="multiStepsUsername" class="form-control"
-                               wire:model="username"
+                               wire:model.live="username"
                                placeholder="johndoe"/>
                     </div>
                     <div class="col-sm-6">
@@ -104,7 +104,7 @@
                         <input type="email" name="multiStepsEmail"
                                id="multiStepsEmail" class="form-control"
                                placeholder="john.doe@email.com"
-                               wire:model="email"
+                               wire:model.live="email"
                                aria-label="john.doe"/>
                     </div>
                     <div class="col-sm-6 form-password-toggle">
@@ -114,7 +114,7 @@
                             <input type="password" id="multiStepsPass"
                                    name="multiStepsPass" class="form-control"
                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                   wire:model="password"
+                                   wire:model.live="password"
                                    aria-describedby="multiStepsPass2"/>
                             <span class="input-group-text cursor-pointer"
                                   id="multiStepsPass2"><i
@@ -130,7 +130,7 @@
                                    class="form-control"
                                    minlength="8"
                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                   wire:model="passwordConfirmation"
+                                   wire:model.live="passwordConfirmation"
                                    aria-describedby="multiStepsConfirmPass2"/>
                             <span class="input-group-text cursor-pointer"
                                   id="multiStepsConfirmPass2"><i class="ti ti-eye-off"></i>
@@ -169,7 +169,7 @@
                         <input type="text" id="multiStepsFirstName"
                                 class="form-control"
                                  required
-                                 wire:model="firstName"
+                                 wire:model.live="firstName"
                                placeholder="John"/>
                     </div>
                     <div class="col-sm-6">
@@ -178,7 +178,7 @@
                         <input type="text" id="multiStepsLastName"
                                class="form-control"
                                required
-                               wire:model="lastName"
+                               wire:model.live="lastName"
                                placeholder="Doe"/>
                     </div>
                     <div class="col-sm-6">
@@ -190,14 +190,14 @@
                                    name="multiStepsMobile"
                                    class="form-control multi-steps-mobile"
                                    required
-                                      wire:model="phoneNumber"
+                                      wire:model.live="phoneNumber"
                                    placeholder="101 102 103"/>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label" for="multiStepsPincode">Postal Code</label>
                         <input type="text" id="multiStepsPincode"
-                               wire:model="postalCode"
+                               wire:model.live="postalCode"
                                class="form-control multi-steps-pincode"
                                required
                                placeholder="Postal Code" maxlength="6"/>
@@ -206,7 +206,7 @@
                         <label class="form-label" for="multiStepsAddress">Address</label>
                         <input type="text" id="multiStepsAddress"
                                name="multiStepsAddress" class="form-control"
-                               wire:model="address"
+                               wire:model.live="address"
                                required
                                placeholder="Address"/>
                     </div>
@@ -216,7 +216,7 @@
                         <input
                             type="text"
                             id="multiStepsCity"
-                            wire:model="city"
+                            wire:model.live="city"
                             required
                             class="form-control"
                             placeholder="Midrand"/>
@@ -226,7 +226,7 @@
                                for="multiStepsState">Province</label>
                         <select id="multiStepsState" class="select2 form-select"
                                 data-allow-clear="true" type="text"
-                                wire:model="province">
+                                wire:model.live="province">
                             <option value="">Select</option>
                             @foreach($page['provinces'] as $province)
                                 <option value="{{$province['id']}}">
