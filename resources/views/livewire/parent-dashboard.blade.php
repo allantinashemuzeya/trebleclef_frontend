@@ -252,336 +252,65 @@
         <div class="widget widget-activity-three">
             <div class="widget-content">
                 <div class="row match-height">
+                    @php $cardCounter = 0; @endphp
                     @foreach($navigationCards as $nav_card)
-
-                        @if($nav_card->type === 'communications')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('communications')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="bell"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                {{--                                                <h1 class="mb-1 text-white">{{$nav_card->cardTitle}}</h1>--}}
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('communications')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                        @elseif($nav_card->type === 'student_of_the_week')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('student-of-the-week')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="award"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('student-of-the-week')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type=== 'events')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('events')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="cast"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('events')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'networks')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('networks')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="git-branch"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('networks')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'newsletters')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('communication-by-type', 'NewsLetter')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="cast"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('communication-by-type', 'NewsLetter')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'competitions')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('communication-by-type', 'Competitions')}}"
-                                >
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="award"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('communication-by-type', 'Competitions')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a></div>
-                        @elseif($nav_card->type === 'calendar')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('calendar')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="calendar"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('calendar')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'classroom')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('classroom')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="book-open"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('classroom')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'foundation')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('foundations')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="heart"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('foundations')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'office')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <a href="{{route('office')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="file-text"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('office')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="book-open"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @elseif($nav_card->type === 'gallery')
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-
-                                <a href="{{route('gallery')}}">
-                                    <div class="card card-congratulations"
-                                         style="background-image:url('{{$nav_card->background}}'); background-size: cover">
-                                        <div class="card-body text-center">
-
-                                            <div
-                                                class="avatar avatar-xl bg-primary shadow">
-                                                <div class="avatar-content">
-                                                    <i class="font-large-1"
-                                                       data-feather="image"></i>
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                            </div>
-                                        </div>
-                                        <div class="item-options text-center">
-                                            <a href="{{route('gallery')}}"
-                                               class="btn btn-primary btn-cart">
-                                                <i data-feather="image"></i>
-                                                <span
-                                                    class="">{{$nav_card->cardTitle}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        @endif
-                    @endforeach
-
-
-                    <!-- Greetings Card ends -->
-
+                        @if($cardCounter % 4 === 0)
                 </div>
+                <br>
+                <div class="row match-height">
+                    @endif
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="card component-card_2 h-50"
+                             style="background-image: url('{{$nav_card->background}}'); background-size: cover;height: 251px !important;">
+                            <div class="card-body"
+                                 style="bottom: 0px;position: absolute;border-radius: 0px;padding: 0;width: 100%!important;">
+                                @php
+                                    $routeName = '';
+                                    switch ($nav_card->type) {
+                                        case 'communications':
+                                            $routeName = 'communications';
+                                            break;
+                                        case 'student_of_the_week':
+                                            $routeName = 'student-of-the-week';
+                                            break;
+                                        case 'events':
+                                            $routeName = 'events';
+                                            break;
+                                        case 'networks':
+                                            $routeName = 'networks';
+                                            break;
+                                        case 'competitions': case 'newsletters':
+                                            $routeName = 'communication-by-type';
+                                            break;
+                                        case 'calendar':
+                                            $routeName = 'calendar';
+                                            break;
+                                        case 'classroom':
+                                            $routeName = 'classroom';
+                                            break;
+                                        case 'foundation':
+                                            $routeName = 'foundations';
+                                            break;
+                                        case 'office':
+                                            $routeName = 'office';
+                                            break;
+                                        case 'gallery':
+                                            $routeName = 'gallery';
+                                            break;
+                                    }
+                                @endphp
+                                <a href="{{ route($routeName, $nav_card->type === 'newsletters' || $nav_card->type === 'competitions' ? ['NewsLetter', 'Competitions'] : []) }}"
+                                   class="btn btn-primary btn-block"
+                                   style="width: 100%">{{$nav_card->cardTitle}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @php $cardCounter++; @endphp
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </div>

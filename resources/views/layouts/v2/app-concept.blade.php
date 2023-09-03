@@ -21,6 +21,8 @@
           type="text/css"/>
     <link href="/tca_online/main_application/assets/css/plugins.css"
           rel="stylesheet" type="text/css"/>
+
+
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL /tca_online/main_application/plugins/CUSTOM STYLES -->
@@ -75,12 +77,10 @@
         loader.style.display = 'none';
     });
 </script>
-<script
-    src="/tca_online/main_application/assets/js/libs/jquery-3.1.1.min.js"></script>
+<script src="/tca_online/main_application/assets/js/libs/jquery-3.1.1.min.js"></script>
 <script src="/tca_online/main_application/bootstrap/js/popper.min.js"></script>
 <script src="/tca_online/main_application/bootstrap/js/bootstrap.min.js"></script>
-<script
-    src="/tca_online/main_application/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/tca_online/main_application/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script><script src="/tca_online/main_application/plugins/blockui/jquery.blockUI.min.js"></script>
 <script src="/tca_online/main_application/assets/js/app.js"></script>
 <script>
     $(document).ready(function () {
@@ -91,10 +91,8 @@
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL /tca_online/main_application/plugins/CUSTOM SCRIPTS -->
-<script
-    src="/tca_online/main_application/plugins/apex/apexcharts.min.js"></script>
-<script
-    src="/tca_online/main_application/assets/js/dashboard/dash_2.js"></script>
+<script src="/tca_online/main_application/plugins/apex/apexcharts.min.js"></script>
+<script src="/tca_online/main_application/assets/js/dashboard/dash_2.js"></script>
 <!-- BEGIN PAGE LEVEL /tca_online/main_application/plugins/CUSTOM SCRIPTS -->
 
 </body>
