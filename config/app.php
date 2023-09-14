@@ -204,6 +204,8 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-    'current_country_code' => env('CURRENT_COUNTRY_CODE', 'ZA')
+    'current_country_code' => env('CURRENT_COUNTRY_CODE', 'ZA'),
+
+    'mattermost_url' => env('MATTERMOST_CHAT_URL', 'http://localhost:8065/'),
 
 ];

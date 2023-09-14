@@ -7,6 +7,7 @@
 use App\Http\Controllers\AdministrationController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ChatApplication;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\EventsController;
@@ -51,6 +52,12 @@ Route::get('/home', function () {
 Route::get('/dashboard/',function (){
    return User::getDashboard(Auth::user());
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::controller(ChatController::class)->group(function(){
+    Route::get('/chat', 'index')->middleware(
+        ['auth', 'hasSubscription'])->name('chat');
+});
 
 
 Route::controller(CommunicationController::class)->group(
@@ -113,8 +120,6 @@ Route::controller(SitePagesController::class)->group(
     Route::get('/office', 'office')->middleware(
         ['auth', 'hasSubscription'])->name('office');
 
-    Route::get('/chat', 'chat')->middleware(
-        ['auth', 'hasSubscription'])->name('chat');
 });
 Route::controller(FeesProductsController::class)->group(
     function(){
@@ -129,7 +134,7 @@ Route::controller(FeesProductsController::class)->group(
 });
 Route::controller(ChatApplication::class)->group(
     function(){
-    Route::post('chat/', 'chatTutor')->middleware(
+    Route::post('/', 'chatTutor')->middleware(
         ['auth'])->name('chat-tutor');
 });
 Route::controller(TutorInvitesController::class)->group(
