@@ -76,7 +76,7 @@ class User extends Authenticatable
      * @param  $user
      * @return RedirectResponse|Redirector
      */
-    public static function getDashboard($user): Redirector|RedirectResponse
+    public static function getDashboard($user)
     {
         if ($user->hasRole('admin')) {
             return redirect(RouteServiceProvider::ADMINISTRATION);

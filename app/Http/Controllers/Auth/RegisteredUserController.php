@@ -4,11 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\DrupalRestFeederService\StudentFeeder;
-use App\Http\UtilsHelper;
-use App\Models\Activity;
-use App\Models\Country;
-use App\Models\Grade;
-use App\Models\Province;
 use App\Models\School;
 use App\Mail\AdminNotifierMail;
 use App\Models\Student;
@@ -16,7 +11,6 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -28,42 +22,65 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
-/**
- * Class RegisteredUserController
- * @package App\Http\Controllers\Auth
- */
-
 class RegisteredUserController extends Controller
 {
     /**
      * Handle an incoming registration request.
      *
-     * @param $UserData
-     * @return array
+     * @param Request $request
+     * @return RedirectResponse
+     *
+     * @throws ValidationException
+     * @throws GuzzleException
      */
-    public function store($UserData): array
+    public function store(Request $request): RedirectResponse
     {
-        $user = User::create([
-            'username' => $UserData->name,
-            'name' => $UserData->data['first_name'] . ' '. $UserData->data['last_name'],
-            'email' => $UserData->email,
-            'password' => Hash::make($UserData?->password),
-            'data' => $UserData->data,
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        Auth::login($user);
+        $user = User::create([
+            'name' => $request?->name,
+            'email' => $request?->email,
+            'password' => Hash::make($request?->password),
+        ]);
 
-        //event(new Registered($user));
+        if (event(new Registered($user)) && $request->has('context') && $request->context === 'student') {
+            $studentModel = new Student();
+            $studentModel->user_id = $user->id;
+            $studentModel->gender = $request->gender;
+            $studentModel->cellphoneNumber = $request->cellphoneNumber;
+            $studentModel->school_id = $request->school;
+            $studentModel->date_of_birth = $request->dob;
+            $studentModel->grade = $request->grade;
+            $studentModel->instrument = $request->instrument;
 
-        User::assignRoles($UserData, $user);
+            $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
-        $this->notifyAdmin($user);
+            if ($request->file('profilePicture') != null) {
+                $path = $request->file('profilePicture')->storeAs('public/profilePictures/' . $user->id . '/' . $date, $request->file('profilePicture')->getClientOriginalName());
+                if ($path) {
+                    $studentModel->profile_picture = $user->id . '/' . $date . '/' . $request->file('profilePicture')->getClientOriginalName();
+                }
+            }
+            $studentModel->save();
 
-        return [
-            'status' => 'success',
-            'message' => 'User created successfully',
-            'data' => $user,
-        ];
+            $this->notifyAdmin($user);
+            (new StudentFeeder($user))->createStudent();
+
+            Auth::login($user);
+            return redirect(RouteServiceProvider::HOME);
+        }
+        elseif (event(new Registered($user)) && $request->has('context') &&
+            $request->context === 'administration'){
+            $user->role_id = 1; // 1 is the role ID for admin
+            $user->hasSubscription = true;
+            $user->save();
+            return redirect(RouteServiceProvider::ADMINISTRATION)->with('context', 'administration');
+        }
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**
@@ -71,66 +88,20 @@ class RegisteredUserController extends Controller
      *
      * @return View
      */
-    public function create(): View
+    public function create()
     {
-        return view('auth.v2.register', ['page' =>
-            self::getPageLevelData()]);
+        $data['schools'] = School::all();
+        $data['grades'] = Student::getGrades();
+        $data['instruments'] = Student::getInstruments();
+        return view('auth.register', $data);
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param $data
-     * @return bool
-     */
     public function notifyAdmin($data): bool
     {
-        if (Mail::to('admin@trebleclefapp.co.za')->send(
-            new AdminNotifierMail($data))) {
+        if (Mail::to('admin@trebleclefapp.co.za')->send(new AdminNotifierMail($data))) {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Get page level Data
-     * @return array
-     */
-    private static function getPageLevelData(): array
-    {
-        $resources = [
-            'js' => [
-                '/WebApplication/assets/js/pages-auth-multisteps.js',
-            ],
-            'css' => [
-                '/WebApplication/assets/vendor/css/pages/page-auth.css',
-            ],
-        ];
-
-        $country = Country::where('code', config('app.current_country_code'))->first();
-        $provinces = Province::where('country_id', $country->id)->get();
-
-        return [
-            'title' => 'Register',
-            'resources' => UtilsHelper::handlePageLevelResources($resources),
-            'meta' => [
-                'description' => 'Register Page',
-                'keywords' => 'Register',
-                'canonical_url' => url()->current(),
-                'robots' => 'noindex, nofollow'
-            ],
-            'schools' => School::all(),
-            'grades' => Grade::all(),
-            'activities' => Activity::all(),
-            'provinces' => $provinces,
-            'country' => $country
-        ];
-    }
-
-
-    public function filterCountries(Request $request): JsonResponse
-    {
-        return Country::where('code', 'ZA')->get();
     }
 }
 

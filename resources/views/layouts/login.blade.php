@@ -44,10 +44,6 @@
     <!-- END: Page CSS-->
 
 
-    @livewireStyles
-
-
-
 {{-- End Custom Styles --}}
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -88,7 +84,6 @@
     <!-- BEGIN: Page JS-->
     <script src="{{asset('app-assets/js/scripts/pages/page-auth-login.js')}}"></script>
     <!-- END: Page JS-->
-    @livewireScripts
 
 </body>
 
