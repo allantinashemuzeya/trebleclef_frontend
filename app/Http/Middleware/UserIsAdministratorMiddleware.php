@@ -18,7 +18,7 @@ class UserIsAdministratorMiddleware
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
-        if ($request->user()->role->name == 'Administrator') {
+        if ($request->user()->hasRole('admin')) {
             return $next($request);
         }
         return redirect()->route('dashboard');

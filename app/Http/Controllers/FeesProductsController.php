@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\DrupalRestFeederService\ReceiptFeeder;
+use App\Http\Services\DrupalRestFeederService\RuffleFeeder;
 use App\Http\Services\SchoolFees\SchoolFees;
+use App\Models\Ruffle;
 use App\Models\Student;
 use App\Models\Transactions;
 use App\Models\Tutors;
@@ -67,7 +69,7 @@ class FeesProductsController extends Controller
      * @throws GuzzleException
      * @throws GuzzleException
      */
-    private function recordTransaction($chargeObject, mixed $payplan, string $invoiceId)
+    private function recordTransaction($chargeObject, mixed $payplan, string $invoiceId): void
     {
         //convert $result to object
         Transactions::create([
@@ -80,7 +82,7 @@ class FeesProductsController extends Controller
             'status' => $chargeObject->status,
             'yoco_charge_id' => (string)$chargeObject->id,
             'yoco_payment_id' => (string)$chargeObject->source->id,
-            'yoco_livemode' => 'TEST',
+            'yoco_livemode' => 'LIVE',
             'card_brand' => (string)$chargeObject->source->brand,
             'masked_card' => (string)$chargeObject->source->maskedCard,
             'fingerprint' => (string)$chargeObject->source->fingerprint,
@@ -116,6 +118,18 @@ class FeesProductsController extends Controller
     }
 
     /**
+     * Updates the raffle record
+     * @param array $payplan
+     * @return void
+     */
+    public function updateRaffleRecord(array $payplan): mixed{
+        $raffle = Ruffle::where('user_id', Auth::user()->id)->first();
+        $raffle->status = 'paid';
+        $raffle->save();
+        return $raffle;
+    }
+
+    /**
      * @param array $invoiceDetails
      * @param bool|string $result
      * @param Request $request
@@ -125,8 +139,21 @@ class FeesProductsController extends Controller
     private function runSuccessOperations(array $invoiceDetails, mixed $result, Request $request): void
     {
         $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
-        $this->updateUser();
         $this->recordTransaction($result, $request->payplan, $invoice);
+        if($request->payplan['type'] === 'raffles'){
+            $ruffle = $this->updateRaffleRecord($request->payplan);
+
+            $data = new \stdClass();
+            $data->full_name_surname = $ruffle->full_name_surname;
+            $data->school = $ruffle->school;
+            $data->grade = $ruffle->grade;
+            $data->payPlan = $request->payplan;
+
+
+            (new RuffleFeeder())->createRuffle($data);
+        }else{
+            $this->updateUser();
+        }
     }
 
     /**

@@ -1,7 +1,6 @@
 @extends('layouts.home')
 @section('content')
 
-
     <style>
         #component-swiper-progress > div > div.card-header > h1 {
             /* margin-left:82%; */
@@ -45,7 +44,6 @@
         }
     </style>
 
-
     <!-- Dashboard Analytics Start -->
     <section id="dashboard-analytics">
 
@@ -73,9 +71,6 @@
                     </div>
                 </a>
             </div>
-
-
-
 
             <!-- Greetings Card ends -->
 

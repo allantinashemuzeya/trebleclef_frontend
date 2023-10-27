@@ -75,9 +75,9 @@ class RegisteredUserController extends Controller
         }
         elseif (event(new Registered($user)) && $request->has('context') &&
             $request->context === 'administration'){
-            $user->role_id = 1; // 1 is the role ID for admin
             $user->hasSubscription = true;
             $user->save();
+            $user->assignRole('admin');
             return redirect(RouteServiceProvider::ADMINISTRATION)->with('context', 'administration');
         }
         return redirect(RouteServiceProvider::HOME);

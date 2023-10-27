@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Http\RedirectResponse;
 use Livewire\Component;
 
 class Header extends Component
@@ -10,4 +11,12 @@ class Header extends Component
     {
         return view('livewire.header');
     }
+
+    //method to sign out
+    public function signOut()
+    {
+        auth()->logout();
+        return redirect()->route('login');
+    }
+
 }

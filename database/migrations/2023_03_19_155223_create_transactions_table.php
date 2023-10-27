@@ -14,21 +14,21 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id');
-            $table->unsignedBigInteger('user_id');
-            $table->uuid('invoice_uuid');
-            $table->uuid('receipt_uuid');
-            $table->string('payment_method');
-            $table->string('payment_status');
-            $table->string('payment_reference')->default('School Fees');
-            $table->date('payment_date');
-            $table->time('payment_time');
-            $table->string('note');
-            $table->string('amount');
-            $table->string('currency');
-            $table->string('type');
-            $table->string('channel')->default('online');
-            $table->string('gateway')->default('yoko');
-            $table->json('data');
+            $table->string('name');
+            $table->foreignId('user_id');
+            $table->unsignedBigInteger('payplan_id');
+            $table->float('amount_in_cents');
+            $table->string('currency')->default('ZAR');
+            $table->string('status')->default('successful');
+            $table->string('yoco_charge_id')->nullable();
+            $table->string('yoco_payment_id')->nullable();
+            $table->string('invoice_id');
+            $table->string('yoco_livemode')->default('false');
+            $table->string('card_brand')->nullable();
+            $table->string('masked_card')->nullable();
+            $table->string('fingerprint')->nullable();
+            $table->string('exp_month')->nullable();
+            $table->string('exp_year')->nullable();
             $table->timestamps();
         });
     }

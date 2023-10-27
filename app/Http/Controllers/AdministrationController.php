@@ -32,9 +32,10 @@ class AdministrationController extends Controller
 
     private function getDashboardData(): array
     {
-        $students = Student::all()->count();
         $users = User::all()->count();
-        $newStudents = Student::where('created_at', '>=', now()->subDays(7))->get()->count();
+        $students = User::role('student')->count();
+        //check how many users have the role student
+        $newStudents = User::role('student')->where('created_at', '>=', now()->subDays(7))->count();
         $transactions = Transactions::all()->sortByDesc('created_at');
 
         //go through transactions and get total amount
@@ -43,18 +44,25 @@ class AdministrationController extends Controller
             $totalAmount += round($transaction->amount_in_cents / 100, 2);
         }
 
-        // get the percentage of new students in the last 7 days
-        $newStudentsIncreaseInPercent = $newStudents / $students * 100;
-        $studentsIncreaseInPercent = $students / $users * 100;
-        return [
+        $data = [
             'students' => $students,
             'users' => $users,
             'newStudents' => $newStudents,
-            'newStudentsIncreaseInPercent' => round($newStudentsIncreaseInPercent,2),
-            'studentsIncreaseInPercent' => round($studentsIncreaseInPercent,2),
+            'newStudentsIncreaseInPercent' => 0,
+            'studentsIncreaseInPercent' => 0,
             'transactions' => $transactions,
             'totalAmount' => $totalAmount,
         ];
+
+        // get the percentage of new students in the last 7 days
+        if($students > 0 && $newStudents > 0 ){
+            $newStudentsIncreaseInPercent = $newStudents / $students * 100;
+            $studentsIncreaseInPercent = $students / $users * 100;
+            $data['newStudentsIncreaseInPercent'] = $newStudentsIncreaseInPercent;
+            $data['studentsIncreaseInPercent'] = $studentsIncreaseInPercent;
+        }
+
+        return $data;
     }
 
 
