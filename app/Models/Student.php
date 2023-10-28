@@ -12,6 +12,27 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'cover_image',
+        'profile_picture',
+        'gender',
+        'school_id',
+        'residential_address',
+        'date_of_birth',
+        'postal_address',
+        'cellphoneNumber',
+        'next_of_kin_fullName',
+        'next_of_kin_cellphoneNumber',
+        'bio',
+        'grade',
+        'activities',
+    ];
+
+    protected $casts = [
+        'activities' => 'array',
+    ];
+
     public function activities(): HasMany
     {
         return $this->hasMany(Activity::class);

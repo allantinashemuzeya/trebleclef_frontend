@@ -217,23 +217,3 @@ Route::get('/logout', function(){
 Route::get('/drupal', [DrupalRestFeederController::class, 'index']);
 require __DIR__.'/auth.php';
 
-/*
-|--------------------------------------------------------------------------
-| Administration Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where we can register web routes for the administration section of the application.
-| Which is only accessible to administrators and an entire different application.
-*/
-Route::controller(AdministrationController::class)->group(function (){
-
-    Route::get('/admin/login', 'login')->name('admin_login');
-
-    Route::get('/admin/register', 'register')->name('admin_register');
-
-    Route::get('/admin/dashboard', 'dashboard')->middleware(
-        ['auth','isAdmin'])->name('administrator-dashboard');
-
-    Route::get('/admin/profile', 'profile')->middleware(
-        ['auth','isAdmin'])->name('admin_profile');
-});

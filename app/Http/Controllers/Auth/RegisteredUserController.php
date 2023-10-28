@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Orchid\Platform\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -36,14 +37,16 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'username' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request?->name,
-            'email' => $request?->email,
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request?->password),
         ]);
 
@@ -55,7 +58,8 @@ class RegisteredUserController extends Controller
             $studentModel->school_id = $request->school;
             $studentModel->date_of_birth = $request->dob;
             $studentModel->grade = $request->grade;
-            $studentModel->instrument = $request->instrument;
+            $studentModel->bio = $request->bio;
+            $studentModel->activities = [$request->activities];
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
@@ -67,18 +71,14 @@ class RegisteredUserController extends Controller
             }
             $studentModel->save();
 
+            $role = Role::where('slug', 'student')->first();
+            $user->addRole($role);
+
             $this->notifyAdmin($user);
             (new StudentFeeder($user))->createStudent();
 
             Auth::login($user);
             return redirect(RouteServiceProvider::HOME);
-        }
-        elseif (event(new Registered($user)) && $request->has('context') &&
-            $request->context === 'administration'){
-            $user->hasSubscription = true;
-            $user->save();
-            $user->assignRole('admin');
-            return redirect(RouteServiceProvider::ADMINISTRATION)->with('context', 'administration');
         }
         return redirect(RouteServiceProvider::HOME);
     }

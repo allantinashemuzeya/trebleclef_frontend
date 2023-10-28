@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('step')->default('account_info');
             $table->boolean('completed')->default(0);
+            $table->string('description')->default('account_info');
             $table->timestamps();
         });
     }

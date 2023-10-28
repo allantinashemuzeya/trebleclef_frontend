@@ -12,14 +12,14 @@
 
     <div class="auth-wrapper auth-v2">
         <div class="auth-inner row m-0">
-            <div class="d-none d-lg-flex col-lg-7 align-items-center first">
+            <div class="d-none d-lg-flex col-lg-6 align-items-center first">
 
                 <video class="d-flex col-lg-12 first" autoplay muted loop style="border-radius: 25px">
                     <source src="{{ asset('app-assets/videos/home.mp4') }}" type="video/mp4"/>
                 </video>
             </div>
             <!-- Login style="overflow:scroll;height:100vh;padding-top: 50vh!important;" -->
-            <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-5">
+            <div class="d-flex col-lg-6 align-items-center auth-bg px-2 p-lg-5">
                 <div style="overflow-y: scroll;height: 90vh;" class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                     <h2 class="card-title fw-bold mb-1">
                         Get A Treble Clef Academy Account Now👋
@@ -48,22 +48,26 @@
                                 Student Details
                             </h5>
 
-                            <p class="text-warning">Please note all fields are required..</p>
+                            <p class="text-warning">Please note all fields are required...</p>
 
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
-                                        <label class="form-label" for="login-email">First Name and Last Name</label>
-                                        <input id="first_name" class="form-control" type="text" name="name"
-                                               :value="old('firstname')" required autofocus/>
+                                        <label class="form-label" for="login-email">Username</label>
+                                        <input id="username" class="form-control" type="text" name="username"
+                                               :value="old('username')" required autofocus/>
+                                    </div>
+
+                                    <div class="mb-1">
+                                        <label class="form-label" for="login-email">First name and Last name</label>
+                                        <input id="first_name" class="form-control" type="text" name="name" :value="old('firstname')" required autofocus/>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="login-email">Date of Birth</label>
-                                        <input id="age" class="form-control" type="date" name="dob"
-                                               :value="23" required autofocus/>
+                                        <input id="age" class="form-control" type="date" name="dob" :value="23" required autofocus/>
                                     </div>
                                 </div>
 

@@ -1,142 +1,68 @@
-<?php /** @noinspection ALL */
+<?php
 
 namespace App\Models;
 
-use App\Providers\RouteServiceProvider;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Sanctum\HasApiTokens;
-use Livewire\Redirector;
-use Spatie\Permission\Traits\HasRoles;
+use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'username',
         'name',
         'email',
         'username',
         'password',
-        'data'
+        'permissions',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes excluded from the model's JSON form.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
         'remember_token',
+        'permissions',
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'data' => 'array',
+        'permissions'          => 'array',
+        'email_verified_at'    => 'datetime',
     ];
 
-    public function teacher(): HasOne
-    {
-        return $this->hasOne(Teacher::class);
-    }
-
-    public function parent(): HasOne
-    {
-        return $this->hasOne(Parent::class);
-    }
-
-    public function students(): HasMany
-    {
-        return $this->hasMany(Student::class);
-    }
+    /**
+     * The attributes for which you can use filters in url.
+     *
+     * @var array
+     */
+    protected $allowedFilters = [
+        'id',
+        'name',
+        'email',
+        'username',
+        'permissions',
+    ];
 
     /**
-     * Gets the user's dashboard based on their role. If they are not logged in,
-     * they are redirected to the login page.
-     * @param  $user
-     * @return RedirectResponse|Redirector
+     * The attributes for which can use sort in url.
+     *
+     * @var array
      */
-    public static function getDashboard($user)
-    {
-        if ($user->hasRole('admin')) {
-            return redirect(RouteServiceProvider::ADMINISTRATION);
-        } elseif ($user->hasRole('tutor')) {
-            return redirect(RouteServiceProvider::TUTOR);
-        } elseif ($user->hasRole('parent')) {
-            return redirect(RouteServiceProvider::PARENT);
-        } elseif ($user->hasRole('student')) {
-            return redirect(RouteServiceProvider::STUDENT);
-        } else {
-            return redirect()->route('login');
-        }
-    }
-
-    /**
-     * @param $UserData
-     * @param $user
-     * @return void
-     */
-    public static function assignRoles($UserData, $user): void
-    {
-        if ($UserData->data['account_type'] == 'student') {
-            $user->assignRole('student');
-        } else if ($UserData->data['account_type'] == 'parent') {
-            $user->assignRole('parent');
-        } else if ($UserData->data['account_type'] == 'teacher') {
-            $user->assignRole('teacher');
-        } else if ($UserData->data['account_type'] == 'admin') {
-            $user->assignRole('admin');
-        } else if ($UserData->data['account_type'] == 'accountant') {
-            $user->assignRole('accountant');
-        }
-    }
-
-    /**
-     * Gets the user's dashboard constant based on their role.
-     * @return string
-     */
-    public static function getUserDashboardRouteConstant(): string
-    {
-
-        if (Auth::check()) {
-            $user = Auth::user();
-            if($user->hasRole('parent')){
-                return RouteServiceProvider::PARENT;
-            }
-            else if ($user->hasRole('student')) {
-                return RouteServiceProvider::STUDENT;
-            }
-            else if ($user->hasRole('teacher')) {
-                return RouteServiceProvider::TUTOR;
-            }
-            else if ($user->hasRole('admin')) {
-                return RouteServiceProvider::ADMINISTRATION;
-            }
-            else if ($user->hasRole('accountant')) {
-                return RouteServiceProvider::ACCOUNTANT;
-            }
-
-        }
-        return RouteServiceProvider::HOME;
-    }
+    protected $allowedSorts = [
+        'id',
+        'name',
+        'email',
+        'updated_at',
+        'created_at',
+    ];
 }

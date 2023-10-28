@@ -8,20 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::table('registration_processes', function (Blueprint $table) {
-            $table->string('description')->default('account_info')->after('step');
+        Schema::table('students', function (Blueprint $table) {
+            //
+            $table->json('activities')->nullable()->after('grade');
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::table('registration_process', function (Blueprint $table) {
+        Schema::table('students', function (Blueprint $table) {
             //
         });
     }
