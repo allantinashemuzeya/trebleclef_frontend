@@ -15,10 +15,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        
         // $schedule->command('inspire')->hourly();
-        $schedule->command('UpdateDashboardNavigationCards')->everyMinute();
-        $schedule->command('UpdateTvContent')->everyMinute();
-
+        $schedule->command('UpdateDashboardNavigationCards')->daily();
+        $schedule->command('UpdateTvContent')->daily();
+        $schedule->command('UpdateStudentLevels')->daily();
+        $schedule->command('UpdateSchools')->daily();
     }
     /**
      * Register the commands for the application.

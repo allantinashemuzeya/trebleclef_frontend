@@ -84,7 +84,7 @@ class StudentFeeder {
             ],
             "field_instrument" => [
                 [
-                    "value" => $data->instrument
+                    "value" => $data->activities[0]
                 ]
             ],
             "field_school_grade" => [
@@ -97,12 +97,10 @@ class StudentFeeder {
                     "value" => $data->cellphoneNumber
                 ]
             ],
-
             "field_school" => [
                 [
-                    "target_id" => str_replace('/node/', '', $this->school->url),
                     "target_type" => "node",
-                    "target_uuid" => $this->school->uuid,
+                    "target_uuid" => $this->school->drupal_uuid,
                     "url" => $this->school->url,
                 ]
             ],

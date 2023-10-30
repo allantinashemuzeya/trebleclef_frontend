@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable
@@ -65,4 +70,22 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+
+    public function student(): HasMany
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    /**
+     * Gets the user's dashboard based on their role. If they are not logged in,
+     * they are redirected to the login page.
+     * @param  $user
+     * @return Application|Redirector|RedirectResponse
+     */
+    public static function getDashboard($user)
+    {
+        return redirect(RouteServiceProvider::PARENT);
+    }
+
 }

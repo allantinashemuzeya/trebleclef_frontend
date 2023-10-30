@@ -100,8 +100,6 @@ class Lesson implements LessonInterface {
                 $lessons[] = $this->processLesson($item, $subjectId);
             }
         }
-
-
         return $lessons;
     }
 

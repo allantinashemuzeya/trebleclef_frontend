@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\HelperMethods;
 use App\Http\Services\Calendar\Calendar;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -12,9 +13,7 @@ class CalendarController extends Controller
     //
 
     public function index() {
-
-        return view('calendar.index', ['calendar'=>(new Calendar())->getCalendar(),          'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
-        ]);
-
+        $title = 'Calendar';
+        return view('calendar.index', HelperMethods::getGenericNavMenu(title: $title));
     }
 }

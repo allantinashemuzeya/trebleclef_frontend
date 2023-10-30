@@ -8,30 +8,31 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('drupal_uuid');
             $table->string('name');
-            $table->string('learningObjectives');
+            $table->string('slug');
             $table->string('overview');
             $table->string('banner');
-            $table->uuid('subject');
-            $table->json('tutorial');
-            $table->string('date');
-            $table->string('time');
-            $table->json('supportingDocuments');
+            $table->string('sub_intro');
+            $table->json('student_levels');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('subjects');
     }
 };

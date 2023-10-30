@@ -110,7 +110,6 @@ class Subject implements subjectInterface {
     public function getSingleSubject($subjectId){
 
         $subject = $this->get($subjectId);
-
         $rawItem = $this->get($subjectId);
 
         return [

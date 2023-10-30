@@ -78,23 +78,16 @@ Route::controller(CommunicationController::class)->group(
     Route::get('/foundations', 'foundations')->middleware(
         ['auth', 'hasSubscription'])->name('foundations');
 });
+
 Route::controller(ClassroomController::class)->group(
     function(){
-    Route::get('/classroom/', 'index')->name('classroom')
-        ->middleware(['auth', 'hasSubscription']);
-
-    Route::get('/classroom/{studentLevel}/subjects', 'subjects')
-        ->middleware(['auth', 'hasSubscription'])->name('subjects');
-    Route::get('/classroom/subject/{subject}', 'subject')
-
-        ->middleware(['auth', 'hasSubscription'])->name('subject');
-    Route::get('/classroom/{subject}/lessons', 'lessons')
-
-        ->middleware(['auth', 'hasSubscription'])->name('lessons');
-    Route::get('/classroom/lesson/{lesson}/{subject}', 'lesson')
-
-        ->middleware(['auth', 'hasSubscription'])->name('lesson');
+    Route::get('/classroom/', 'index')->name('classroom')->middleware(['auth']);
+    Route::get('/classroom/{studentLevel}/subjects', 'subjects')->middleware(['auth'])->name('subjects');
+    Route::get('/classroom/subject/{subject}', 'subject')->middleware(['auth'])->name('subject');
+    Route::get('/classroom/{subject}/lessons', 'lessons')->middleware(['auth'])->name('lessons');
+    Route::get('/classroom/lesson/{lesson}/{subject}', 'lesson')->middleware(['auth', 'hasSubscription'])->name('lesson');
 });
+
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile', 'index')->middleware(
         ['auth', 'hasSubscription'])->name('profile');
@@ -184,36 +177,27 @@ Route::controller(ParentController::class)->group(function(){
 
     Route::get('/parents/account-settings', 'profile')->middleware(
         ['auth'])->name('account-settings');
-    }
-);
-
+    });
 Route::controller(TrebleclefTVController::class)->group(function(){
     Route::get('/tca_tv', 'index')->name('tca.tv');
 });
-
 Route::controller(TutorController::class)->group(
     function () {
         Route::get('/tutor/dashboard', 'index')->middleware(
             ['auth'])->name('tutor-dashboard');
     }
 );
-
 Route::get('/help', function(){
     return view('welcome');
 })->name('help');
-
 Route::get('/support', function(){
     return view('welcome');
 })->name('support');
-
-Route::get('/calendar', [CalendarController::class, 'index'])
-    ->middleware(['auth', 'hasSubscription'])->name('calendar');
-
+Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth'])->name('calendar');
 Route::get('/logout', function(){
     Auth::logout();
     return to_route('dashboard');
 })->name('logout');
-
 Route::get('/drupal', [DrupalRestFeederController::class, 'index']);
 require __DIR__.'/auth.php';
 

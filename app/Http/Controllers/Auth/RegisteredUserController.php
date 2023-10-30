@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
             $studentModel->date_of_birth = $request->dob;
             $studentModel->grade = $request->grade;
             $studentModel->bio = $request->bio;
-            $studentModel->activities = [$request->activities];
+            $studentModel->activities = [$request->instrument];
 
             $date = Carbon::now()->isoFormat('DD.MMM.YYYY.HH:MM:SSS');
 
@@ -75,6 +75,7 @@ class RegisteredUserController extends Controller
             $user->addRole($role);
 
             $this->notifyAdmin($user);
+
             (new StudentFeeder($user))->createStudent();
 
             Auth::login($user);

@@ -30,7 +30,6 @@ class UpdateSchools extends Command
     public function handle()
     {
         $data = app(School::class)->getSchools();
-
         $this->info('Schools streaming in...');
 
         foreach ($data as $school) {

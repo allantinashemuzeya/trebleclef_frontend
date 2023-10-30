@@ -12,6 +12,7 @@ class Student extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'user_id',
         'cover_image',
