@@ -1,5 +1,4 @@
 <div class="row layout-top-spacing">
-
     <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
         <div class="widget widget-activity-three">
             <div class="widget-heading">

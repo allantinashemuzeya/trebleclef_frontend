@@ -6,8 +6,11 @@ use Livewire\Component;
 
 class LessonComponent extends Component
 {
+    public mixed $lesson;
     public function render()
-    {
-        return view('livewire.lesson-component');
+    { 
+        $other_lessons = \App\Models\Lesson::where('subject', $this->lesson->subject)->get();
+        return view('livewire.lesson-component', [
+            'other_lessons' => $other_lessons,]);
     }
 }

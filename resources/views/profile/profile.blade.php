@@ -118,7 +118,7 @@
                                         <a href="#" class="me-25">
 
                                             <img src="https://ui-avatars.com/api/?name={{
-                                                 Auth::user()->data['first_name']}}+{{Auth::user()->data['last_name']}}
+                                                 Auth::user()->name}}
                                                  &size=128&background=0D8ABC&color=fff"
                                                 id="account-upload-img"
                                                 class="rounded me-50"
@@ -302,7 +302,7 @@
                                                     rows="4"
                                                     name="bio"
                                                     placeholder="Your Bio  here..."
-                                                >{{$currentUser->bio}}</textarea>
+                                                >{{Auth::user()->student[0]->bio}}</textarea>
                                             </div>
                                         </div>
 
@@ -314,7 +314,7 @@
                                                     class="form-control"
                                                     id="account-phone"
                                                     placeholder="(+27) 254 2568"
-                                                    value="{{$currentUser->cellphoneNumber}}"
+                                                    value="{{Auth::user()->student[0]->cellphoneNumber}}"
                                                     name="cellphone_number"
                                                 />
                                             </div>
@@ -329,7 +329,7 @@
                                                             placeholder="Birth date"
                                                             id="account-birth-date"
                                                             name="dob"
-                                                            value="{{$currentUser->date_of_birth}}"
+                                                            value="{{Auth::user()->student[0]->date_of_birth}}"
                                                         />
                                                     </div>
                                                 </div>
@@ -356,7 +356,7 @@
                                                         id="account-phone"
                                                         placeholder="Next of Kin Full Name"
                                                         name="next_of_kin_fullName"
-                                                        value="{{$currentUser->next_of_kin_fullName}}"
+                                                        value="{{Auth::user()->student[0]->next_of_kin_fullName}}"
                                                     />
                                                 </div>
 
@@ -368,7 +368,7 @@
                                                         id="account-phone"
                                                         placeholder="Next of Kin Phone number"
                                                         name="next_of_kin_cellphoneNumber"
-                                                        value="{{$currentUser->next_of_kin_cellphoneNumber}}"
+                                                        value="{{Auth::user()->student[0]->next_of_kin_cellphoneNumber}}"
                                                     />
                                                 </div>
                                         </div>
@@ -382,7 +382,7 @@
                                                         rows="4"
                                                         name="residential_address"
                                                         placeholder="Your residential address here..."
-                                                    >{{$currentUser->residential_address}}</textarea>
+                                                    >{{Auth::user()->student[0]->residential_address}}</textarea>
                                                 </div>
                                                     <div class="mb-1">
                                                         <label class="form-label" for="accountTextarea">Postal Address</label>
@@ -392,7 +392,7 @@
                                                             rows="4"
                                                             name="postal_address"
                                                             placeholder="Your postal address here..."
-                                                        >{{$currentUser->postal_address}}</textarea>
+                                                        >{{Auth::user()->student[0]->postal_address}}</textarea>
                                                     </div>
                                             </div>
                                         @endif

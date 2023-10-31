@@ -85,7 +85,7 @@
                                                     <div class="intro">
                                                         <!-- intro subtitle start -->
                                                         <div class="intro-subtitle">
-                                                            LA-based Company
+                                                        
                                                         </div>
                                                         <!-- intro subtitle end -->
                                                         <!-- divider start -->
@@ -93,7 +93,7 @@
                                                         <!-- divider end -->
                                                         <!-- intro title start -->
                                                         <div class="intro-title-lead">
-                                                            A Folio
+                                                            
                                                         </div>
                                                         <!-- intro title end -->
                                                         <!-- divider start -->
@@ -101,7 +101,7 @@
                                                         <!-- divider end -->
                                                         <!-- intro title start -->
                                                         <div class="intro-title">
-                                                            Grandex
+                                                        
                                                         </div>
                                                         <!-- intro title end -->
                                                     </div>

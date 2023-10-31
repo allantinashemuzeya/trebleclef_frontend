@@ -105,7 +105,8 @@
                id="user-profile-dropdown" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
                 <div class="media">
-                    <img src="{{auth()->user()->profile_picture}}" class="img-fluid" alt="admin-profile">
+                    <img src="{{asset('storage/profilePictures/'.Auth::user()->student[0]->profile_picture)}}" class="img-fluid" alt="admin-profile">
+                   
                     <div class="media-body align-self-center">
                         <h6><span>Hi,</span> {{auth()->user()->name}}</h6>
                     </div>

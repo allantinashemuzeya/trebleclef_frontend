@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Helpers\HelperMethods;
-use App\Http\Services\Lesson\Lesson;
+use App\Models\Lesson;
 use App\Http\Services\StudentLevels\StudentLevels;
-use App\Http\Services\Subject\Subject;
+use App\Models\Subject;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,7 @@ class ClassroomController extends Controller
         $title = 'Classroom';
         return view('classroom.index', HelperMethods::getGenericNavMenu(title: $title));
     }
-    //
+
     public function subjects($studentLevel) {
         $title = 'Subjects';
         $data = HelperMethods::getGenericNavMenu(title: $title);
@@ -24,26 +24,17 @@ class ClassroomController extends Controller
         return view('subjects.index', $data);
     }
 
-    public function subject($subject) {
-        $subject = (new Subject)->getSingleSubject($subject);
-        $lessons = (new Lesson())->getLessonsBySubject($subject['id']);
-        return view('subjects.subject-detail', ['subject'=>$subject, 'subjects'=>[], 'lessons'=>$lessons,   'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
-        ]);
+    public function subject(Subject $subject) {
+        $title = $subject->name;
+        $data = HelperMethods::getGenericNavMenu(title: $title);
+        $data['subject'] = $subject;
+        return view('subjects.subject-detail', $data);
     }
-
-    public function lessons($subject) {
-
-        $subject = (new Subject)->getSingleSubject($subject);
-        $lessons = (new Lesson())->getLessonsBySubject($subject['id']);
-        return 'lessons';
+    
+    public function lesson(Lesson $lesson) {
+        $title = $lesson->name;
+        $data = HelperMethods::getGenericNavMenu(title: $title);
+        $data['lesson'] = $lesson;
+        return view('lessons.lesson-detail', $data);
     }
-
-    public function lesson($lessonId, $subject) {
-        $lesson = (new Lesson())->getSingleLesson($lessonId);
-        $lessons = (new Lesson())->getLessonsBySubject($subject);
-
-        return view('lessons.lesson-detail', ['pageTitle'=>$lesson['name'],'lesson'=>$lesson, 'lessons'=>$lessons,    'currentStudent'=> Student::where('user_id', Auth::user()->id)->first()
-        ]);
-    }
-
 }

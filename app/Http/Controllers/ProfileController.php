@@ -22,12 +22,8 @@ class ProfileController extends Controller
     // Section Home
     public function index()
     {
-        $currentUser = $this->getCurrentUser();
-//        else if(Auth::user()->userType === 4){
-//           $currentUser = O::where('user_id', Auth::user()->id)->first();
-//        }
-
-        return view('profile.profile', ['currentUser'=>$currentUser, 'schools'=>School::all()]);
+        $schools = School::all();
+        return view('profile.profile', ['schools'=>$schools]);
     }
 
     public function updateProfile(Request $request)

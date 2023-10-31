@@ -56,27 +56,27 @@ Route::get('/dashboard/',function (){
 
 Route::controller(ChatController::class)->group(function(){
     Route::get('/chat', 'index')->middleware(
-        ['auth', 'hasSubscription'])->name('chat');
+        ['auth'])->name('chat');
 });
 
 
 Route::controller(CommunicationController::class)->group(
     function(){
     Route::get('/communications', 'index')->middleware(
-        ['auth', 'hasSubscription'])->name('communications');
+        ['auth'])->name('communications');
 
     Route::get('/communications/{type}', 'communicationByType')
-        ->middleware(['auth', 'hasSubscription'])->name(
+        ->middleware(['auth'])->name(
             'communication-by-type');
 
     Route::get('/communication/{id}', 'communication')->middleware(
         ['auth', 'hasSubscription'])->name('communication');
 
     Route::get('/student-of-the-week/', 'studentOfTheWeek')->middleware(
-        ['auth', 'hasSubscription'])->name('student-of-the-week');
+        ['auth'])->name('student-of-the-week');
 
     Route::get('/foundations', 'foundations')->middleware(
-        ['auth', 'hasSubscription'])->name('foundations');
+        ['auth'])->name('foundations');
 });
 
 Route::controller(ClassroomController::class)->group(
@@ -85,14 +85,14 @@ Route::controller(ClassroomController::class)->group(
     Route::get('/classroom/{studentLevel}/subjects', 'subjects')->middleware(['auth'])->name('subjects');
     Route::get('/classroom/subject/{subject}', 'subject')->middleware(['auth'])->name('subject');
     Route::get('/classroom/{subject}/lessons', 'lessons')->middleware(['auth'])->name('lessons');
-    Route::get('/classroom/lesson/{lesson}/{subject}', 'lesson')->middleware(['auth', 'hasSubscription'])->name('lesson');
+    Route::get('/classroom/lesson/{lesson}/', 'lesson')->middleware(['auth'])->name('lesson');
 });
 
 Route::controller(ProfileController::class)->group(function(){
     Route::get('/profile', 'index')->middleware(
-        ['auth', 'hasSubscription'])->name('profile');
+        ['auth'])->name('profile');
     Route::post('/profile-update', 'updateProfile')->middleware(
-        ['auth', 'hasSubscription'])->name('updateProfile');
+        ['auth'])->name('updateProfile');
 });
 Route::controller(EventsController::class)->group(
     function(){
@@ -104,14 +104,14 @@ Route::controller(EventsController::class)->group(
 });
 Route::controller(SitePagesController::class)->group(
     function(){
-    Route::get('/networks', 'networks')->middleware(
-        ['auth', 'hasSubscription'])->name('networks');
+    Route::get('/networks',  'networks')->middleware(
+        ['auth'])->name('networks');
 
     Route::get('/gallery', 'gallery')->middleware(
-        ['auth', 'hasSubscription'])->name('gallery');
+        ['auth'])->name('gallery');
 
     Route::get('/office', 'office')->middleware(
-        ['auth', 'hasSubscription'])->name('office');
+        ['auth'])->name('office');
 
 });
 Route::controller(FeesProductsController::class)->group(
@@ -188,10 +188,10 @@ Route::controller(TutorController::class)->group(
     }
 );
 Route::get('/help', function(){
-    return view('welcome');
+ return redirect(route('dashboard'));
 })->name('help');
 Route::get('/support', function(){
-    return view('welcome');
+    return redirect(route('dashboard'));
 })->name('support');
 Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth'])->name('calendar');
 Route::get('/logout', function(){
