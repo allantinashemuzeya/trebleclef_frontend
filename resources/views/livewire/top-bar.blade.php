@@ -1,14 +1,14 @@
 <div class="topbar-nav header navbar" role="banner">
     <nav id="topbar">
         <ul class="navbar-nav theme-brand flex-row  text-center">
-            <li class="nav-item theme-logo">
-                <a href="index.html">
-                    <img src="/tca_online/main_application/assets/img/90x90.jpg"
-                         class="navbar-logo" alt="logo">
+            <li class="nav-item theme-logo" style="background: white;border-radius: 5px;max-width: 116px;">
+                <a href="#">
+                    <img src="/tca_online/main_application/assets/img/treble Clef_logo original.png"
+                         class="navbar-logo" alt="logo" style="width: 90px!important">
                 </a>
             </li>
             <li class="nav-item theme-text">
-                <a href="index.html" class="nav-link"> CORK </a>
+                <a href="/" class="nav-link">TCA Online </a>
             </li>
         </ul>
 
