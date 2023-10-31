@@ -485,13 +485,13 @@
                             <span class="user-status">Office</span>
                         @endif
                     </div>
-                    @if(!empty($currentUser->profile_picture))
+                    @if(!empty(Auth::user()->student[0]->profile_picture))
                         <span class="avatar">
                         <img
                             alt="avatar"
                             class="round"
                             height="40"
-                            src="{{asset('storage/profilePictures/'.$currentUser->profile_picture)}}"
+                            src="{{asset('storage/profilePictures/'.Auth::user()->student[0]->profile_picture)}}"
                             width="40"/><span class="avatar-status-online"></span></span
                         ></a>
                   @endif
