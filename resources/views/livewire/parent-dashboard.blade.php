@@ -153,12 +153,12 @@
     <script>
 
         let yoco = new window.YocoSDK({
-            publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+            publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
         });
 
         function pay(pay_plan){
 
-            $('#joinRaffleModal').modal('hide');
+          $('#joinRaffleModal').modal('hide');
             yoco.showPopup({
                 amountInCents: pay_plan['price'] * 100 ,
                 currency: 'ZAR',

@@ -23,22 +23,15 @@ class FeesProductsController extends Controller
 {
     public function fees(): Factory|View|Application
     {
-        $currentUser = $this->getCurrentUser();
-
         $structures = (new SchoolFees())->getAll();
-
-        return view('fees', ['currentUser' => $currentUser, 'pay_plans' => $structures]);
+        return view('fees', ['pay_plans' => $structures]);
     }
 
     public function pay($productId): Factory|View|Application
     {
-        $currentUser = $this->getCurrentUser();
-
         $pay_plan = (new SchoolFees())->get($productId);
-
         $structures = (new SchoolFees())->getAll();
-
-        return view('fees-product', ['currentUser' => $currentUser, 'pay_plan' => $pay_plan, 'structures' => $structures]);
+        return view('fees-product', ['pay_plan' => $pay_plan, 'structures' => $structures]);
     }
 
     /**
@@ -141,16 +134,7 @@ class FeesProductsController extends Controller
         $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
         $this->recordTransaction($result, $request->payplan, $invoice);
         if($request->payplan['type'] === 'raffles'){
-            $ruffle = $this->updateRaffleRecord($request->payplan);
-
-            $data = new \stdClass();
-            $data->full_name_surname = $ruffle->full_name_surname;
-            $data->school = $ruffle->school;
-            $data->grade = $ruffle->grade;
-            $data->payPlan = $request->payplan;
-
-
-            (new RuffleFeeder())->createRuffle($data);
+          $this->updateRaffleRecord($request->payplan);
         }else{
             $this->updateUser();
         }
