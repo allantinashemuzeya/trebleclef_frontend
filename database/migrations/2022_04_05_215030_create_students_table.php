@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('residential_address')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('postal_address')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('instrument')->nullable();
             $table->string('cellphoneNumber')->nullable();
             $table->string('next_of_kin_fullName')->nullable();
             $table->string('next_of_kin_cellphoneNumber')->nullable();
