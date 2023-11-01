@@ -28,6 +28,13 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
+            Menu::make(__('Transactions'))
+                ->icon('money')
+                ->route('platform.systems.transactions')
+                ->title(__('Transactions')),
+               // ->permission('platform.transactions'),
+
+
             Menu::make('Example screen')
                 ->icon('monitor')
                 ->route('platform.example')
@@ -53,31 +60,6 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Text Editors')
                 ->icon('list')
                 ->route('platform.example.editors'),
-
-            Menu::make('Overview layouts')
-                ->title('Layouts')
-                ->icon('layers')
-                ->route('platform.example.layouts'),
-
-            Menu::make('Chart tools')
-                ->icon('bar-chart')
-                ->route('platform.example.charts'),
-
-            Menu::make('Cards')
-                ->icon('grid')
-                ->route('platform.example.cards')
-                ->divider(),
-
-            Menu::make('Documentation')
-                ->title('Docs')
-                ->icon('docs')
-                ->url('https://orchid.software/en/docs'),
-
-            Menu::make('Changelog')
-                ->icon('shuffle')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(fn () => Dashboard::version(), Color::DARK()),
 
             Menu::make(__('Users'))
                 ->icon('user')
