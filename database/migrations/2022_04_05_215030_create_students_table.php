@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('postal_address')->nullable();
             $table->string('grade')->nullable();
             $table->string('instrument')->nullable();
+            $table->json('activities')->nullable()->after('grade');
             $table->string('cellphoneNumber')->nullable();
             $table->string('next_of_kin_fullName')->nullable();
             $table->string('next_of_kin_cellphoneNumber')->nullable();
