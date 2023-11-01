@@ -8,7 +8,7 @@ use Livewire\Component;
 class SubjectComponent extends Component
 {
     public $studentLevel;
-    public $emptySubjectsMessage = 'No subjects found for this level';
+    public string $emptySubjectsMessage = 'No subjects found for this level';
     public function render()
     {
 
