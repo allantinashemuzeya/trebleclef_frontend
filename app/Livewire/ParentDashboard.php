@@ -27,6 +27,8 @@ class ParentDashboard extends Component
 
     public mixed $raffle = ['title' => 'TCA Ruffle'];
 
+    public int $numberOfTickets = 1;
+
     public function mount(){
         $this->getRuffle();
     }

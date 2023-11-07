@@ -127,6 +127,10 @@
                                         <div class="col-md-6 col-sm-6 col-12 mt-10">
                                             <input id="write-e" type="text" placeholder="Phone number" wire:model.defer="phoneNumber" class="form-control" required name="task" style="margin-top: 20px;margin-bottom: 20px;">
                                         </div>
+
+                                        <div class="col-md-6 col-sm-6 col-12 mt-10">
+                                            <input id="numberOfTickets" type="number" placeholder="Number of tickets" class="form-control" required name="task" style="margin-top: 20px;margin-bottom: 20px;">
+                                        </div>
                                     </div>
 
                             </div>
@@ -159,8 +163,12 @@
         function pay(pay_plan){
 
           $('#joinRaffleModal').modal('hide');
+          // Get the number of tickets
+            let numberOfTickets = $('#numberOfTickets').val();
+            console.log('Yo',numberOfTickets);
+
             yoco.showPopup({
-                amountInCents: pay_plan['price'] * 100 ,
+                amountInCents: (pay_plan['price'] * numberOfTickets) * 100 ,
                 currency: 'ZAR',
                 name: 'Trebleclef Academy',
                 description: 'Awesome description',
