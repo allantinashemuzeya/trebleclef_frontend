@@ -28,8 +28,6 @@ class TransactionListLayout extends Table
     {
         return [
 
-            //show the user name and link it to the user profile
-
             TD::make('user name')->render(function (Transaction $transaction) {
                 $user = $transaction->user;
                 if(!isset($user)){
@@ -37,6 +35,15 @@ class TransactionListLayout extends Table
                 }
                 return new Persona($user->presenter());
             })->sort(),
+
+            TD::make('amount')->render(function (Transaction $transaction) {
+                return 'R'. ($transaction->amount_in_cents / 100).'.00';
+            })->sort(),
+
+            TD::make('status')->render(function (Transaction $transaction) {
+                return $transaction->status;
+            })->sort(),
+
             TD::make('name'),
             TD::make('created_at', 'Created')->render(function (Transaction $transaction) {
                 return $transaction->created_at->toDayDateTimeString();
