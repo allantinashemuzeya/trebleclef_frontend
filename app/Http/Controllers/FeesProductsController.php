@@ -50,15 +50,86 @@ class FeesProductsController extends Controller
         $result = $this->processCharge($data);
 
         $invoiceDetails = ['user' => Auth::user(), 'payPlan' => $request->payplan];
-        if(json_decode($result)->status === 'successful'){
+        if (json_decode($result)->status === 'successful') {
             $this->runSuccessOperations($invoiceDetails, json_decode($result), $request);
             return response(json_decode($result)->status, 200)
-                   ->header('Content-Type', 'application/json');
+                ->header('Content-Type', 'application/json');
         }
         return response(json_decode($result)->status, 500)
             ->header('Content-Type', 'application/json');
     }
 
+    /**
+     * @param array $data
+     * @return bool|string
+     */
+    private function processCharge(array $data): string|bool
+    {
+        $secret_key = env('YOCO_LIVE_SECRET_KEY');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://online.yoco.com/v1/charges/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+
+        // Basic Authentication method
+        // Specify the secret key using the CURLOPT_USERPWD option
+        curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ":");
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+
+        // send to yoco
+        $result = curl_exec($ch);
+        Log::debug(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+
+        // close the connection
+        curl_close($ch);
+        return $result;
+    }
+
+    /**
+     * @param array $invoiceDetails
+     * @param bool|string $result
+     * @param Request $request
+     * @return void
+     * @throws GuzzleException
+     */
+    private function runSuccessOperations(array $invoiceDetails, mixed $result, Request $request): void
+    {
+        if ($request->payplan['type'] !== 'raffles') {
+            $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
+            $this->recordTransaction($result, $request->payplan, $invoice);
+
+        }
+        if ($request->payplan['type'] === 'raffles') {
+            $raffle = $this->updateRaffleRecord($request->payplan);
+            $tickets = [];
+            if ($raffle->number_of_tickets > 1) {
+                for ($i = 0; $i < $raffle->number_of_tickets; $i++) {
+                    $ticket = (object)[
+                        'user_id' => Auth::user()->id,
+                        'name' => $raffle->full_name_surname,
+                        'entry_number' => substr(Auth::user()->name, 0, 2) . $raffle->id . ($i + 1),
+                        'email' => Auth::user()->email,
+                        'phone' => $raffle->phone_number,
+                    ];
+                    $tickets[] = $ticket;
+                }
+            }
+
+            $invoiceDetails['payPlan']['price'] = $invoiceDetails['payPlan']['price'] * $raffle->number_of_tickets;
+            $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
+
+            $payPlan = $request->payplan;
+            $payPlan['price'] = $payPlan['price'] * $raffle->number_of_tickets;
+            $this->recordTransaction($result, $payPlan, $invoice);
+
+            Mail::to(Auth::user()->email)
+                ->send(new SendRuffleTickets($tickets));
+
+        } else {
+            $this->updateUser();
+        }
+    }
 
     /**
      * @throws GuzzleException
@@ -88,18 +159,16 @@ class FeesProductsController extends Controller
     }
 
     /**
-     * @return mixed
+     * Updates the raffle record
+     * @param array $payplan
+     * @return void
      */
-    public function getCurrentUser(): mixed
+    public function updateRaffleRecord(array $payplan): mixed
     {
-        if (Auth::user()->userType === 1) {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        } else if (Auth::user()->userType === 2) {
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        } else {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
-        return $currentUser;
+        $raffle = Ruffle::where('user_id', Auth::user()->id)->latest()->first();
+        $raffle->status = 'paid';
+        $raffle->save();
+        return $raffle;
     }
 
     /**
@@ -113,76 +182,17 @@ class FeesProductsController extends Controller
     }
 
     /**
-     * Updates the raffle record
-     * @param array $payplan
-     * @return void
+     * @return mixed
      */
-    public function updateRaffleRecord(array $payplan): mixed{
-        $raffle = Ruffle::where('user_id', Auth::user()->id)->latest()->first();
-        $raffle->status = 'paid';
-        $raffle->save();
-        return $raffle;
-    }
-
-    /**
-     * @param array $invoiceDetails
-     * @param bool|string $result
-     * @param Request $request
-     * @return void
-     * @throws GuzzleException
-     */
-    private function runSuccessOperations(array $invoiceDetails, mixed $result, Request $request): void
+    public function getCurrentUser(): mixed
     {
-        $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
-        $this->recordTransaction($result, $request->payplan, $invoice);
-        if($request->payplan['type'] === 'raffles'){
-          $raffle = $this->updateRaffleRecord($request->payplan);
-            $tickets = [];
-            if($raffle->number_of_tickets > 1){
-               for($i = 0; $i < $raffle->number_of_tickets; $i++){
-                    $ticket = (object)[
-                        'user_id' => Auth::user()->id,
-                        'name' => $raffle->full_name_surname,
-                        'entry_number' => substr(Auth::user()->name, 0, 2) . $raffle->id.($i + 1),
-                        'email' => Auth::user()->email,
-                        'phone' =>  $raffle->phone_number,
-                    ];
-                    $tickets[] = $ticket;
-               }
-            }
-
-            Mail::to('allan.thecodemaster@gmail.com')
-                ->send(new SendRuffleTickets($tickets));
-
-        }else{
-            $this->updateUser();
+        if (Auth::user()->userType === 1) {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
+        } else if (Auth::user()->userType === 2) {
+            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
+        } else {
+            $currentUser = Student::where('user_id', Auth::user()->id)->first();
         }
-    }
-
-    /**
-     * @param array $data
-     * @return bool|string
-     */
-    private function processCharge(array $data): string|bool
-    {
-        $secret_key = env('YOCO_LIVE_SECRET_KEY');
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://online.yoco.com/v1/charges/");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-
-        // Basic Authentication method
-        // Specify the secret key using the CURLOPT_USERPWD option
-        curl_setopt($ch, CURLOPT_USERPWD, $secret_key . ":");
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-
-        // send to yoco
-        $result = curl_exec($ch);
-        Log::debug(curl_getinfo($ch, CURLINFO_HTTP_CODE));
-
-        // close the connection
-        curl_close($ch);
-        return $result;
+        return $currentUser;
     }
 }
