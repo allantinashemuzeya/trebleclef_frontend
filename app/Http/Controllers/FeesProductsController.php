@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Services\DrupalRestFeederService\ReceiptFeeder;
 use App\Http\Services\DrupalRestFeederService\RuffleFeeder;
 use App\Http\Services\SchoolFees\SchoolFees;
+use App\Mail\SendRuffleTickets;
 use App\Models\Ruffle;
 use App\Models\Student;
 use App\Models\Transactions;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class FeesProductsController extends Controller
 {
@@ -116,7 +118,7 @@ class FeesProductsController extends Controller
      * @return void
      */
     public function updateRaffleRecord(array $payplan): mixed{
-        $raffle = Ruffle::where('user_id', Auth::user()->id)->first();
+        $raffle = Ruffle::where('user_id', Auth::user()->id)->latest()->first();
         $raffle->status = 'paid';
         $raffle->save();
         return $raffle;
@@ -134,7 +136,24 @@ class FeesProductsController extends Controller
         $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
         $this->recordTransaction($result, $request->payplan, $invoice);
         if($request->payplan['type'] === 'raffles'){
-          $this->updateRaffleRecord($request->payplan);
+          $raffle = $this->updateRaffleRecord($request->payplan);
+            $tickets = [];
+            if($raffle->number_of_tickets > 1){
+               for($i = 0; $i < $raffle->number_of_tickets; $i++){
+                    $ticket = (object)[
+                        'user_id' => Auth::user()->id,
+                        'name' => $raffle->full_name_surname,
+                        'entry_number' => substr(Auth::user()->name, 0, 2) . $raffle->id.($i + 1),
+                        'email' => Auth::user()->email,
+                        'phone' =>  $raffle->phone_number,
+                    ];
+                    $tickets[] = $ticket;
+               }
+            }
+
+            Mail::to('allan.thecodemaster@gmail.com')
+                ->send(new SendRuffleTickets($tickets));
+
         }else{
             $this->updateUser();
         }

@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ruffles', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('full_name_surname');
             $table->string('phone_number');
             $table->string('school');
             $table->string('grade');
             $table->string('status');
+            $table->integer('number_of_tickets');
             $table->timestamps();
         });
     }
