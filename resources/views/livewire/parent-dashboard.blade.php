@@ -158,7 +158,7 @@
     <script>
 
         let yoco = new window.YocoSDK({
-            publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+            publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
         });
 
         function pay(pay_plan){
