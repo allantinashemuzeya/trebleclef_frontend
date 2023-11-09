@@ -35,7 +35,7 @@ class SendRuffleTickets extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Your Ruffle Tickets',
+            subject: 'Your Raffle Tickets',
         );
     }
 

@@ -148,12 +148,13 @@
     <!-- Include the Yoco SDK in your web page -->
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
+    <script src="/js/notiflix/dist/notiflix-3.2.5.min.js"></script>
 
 
     <!-- Create a pay button that will open the popup-->
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
         let yoco = new window.YocoSDK({
@@ -180,31 +181,74 @@
                     // This function returns a token that your server can use to capture a payment
                     if (result.error) {
                         const errorMessage = result.error.message;
-                        alert("error occured: " + errorMessage);
+                        alert("error occured: " +  errorMessage);
                     } else {
 
                         const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
 
                         // e.g. Message with the new options
                         if(results.data === 'successful'){
-                            Notiflix.Notify.success(
-                                'Payment Successful, Awesome, well Done!!',
-                                {
-                                    timeout: 10000,
-                                },
-                            )
-                            //reload the page
-                            setTimeout(function(){
-                                location.reload();
-                            }, 10000);
+                            Swal.fire({
+                                title: "Good job!",
+                                text: "Payment successful, thank you! Your tickets have been sent to your mail box.",
+                                icon: "success"
+                            });
+
+                            if( $('#coolLoader')){
+                                $('#coolLoader').css('display', 'none');
+                            }
                         }else{
-                            Notiflix.Notify.failure('Something went wrong. We are working on it!');
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Something went wrong!",
+                            });
                         }
                     }
                 }
             })
+            $('#coolLoader').css('display', 'block');
+            $('#coolLoader').css('left', '42%');
+            $('#coolLoader').css('top', '10px');
+
         }
     </script>
+
+    <style>
+        .loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 1s linear infinite
+        }
+        .loader::before , .loader::after {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: 5px solid #FFF;
+            animation: prixClipFix 2s linear infinite ;
+        }
+        .loader::after{
+            inset: 8px;
+            transform: rotate3d(90, 90, 0, 180deg );
+            border-color: #FF3D00;
+        }
+
+        @keyframes rotate {
+            0%   {transform: rotate(0deg)}
+            100%   {transform: rotate(360deg)}
+        }
+
+        @keyframes prixClipFix {
+            0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+            50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+            75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+        }
+
+    </style>
 
 </div>
 
