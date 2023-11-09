@@ -127,6 +127,10 @@
                                         <div class="col-md-6 col-sm-6 col-12 mt-10">
                                             <input id="write-e" type="text" placeholder="Phone number" wire:model.defer="phoneNumber" class="form-control" required name="task" style="margin-top: 20px;margin-bottom: 20px;">
                                         </div>
+
+                                        <div class="col-md-6 col-sm-6 col-12 mt-10">
+                                            <input id="numberOfTickets" type="number "wire:model.defer="numberOfTickets" placeholder="Number of tickets" class="form-control" required name="task" style="margin-top: 20px;margin-bottom: 20px;">
+                                        </div>
                                     </div>
 
                             </div>
@@ -153,14 +157,22 @@
     <script>
 
         let yoco = new window.YocoSDK({
-            publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
+            publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
         });
 
         function pay(pay_plan){
 
           $('#joinRaffleModal').modal('hide');
+          // Get the number of tickets
+            let numberOfTickets = $('#numberOfTickets').val();
+
+            let price = pay_plan['price'] * numberOfTickets;
+
+            if(price < 1){
+                price = "{{ $defaultPrice *  $numberOfTickets }}"
+            }
             yoco.showPopup({
-                amountInCents: pay_plan['price'] * 100 ,
+                amountInCents: price * 100 ,
                 currency: 'ZAR',
                 name: 'Trebleclef Academy',
                 description: 'Awesome description',

@@ -27,6 +27,10 @@ class ParentDashboard extends Component
 
     public mixed $raffle = ['title' => 'TCA Ruffle'];
 
+    public int $defaultPrice = 40;
+
+    public int $numberOfTickets = 1;
+
     public function mount(){
         $this->getRuffle();
     }
@@ -46,7 +50,8 @@ class ParentDashboard extends Component
             'phone_number' => $this->phoneNumber,
             'school' => $this->school,
             'grade' => $this->grade,
-            'status' => 'pending'
+            'status' => 'pending',
+            'number_of_tickets' => $this->numberOfTickets,
         ]);
 
         $this->reset();

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ruffle extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory;
 
     protected $fillable = [
         'user_id',
@@ -16,6 +16,7 @@ class Ruffle extends Model
         'phone_number',
         'school',
         'grade',
-        'status'
+        'status',
+        'number_of_tickets'
     ];
 }
