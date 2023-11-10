@@ -88,4 +88,13 @@ class User extends Authenticatable
         return redirect(RouteServiceProvider::PARENT);
     }
 
+    public function raffleRegistrations(): HasMany
+    {
+        return $this->hasMany(Ruffle::class);
+    }
+
+    public function raffleTickets(): HasMany
+    {
+        return $this->hasMany(RaffleTicket::class);
+    }
 }

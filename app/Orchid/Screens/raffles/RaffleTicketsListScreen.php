@@ -1,14 +1,10 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Orchid\Screens\raffles;
 
-namespace App\Orchid\Screens;
-
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
 
-class PlatformScreen extends Screen
+class RaffleTicketsListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -27,17 +23,7 @@ class PlatformScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'TCA - Platform Administration';
-    }
-
-    /**
-     * Display header description.
-     *
-     * @return string|null
-     */
-    public function description(): ?string
-    {
-        return 'Welcome to the TCA Administration.';
+        return 'RaffleTicketsListScreen';
     }
 
     /**
@@ -53,13 +39,10 @@ class PlatformScreen extends Screen
     /**
      * The screen's layout elements.
      *
-     * @return \Orchid\Screen\Layout[]
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
-        return [
-            //Layout::view('platform::partials.update-assets'),
-            //Layout::view('platform::partials.welcome'),
-        ];
+        return [];
     }
 }
