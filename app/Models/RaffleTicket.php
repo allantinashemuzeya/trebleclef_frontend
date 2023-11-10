@@ -2,41 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
-class Ruffle extends Model
+class RaffleTicket extends Model
 {
     use HasFactory, AsSource, Filterable;
 
+    protected $table = 'raffle_tickets';
+
     protected $fillable = [
         'user_id',
-        'full_name_surname',
-        'phone_number',
-        'school',
-        'grade',
+        'raffle_id',
+        'ticket_number',
         'status',
-        'number_of_tickets'
+        'created_at',
+        'updated_at'
     ];
 
     protected array $allowedSorts = [
-        'full_name_surname',
-        'school',
-        'grade',
+        'ticket_number',
         'status',
-        'number_of_tickets',
         'created_at',
         'updated_at'
     ];
 
     protected array $allowedFilters = [
-        'full_name_surname',
-        'school',
-        'grade',
+        'ticket_number',
         'status',
         'created_at',
         'updated_at'
@@ -46,5 +41,4 @@ class Ruffle extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }
