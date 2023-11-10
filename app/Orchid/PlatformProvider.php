@@ -34,32 +34,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->title(__('Transactions')),
                // ->permission('platform.transactions'),
 
-
-            Menu::make('Example screen')
-                ->icon('monitor')
-                ->route('platform.example')
-                ->title('Navigation')
-                ->badge(fn () => 6),
-
-            Menu::make('Dropdown menu')
-                ->icon('code')
-                ->list([
-                    Menu::make('Sub element item 1')->icon('bag'),
-                    Menu::make('Sub element item 2')->icon('heart'),
-                ]),
-
-            Menu::make('Basic Elements')
-                ->title('Form controls')
-                ->icon('note')
-                ->route('platform.example.fields'),
-
-            Menu::make('Advanced Elements')
-                ->icon('briefcase')
-                ->route('platform.example.advanced'),
-
-            Menu::make('Text Editors')
-                ->icon('list')
-                ->route('platform.example.editors'),
+            Menu::make(__('Raffle Registrations'))
+            ->icon('trophy')
+            ->route('platform.systems.raffle-registrations')
+            ->title(__('Raffle Registrations')),
 
             Menu::make(__('Users'))
                 ->icon('user')

@@ -48,17 +48,14 @@ Route::get('/home', function () {
     return Auth::check() ? redirect('/dashboard') : view('welcome');
 })->name('home');
 
-
 Route::get('/dashboard/',function (){
    return User::getDashboard(Auth::user());
 })->middleware(['auth'])->name('dashboard');
-
 
 Route::controller(ChatController::class)->group(function(){
     Route::get('/chat', 'index')->middleware(
         ['auth'])->name('chat');
 });
-
 
 Route::controller(CommunicationController::class)->group(
     function(){
@@ -94,6 +91,7 @@ Route::controller(ProfileController::class)->group(function(){
     Route::post('/profile-update', 'updateProfile')->middleware(
         ['auth'])->name('updateProfile');
 });
+
 Route::controller(EventsController::class)->group(
     function(){
     Route::get('/events/', [EventsController::class, 'index'])
@@ -102,6 +100,7 @@ Route::controller(EventsController::class)->group(
     Route::get('/event/{id}', [EventsController::class, 'event'])
         ->middleware(['auth', 'hasSubscription'])->name('event');
 });
+
 Route::controller(SitePagesController::class)->group(
     function(){
     Route::get('/networks',  'networks')->middleware(
@@ -114,6 +113,7 @@ Route::controller(SitePagesController::class)->group(
         ['auth'])->name('office');
 
 });
+
 Route::controller(FeesProductsController::class)->group(
     function(){
     Route::get('/payfees', 'fees')->middleware(['auth'])
@@ -125,11 +125,13 @@ Route::controller(FeesProductsController::class)->group(
     Route::post('/payfees/process-payment', 'chargeCard')->name(
         'processPayment');
 });
+
 Route::controller(ChatApplication::class)->group(
     function(){
     Route::post('/', 'chatTutor')->middleware(
         ['auth'])->name('chat-tutor');
 });
+
 Route::controller(TutorInvitesController::class)->group(
     function(){
     Route::get('/tutor_invite/{email_address}', 'index')->middleware(
@@ -138,6 +140,7 @@ Route::controller(TutorInvitesController::class)->group(
     Route::post('/tutor_invite/create', 'createTutor')->middleware(
         ['auth'])->name('createTutor');
 });
+
 Route::controller(InvoicingController::class)->group(
     function(){
     Route::post('/generateInvoice', 'generateInvoice')->middleware(
@@ -146,6 +149,7 @@ Route::controller(InvoicingController::class)->group(
     Route::get('/previewInvoice/{invoice}', 'previewInvoice')->middleware(
         ['auth']);
 });
+
 Route::controller(UserSubscriptionsController::class)->group(
     function(){
 	Route::get('/subscription', 'index')->middleware(
@@ -154,12 +158,14 @@ Route::controller(UserSubscriptionsController::class)->group(
     Route::post('/add-subscription', 'store')->middleware(
         ['auth'])->name('attach_subscription_to_user');
 });
+
 Route::controller(StudentController::class)->group(
     function(){
         Route::get('/student/dashboard', 'index')->middleware(
             ['auth'])->name('student-dashboard');
     }
 );
+
 Route::controller(ParentController::class)->group(function(){
     Route::get('/parents/dashboard', 'index')->middleware(
         ['auth'])->name('parent-dashboard');
@@ -178,26 +184,32 @@ Route::controller(ParentController::class)->group(function(){
     Route::get('/parents/account-settings', 'profile')->middleware(
         ['auth'])->name('account-settings');
     });
+
 Route::controller(TrebleclefTVController::class)->group(function(){
     Route::get('/tca_tv', 'index')->name('tca.tv');
 });
-Route::controller(TutorController::class)->group(
-    function () {
+
+Route::controller(TutorController::class)->group(function () {
         Route::get('/tutor/dashboard', 'index')->middleware(
             ['auth'])->name('tutor-dashboard');
-    }
-);
+    });
+
 Route::get('/help', function(){
  return redirect(route('dashboard'));
 })->name('help');
+
 Route::get('/support', function(){
     return redirect(route('dashboard'));
 })->name('support');
+
 Route::get('/calendar', [CalendarController::class, 'index'])->middleware(['auth'])->name('calendar');
+
 Route::get('/logout', function(){
     Auth::logout();
     return to_route('dashboard');
 })->name('logout');
+
 Route::get('/drupal', [DrupalRestFeederController::class, 'index']);
+
 require __DIR__.'/auth.php';
 
