@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\HelperMethods;
 use App\Http\Services\Events\Events;
+use App\Models\Event;
 use App\Models\Student;
 use App\Models\Tutors;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,44 +17,20 @@ class EventsController extends Controller
     //
     public function index(): Factory|View|Application
     {
-
-        if (Auth::user()->userType === 1) {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        } else if (Auth::user()->userType === 2) {
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        } else {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
-
-        $events = $this->getEvents();
-
-
-        return view('events.index', ['events' => $events, 'currentUser' => $currentUser
-
-        ]);
+        $title = 'Events';
+        return view('events.index', HelperMethods::getGenericNavMenu(title: $title));
     }
 
 
     //Section Communication
-    public function event($id): Factory|View|Application
+    public function event(Event $event): Factory|View|Application
     {
+        $title = $event->title . '| TCA Events';
 
-        if (Auth::user()->userType === 1) {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        } else if (Auth::user()->userType === 2) {
-            $currentUser = Tutors::where('userId', Auth::user()->id)->first();
-        } else {
-            $currentUser = Student::where('user_id', Auth::user()->id)->first();
-        }
+        $data = HelperMethods::getGenericNavMenu(title: $title);
+        $data['event'] = $event;
 
-        $event = (new Events())->getSingleEvent($id);
-        $events = $this->getEvents();
-
-
-        return view('events.event-detail',
-            ['event' => $event, 'events' => $events,
-                'currentUser' => $currentUser
-            ]);
+        return view('events.event-detail', $data);
     }
 
     /**

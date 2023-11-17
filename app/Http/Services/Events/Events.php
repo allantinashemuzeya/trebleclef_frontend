@@ -2,22 +2,20 @@
 
 namespace App\Http\Services\Events;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Http;
 
  class  Events implements EventInterface
 {
 
-    public function getAll()
+    public function getAll(): array
     {
         // TODO: Implement getAll() method.
-
         $response = Http::get(env('BACKEND_API').'events?include=field_event_banner,field_event_document');
 
         $data = json_decode($response);
         $events = [];
-
-//        dd($data);
-
 
         foreach($data->data as $event){
             $events[] = $this->getSingleEvent($event->id);
@@ -38,9 +36,7 @@ use Illuminate\Support\Facades\Http;
 
         $event_payment = [];
 
-//        dd($data);
         $event_banner = '';
-
         foreach ($data->included as $include){
             if($include->id === $event->relationships->field_event_banner->data->id ){
                 $event_banner = env('BACKEND_APP_ASSETS_URL') . $include->attributes->uri->url;
@@ -51,7 +47,7 @@ use Illuminate\Support\Facades\Http;
                 if($include->type === 'node--pricing_plans'){
                     $event_payment['title'] = $include->attributes->title;
                     $event_payment['price'] = $include->attributes->field_price;
-                    $event_payment['link'] = str_replace('internal:/','',$include->attributes->field_payment_link->uri);
+                    //$event_payment['link'] = str_replace('internal:/','',$include->attributes->field_payment_link->uri);
                 }
             }
 
