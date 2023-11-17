@@ -12,14 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->string('description');
-            $table->json('data')->nullable();
-            $table->dateTime('start');
-            $table->dateTime('end');
-            $table->float('price');
+            $table->uuid('id')->primary();
+            $table->uuid('drupal_uuid');
+            $table->string('title');
+            $table->string('sub_title');
+            $table->text('event_description');
+            $table->string('venue');
+            $table->string('event_banner');
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->string('venue_address')->nullable();
+            $table->json('media')->nullable();
+            $table->json('event_payment');
             $table->timestamps();
         });
     }

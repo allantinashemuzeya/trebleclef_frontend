@@ -95,10 +95,10 @@ Route::controller(ProfileController::class)->group(function(){
 Route::controller(EventsController::class)->group(
     function(){
     Route::get('/events/', [EventsController::class, 'index'])
-        ->middleware(['auth', 'hasSubscription'])->name('events');
+        ->middleware(['auth'])->name('events');
 
-    Route::get('/event/{id}', [EventsController::class, 'event'])
-        ->middleware(['auth', 'hasSubscription'])->name('event');
+    Route::get('/event/{event}', [EventsController::class, 'event'])
+        ->middleware(['auth'])->name('event');
 });
 
 Route::controller(SitePagesController::class)->group(

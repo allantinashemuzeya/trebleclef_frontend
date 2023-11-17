@@ -33,7 +33,6 @@ class UpdateTvContent extends Command
     public function handle(): int
     {
         $trebleClefTv = (new Home())->trebleClefTv();
-
         foreach ($trebleClefTv['content'] as $item){
             TrebleclefTv::updateOrCreate(
                 ['item' => $item['file']],[

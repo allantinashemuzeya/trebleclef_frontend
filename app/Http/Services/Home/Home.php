@@ -35,7 +35,6 @@ class Home implements homeInterface {
         $includes = 'include=field_treble_clef_tv.field_tv_content.field_media_video_file,field_treble_clef_tv.field_tv_content.field_media_image';
         $response = Http::get(env('BACKEND_API') . 'home_page?' . $includes);
 
-
         if ($response->status() === 200) {
 
 
