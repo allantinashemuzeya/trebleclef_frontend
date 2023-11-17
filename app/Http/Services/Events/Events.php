@@ -47,7 +47,9 @@ use Illuminate\Support\Facades\Http;
                 if($include->type === 'node--pricing_plans'){
                     $event_payment['title'] = $include->attributes->title;
                     $event_payment['price'] = $include->attributes->field_price;
-                    //$event_payment['link'] = str_replace('internal:/','',$include->attributes->field_payment_link->uri);
+                    $event_payment['id']=  $include->id;
+                    $event_payment['description'] = $include->attributes->field_description;
+                    $event_payment['type'] = $include->attributes->field_type;
                 }
             }
 

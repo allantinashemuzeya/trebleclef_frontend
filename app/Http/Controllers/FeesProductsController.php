@@ -41,9 +41,13 @@ class FeesProductsController extends Controller
      */
     public function chargeCard(Request $request): Response|int|Application|ResponseFactory
     {
+        if (is_object($request->payplan)) {
+            $request->payplan = (array)$request->payplan;
+        }
+
         $data = [
             'token' => $request->cardToken, // Your token for this transaction here
-            'amountInCents' => $request->payplan['price'] * 100, // payment in cents amount here
+            'amountInCents' => $request['payplan']->price * 100, // payment in cents amount here
             'currency' => 'ZAR' // currency here
         ];
 
