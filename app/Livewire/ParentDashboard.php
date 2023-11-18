@@ -8,6 +8,7 @@ use App\Http\Services\MusicQuotes\MusicQuotes;
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Models\DashboardNavigationCards;
 use App\Models\Ruffle;
+use App\Models\Product;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -31,14 +32,14 @@ class ParentDashboard extends Component
 
     public int $numberOfTickets = 1;
 
-    public function mount(){
-        $this->getRuffle();
-    }
-
+    
     public function render(): Factory|View|Application
     {
         return view('livewire.parent-dashboard',
-            ['navigationCards' => DashboardNavigationCards::all()]);
+            [
+                'navigationCards' => DashboardNavigationCards::all(),
+                'payPlan' => $this->getRuffle(),
+            ]);
     }
 
 
@@ -60,13 +61,8 @@ class ParentDashboard extends Component
 
     /**
      */
-  public function getRuffle(): void
+  public function getRuffle(): Product
   {
-      $structures = (new SchoolFees())->getAll();
-      foreach ($structures as $structure) {
-          if ($structure['type'] == 'raffles') {
-              $this->raffle = $structure;
-          }
-      }
+     return Product::where('type', 'raffles')->first();
     }
 }

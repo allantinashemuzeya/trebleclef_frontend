@@ -20,7 +20,7 @@ class InvoicingController extends Controller
         $result = InvoicesModel::create([
             "UserId" => $data['user']->id,
             "InvoiceNumber" => $this->generateInvoiceNumber(),
-            "PayPlan" => $data['payPlan']['id']
+            "PayPlan" => $data['payPlan']->id,
         ]);
 
         if($result){

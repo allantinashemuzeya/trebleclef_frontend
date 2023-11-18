@@ -686,10 +686,10 @@
                                                             <td align="right" class="es-m-txt-r"
                                                                 style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px">
                                                                 <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                                                    Subtotal:&nbsp;<strong>R{{$data['payPlan']['price']}}</strong>
+                                                                    Subtotal:&nbsp;<strong>R{{$data['payPlan']->price}}</strong>
                                                                     <br>Tax:&nbsp;
                                                                     <strong>R00.00</strong>
-                                                                    <br>Total:&nbsp;<strong>R{{$data['payPlan']['price']}}</strong>
+                                                                    <br>Total:&nbsp;<strong>R{{$data['payPlan']->price}}</strong>
                                                                 </p></td>
                                                         </tr>
                                                     </table>

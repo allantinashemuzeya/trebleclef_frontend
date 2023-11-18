@@ -417,27 +417,21 @@
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         NAME&nbsp;
                                                                         &nbsp;: <u
-                                                                            style="text-decoration-style:dashed;width:100px">{{$ticket->name}}&nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;&nbsp;</u>
+                                                                            style="text-decoration-style:none;width:100px">{{$ticket->name}}&nbsp;
+                                                                         </u>
                                                                     </p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         <br></p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                                                        EMAIL&nbsp;&nbsp;:
-                                                                        <u style="text-decoration-style:dashed">{{$ticket->email}}</u>
+                                                                        Entry No:&nbsp;&nbsp;:
+                                                                        
+                                                                        <u style="text-decoration-style:none">{{$ticket->entry_number}}</u>
                                                                     </p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         <br></p>
                                                                     <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         PHONE : <u
-                                                                            style="text-decoration-style:dashed">{{$ticket->phone}}</u>
+                                                                            style="text-decoration-style:none">{{$ticket->phone}}</u>
                                                                     </p></td>
                                                             </tr>
                                                         </table>
