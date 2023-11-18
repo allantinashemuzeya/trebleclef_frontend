@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('raffle_tickets', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('entry_number');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+        Schema::create('products', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->uuid('drupal_uuid'); 
+            $table->string('title');
+            $table->float('price');
+            $table->text('description')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 };

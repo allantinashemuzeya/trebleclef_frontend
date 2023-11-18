@@ -8,10 +8,10 @@
     <title>{{$title}}</title>
     <link rel="icon" type="image/x-icon"
           href="/tca_online/main_application/assets/img/favicon.ico"/>
-    <link
-        href="/tca_online/main_application//tca_online/main_application/assets/css/loader.css"
+    <link href="/tca_online/main_application//tca_online/main_application/assets/css/loader.css"
         rel="stylesheet" type="text/css"/>
-    <script src="/tca_online/main_application/assets/js/loader.js"></script>
+        
+    <link href="/css/coolLoader.css" rel="stylesheet" type="text/css"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link
@@ -94,6 +94,6 @@
 <script src="/tca_online/main_application/plugins/apex/apexcharts.min.js"></script>
 <script src="/tca_online/main_application/assets/js/dashboard/dash_2.js"></script>
 <!-- BEGIN PAGE LEVEL /tca_online/main_application/plugins/CUSTOM SCRIPTS -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

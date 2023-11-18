@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Orchid\Platform\Models\User as Authenticatable;
@@ -96,5 +97,10 @@ class User extends Authenticatable
     public function raffleTickets(): HasMany
     {
         return $this->hasMany(RaffleTicket::class);
+    }
+    
+    public function eventRegistrations(): HasMany
+    {
+        return $this->hasMany(EventRegistration::class);
     }
 }

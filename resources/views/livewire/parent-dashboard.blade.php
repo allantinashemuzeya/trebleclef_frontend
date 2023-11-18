@@ -139,39 +139,33 @@
 
                     <div class="modal-footer">
                         <button id="discard" class="btn btn-danger" data-dismiss="modal">Discard</button>
-                        <button id="checkoutButton" type="submit" class="btn btn-success"  onclick="pay({{json_encode($raffle)}})" style="display: block;">Buy ticket</button>
+                        <button id="checkoutButton" type="submit" class="btn btn-success"  onclick="pay()" style="display: block;">Buy ticket</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Include the Yoco SDK in your web page -->
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/js/notiflix/dist/notiflix-3.2.5.min.js"></script>
-
-
-    <!-- Create a pay button that will open the popup-->
-    {{-- <button id="checkout-button">Pay</button>--}}
+    <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
         let yoco = new window.YocoSDK({
-            publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
+            publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
         });
 
-        function pay(pay_plan){
+        function pay(){
 
           $('#joinRaffleModal').modal('hide');
           // Get the number of tickets
             let numberOfTickets = $('#numberOfTickets').val();
-
-            let price = pay_plan['price'] * numberOfTickets;
-
+            let pay_plan_id = "{{ $payPlan->drupal_uuid }}";
+            let price = "{{ $payPlan->price *  $numberOfTickets }}";
+            
             if(price < 1){
                 price = "{{ $defaultPrice *  $numberOfTickets }}"
             }
+            
             yoco.showPopup({
                 amountInCents: price * 100 ,
                 currency: 'ZAR',
@@ -184,7 +178,8 @@
                         alert("error occured: " +  errorMessage);
                     } else {
 
-                        const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
+                        const results = await axios.post('/payfees/process-payment',{
+                            'pay_plan_id': pay_plan_id, '_token': '{{ csrf_token() }}','cardToken':result.id});
 
                         // e.g. Message with the new options
                         if(results.data === 'successful'){
@@ -210,45 +205,7 @@
             $('#coolLoader').css('display', 'block');
             $('#coolLoader').css('left', '42%');
             $('#coolLoader').css('top', '10px');
-
         }
     </script>
-
-    <style>
-        .loader {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            position: relative;
-            animation: rotate 1s linear infinite
-        }
-        .loader::before , .loader::after {
-            content: "";
-            box-sizing: border-box;
-            position: absolute;
-            inset: 0px;
-            border-radius: 50%;
-            border: 5px solid #FFF;
-            animation: prixClipFix 2s linear infinite ;
-        }
-        .loader::after{
-            inset: 8px;
-            transform: rotate3d(90, 90, 0, 180deg );
-            border-color: #FF3D00;
-        }
-
-        @keyframes rotate {
-            0%   {transform: rotate(0deg)}
-            100%   {transform: rotate(360deg)}
-        }
-
-        @keyframes prixClipFix {
-            0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-            50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-            75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-        }
-
-    </style>
-
 </div>
 

@@ -110,7 +110,6 @@
                     @else
                         <img src="https://ui-avatars.com/api/?name={{auth()->user()->name}}&color=7F9CF5&background=EBF4FF" class="img-fluid" alt="admin-profile">
                     @endif
-
                     <div class="media-body align-self-center">
                         <h6><span>Hi,</span> {{auth()->user()->name}}</h6>
                     </div>

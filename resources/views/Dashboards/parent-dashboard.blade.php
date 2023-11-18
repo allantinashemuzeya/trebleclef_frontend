@@ -4,5 +4,4 @@
     <span class="loader" id="coolLoader" style="display: none;"></span>
 
     <livewire:parent-dashboard/>
-
 @endsection
