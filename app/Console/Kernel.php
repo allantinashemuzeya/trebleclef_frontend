@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('UpdateTvContent')->daily();
         $schedule->command('UpdateStudentLevels')->daily();
         $schedule->command('UpdateSchools')->daily();
+        $schedule->command('UpdatePayPlans')->daily();
         $schedule->command('UpdateEvents')->daily();
     }
     /**

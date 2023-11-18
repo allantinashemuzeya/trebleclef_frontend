@@ -4,47 +4,56 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
-class RaffleTicket extends Model
+class EventRegistration extends Model
 {
     use HasFactory, HasUuids, AsSource, Filterable;
-
-    protected $table = 'raffle_tickets';
-
+    
+    protected $table = 'event_registrations';
+    
     protected $fillable = [
         'user_id',
-        'raffle_id',
-        'ticket_number',
+        'event_id',
+        'transaction_id',
         'status',
         'created_at',
         'updated_at'
     ];
-
+    
     protected array $allowedSorts = [
-        'ticket_number',
+        'user_id',
+        'event_id',
+        'transaction_id',
         'status',
         'created_at',
         'updated_at'
     ];
-
+    
     protected array $allowedFilters = [
-        'ticket_number',
+        'user_id',
+        'event_id',
+        'transaction_id',
         'status',
         'created_at',
         'updated_at'
     ];
-
+    
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
     
-    public function raffle(): BelongsTo
+    public function event(): BelongsTo
     {
-        return $this->belongsTo(Ruffle::class);
+        return $this->belongsTo(Event::class);
+    }
+    
+    public function transaction(): BelongsTo
+    {
+        return $this->belongsTo(Transactions::class);
     }
 }

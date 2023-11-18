@@ -75,7 +75,7 @@
             <div class="widget-content">
                 <button id="checkout-button"
                         class="btn btn-outline-success mb-2"
-                        onclick="pay({{json_encode($event->event_payment['price'])}})">
+                        onclick="pay()">
                     PAY
                 </button>
             </div>
@@ -94,70 +94,72 @@
             </div>
         </div>
     </div>
-
-    <!-- Include the Yoco SDK in your web page -->
-    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
-
-
-    <!-- Create a pay button that will open the popup-->
-    {{-- <button id="checkout-button">Pay</button>--}}
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
     <script>
-
-        function pay(event_price) {
-            {{--console.log({!! json_encode($pay_plan) !!})--}}
-
+        function pay() {
+            showLoader();
             let yoco = new window.YocoSDK({
                 publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
 
-            let event_title = "{!! $event->title !!}"
+            const event_title = "{!! $event->title !!} | TCA Events"; 
+            const event_id = "{!! $event->id !!}";
+            const event_price = "{!! $event->event_payment['price'] !!}";
+            const pay_plan_id = "{!! $event->event_payment['id'] !!}";
+
             yoco.showPopup({
                 amountInCents: event_price * 100,
                 currency: 'ZAR',
                 name: event_title + '| TCA Events',
                 description: 'Awesome description',
                 callback: async (result) => {
-                    // This function returns a token that your server can use to capture a payment
-
+                    console.log(result)
                     if (result.error) {
                         const errorMessage = result.error.message;
                         alert("error occured: " + errorMessage);
                     } else {
-                        let payPlan = "{!! json_encode($event->event_payment) !!}";
                         const results = await axios.post('/payfees/process-payment', {
-                            'payPlan': payPlan,
+                            'pay_plan_id': pay_plan_id,
+                            'event_id': event_id,
                             '_token': '{{ csrf_token() }}',
                             'cardToken': result.id
                         });
 
-                        // e.g. Message with the new options
                         if (results.data === 'successful') {
-                            Swal.fire({
-                                title: "Good job!",
-                                text: "Payment successful, thank you! Your tickets have been sent to your mail box.",
-                                icon: "success"
-                            });
-
-                            if ($('#coolLoader')) {
-                                $('#coolLoader').css('display', 'none');
-                            }
+                            showSuccessMessage();
+                            hideLoader()
                         } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: "Something went wrong!",
-                            });
+                            showErrorMessage();
                         }
                     }
                 }
             })
-
+            console.log(event_title);
+        }
+        
+        function showLoader () {
             $('#coolLoader').css('display', 'block');
             $('#coolLoader').css('left', '42%');
             $('#coolLoader').css('top', '10px');
+        }
+        
+        function hideLoader () {
+            $('#coolLoader').css('display', 'none');
+        }
+        
+        function showSuccessMessage(){
+            Swal.fire({
+                title: "Good job!",
+                text: "Payment successful, thank you! Your tickets have been sent to your mail box.",
+                icon: "success"
+            });
+        }
+        function showErrorMessage(){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+            });
         }
     </script>
 </div>

@@ -61,7 +61,7 @@
                                                     <img
                                                         src="{{asset('app-assets/images/pay_plan_icon.png')}}"
                                                         class="mb-1" alt="svg img" height="220px" width="220px"/>
-                                                    <h3>{{$pay_plan['title']}}</h3>
+                                                    <h3>{{$pay_plan->title}}</h3>
 
                                                 </div>
                                             </div>
@@ -71,10 +71,10 @@
                                 <div class="col-12 col-md-7">
                                     <h2>{{$pay_plan['title']}}</h2>
                                     <div class="ecommerce-details-price d-flex flex-wrap mt-1">
-                                        <h4 class="item-price me-1">R{{$pay_plan['price']}}</h4>
+                                        <h4 class="item-price me-1">R{{$pay_plan->price}}</h4>
                                     </div>
                                     <p class="card-text">
-                                      {{$pay_plan['description']}}
+                                      {{$pay_plan->description ?? 'No description'}}
                                     </p>
                                     <ul class="product-features list-unstyled">
 
@@ -82,9 +82,9 @@
 
                                     <hr />
                                     <div class="d-flex flex-column flex-sm-row pt-1">
-                                        <button id="checkout-button" onclick="pay({{json_encode($pay_plan)}})" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
+                                        <button id="checkout-button" onclick="pay()" class="btn btn-primary me-0 me-sm-1 mb-1 mb-sm-0">
                                             <i data-feather="shopping-cart" class="me-50"></i>
-                                            <span  class="">Double tap to pay.</span>
+                                            <span  class="">Tap to pay.</span>
                                         </button>
 
                                     </div>
@@ -111,46 +111,44 @@
     {{-- <button id="checkout-button">Pay</button>--}}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-        function pay(pay_plan){
-            {{--console.log({!! json_encode($pay_plan) !!})--}}
-
+        function pay(){
             let yoco = new window.YocoSDK({
                 publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
             });
+            
+            const pay_plan_id = "{!! $pay_plan->drupal_uuid !!}";
+            const price = "{!! $pay_plan->price !!}";
+            yoco.showPopup({
+                amountInCents: price * 100 ,
+                currency: 'ZAR',
+                name: 'Trebleclef Academy',
+                description: 'Awesome description',
+                callback: async  (result) =>{
+                    // This function returns a token that your server can use to capture a payment
 
+                    if (result.error) {
+                        const errorMessage = result.error.message;
+                        alert("error occured: " + errorMessage);
+                    } else {
 
-            let checkoutButton = document.querySelector('#checkout-button');
-            checkoutButton.addEventListener('click', function () {
-                yoco.showPopup({
-                    amountInCents: pay_plan['price'] * 100 ,
-                    currency: 'ZAR',
-                    name: 'Trebleclef Academy',
-                    description: 'Awesome description',
-                    callback: async  (result) =>{
-                        // This function returns a token that your server can use to capture a payment
+                        const results = await axios.post('/payfees/process-payment',{
+                            'pay_plan_id': pay_plan_id,
+                            '_token': '{{ csrf_token() }}','cardToken':result.id});
 
-                        if (result.error) {
-                            const errorMessage = result.error.message;
-                            alert("error occured: " + errorMessage);
-                        } else {
-
-                            const results = await axios.post('/payfees/process-payment',{'payplan': pay_plan, '_token': '{{ csrf_token() }}','cardToken':result.id});
-
-                            // e.g. Message with the new options
-                            if(results.data === 'successful'){
-                                Notiflix.Notify.success(
-                                    'Payment Successful, Awesome, well Done!!',
-                                    {
-                                        timeout: 10000,
-                                    },
-                                )
-                            }else{
-                                Notiflix.Notify.failure('Something went wrong. We are working on it!');
-                            }
+                        // e.g. Message with the new options
+                        if(results.data === 'successful'){
+                            Notiflix.Notify.success(
+                                'Payment Successful, Awesome, well Done!!',
+                                {
+                                    timeout: 10000,
+                                },
+                            )
+                        }else{
+                            Notiflix.Notify.failure('Something went wrong. We are working on it!');
                         }
                     }
-                })
-            });
+                }
+            })
         }
     </script>
 
