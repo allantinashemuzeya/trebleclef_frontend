@@ -99,7 +99,7 @@
         function pay() {
             showLoader();
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
 
             const event_title = "{!! $event->title !!} | TCA Events"; 
