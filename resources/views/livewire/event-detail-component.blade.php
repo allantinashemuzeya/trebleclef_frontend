@@ -94,12 +94,15 @@
             </div>
         </div>
     </div>
-    
+        <!-- Include the Yoco SDK in your web page -->
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{asset('js/notiflix/dist/notiflix-3.2.5.min.js')}}"></script>
     <script>
         function pay() {
             showLoader();
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
 
             const event_title = "{!! $event->title !!} | TCA Events"; 

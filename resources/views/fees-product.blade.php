@@ -113,7 +113,7 @@
     <script>
         function pay(){
             let yoco = new window.YocoSDK({
-                publicKey: "{!! env('YOCO_TEST_PUBLIC_KEY') !!}",
+                publicKey: "{!! env('YOCO_LIVE_PUBLIC_KEY') !!}",
             });
             
             const pay_plan_id = "{!! $pay_plan->drupal_uuid !!}";
