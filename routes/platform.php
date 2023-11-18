@@ -11,6 +11,7 @@ use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\raffles\RaffleRegistrationListScreen;
+use App\Orchid\Screens\raffles\RaffleTicketsListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\Transactions\TransactionListScreen;
@@ -98,6 +99,13 @@ Route::screen('raffle-registrations', RaffleRegistrationListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Raffle Registrations'), route('platform.systems.raffle-registrations')));
+
+// Platform > System > Raffle Tickets
+Route::screen('raffle-tickets', RaffleTicketsListScreen::class)
+    ->name('platform.systems.raffle-tickets')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Raffle Tickets'), route('platform.systems.raffle-tickets')));
 
 // Example...
 Route::screen('example', ExampleScreen::class)

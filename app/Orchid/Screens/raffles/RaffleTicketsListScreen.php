@@ -3,6 +3,9 @@
 namespace App\Orchid\Screens\raffles;
 
 use Orchid\Screen\Screen;
+use App\Models\RaffleTicket;
+use App\Orchid\Layouts\raffles\RaffleTicketsListLayout;
+use Orchid\Support\Facades\Layout;
 
 class RaffleTicketsListScreen extends Screen
 {
@@ -13,7 +16,12 @@ class RaffleTicketsListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        $tickets = RaffleTicket::filters()->defaultSort('created_at')->paginate();
+        $winner = RaffleTicket::where('status', 'paid')->inRandomOrder()->first();
+        return [
+            'tickets' => $tickets,
+            'winner' => $winner
+        ];
     }
 
     /**
@@ -23,7 +31,8 @@ class RaffleTicketsListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'RaffleTicketsListScreen';
+        // lets do a small lottery on the raffle tickets and show the winner just display the ticket number give it a winner look and feel
+        return 'Raffle Tickets';
     }
 
     /**
@@ -43,6 +52,9 @@ class RaffleTicketsListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::view('components/v2/app-concept/raffle-winner', ['winner' => $this->query()['winner']]),
+            RaffleTicketsListLayout::class,
+        ];
     }
 }
