@@ -35,9 +35,14 @@ class PlatformProvider extends OrchidServiceProvider
                // ->permission('platform.transactions'),
 
             Menu::make(__('Raffle Registrations'))
-            ->icon('trophy')
+            ->icon('fa.cash-register')
             ->route('platform.systems.raffle-registrations')
             ->title(__('Raffle Registrations')),
+
+            Menu::make(__('Raffle Tickets'))
+            ->icon('fa.ticket')
+            ->route('platform.systems.raffle-tickets')
+            ->title(__('Raffle Tickets')),
 
             Menu::make(__('Users'))
                 ->icon('user')
