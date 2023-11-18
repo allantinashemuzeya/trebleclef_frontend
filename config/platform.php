@@ -114,8 +114,18 @@ return [
     */
 
     'resource'      => [
-        'stylesheets' => [],
-        'scripts'     => [],
+        'stylesheets' => [
+            "/css/coolLoader.css",
+            "https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap",
+            "/tca_online/main_application/bootstrap/css/bootstrap.min.css",
+            //"/tca_online/main_application/assets/css/plugins.css",
+            //"/tca_online/main_application/plugins/apex/apexcharts.css",
+            //"/tca_online/main_application/assets/css/dashboard/dash_2.css"
+        ],
+        'scripts' => [
+            "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js",
+            //"unitegallery/js/unitegallery.min.js"
+        ]
     ],
 
     /*
@@ -177,6 +187,7 @@ return [
 
     'icons'         => [
         'orc' => \Orchid\IconPack\Path::getFolder(),
+        'fa'  => resource_path('icons/fontawesome'),
     ],
 
     /*
