@@ -202,10 +202,10 @@ class FeesProductsController extends Controller
         $tickets = [];
         for ($i = 0; $i < $raffle->number_of_tickets; $i++) {
             $ticket = (object)[
-                'user_id' => Auth::user()->id,
+                'user_id' => $raffle->user_id,
                 'name' => $raffle->full_name_surname,
-                'entry_number' => substr(Auth::user()->name, 0, 2) . $raffle->id . ($i + 1),
-                'email' => Auth::user()->email,
+                'entry_number' => substr($raffle->full_name_surname, 0, 2) . $raffle->id . ($i + 1),
+                'email' => $raffle->user->email,
                 'phone' => $raffle->phone_number,
                 'raffle_id' => $raffle->id,
             ];
