@@ -23,6 +23,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('UpdateSchools')->daily();
         $schedule->command('UpdatePayPlans')->daily();
         $schedule->command('UpdateEvents')->daily();
+        $schedule->command('updateRaffleTickets')->daily();
     }
     /**
      * Register the commands for the application.
