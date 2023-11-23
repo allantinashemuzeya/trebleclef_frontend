@@ -99,9 +99,7 @@
 
             <!-- Modal content -->
             <div class="modal-content">
-
                 <form class="" wire:submit.prevent="joinRuffle">
-
                     <div class="modal-body">
                         <span class="close">×</span>
                         <div class="add-edit-event-box">
