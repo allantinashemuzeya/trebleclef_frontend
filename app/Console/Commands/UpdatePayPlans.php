@@ -37,10 +37,13 @@ class UpdatePayPlans extends Command
             Product::updateOrCreate(
                 ['drupal_uuid' => $payPlan['id']],
                 [
-                    'title' => $payPlan['title'],
-                    'price' => $payPlan['price'],
-                    'description' => $payPlan['description'],
-                    'type' => $payPlan['type']
+                    'title'             => $payPlan['title'],
+                    'price'             => $payPlan['price'],
+                    'price_for_parent'  =>  $payPlan['price_for_parent'], 
+                    'price_for_sibling' => $payPlan['price_for_sibling'], 
+                    'price_for_other'   => $payPlan['price_for_other'], 
+                    'description'       => $payPlan['description'],
+                    'type'              => $payPlan['type']
                 ]
             );
         }
