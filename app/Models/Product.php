@@ -17,6 +17,9 @@ class Product extends Model
         'title',
         'price',
         'description',
+        'price_for_parent', 
+        'price_for_sibling', 
+        'price_for_other', 
         'type'
     ];
     
@@ -30,7 +33,10 @@ class Product extends Model
     protected $allowedSorts = [
         'title',
         'price',
-        'type'
+        'type',
+        'price_for_parent', 
+        'price_for_sibling', 
+        'price_for_other', 
     ];
     
 }

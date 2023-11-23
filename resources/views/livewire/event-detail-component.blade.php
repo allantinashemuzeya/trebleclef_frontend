@@ -118,7 +118,7 @@
 
                                 <div class="col-md-12 col-sm-12 col-12 mt-10">   
                                             
-                                    <select class="selectpicker w-100 mb-4 ml-2" data-style="btn btn-outline-primary" wire:model.defer="price_type">
+                                    <select id="price_type" class="selectpicker w-100 mb-4 ml-2" data-style="btn btn-outline-primary" wire:model.defer="price_type">
                                         <option value="student">Student</option>
                                         <option value="sibling">Sibling</option>
                                         <option value="parent">Parent</option>
@@ -170,9 +170,9 @@
 
                 const event_title = "{!! $event->title !!} | TCA Events"; 
                 const event_id = "{!! $event->id !!}";
-                const price_type = "{!! $price_type !!}";
+                const price_type = $('#price_type').val();
                 let numberOfTickets = $('#numberOfTickets').val();
-                                
+
                 console.log("{!! $event->event_payment['price_for_student'] !!}")
 
                 let event_price = 0; 
