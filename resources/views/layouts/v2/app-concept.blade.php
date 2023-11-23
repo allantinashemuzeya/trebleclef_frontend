@@ -20,7 +20,8 @@
     <link href="/tca_online/main_application/bootstrap/css/bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
     <link href="/tca_online/main_application/assets/css/plugins.css"
-          rel="stylesheet" type="text/css"/>
+        rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/tca_online/main_application/plugins/bootstrap-select/bootstrap-select.min.css">
 
 
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -88,6 +89,8 @@
     });
 </script>
 <script src="/tca_online/main_application/assets/js/custom.js"></script>
+<script src="/tca_online/main_application/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <!-- BEGIN PAGE LEVEL /tca_online/main_application/plugins/CUSTOM SCRIPTS -->

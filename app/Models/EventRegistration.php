@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
@@ -46,14 +47,18 @@ class EventRegistration extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }
-    
+
     public function transaction(): BelongsTo
     {
         return $this->belongsTo(Transactions::class);
+    }
+
+    public function eventTickets():HasMany{
+        return $this->hasMany(EventTickets::class); 
     }
 }

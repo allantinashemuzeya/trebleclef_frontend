@@ -14,12 +14,16 @@ class SchoolFees implements SchoolFeesInterface
         $response = Http::get(env('BACKEND_API').'pricing_plans/'.$productId);
         $pay_plan = json_decode($response)->data;
 
+        dd($pay_plan);
         return [
             'id'=> $pay_plan->id,
             'title'=> $pay_plan->attributes->title,
             'description'=> $pay_plan->attributes->field_description,
             'price'=> $pay_plan->attributes->field_price,
-          //  'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
+            'price_for_parent'=> $pay_plan->attributes->field_price_for_parents,
+            'price_for_sibling'=> $pay_plan->attributes->field_price_for_students,
+            'price_for_other'=> $pay_plan->attributes->field_price_for_other,
+            //  'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
             'type' => $pay_plan->attributes?->field_type
         ];
     }
@@ -37,8 +41,10 @@ class SchoolFees implements SchoolFeesInterface
                 'id'=> $pay_plan->id,
                 'title'=> $pay_plan->attributes->title,
                 'description'=> $pay_plan->attributes->field_description,
-                'price'=> $pay_plan->attributes->field_price,
-              //  'payment_link' =>  $pay_plan->attributes->field_payment_link->uri,
+                'price'=> $pay_plan->attributes->field_price ?? 0,
+                'price_for_parent'=> $pay_plan->attributes->field_price_for_parents ?? 0,
+                'price_for_sibling'=> $pay_plan->attributes->field_price_for_students ?? 0,
+                'price_for_other'=> $pay_plan->attributes->field_price_for_other ?? 0,
                 'type' => $pay_plan->attributes->field_type
             ];
         }

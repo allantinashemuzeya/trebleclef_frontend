@@ -46,7 +46,10 @@ use Illuminate\Support\Facades\Http;
                 }
                 if($include->type === 'node--pricing_plans'){
                     $event_payment['title'] = $include->attributes->title;
-                    $event_payment['price'] = $include->attributes->field_price;
+                    $event_payment['price_for_student'] = $include->attributes->field_price ?? 0;
+                    $event_payment['price_for_parent'] = $include->attributes->field_price_for_parents ?? 0;
+                    $event_payment['price_for_other'] = $include->attributes->field_price_for_other ?? 0;
+                    $event_payment['price_for_sibling'] = $include->attributes->field_price_for_sibling ?? 0;
                     $event_payment['id']=  $include->id;
                     $event_payment['description'] = $include->attributes->field_description;
                     $event_payment['type'] = $include->attributes->field_type;
