@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\SchoolFees\SchoolFees;
 use App\Http\Services\YocoApi\YocoChargeApi;
+use App\Mail\EventRegistrationEmail;
 use App\Mail\SendRuffleTickets;
 use App\Models\Product;
 use App\Models\Ruffle;
 use App\Models\Transactions;
 use App\Models\RaffleTicket;
 use App\Models\EventRegistration;
+use App\Models\EventTickets;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -41,7 +43,6 @@ class FeesProductsController extends Controller
     public function chargeCard(Request $request): Response|int|Application|ResponseFactory
     {
         $pay_plan = Product::where('drupal_uuid', $request->pay_plan_id)->first();
-        
         $data = [
             'token' => $request->cardToken, // Your token for this transaction here
             'amountInCents' => $pay_plan->price * 100, // payment in cents amount here
@@ -110,25 +111,34 @@ class FeesProductsController extends Controller
      */
     private function runEventRegistrationOperations(array $invoiceDetails, mixed $result): void
     {
-        $this->runDefaultOperations($invoiceDetails, $result);
-        $this->createEventRegistrationRecord($invoiceDetails);
+        $event_registration = $this->updateEventRegistrationRecord($invoiceDetails); 
+        $payplan = $invoiceDetails['payPlan'];
+        $result  = json_decode($invoiceDetails['result']);
+        $invoiceDetails['payPlan']->price = $result->amountInCents / 100;
+        $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
+        $result  = $invoiceDetails['result'];
+        $this->recordTransaction($result, $payplan, $invoice);
+        $tickets = $this->generateEventTickets($event_registration);
+        $this->saveEventRegistrationTickets($tickets);
+        $this->sendEventRegistrationTickets($tickets);
     }
     
     /**
      * @param array $payplan
-     * @return void
+     * @return mixed
      */
-    public function createEventRegistrationRecord(array $invoiceDetails): void
+    public function updateEventRegistrationRecord(array $invoiceDetails): mixed
     {
-        $payplan = $invoiceDetails['payPlan'];
         $eventId = $invoiceDetails['request']->event_id;
-        $eventRegistration = new EventRegistration();
-        $eventRegistration->user_id = Auth::user()->id;
-        $eventRegistration->event_id = $eventId; 
         $transaction = Transactions::where('user_id', Auth::user()->id)->latest()->first();
-        $eventRegistration->transaction_id = $transaction->id;
-        $eventRegistration->status = 'paid';
-        $eventRegistration->save();
+        $eventReg = EventRegistration::where('user_id', Auth::user()->id)->latest()->first();
+       
+        $eventReg->user_id = Auth::user()->id;
+        $eventReg->event_id = $eventId;
+        $eventReg->transaction_id = $transaction->id;
+        $eventReg->status = $transaction->status;
+        $eventReg->save();
+        return $eventReg;
     }
 
     /**
@@ -174,6 +184,7 @@ class FeesProductsController extends Controller
     }
     
     /**
+     * Runs the Raffle Operations....
      * @param array $payplan
      * @return void
      * @throws GuzzleException
@@ -184,10 +195,10 @@ class FeesProductsController extends Controller
         $result  = $invoiceDetails['result'];
         $raffle   = $this->updateRaffleRecord();
         $tickets = $this->generateRaffleTickets($raffle);
-        
+
         $invoiceDetails['payPlan']->price = $payplan->price * $raffle->number_of_tickets;
         $invoice = (new InvoicingController)->generateInvoice($invoiceDetails);
-        
+
         $this->recordTransaction($result, $payplan, $invoice);
         $this->saveRaffleTickets($tickets);
         $this->sendRaffleTickets($tickets);
@@ -214,8 +225,35 @@ class FeesProductsController extends Controller
         return $tickets;
     }
     
-    public function saveRaffleTickets($tickets){
+    public function generateEventTickets($eventReg){
+        $tickets  = []; 
+        for ($i = 0; $i < $eventReg->number_of_tickets; $i++) {
+            $ticket = (object)[
+                'name'          => $eventReg->full_name_surname,
+                'user_id'       => $eventReg->user_id,
+                'event_id'      => $eventReg->event_id,
+                'ticket_number' => substr($eventReg->user->name, 0, 3) . $eventReg->user->id . rand(0, 100) . $i . substr($eventReg->full_name_surname, 0, 2),
+                'email'         => $eventReg->user->email,
+                'event_reg_id'  => $eventReg->id,
+            ]; 
+            $tickets[] = $ticket; 
+        }
+        return $tickets;
+    }
     
+    public function saveEventRegistrationTickets($tickets){
+        foreach($tickets as $ticket){
+            EventTickets::create([
+                'name'          => $ticket->name, 
+                'user_id'       => $ticket->user_id, 
+                'ticket_number' => $ticket->ticket_number, 
+                'email'         => $ticket->email, 
+                'event_reg_id'  => $ticket->event_reg_id, 
+            ]); 
+        }
+    }
+
+    public function saveRaffleTickets($tickets){
         foreach ($tickets as $ticket) {
             $raffleTicket = new RaffleTicket();
             $raffleTicket->user_id = $ticket->user_id;
@@ -229,6 +267,10 @@ class FeesProductsController extends Controller
     public function sendRaffleTickets($tickets){
         Mail::to(Auth::user()->email)
         ->send(new SendRuffleTickets($tickets));
+    }
+    
+    public function sendEventRegistrationTickets($tickets){
+        Mail::to(Auth::user()->email)->send(new EventRegistrationEmail($tickets)); 
     }
 
     /**
