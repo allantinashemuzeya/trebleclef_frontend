@@ -18,11 +18,11 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('inspire')->hourly();
         $schedule->command('UpdateDashboardNavigationCards')->daily();
-        $schedule->command('UpdateTvContent')->daily();
-        $schedule->command('UpdateStudentLevels')->daily();
-        $schedule->command('UpdateSchools')->daily();
-        $schedule->command('UpdatePayPlans')->daily();
-        $schedule->command('UpdateEvents')->daily();
+        $schedule->command('UpdateTvContent')->hourly();
+        $schedule->command('UpdateStudentLevels')->hourly();
+        $schedule->command('UpdateSchools')->hourly();
+        $schedule->command('UpdatePayPlans')->everyFiveMinutes();
+        $schedule->command('UpdateEvents')->everyFifteenMinutes();
         $schedule->command('updateRaffleTickets')->daily();
     }
     /**
